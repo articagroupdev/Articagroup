@@ -1,0 +1,493 @@
+'use client';
+
+import { useEffect, useRef, useState } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Image from 'next/image';
+import Navbar from '../../components/Navbar';
+import ContactForm from '../../components/ContactForm';
+import Footer from '../../components/Footer';
+
+gsap.registerPlugin(ScrollTrigger);
+
+export default function CreacionContenidoPage() {
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const heroRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const consistSectionRef = useRef<HTMLDivElement>(null);
+  const benefitsRef = useRef<HTMLDivElement>(null);
+  const processRef = useRef<HTMLDivElement>(null);
+  const faqRef = useRef<HTMLDivElement>(null);
+  const faqItemsRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Animación del hero
+      if (titleRef.current && subtitleRef.current) {
+        gsap.set([titleRef.current, subtitleRef.current], {
+          opacity: 0,
+          y: 50,
+        });
+
+        gsap.to([titleRef.current, subtitleRef.current], {
+          opacity: 1,
+          y: 0,
+          duration: 1.2,
+          ease: 'power3.out',
+          stagger: 0.2,
+        });
+      }
+
+      // Animaciones con ScrollTrigger
+      const sections = [
+        { ref: consistSectionRef, start: 'top 85%' },
+        { ref: benefitsRef, start: 'top 80%' },
+        { ref: processRef, start: 'top 75%' },
+        { ref: faqRef, start: 'top 80%' },
+      ];
+
+      sections.forEach(({ ref, start }) => {
+        if (ref.current) {
+          const children = ref.current.children;
+          gsap.set(children, { opacity: 0, y: 60 });
+
+          gsap.to(children, {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            ease: 'power3.out',
+            stagger: 0.15,
+            scrollTrigger: {
+              trigger: ref.current,
+              start,
+              end: 'top 50%',
+              scrub: 1.5,
+            },
+          });
+        }
+      });
+    });
+
+    return () => {
+      ctx.revert();
+    };
+  }, []);
+
+  const toggleFaq = (index: number) => {
+    if (openFaq === index) {
+      setOpenFaq(null);
+    } else {
+      setOpenFaq(index);
+    }
+  };
+
+  useEffect(() => {
+    faqItemsRef.current.forEach((item, index) => {
+      if (item) {
+        const content = item.querySelector('.faq-content') as HTMLElement;
+        const arrow = item.querySelector('.faq-arrow') as HTMLElement;
+        
+        if (content && arrow) {
+          if (openFaq === index) {
+            gsap.to(content, {
+              height: 'auto',
+              opacity: 1,
+              duration: 0.4,
+              ease: 'power2.out',
+            });
+            gsap.to(arrow, {
+              rotation: 180,
+              duration: 0.3,
+              ease: 'power2.out',
+            });
+          } else {
+            gsap.to(content, {
+              height: 0,
+              opacity: 0,
+              duration: 0.4,
+              ease: 'power2.out',
+            });
+            gsap.to(arrow, {
+              rotation: 0,
+              duration: 0.3,
+              ease: 'power2.out',
+            });
+          }
+        }
+      }
+    });
+  }, [openFaq]);
+
+  return (
+    <main className="relative bg-white min-h-screen">
+      <Navbar />
+      
+      {/* Hero Section */}
+      <section
+        ref={heroRef}
+        className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden"
+        style={{
+          background: 'linear-gradient(135deg, #272F66 0%, #1a2050 100%)',
+        }}
+      >
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-96 h-96 bg-[#13B9D5] rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#ff9001] rounded-full blur-3xl" />
+        </div>
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 bg-[#13B9D5]/20 rounded-full border border-[#13B9D5]/30">
+            <div className="w-2 h-2 rounded-full bg-[#13B9D5] animate-pulse" />
+            <span className="text-xs sm:text-sm font-semibold text-[#13B9D5] uppercase tracking-wider">
+              Servicio
+            </span>
+          </div>
+
+          <h1
+            ref={titleRef}
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
+          >
+            Creación de Contenido
+          </h1>
+
+          <p
+            ref={subtitleRef}
+            className="text-xl sm:text-2xl text-white/90 max-w-3xl leading-relaxed"
+          >
+            Ideas innovadoras pero efectivas. Teniendo claras las bases y objetivos, crearemos contenido personalizado para tu negocio.
+          </p>
+        </div>
+      </section>
+
+      {/* ¿En qué consiste? Section */}
+      <section
+        ref={consistSectionRef}
+        className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-gray-50"
+      >
+        <div className="max-w-7xl mx-auto">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#272F66] mb-6">
+              ¿En qué consiste?
+            </h2>
+            <p className="text-lg sm:text-xl text-gray-700 leading-relaxed">
+              Creamos contenido viral que conecta con la personalidad de tu negocio. Desde posts visualmente impactantes hasta historias que resuenan, lo adaptamos todo a tus valores y tono de voz.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Beneficios Section */}
+      <section
+        ref={benefitsRef}
+        className="py-20 px-4 sm:px-6 lg:px-8 bg-white"
+      >
+        <div className="max-w-7xl mx-auto">
+          {/* Header centrado */}
+          <div className="text-center mb-16 max-w-4xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#272F66] mb-6 leading-tight">
+              Estos son los beneficios para tu empresa
+            </h2>
+            <p className="text-lg text-gray-600 leading-relaxed">
+              Descubre cómo nuestro servicio de creación de contenido puede transformar tu presencia digital y generar resultados tangibles para tu negocio.
+            </p>
+          </div>
+
+          {/* Cards de beneficios */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Beneficio 1 - Card destacada con fondo de color */}
+            <div className="group relative bg-gradient-to-br from-[#ff9001] to-[#e67e00] rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+              <div className="absolute top-4 left-4 w-12 h-12 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
+              </div>
+              
+              <div className="mt-12">
+                <h3 className="text-xl font-bold text-white mb-3">
+                  Mayor visibilidad en redes sociales
+                </h3>
+                <p className="text-white/90 leading-relaxed text-sm">
+                  El contenido adaptado a cada plataforma aumenta la interacción y garantiza que tu negocio llegue al público adecuado, lo que genera más seguidores y clientes potenciales.
+                </p>
+              </div>
+            </div>
+
+            {/* Beneficio 2 - Card con fondo blanco */}
+            <div className="group relative bg-white rounded-2xl p-6 sm:p-8 border border-gray-200 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+              <div className="absolute top-4 left-4 w-12 h-12 bg-gradient-to-br from-[#ff9001] to-[#e67e00] rounded-full flex items-center justify-center">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </div>
+              
+              <div className="mt-12">
+                <h3 className="text-xl font-bold text-[#272F66] mb-3">
+                  Conexión auténtica con tu audiencia
+                </h3>
+                <p className="text-gray-600 leading-relaxed text-sm">
+                  Al crear contenido que refleja los valores de tu marca, estableces una relación de confianza con tu público, aumentando su lealtad y mejorando la reputación de tu negocio.
+                </p>
+              </div>
+            </div>
+
+            {/* Beneficio 3 - Card con fondo blanco */}
+            <div className="group relative bg-white rounded-2xl p-6 sm:p-8 border border-gray-200 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+              <div className="absolute top-4 left-4 w-12 h-12 bg-gradient-to-br from-[#ff9001] to-[#e67e00] rounded-full flex items-center justify-center">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                </svg>
+              </div>
+              
+              <div className="mt-12">
+                <h3 className="text-xl font-bold text-[#272F66] mb-3">
+                  Resultados medibles y crecimiento del negocio
+                </h3>
+                <p className="text-gray-600 leading-relaxed text-sm">
+                  Gracias a estrategias basadas en objetivos claros, tu contenido no solo es creativo, sino también efectivo para generar resultados concretos, como más ventas o leads.
+                </p>
+              </div>
+            </div>
+
+            {/* Beneficio 4 - Card adicional con fondo blanco (opcional, puedes eliminar si solo quieres 3) */}
+            <div className="group relative bg-white rounded-2xl p-6 sm:p-8 border border-gray-200 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+              <div className="absolute top-4 left-4 w-12 h-12 bg-gradient-to-br from-[#ff9001] to-[#e67e00] rounded-full flex items-center justify-center">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              </div>
+              
+              <div className="mt-12">
+                <h3 className="text-xl font-bold text-[#272F66] mb-3">
+                  Contenido de calidad profesional
+                </h3>
+                <p className="text-gray-600 leading-relaxed text-sm">
+                  Trabajamos con un equipo de profesionales que garantiza contenido de alta calidad, optimizado para cada plataforma y diseñado para generar engagement.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Proceso Section */}
+      <section
+        ref={processRef}
+        className="py-20 px-4 sm:px-6 lg:px-8 bg-white"
+      >
+        <div className="max-w-7xl mx-auto">
+          {/* Grid: Título, Subtítulo, Imagen (Izquierda) y Pasos (Derecha) */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Columna Izquierda: Título, Subtítulo e Imagen */}
+            <div className="flex flex-col">
+              {/* Título */}
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#272F66] mb-4 uppercase">
+                Nuestro Proceso para la Creación de Contenido
+              </h2>
+              
+              {/* Subtítulo */}
+              <p className="text-lg text-gray-600 leading-relaxed mb-6">
+                Desarrollamos contenido relevante, valioso y optimizado que atrae a tu audiencia, genera autoridad de marca e impulsa la conversión.
+              </p>
+
+              {/* Imagen horizontal (ancha y baja) que se alinea con el final del último paso */}
+              <div className="relative w-full" style={{ height: '400px' }}>
+                <div 
+                  className="relative w-full h-full overflow-hidden"
+                  style={{
+                    borderRadius: '24px 24px 0 24px',
+                  }}
+                >
+                  <Image
+                    src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=1200"
+                    alt="Creación de contenido"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Columna Derecha: Pasos del Proceso */}
+            <div className="space-y-8">
+              {/* Paso 1 */}
+              <div className="flex gap-4">
+                <div className="flex-shrink-0">
+                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#13B9D5] to-[#0FA8C2] flex items-center justify-center shadow-lg">
+                    <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+                    </svg>
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-[#272F66] mb-2">
+                    Estrategia y Temas Clave
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Basándonos en tu audiencia y objetivos, realizamos una investigación de palabras clave (SEO) y tendencias para definir un calendario editorial con temas que resuelvan las dudas de tus clientes.
+                  </p>
+                </div>
+              </div>
+
+              {/* Paso 2 */}
+              <div className="flex gap-4">
+                <div className="flex-shrink-0">
+                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#13B9D5] to-[#0FA8C2] flex items-center justify-center shadow-lg">
+                    <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                    </svg>
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-[#272F66] mb-2">
+                    Redacción y Diseño de Borradores
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Creamos el contenido principal (texto, guiones, storyboards) asegurando que el tono de voz sea el adecuado para tu marca. En esta fase se genera el primer borrador listo para revisión.
+                  </p>
+                </div>
+              </div>
+
+              {/* Paso 3 */}
+              <div className="flex gap-4">
+                <div className="flex-shrink-0">
+                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#13B9D5] to-[#0FA8C2] flex items-center justify-center shadow-lg">
+                    <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-[#272F66] mb-2">
+                    Producción y Maquetación Visual
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Transformamos el borrador en la pieza final: diseñamos las imágenes, grabamos y editamos videos, o maquetamos el blog post, asegurando un formato atractivo para la plataforma de destino.
+                  </p>
+                </div>
+              </div>
+
+              {/* Paso 4 */}
+              <div className="flex gap-4">
+                <div className="flex-shrink-0">
+                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#13B9D5] to-[#0FA8C2] flex items-center justify-center shadow-lg">
+                    <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" />
+                    </svg>
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-[#272F66] mb-2">
+                    Publicación y Distribución Estratégica
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Programamos y publicamos el contenido en los canales definidos (web, redes sociales, email). Además, definimos una estrategia de distribución para maximizar su alcance y visibilidad.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section
+        ref={faqRef}
+        className="py-20 px-4 sm:px-6 lg:px-8 bg-white"
+      >
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#272F66] mb-4">
+              Preguntas frecuentes sobre la creación de contenido
+            </h2>
+          </div>
+
+          <div className="space-y-5">
+            {/* FAQ 1 */}
+            <div
+              ref={(el) => (faqItemsRef.current[0] = el)}
+              className="group bg-white rounded-xl border border-gray-200 hover:border-[#ff9001] transition-all duration-300 shadow-sm hover:shadow-md overflow-hidden"
+            >
+              <button
+                onClick={() => toggleFaq(0)}
+                className="w-full p-6 sm:p-8 text-left flex items-start gap-4 hover:bg-gray-50/50 transition-colors duration-200"
+              >
+                <div className="flex-shrink-0 mt-1">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#ff9001] to-[#e67e00] flex items-center justify-center">
+                    <svg
+                      className="faq-arrow w-5 h-5 text-white transition-transform duration-300"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-lg sm:text-xl font-bold text-[#272F66] mb-0 group-hover:text-[#ff9001] transition-colors duration-200">
+                    ¿Qué tipo de contenido puedo crear para mi negocio?
+                  </h3>
+                </div>
+              </button>
+              <div className="faq-content" style={{ height: 0, overflow: 'hidden' }}>
+                <div className="px-6 sm:px-8 pb-6 sm:pb-8 pl-20">
+                  <div className="pt-2 border-t border-gray-100">
+                    <p className="text-gray-600 leading-relaxed text-base">
+                      Puedes generar desde contenido de marca y diseño gráfico hasta animaciones, videos para YouTube, y podcasts. Todo el contenido está personalizado para plataformas como Instagram, Facebook, TikTok, y cualquier red que sea relevante para ti.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* FAQ 2 */}
+            <div
+              ref={(el) => (faqItemsRef.current[1] = el)}
+              className="group bg-white rounded-xl border border-gray-200 hover:border-[#ff9001] transition-all duration-300 shadow-sm hover:shadow-md overflow-hidden"
+            >
+              <button
+                onClick={() => toggleFaq(1)}
+                className="w-full p-6 sm:p-8 text-left flex items-start gap-4 hover:bg-gray-50/50 transition-colors duration-200"
+              >
+                <div className="flex-shrink-0 mt-1">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#ff9001] to-[#e67e00] flex items-center justify-center">
+                    <svg
+                      className="faq-arrow w-5 h-5 text-white transition-transform duration-300"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-lg sm:text-xl font-bold text-[#272F66] mb-0 group-hover:text-[#ff9001] transition-colors duration-200">
+                    ¿Cómo sé si el contenido está funcionando?
+                  </h3>
+                </div>
+              </button>
+              <div className="faq-content" style={{ height: 0, overflow: 'hidden' }}>
+                <div className="px-6 sm:px-8 pb-6 sm:pb-8 pl-20">
+                  <div className="pt-2 border-t border-gray-100">
+                    <p className="text-gray-600 leading-relaxed text-base">
+                      Medimos el éxito de tu contenido mediante análisis de métricas, como interacción, seguidores, y conversiones. Así ajustamos las estrategias para optimizar resultados.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Formulario de Contacto */}
+      <ContactForm />
+
+      <Footer />
+    </main>
+  );
+}

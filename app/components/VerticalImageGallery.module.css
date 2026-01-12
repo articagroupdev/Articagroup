@@ -1,0 +1,223 @@
+.section {
+  background: #ffffff url('/img/fondo-2.jpg') center center / cover no-repeat;
+  padding: 0 !important;
+  padding-bottom: clamp(40px, 5vh, 80px) !important;
+  position: relative !important;
+  overflow: visible;
+  margin: 0 !important;
+  margin-bottom: 0 !important;
+  height: auto !important;
+  width: 100% !important;
+  top: auto !important;
+  visibility: visible !important;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(2px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.wrapper {
+  max-width: 1280px; /* max-w-7xl equivalente */
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 0 !important;
+  padding: clamp(20px, 2vh, 40px) clamp(8px, 1vw, 32px) 0 clamp(8px, 1vw, 32px);
+  padding-bottom: 0 !important;
+  display: grid;
+  gap: 0.75rem;
+  grid-auto-rows: minmax(180px, auto);
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    'cat-tees'
+    'cat-sport'
+    'cat-intimate'
+    'cat-cologne'
+    'cat-kids'
+    'cat-hoodies'
+    'cat-youth'
+    'cat-ladies-shirts'
+    'cat-mens-shirts'
+    'banner';
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 459px) {
+  .wrapper {
+    gap: 0.5rem;
+    padding: clamp(12px, 1.5vh, 24px) clamp(8px, 1vw, 16px) 0 clamp(8px, 1vw, 16px);
+    grid-auto-rows: minmax(150px, auto);
+  }
+  
+  .section {
+    padding-bottom: clamp(30px, 4vh, 50px) !important;
+    margin-bottom: 0 !important;
+  }
+}
+
+.wrapper:last-child {
+  margin-bottom: 0;
+}
+
+.wrapper > * {
+  grid-area: var(--grid-area);
+  position: relative;
+  color: black;
+  overflow: hidden;
+  border-radius: 10px;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+}
+
+.galleryLink {
+  display: block;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+.galleryLink::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(39, 47, 102, 0);
+  border-radius: 10px;
+  transition: background 300ms ease-in-out;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.galleryLink:hover::before {
+  background: rgba(39, 47, 102, 0.3);
+}
+
+.galleryLink:hover > img {
+  scale: 1.2;
+  rotate: 4deg;
+}
+
+
+.wrapper img {
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 10px;
+  object-fit: cover;
+  transition: scale 1000ms ease-in-out, rotate 1000ms ease-in-out;
+  position: relative;
+  z-index: 0;
+}
+
+.media {
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 10px;
+  object-fit: cover;
+  transition: scale 1000ms ease-in-out, rotate 1000ms ease-in-out;
+  position: relative;
+  z-index: 0;
+}
+
+
+/* Responsive Design */
+@media (min-width: 460px) and (max-width: 599px) {
+  .wrapper {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: minmax(150px, auto);
+    gap: 0.75rem;
+    padding: clamp(16px, 2vh, 32px) clamp(8px, 1vw, 24px) 0 clamp(8px, 1vw, 24px);
+    grid-template-areas:
+      'cat-tees cat-tees'
+      'cat-tees cat-tees'
+      'cat-sport cat-sport'
+      'cat-sport cat-sport'
+      'cat-intimate cat-cologne'
+      'cat-kids cat-kids'
+      'cat-kids cat-kids'
+      'cat-hoodies cat-hoodies'
+      'cat-youth cat-youth'
+      'cat-youth cat-youth'
+      'cat-ladies-shirts cat-mens-shirts'
+      'cat-ladies-shirts cat-mens-shirts'
+      'banner banner';
+  }
+  
+  .section {
+    padding-bottom: clamp(35px, 4.5vh, 60px) !important;
+    margin-bottom: 0 !important;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 799px) {
+  .wrapper {
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: minmax(180px, auto);
+    gap: 0.875rem;
+    padding: clamp(20px, 2.5vh, 36px) clamp(8px, 1vw, 28px) 0 clamp(8px, 1vw, 28px);
+    grid-template-areas:
+      'cat-tees cat-tees cat-tees cat-tees'
+      'cat-sport cat-sport cat-kids cat-kids'
+      'cat-hoodies cat-hoodies cat-hoodies cat-hoodies'
+      'cat-youth cat-youth cat-intimate cat-intimate'
+      'cat-youth cat-youth cat-cologne cat-cologne'
+      'banner banner banner banner'
+      'cat-ladies-shirts cat-ladies-shirts cat-mens-shirts cat-mens-shirts';
+  }
+  
+  .section {
+    padding-bottom: clamp(40px, 5vh, 70px) !important;
+    margin-bottom: 0 !important;
+  }
+}
+
+@media (min-width: 800px) {
+  .wrapper {
+    grid-auto-rows: 200px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+      'cat-sport cat-tees cat-tees cat-hoodies'
+      'cat-ladies-shirts cat-tees cat-tees cat-youth'
+      'cat-ladies-shirts cat-kids cat-cologne cat-cologne'
+      'cat-intimate banner banner cat-mens-shirts';
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  
+  .section {
+    padding-bottom: clamp(60px, 6vh, 100px) !important;
+    margin-bottom: 0 !important;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .wrapper img,
+  .media {
+    transition: none;
+  }
+
+  .galleryLink:hover > img {
+    scale: 1;
+    rotate: 0deg;
+  }
+
+  .galleryLink:hover::before {
+    background: rgba(39, 47, 102, 0);
+  }
+}

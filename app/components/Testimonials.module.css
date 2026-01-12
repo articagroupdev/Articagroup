@@ -1,0 +1,338 @@
+.section {
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+  min-height: 100vh;
+  max-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1280px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: clamp(40px, 5vh, 60px) clamp(8px, 1vw, 32px);
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: clamp(40px, 5vh, 60px);
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 10;
+  flex-shrink: 0;
+}
+
+.headerBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: clamp(16px, 2vh, 24px);
+  padding: 8px 16px;
+  background: rgba(255, 144, 1, 0.1);
+  border-radius: 50px;
+}
+
+.badgeIcon {
+  width: 20px;
+  height: 20px;
+  color: #ff9001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badgeText {
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  font-size: clamp(12px, 1.2vw, 14px);
+  font-weight: 600;
+  color: #ff9001;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.title {
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  font-weight: 800;
+  color: #272F66;
+  margin: 0;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+.testimonialsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 2.5vw, 32px);
+  margin-top: 0;
+  flex: 1;
+  align-content: center;
+  min-height: 0;
+}
+
+.testimonialCard {
+  background: #f5f5f5;
+  border-radius: 12px;
+  overflow: visible;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  border: none;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 100%;
+  padding: clamp(32px, 4vw, 40px) clamp(28px, 3.5vw, 36px);
+  position: relative;
+}
+
+.testimonialCard:hover {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.testimonialContent {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  position: relative;
+  height: 100%;
+  min-height: 0;
+}
+
+.quoteIcon {
+  position: absolute;
+  top: clamp(28px, 3.5vw, 36px);
+  left: clamp(28px, 3.5vw, 36px);
+  width: auto;
+  height: auto;
+  background: transparent;
+  border-radius: 0;
+  display: block;
+  color: #d1d5db;
+  font-size: clamp(100px, 13vw, 160px);
+  opacity: 0.3;
+  z-index: 0;
+  line-height: 0.1;
+  font-family: Georgia, serif;
+  font-weight: 200;
+  pointer-events: none;
+  transform: translateY(-12px);
+}
+
+.testimonialText {
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  font-size: clamp(15px, 1.8vw, 17px);
+  font-weight: 400;
+  color: rgba(39, 47, 102, 0.85);
+  line-height: 1.65;
+  margin: 0 0 clamp(28px, 3.5vh, 36px) 0;
+  flex: 1;
+  position: relative;
+  padding-top: clamp(4px, 0.5vh, 8px);
+  padding-left: 0;
+  z-index: 1;
+  min-height: 0;
+}
+
+.testimonialFooter {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-top: 0;
+  border-top: none;
+  margin-top: auto;
+  flex-shrink: 0;
+}
+
+.authorInfo {
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 1.5vw, 16px);
+  margin-top: auto;
+}
+
+.authorImage {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: none;
+}
+
+.authorImagePlaceholder {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #13B9D5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: none;
+}
+
+.authorInitials {
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.authorDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.companyName {
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  font-size: clamp(15px, 1.8vw, 17px);
+  font-weight: 700;
+  color: #272F66;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.authorName {
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  font-size: clamp(13px, 1.5vw, 14px);
+  font-weight: 400;
+  color: rgba(39, 47, 102, 0.6);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .section {
+    min-height: auto;
+    height: auto;
+    padding: clamp(40px, 6vh, 60px) 0;
+  }
+  
+  .container {
+    padding: clamp(30px, 4vh, 50px) clamp(8px, 1vw, 24px);
+    height: auto;
+    min-height: auto;
+  }
+  
+  .header {
+    margin-bottom: clamp(32px, 4vh, 48px);
+  }
+  
+  .testimonialsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(18px, 2vw, 24px);
+  }
+  
+  .testimonialCard {
+    padding: clamp(20px, 2.5vw, 28px);
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    min-height: auto;
+    height: auto;
+    padding: clamp(32px, 5vh, 50px) 0;
+  }
+  
+  .container {
+    padding: clamp(24px, 3vh, 40px) clamp(8px, 1vw, 20px);
+    height: auto;
+    min-height: auto;
+  }
+  
+  .header {
+    margin-bottom: clamp(28px, 3.5vh, 40px);
+  }
+  
+  .testimonialsGrid {
+    grid-template-columns: 1fr;
+    gap: clamp(16px, 2vw, 24px);
+  }
+  
+  .testimonialCard {
+    padding: clamp(20px, 2.5vw, 28px);
+    min-height: auto;
+  }
+  
+  .quoteIcon {
+    width: 56px;
+    height: 56px;
+    font-size: clamp(56px, 7vw, 72px);
+    top: clamp(16px, 2vw, 24px);
+    left: clamp(16px, 2vw, 24px);
+  }
+  
+  .testimonialText {
+    padding-top: clamp(36px, 4.5vh, 44px);
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    min-height: auto;
+    height: auto;
+    padding: clamp(24px, 4vh, 40px) 0;
+  }
+  
+  .container {
+    padding: clamp(20px, 2.5vh, 32px) clamp(8px, 1vw, 16px);
+    height: auto;
+    min-height: auto;
+  }
+  
+  .header {
+    margin-bottom: clamp(24px, 3vh, 32px);
+  }
+  
+  .testimonialsGrid {
+    gap: clamp(14px, 1.5vw, 20px);
+  }
+  
+  .testimonialCard {
+    padding: 18px;
+    min-height: auto;
+  }
+  
+  .quoteIcon {
+    width: 48px;
+    height: 48px;
+    font-size: clamp(48px, 6vw, 64px);
+    top: 14px;
+    left: 14px;
+  }
+  
+  .testimonialText {
+    padding-top: clamp(32px, 4vh, 40px);
+    padding-left: 8px;
+    font-size: 15px;
+  }
+  
+  .authorImage,
+  .authorImagePlaceholder {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .authorInitials {
+    font-size: 16px;
+  }
+}

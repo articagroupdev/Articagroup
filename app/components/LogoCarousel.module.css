@@ -1,0 +1,151 @@
+.section {
+  background: #ffffff;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0;
+  position: relative;
+}
+
+.container {
+  width: 100%;
+  max-width: 1280px; /* max-w-7xl equivalente */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(30px, 4vh, 50px);
+  padding: clamp(40px, 5vh, 60px) clamp(8px, 1vw, 32px); /* px-2 sm:px-4 md:px-6 lg:px-8 equivalente */
+}
+
+.title {
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  font-size: clamp(1.25rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  color: #ff9001;
+  text-align: center;
+  margin: 0;
+  letter-spacing: -0.02em;
+  padding: 0 clamp(16px, 4vw, 0);
+}
+
+@keyframes moveLogos {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.carousel {
+  --blur: 6px;
+  --contrast: 105%;
+  --speed: 30s;
+  height: clamp(150px, 25vh, 250px);
+  max-width: 100%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel .mask {
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  backdrop-filter: blur(var(--blur)) contrast(var(--contrast));
+  -webkit-backdrop-filter: blur(var(--blur)) contrast(var(--contrast));
+  -webkit-mask: linear-gradient(90deg, #000 50px, transparent 175px calc(100% - 175px), #000 calc(100% - 50px));
+  mask: linear-gradient(90deg, #000 50px, transparent 175px calc(100% - 175px), #000 calc(100% - 50px));
+  pointer-events: none;
+  z-index: 2;
+}
+
+.logosContainer {
+  display: flex;
+  align-items: center;
+  gap: clamp(30px, 6vw, 60px);
+  animation: moveLogos var(--speed) linear infinite;
+  position: absolute;
+  inset: 0;
+  width: max-content;
+  height: 100%;
+  will-change: transform;
+}
+
+.logoItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  flex-shrink: 0;
+  padding: clamp(10px, 2vw, 20px);
+}
+
+.logoImage {
+  max-height: 100%;
+  max-width: clamp(120px, 20vw, 200px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.logoItem:hover .logoImage {
+  opacity: 1;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .container {
+    padding: clamp(30px, 4vh, 50px) 0;
+    gap: clamp(24px, 3.5vh, 40px);
+  }
+  .carousel {
+    height: clamp(140px, 22vh, 220px);
+  }
+  .logoImage {
+    max-width: clamp(100px, 18vw, 180px);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: clamp(24px, 3vh, 40px) 0;
+    gap: clamp(20px, 3vh, 32px);
+  }
+
+  .carousel {
+    height: clamp(120px, 20vh, 200px);
+  }
+  .logosContainer {
+    gap: clamp(24px, 5vw, 40px);
+  }
+  .logoImage {
+    max-width: clamp(90px, 16vw, 160px);
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: clamp(20px, 2.5vh, 32px) 0;
+    gap: clamp(16px, 2.5vh, 24px);
+  }
+  .carousel {
+    height: clamp(100px, 18vh, 150px);
+  }
+  .logosContainer {
+    gap: clamp(20px, 4vw, 30px);
+  }
+  .logoImage {
+    max-width: clamp(80px, 14vw, 140px);
+  }
+  .logoItem {
+    padding: clamp(8px, 1.5vw, 12px);
+  }
+}
+

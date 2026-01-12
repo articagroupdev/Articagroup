@@ -1,0 +1,439 @@
+@import "tailwindcss";
+@import "locomotive-scroll/dist/locomotive-scroll.css";
+
+/* Hero Photography Banner Fonts */
+@font-face {
+  font-family: "monument_extendedregular";
+  src: url("https://www.yudiz.com/codepen/photography-banner/monumentextended-regular.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Extenda Trial 20 Micro";
+  src: url("https://www.yudiz.com/codepen/photography-banner/Extenda-20Micro.woff2")
+    format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Extenda Trial 30 Deca";
+  src: url("https://www.yudiz.com/codepen/photography-banner/Extenda-30Deca.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --background: #000000;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+/* Font utilities */
+.font-roboto {
+  font-family: var(--font-roboto), sans-serif;
+}
+
+.font-open-sans {
+  font-family: var(--font-open-sans), sans-serif;
+}
+
+.font-arial {
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: #000000;
+}
+
+/* Estilos personalizados para la scrollbar */
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #ff9001 rgba(255, 144, 1, 0.1);
+}
+
+/* Chrome, Edge, Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgba(255, 144, 1, 0.05);
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ff9001 0%, #e67e00 100%);
+  border-radius: 10px;
+  border: 2px solid rgba(255, 144, 1, 0.1);
+  transition: all 0.3s ease;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #e67e00 0%, #ff9001 100%);
+  box-shadow: 0 0 10px rgba(255, 144, 1, 0.3);
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background: #ff9001;
+}
+
+/* Botones de flecha (opcional, algunos navegadores no los muestran) */
+*::-webkit-scrollbar-button {
+  display: none;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+  font-family: "Nunito Sans", sans-serif;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+a:hover {
+  text-shadow: 0 0 10px currentColor;
+}
+
+.section {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  position: fixed;
+  visibility: hidden;
+}
+
+.horizontal-scroll-section {
+  position: relative;
+  visibility: visible;
+}
+
+/* Responsive adjustments for horizontal scroll title */
+@media (max-width: 768px) {
+  .horizontal-scroll-section .pin-wrap {
+    padding: clamp(20px, 40px, 40px) clamp(16px, 4vw, 20px) !important;
+  }
+  
+  .horizontal-scroll-title {
+    font-size: clamp(1.25rem, 5vw, 2rem) !important;
+    min-width: clamp(200px, 85vw, 85vw) !important;
+    max-width: 90vw !important;
+    padding: 0 clamp(12px, 3vw, 20px) !important;
+    line-height: 1.4 !important;
+  }
+  
+  .horizontal-scroll-title span[style*="background-color: #ff9001"] {
+    padding: 0.12em 0.3em !important;
+    margin-left: 0.15em !important;
+    font-size: 0.95em !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .horizontal-scroll-section .pin-wrap {
+    padding: clamp(16px, 30px, 30px) 12px !important;
+  }
+  
+  .horizontal-scroll-title {
+    font-size: clamp(1.1rem, 5.5vw, 1.75rem) !important;
+    min-width: clamp(180px, 90vw, 90vw) !important;
+    max-width: 95vw !important;
+    padding: 0 12px !important;
+    line-height: 1.5 !important;
+  }
+  
+  .horizontal-scroll-title span[style*="background-color: #ff9001"] {
+    padding: 0.1em 0.25em !important;
+    margin-left: 0.1em !important;
+    font-size: 0.9em !important;
+    border-radius: 6px !important;
+  }
+}
+
+.section .wrapper-outer,
+.section .wrapper-inner {
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+}
+
+.section .background {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+.section .section-title {
+  font-size: clamp(1rem, 5vw, 5rem);
+  font-family: "Playfair Display", serif;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 0.5em;
+  margin-right: -0.5em;
+  color: hsl(0, 0%, 80%);
+  width: 90vw;
+  max-width: 1200px;
+  z-index: 2;
+  will-change: transform;
+  transition: transform 0.3s, text-shadow 0.3s;
+}
+
+.section .section-title:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 10px hsl(0, 0%, 80%);
+}
+
+/* Estilos para animación de deslizamiento hacia abajo */
+.word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  will-change: transform;
+}
+
+.word-inner {
+  display: inline-block;
+  transform: translateY(100%);
+  will-change: transform;
+}
+
+/* Optimización de rendimiento para animaciones GSAP */
+.bg-circle {
+  will-change: transform, opacity;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Mejora de rendimiento para elementos animados */
+nav,
+.word,
+.word-inner {
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Estilos para Locomotive Scroll - exactamente como en el código original */
+.locomotive-container,
+.container {
+  overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
+  overscroll-behavior: none;
+  font-family: termina, sans-serif;
+  color: var(--text-color, #111);
+  background: var(--bg-color, #b9b3a9);
+  transition: 0.3s ease-out;
+}
+
+.locomotive-container [data-scroll-section] {
+  position: relative;
+}
+
+.locomotive-container [data-scroll] {
+  will-change: transform, opacity;
+}
+
+.locomotive-container [data-scroll].is-inview {
+  opacity: 1;
+}
+
+/* Estilos para el h1 con spans */
+.locomotive-container h1 span {
+  display: block;
+}
+
+.locomotive-container h1 {
+  font-size: 5rem;
+  line-height: 1;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  position: absolute;
+  top: 10vw;
+  left: 10vw;
+  z-index: 4;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+@media (max-width: 768px) {
+  .locomotive-container h1 {
+    font-size: 16vw;
+  }
+}
+
+/* Estilos para el párrafo posicionado */
+.locomotive-container p[data-scroll] {
+  position: absolute;
+  bottom: 10vw;
+  right: 10vw;
+  width: 200px;
+  line-height: 1.5;
+}
+
+/* Estilos para la sección horizontal con pin */
+#sectionPin {
+  position: relative;
+}
+
+.horizontal-scroll-section {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  left: 0;
+  background: #111;
+  color: #b9b3a9;
+  position: relative;
+}
+
+.pin-wrap {
+  will-change: transform;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 50px 10vw;
+}
+
+.pin-wrap > * {
+  min-width: 60vw;
+  padding: 0 5vw;
+}
+
+.pin-wrap img {
+  height: 80vh;
+  width: auto;
+  object-fit: cover;
+}
+
+.pin-wrap h2 {
+  font-size: 2rem;
+  max-width: 400px;
+  font-family: system-ui, sans-serif;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* Estilos para la sección intro */
+.intro-section {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 2rem;
+  padding: 50px 10vw;
+  margin: auto;
+  place-items: center;
+}
+
+.intro-section h1 {
+  font-size: 5rem;
+  line-height: 1;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  position: absolute;
+  top: 10vw;
+  left: 10vw;
+  z-index: 4;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.intro-section h1 span {
+  display: block;
+}
+
+.intro-section p {
+  position: absolute;
+  bottom: 10vw;
+  right: 10vw;
+  width: 200px;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .intro-section h1 {
+    font-size: 16vw;
+  }
+}
+
+/* Estilos para elementos con data-scroll-speed */
+.locomotive-container [data-scroll-speed] {
+  display: inline-block;
+}
+
+.locomotive-container h1 span {
+  display: inline-block;
+}
+
+/* Estilos para el crédito */
+.credit {
+  font-size: 1.5rem;
+  font-weight: 400;
+  text-align: center;
+}
+
+.credit a {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+
+.credit a:hover {
+  opacity: 0.8;
+}
+
+/* Animación para el mega menú */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -10px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
