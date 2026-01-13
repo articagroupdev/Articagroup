@@ -12,19 +12,19 @@ const teamMembers = [
     name: 'Rodrigo Timaure',
     role: 'Founder',
     description: 'Líder estratégico con una sólida trayectoria en gestión empresarial y desarrollo de negocios en la industria creativa. Posee estudios avanzados en administración y marketing, impulsando el crecimiento de la productora.',
-    image: '/img/person1.jpg',
+    image: '/img/PERSON1.jpg',
   },
   {
     name: 'Michelle Guerra',
     role: 'Co-Founder',
     description: 'Experiencia en gestión de proyectos y optimización de recursos en entornos dinámicos. Su formación en administración y su visión para la eficiencia son clave para el éxito operativo.',
-    image: '/img/person2.jpg',
+    image: '/img/PERSON2.jpg',
   },
   {
     name: 'Cesar Arteaga',
     role: 'Operaciones Especiales',
     description: 'Experto en logística de producción con años de experiencia en la planificación y ejecución de rodajes complejos. Su conocimiento técnico y organizativo aseguran la fluidez en cada proyecto.',
-    image: '/img/person3.jpg',
+    image: '/img/PERSON3.jpg',
   },
 ];
 
