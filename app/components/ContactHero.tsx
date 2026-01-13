@@ -14,6 +14,7 @@ export default function ContactHero() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [language, setLanguage] = useState<'es' | 'en'>('es');
+  const [isMobile, setIsMobile] = useState(false);
   const pathname = usePathname();
   const sectionRef = useRef<HTMLElement>(null);
   const navRef = useRef<HTMLElement>(null);
@@ -25,6 +26,16 @@ export default function ContactHero() {
   const overlayRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
+
+  // Detectar si es móvil
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Resetear el menú cuando cambia la ruta
   useEffect(() => {
@@ -107,8 +118,14 @@ export default function ContactHero() {
           y: 0,
         });
 
-        // Solo aplicar en desktop (lg y superior)
-        if (window.innerWidth >= 1024) {
+        // En móvil, siempre tener fondo blanco desde el inicio
+        if (window.innerWidth < 1024) {
+          gsap.set(navRef.current, {
+            backgroundColor: 'rgba(255, 255, 255, 1)',
+            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+          });
+        } else {
+          // Solo aplicar en desktop (lg y superior)
           gsap.to(navRef.current, {
             backgroundColor: 'rgba(255, 255, 255, 1)',
             boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
@@ -166,8 +183,12 @@ export default function ContactHero() {
         ref={navRef}
         className="fixed top-0 left-0 right-0 z-[9999] px-2 sm:px-4 md:px-6 lg:px-8 py-2 sm:py-3 md:py-4 transition-all duration-300 bg-white lg:bg-transparent shadow-sm lg:shadow-none"
         style={{
-          backgroundColor: isMenuOpen ? 'rgba(255, 255, 255, 1)' : 'transparent',
-          boxShadow: isMenuOpen ? '0 4px 6px -1px rgba(0, 0, 0, 0.1)' : 'none',
+          backgroundColor: isMobile || isMenuOpen 
+            ? 'rgba(255, 255, 255, 1)' 
+            : 'transparent',
+          boxShadow: isMobile || isMenuOpen
+            ? '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+            : 'none',
         }}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between">
