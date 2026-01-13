@@ -11,7 +11,7 @@ import Footer from '../../components/Footer';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function CreacionContenidoPage() {
+export default function CommunityManagementPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const heroRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -159,15 +159,22 @@ export default function CreacionContenidoPage() {
                 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#272F66] mb-6 leading-tight text-left"
                 style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'normal' }}
               >
-                Creación de Contenido
+                Community Management
               </h1>
 
               <p
                 ref={subtitleRef}
-                className="text-xl sm:text-2xl text-[#272F66]/80 max-w-3xl leading-relaxed text-left"
+                className="text-xl sm:text-2xl text-[#272F66]/80 max-w-3xl leading-relaxed text-left mb-4"
                 style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
               >
-                Ideas innovadoras pero efectivas. Teniendo claras las bases y objetivos, crearemos contenido personalizado para tu negocio.
+                Conecta, escucha y fideliza a tu comunidad.
+              </p>
+
+              <p
+                className="text-lg sm:text-xl text-[#272F66]/70 max-w-3xl leading-relaxed text-left"
+                style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
+              >
+                Construimos relaciones sólidas con tus seguidores, humanizando tu marca y convirtiendo clientes en verdaderos fans.
               </p>
             </div>
 
@@ -175,7 +182,7 @@ export default function CreacionContenidoPage() {
             <div className="flex items-center justify-center lg:justify-end">
               <div className="w-full max-w-lg lg:max-w-xl xl:max-w-2xl">
                 <DotLottieReact
-                  src="https://lottie.host/46376bba-b9e6-4f5c-973e-3700a4254bf9/AGCAiOD5EC.lottie"
+                  src="https://lottie.host/33ecdf4a-95da-455c-a149-c16ca8684608/ekZHGBm8md.lottie"
                   loop
                   autoplay
                 />
@@ -210,7 +217,7 @@ export default function CreacionContenidoPage() {
               ¿En qué consiste?
             </h2>
             <p className="text-lg sm:text-xl text-white leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-              Creamos contenido viral que conecta con la personalidad de tu negocio. Desde posts visualmente impactantes hasta historias que resuenan, lo adaptamos todo a tus valores y tono de voz.
+              Nos encargamos de la gestión integral de tus canales sociales. Esto incluye la interacción diaria con tu audiencia (responder comentarios y mensajes), la moderación de la comunidad, la creación de conversaciones atractivas y la gestión de crisis. Nos aseguramos de que cada interacción refleje el tono de voz y los valores de tu marca, fomentando un entorno de lealtad y confianza.
             </p>
           </div>
         </div>
@@ -228,27 +235,26 @@ export default function CreacionContenidoPage() {
               Estos son los beneficios para tu empresa
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-              Descubre cómo nuestro servicio de creación de contenido puede transformar tu presencia digital y generar resultados tangibles para tu negocio.
+              Descubre cómo nuestro servicio de community management puede transformar tu presencia digital y generar resultados tangibles para tu negocio.
             </p>
           </div>
 
-          {/* Cards de beneficios */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Cards de beneficios - 3 cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {/* Beneficio 1 - Card destacada con fondo de color */}
             <div className="group relative bg-gradient-to-br from-[#ff9001] to-[#e67e00] rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
               <div className="absolute top-4 left-4 w-12 h-12 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </div>
               
               <div className="mt-12">
                 <h3 className="text-xl font-bold text-white mb-3" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                  Mayor visibilidad en redes sociales
+                  Humanización y Confianza de la Marca
                 </h3>
                 <p className="text-white/90 leading-relaxed text-sm" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                  El contenido adaptado a cada plataforma aumenta la interacción y garantiza que tu negocio llegue al público adecuado, lo que genera más seguidores y clientes potenciales.
+                  La gestión activa y empática demuestra que hay personas reales detrás de tu negocio, lo que aumenta la credibilidad y genera un vínculo emocional con tus seguidores.
                 </p>
               </div>
             </div>
@@ -257,16 +263,16 @@ export default function CreacionContenidoPage() {
             <div className="group relative bg-white rounded-2xl p-6 sm:p-8 border border-gray-200 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
               <div className="absolute top-4 left-4 w-12 h-12 bg-gradient-to-br from-[#ff9001] to-[#e67e00] rounded-full flex items-center justify-center">
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
               
               <div className="mt-12">
                 <h3 className="text-xl font-bold text-[#272F66] mb-3" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                  Conexión auténtica con tu audiencia
+                  Detección Rápida de Oportunidades y Problemas
                 </h3>
                 <p className="text-gray-600 leading-relaxed text-sm" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                  Al crear contenido que refleja los valores de tu marca, estableces una relación de confianza con tu público, aumentando su lealtad y mejorando la reputación de tu negocio.
+                  Al estar en constante contacto con la audiencia, podemos identificar rápidamente tendencias, preguntas frecuentes y posibles problemas antes de que se conviertan en crisis de reputación.
                 </p>
               </div>
             </div>
@@ -281,28 +287,10 @@ export default function CreacionContenidoPage() {
               
               <div className="mt-12">
                 <h3 className="text-xl font-bold text-[#272F66] mb-3" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                  Resultados medibles y crecimiento del negocio
+                  Mejora en la Tasa de Conversión
                 </h3>
                 <p className="text-gray-600 leading-relaxed text-sm" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                  Gracias a estrategias basadas en objetivos claros, tu contenido no solo es creativo, sino también efectivo para generar resultados concretos, como más ventas o leads.
-                </p>
-              </div>
-            </div>
-
-            {/* Beneficio 4 - Card adicional con fondo blanco (opcional, puedes eliminar si solo quieres 3) */}
-            <div className="group relative bg-white rounded-2xl p-6 sm:p-8 border border-gray-200 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-              <div className="absolute top-4 left-4 w-12 h-12 bg-gradient-to-br from-[#ff9001] to-[#e67e00] rounded-full flex items-center justify-center">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                </svg>
-              </div>
-              
-              <div className="mt-12">
-                <h3 className="text-xl font-bold text-[#272F66] mb-3" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                  Contenido de calidad profesional
-                </h3>
-                <p className="text-gray-600 leading-relaxed text-sm" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                  Trabajamos con un equipo de profesionales que garantiza contenido de alta calidad, optimizado para cada plataforma y diseñado para generar engagement.
+                  Una comunidad bien gestionada y que se siente escuchada es más propensa a convertirse en cliente y a defender tu marca, actuando como un poderoso canal de marketing de boca en boca.
                 </p>
               </div>
             </div>
@@ -322,12 +310,12 @@ export default function CreacionContenidoPage() {
             <div className="flex flex-col">
               {/* Título */}
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#272F66] mb-4 uppercase" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                Nuestro Proceso para la Creación de Contenido
+                Nuestro Proceso de Community Management
               </h2>
               
               {/* Subtítulo */}
               <p className="text-lg text-gray-600 leading-relaxed mb-6" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                Desarrollamos contenido relevante, valioso y optimizado que atrae a tu audiencia, genera autoridad de marca e impulsa la conversión.
+                Aseguramos que tu marca esté siempre activa, bien representada y protegida, convirtiendo la interacción diaria en lealtad duradera.
               </p>
 
               {/* Imagen horizontal (ancha y baja) que se alinea con el final del último paso */}
@@ -339,8 +327,8 @@ export default function CreacionContenidoPage() {
                   }}
                 >
                   <Image
-                    src="/img/servicios/contenido.jpg"
-                    alt="Creación de contenido"
+                    src="/img/servicios/community.jpg"
+                    alt="Community Management"
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
@@ -356,21 +344,41 @@ export default function CreacionContenidoPage() {
                 <div className="flex-shrink-0">
                   <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#13B9D5] to-[#0FA8C2] flex items-center justify-center shadow-lg">
                     <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
                   </div>
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-bold text-[#272F66] mb-2" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                    Estrategia y Temas Clave
+                    Establecimiento del Tono y Guías de Interacción
                   </h3>
                   <p className="text-gray-600 leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                    Basándonos en tu audiencia y objetivos, realizamos una investigación de palabras clave (SEO) y tendencias para definir un calendario editorial con temas que resuelvan las dudas de tus clientes.
+                    Definimos los protocolos de respuesta y el Tono de Voz oficial de la marca. Creamos guías para gestionar preguntas frecuentes, comentarios positivos, quejas y consultas de ventas, asegurando coherencia en cada mensaje.
                   </p>
                 </div>
               </div>
 
               {/* Paso 2 */}
+              <div className="flex gap-4">
+                <div className="flex-shrink-0">
+                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#13B9D5] to-[#0FA8C2] flex items-center justify-center shadow-lg">
+                    <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                    </svg>
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-[#272F66] mb-2" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
+                    Moderación Activa y Escucha Social
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
+                    Nuestro equipo monitorea tus canales 24/7. Respondemos mensajes directos y comentarios de forma oportuna, participamos activamente en conversaciones clave y moderamos la comunidad para mantener un entorno positivo y seguro.
+                  </p>
+                </div>
+              </div>
+
+              {/* Paso 3 */}
               <div className="flex gap-4">
                 <div className="flex-shrink-0">
                   <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#13B9D5] to-[#0FA8C2] flex items-center justify-center shadow-lg">
@@ -381,29 +389,10 @@ export default function CreacionContenidoPage() {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-bold text-[#272F66] mb-2" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                    Redacción y Diseño de Borradores
+                    Fomento de Conversación y Generación de Engagement
                   </h3>
                   <p className="text-gray-600 leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                    Creamos el contenido principal (texto, guiones, storyboards) asegurando que el tono de voz sea el adecuado para tu marca. En esta fase se genera el primer borrador listo para revisión.
-                  </p>
-                </div>
-              </div>
-
-              {/* Paso 3 */}
-              <div className="flex gap-4">
-                <div className="flex-shrink-0">
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#13B9D5] to-[#0FA8C2] flex items-center justify-center shadow-lg">
-                    <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-[#272F66] mb-2" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                    Producción y Maquetación Visual
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                    Transformamos el borrador en la pieza final: diseñamos las imágenes, grabamos y editamos videos, o maquetamos el blog post, asegurando un formato atractivo para la plataforma de destino.
+                    Vamos más allá de solo responder. Creamos preguntas, encuestas y publicaciones diseñadas para estimular la participación, aumentar el engagement orgánico y generar conversaciones valiosas alrededor de tu marca o industria.
                   </p>
                 </div>
               </div>
@@ -413,16 +402,16 @@ export default function CreacionContenidoPage() {
                 <div className="flex-shrink-0">
                   <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#13B9D5] to-[#0FA8C2] flex items-center justify-center shadow-lg">
                     <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                     </svg>
                   </div>
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-bold text-[#272F66] mb-2" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                    Publicación y Distribución Estratégica
+                    Reporte de Percepción y Gestión de Crisis
                   </h3>
                   <p className="text-gray-600 leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                    Programamos y publicamos el contenido en los canales definidos (web, redes sociales, email). Además, definimos una estrategia de distribución para maximizar su alcance y visibilidad.
+                    Entregamos reportes periódicos sobre la percepción de la audiencia y tendencias de conversación. Además, activamos el protocolo de crisis en caso de comentarios negativos o virales, protegiendo la reputación digital de tu empresa.
                   </p>
                 </div>
               </div>
@@ -439,7 +428,7 @@ export default function CreacionContenidoPage() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#272F66] mb-4" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-              Preguntas frecuentes sobre la creación de contenido
+              Preguntas frecuentes sobre Community Management
             </h2>
           </div>
 
@@ -467,7 +456,7 @@ export default function CreacionContenidoPage() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <h3 className="text-lg sm:text-xl font-bold text-[#272F66] mb-0 group-hover:text-[#ff9001] transition-colors duration-200" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                    ¿Qué tipo de contenido puedo crear para mi negocio?
+                    ¿Qué redes sociales gestionan?
                   </h3>
                 </div>
               </button>
@@ -475,7 +464,7 @@ export default function CreacionContenidoPage() {
                 <div className="px-6 sm:px-8 pb-6 sm:pb-8 pl-20">
                   <div className="pt-2 border-t border-gray-100">
                     <p className="text-gray-600 leading-relaxed text-base" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                      Puedes generar desde contenido de marca y diseño gráfico hasta animaciones, videos para YouTube, y podcasts. Todo el contenido está personalizado para plataformas como Instagram, Facebook, TikTok, y cualquier red que sea relevante para ti.
+                      Gestionamos las principales plataformas como Instagram, Facebook, Twitter (X), LinkedIn y TikTok. Seleccionamos las plataformas basándonos en dónde se encuentra tu público objetivo y los objetivos de tu negocio.
                     </p>
                   </div>
                 </div>
@@ -505,7 +494,7 @@ export default function CreacionContenidoPage() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <h3 className="text-lg sm:text-xl font-bold text-[#272F66] mb-0 group-hover:text-[#ff9001] transition-colors duration-200" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                    ¿Cómo sé si el contenido está funcionando?
+                    ¿Qué sucede si hay comentarios negativos o una crisis?
                   </h3>
                 </div>
               </button>
@@ -513,7 +502,7 @@ export default function CreacionContenidoPage() {
                 <div className="px-6 sm:px-8 pb-6 sm:pb-8 pl-20">
                   <div className="pt-2 border-t border-gray-100">
                     <p className="text-gray-600 leading-relaxed text-base" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                      Medimos el éxito de tu contenido mediante análisis de métricas, como interacción, seguidores, y conversiones. Así ajustamos las estrategias para optimizar resultados.
+                      Implementamos un protocolo de gestión de crisis. Nuestro objetivo es responder de manera profesional, transparente y oportuna, convirtiendo una queja en una oportunidad para demostrar un excelente servicio al cliente.
                     </p>
                   </div>
                 </div>

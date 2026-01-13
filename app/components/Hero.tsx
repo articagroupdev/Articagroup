@@ -7,7 +7,6 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import ES from 'country-flag-icons/react/3x2/ES';
 import US from 'country-flag-icons/react/3x2/US';
-import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -19,6 +18,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [language, setLanguage] = useState<'es' | 'en'>('es');
+  const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
   const internalHeroRef = useRef<HTMLDivElement>(null);
   const heroRef = externalHeroRef || internalHeroRef;
@@ -31,7 +31,6 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
   const heroTitleRef = useRef<HTMLHeadingElement>(null);
   const heroSubtitleRef = useRef<HTMLParagraphElement>(null);
   const heroButtonRef = useRef<HTMLAnchorElement>(null);
-  const lottieRef = useRef<HTMLDivElement>(null);
   const servicesMenuRef = useRef<HTMLDivElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
@@ -55,22 +54,6 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
         });
       }
 
-      // Efecto de scroll en la navegación
-      if (navRef.current && typeof window !== 'undefined') {
-        // Solo aplicar en desktop (lg y superior)
-        if (window.innerWidth >= 1024) {
-          gsap.to(navRef.current, {
-            backgroundColor: 'rgba(255, 255, 255, 1)',
-            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-            scrollTrigger: {
-              trigger: document.body,
-              start: 'top -80',
-              end: 'top -40',
-              scrub: true,
-            },
-          });
-        }
-      }
 
       // Animación del contenido del Hero
       if (heroContentRef.current) {
@@ -81,22 +64,6 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
           visibility: 'visible',
         });
 
-        // Animación de entrada para la animación Lottie
-        if (lottieRef.current) {
-          gsap.fromTo(lottieRef.current, 
-            {
-              opacity: 0,
-              x: 50,
-            },
-            {
-              opacity: 1,
-              x: 0,
-              duration: 1.2,
-              ease: 'power3.out',
-              delay: 0.5,
-            }
-          );
-        }
       }
     }, heroRef);
 
@@ -136,6 +103,45 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
     }
   }, [isServicesOpen]);
 
+  // Efecto de scroll en la navegación - separado para mejor control
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
+    // Solo aplicar en desktop (lg y superior)
+    if (window.innerWidth >= 1024 && navRef.current) {
+      const scrollTriggerInstance = ScrollTrigger.create({
+        trigger: document.body,
+        start: 'top -80',
+        end: 'top -40',
+        scrub: true,
+        onEnter: () => {
+          setIsScrolled(true);
+          if (navRef.current) {
+            gsap.to(navRef.current, {
+              backgroundColor: 'rgba(255, 255, 255, 1)',
+              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+              duration: 0.3,
+            });
+          }
+        },
+        onLeaveBack: () => {
+          setIsScrolled(false);
+          if (navRef.current) {
+            gsap.to(navRef.current, {
+              backgroundColor: 'transparent',
+              boxShadow: 'none',
+              duration: 0.3,
+            });
+          }
+        },
+      });
+
+      return () => {
+        scrollTriggerInstance.kill();
+      };
+    }
+  }, []);
+
   // Prevenir scroll del body cuando el menú está abierto
   useEffect(() => {
     if (isMenuOpen) {
@@ -161,35 +167,63 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
         visibility: 'visible',
         zIndex: 10,
         pointerEvents: 'auto',
-        backgroundImage: 'url(/img/fondo-hero.webp)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
         backgroundColor: '#212121',
       }}
     >
+      {/* Video de fondo */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0"
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          zIndex: 0,
+        }}
+      >
+        <source src="/img/fondo-video.mp4" type="video/mp4" />
+      </video>
+
+      {/* Overlay oscuro para mejorar legibilidad del contenido */}
+      <div 
+        className="absolute inset-0 z-[1]"
+        style={{
+          background: 'rgba(0, 0, 0, 0.5)',
+        }}
+      />
+
       {/* Navegación */}
       <nav
         ref={navRef}
-        className="fixed top-0 left-0 right-0 z-[9999] px-2 sm:px-4 md:px-6 lg:px-8 py-2 sm:py-3 md:py-4 transition-all duration-300 bg-white lg:bg-transparent shadow-sm lg:shadow-none"
+        className="fixed top-0 left-0 right-0 z-[9999] px-2 sm:px-4 md:px-6 lg:px-8 xl:px-12 py-2 sm:py-3 md:py-4 transition-all duration-300 bg-white lg:bg-transparent shadow-sm lg:shadow-none"
+        style={{ overflow: 'visible' }}
       >
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          {/* Logo */}
-          <div ref={logoRef} className="flex items-center">
-            <Link href="/" className="flex items-center">
-              <img 
-                src="/img/logo-artica-2.avif" 
-                alt="ARTICA" 
-                className="h-8 sm:h-10 md:h-12 w-auto"
-              />
-            </Link>
-          </div>
+        <div className="max-w-7xl mx-auto w-full flex items-center justify-between" style={{ overflow: 'visible' }}>
+          {/* Logo y Links de navegación - Izquierda */}
+          <div className="flex items-center gap-6 xl:gap-8" style={{ overflow: 'visible' }}>
+            {/* Logo */}
+            <div ref={logoRef} className="flex items-center">
+              <Link href="/" className="flex items-center">
+                <img 
+                  src={isScrolled ? "/img/logo-artica-2.avif" : "/img/logo-artica-blanco.png"} 
+                  alt="ARTICA" 
+                  className="h-8 sm:h-10 md:h-10 w-auto"
+                />
+              </Link>
+            </div>
 
-          {/* Links de navegación */}
-          <ul
-            ref={navLinksRef}
-            className="hidden lg:flex items-center space-x-4 xl:space-x-5"
-          >
+            {/* Links de navegación */}
+            <ul
+              ref={navLinksRef}
+              className="hidden lg:flex items-center space-x-4 xl:space-x-5 relative"
+              style={{ overflow: 'visible' }}
+            >
             <li>
               <Link
                 href="/"
@@ -197,7 +231,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
                   pathname === '/' ? 'text-[#13B9D5]' : ''
                 }`}
                 style={{
-                  color: pathname === '/' ? '#13B9D5' : '#272F66',
+                  color: pathname === '/' ? '#13B9D5' : (isScrolled ? '#272F66' : '#ffffff'),
                   textShadow: 'none',
                 }}
               >
@@ -211,7 +245,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
                   pathname === '/about' ? 'text-[#13B9D5]' : ''
                 }`}
                 style={{
-                  color: pathname === '/about' ? '#13B9D5' : '#272F66',
+                  color: pathname === '/about' ? '#13B9D5' : (isScrolled ? '#272F66' : '#ffffff'),
                   textShadow: 'none',
                 }}
               >
@@ -237,7 +271,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
                 }}
                 className="font-bold transition-colors duration-200 inline-flex items-center text-xs xl:text-sm cursor-pointer"
                 style={{
-                  color: isServicesOpen ? '#13B9D5' : '#272F66',
+                  color: isServicesOpen ? '#13B9D5' : (isScrolled ? '#272F66' : '#ffffff'),
                   textShadow: 'none',
                 }}
               >
@@ -256,100 +290,101 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
               {isServicesOpen && (
                 <div
                   ref={servicesMenuRef}
-                  className="absolute top-full left-1/2 mt-6 w-[95vw] max-w-[1200px] bg-white rounded-2xl border border-gray-200 p-5 md:p-6 shadow-none"
+                  className="absolute top-full mt-6 w-[95vw] max-w-[1200px] bg-white rounded-2xl border border-gray-200 p-5 md:p-6 shadow-lg"
                   style={{
                     zIndex: 10000,
-                    boxShadow: 'none',
+                    boxShadow: '0 10px 40px rgba(0, 0, 0, 0.15)',
+                    left: '300%',
                   }}
                   onMouseEnter={() => setIsServicesOpen(true)}
                   onMouseLeave={() => setIsServicesOpen(false)}
                 >
                   <div className="grid grid-cols-3 gap-x-6 gap-y-3">
                     {/* Columna 1 */}
-                    <div className="space-y-3">
-                      <a href="#servicio-web" className="block shadow-none" style={{ boxShadow: 'none', textDecoration: 'none', textShadow: 'none' }}>
+                    <div className="space-y-3" style={{ width: '100%', minWidth: 0 }}>
+                      <Link href="/services/desarrollo-web" className="block shadow-none" style={{ boxShadow: 'none', textDecoration: 'none', textShadow: 'none' }}>
                         <div className="flex items-center justify-center w-10 h-10 rounded-lg border-2 border-[#13B9D5] mb-2 shadow-none" style={{ boxShadow: 'none' }}>
                           <svg className="w-5 h-5 text-[#13B9D5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                           </svg>
                         </div>
-                        <h3 className="font-bold text-black text-sm mb-0.5" style={{ textShadow: 'none' }}>
+                        <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
                           Desarrollo Web
                         </h3>
                         <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
                           Sitios web modernos y funcionales
                         </p>
-                      </a>
+                      </Link>
 
-                      <a href="#servicio-diseno" className="block transition-all duration-200 hover:translate-x-1 shadow-none" style={{ boxShadow: 'none' }}>
+                      <Link href="/services/diseno-grafico" className="block transition-all duration-200 hover:translate-x-1 shadow-none" style={{ boxShadow: 'none', textDecoration: 'none', textShadow: 'none' }}>
                         <div className="flex items-center justify-center w-10 h-10 rounded-lg border-2 border-[#13B9D5] mb-2 shadow-none" style={{ boxShadow: 'none' }}>
                           <svg className="w-5 h-5 text-[#13B9D5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
                           </svg>
                         </div>
-                        <h3 className="font-bold text-black text-sm mb-0.5" style={{ textShadow: 'none' }}>
+                        <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
                           Diseño Gráfico
                         </h3>
                         <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
                           Identidad visual y diseño creativo
                         </p>
-                      </a>
+                      </Link>
 
-                      <a href="#servicio-estrategia" className="block transition-all duration-200 hover:translate-x-1 shadow-none" style={{ boxShadow: 'none' }}>
+                      <Link href="/services/posicionamiento-comunicacion" className="block transition-all duration-200 hover:translate-x-1 shadow-none" style={{ boxShadow: 'none', textDecoration: 'none', textShadow: 'none' }}>
                         <div className="flex items-center justify-center w-10 h-10 rounded-lg border-2 border-[#13B9D5] mb-2 shadow-none" style={{ boxShadow: 'none' }}>
                           <svg className="w-5 h-5 text-[#13B9D5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                           </svg>
                         </div>
-                        <h3 className="font-bold text-black text-sm mb-0.5" style={{ textShadow: 'none' }}>
+                        <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
                           Estrategia Posicionamiento y Comunicación
                         </h3>
                         <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
                           Estrategias integrales de marca y comunicación
                         </p>
-                      </a>
+                      </Link>
                     </div>
 
                     {/* Columna 2 */}
-                    <div className="space-y-3">
-                      <a href="#servicio-video" className="block transition-all duration-200 hover:translate-x-1 shadow-none" style={{ boxShadow: 'none' }}>
+                    <div className="space-y-3" style={{ minWidth: 0 }}>
+                      <Link href="/services/edicion-videos" className="block transition-all duration-200 hover:translate-x-1 shadow-none" style={{ boxShadow: 'none', textDecoration: 'none', textShadow: 'none' }}>
                         <div className="flex items-center justify-center w-10 h-10 rounded-lg border-2 border-[#13B9D5] mb-2 shadow-none" style={{ boxShadow: 'none' }}>
                           <svg className="w-5 h-5 text-[#13B9D5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                           </svg>
                         </div>
-                        <h3 className="font-bold text-black text-sm mb-0.5" style={{ textShadow: 'none' }}>
+                        <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
                           Edición de Videos
                         </h3>
                         <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
                           Producción y edición profesional de video
                         </p>
-                      </a>
+                      </Link>
 
-                      <a href="#servicio-publicidad" className="block transition-all duration-200 hover:translate-x-1 shadow-none" style={{ boxShadow: 'none' }}>
+                      <Link href="/services/publicidad-online" className="block transition-all duration-200 hover:translate-x-1 shadow-none" style={{ boxShadow: 'none', textDecoration: 'none', textShadow: 'none' }}>
                         <div className="flex items-center justify-center w-10 h-10 rounded-lg border-2 border-[#13B9D5] mb-2 shadow-none" style={{ boxShadow: 'none' }}>
                           <svg className="w-5 h-5 text-[#13B9D5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
                           </svg>
                         </div>
-                        <h3 className="font-bold text-black text-sm mb-0.5" style={{ textShadow: 'none' }}>
+                        <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
                           Publicidad Online
                         </h3>
                         <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
                           Campañas publicitarias digitales efectivas
                         </p>
-                      </a>
+                      </Link>
                     </div>
 
                     {/* Columna 3 */}
-                    <div className="space-y-3">
+                    <div className="space-y-3" style={{ minWidth: 0 }}>
                       <Link href="/services/creacion-contenido" className="block shadow-none" style={{ boxShadow: 'none', textDecoration: 'none', textShadow: 'none' }}>
                         <div className="flex items-center justify-center w-10 h-10 rounded-lg border-2 border-[#13B9D5] mb-2 shadow-none" style={{ boxShadow: 'none' }}>
                           <svg className="w-5 h-5 text-[#13B9D5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                           </svg>
                         </div>
-                        <h3 className="font-bold text-black text-sm mb-0.5" style={{ textShadow: 'none' }}>
+                        <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
                           Creación de Contenido
                         </h3>
                         <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
@@ -357,34 +392,34 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
                         </p>
                       </Link>
 
-                      <a href="#servicio-ads" className="block transition-all duration-200 hover:translate-x-1 shadow-none" style={{ boxShadow: 'none' }}>
+                      <Link href="/services/campanas-ads" className="block transition-all duration-200 hover:translate-x-1 shadow-none" style={{ boxShadow: 'none', textDecoration: 'none', textShadow: 'none' }}>
                         <div className="flex items-center justify-center w-10 h-10 rounded-lg border-2 border-[#13B9D5] mb-2 shadow-none" style={{ boxShadow: 'none' }}>
                           <svg className="w-5 h-5 text-[#13B9D5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
                           </svg>
                         </div>
-                        <h3 className="font-bold text-black text-sm mb-0.5" style={{ textShadow: 'none' }}>
+                        <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
                           Campañas de Ads
                         </h3>
                         <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
                           Publicidad efectiva en redes sociales
                         </p>
-                      </a>
+                      </Link>
 
-                      <a href="#servicio-community" className="block transition-all duration-200 hover:translate-x-1 shadow-none" style={{ boxShadow: 'none' }}>
+                      <Link href="/services/community-management" className="block transition-all duration-200 hover:translate-x-1 shadow-none" style={{ boxShadow: 'none', textDecoration: 'none', textShadow: 'none' }}>
                         <div className="flex items-center justify-center w-10 h-10 rounded-lg border-2 border-[#13B9D5] mb-2 shadow-none" style={{ boxShadow: 'none' }}>
                           <svg className="w-5 h-5 text-[#13B9D5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                           </svg>
                         </div>
-                        <h3 className="font-bold text-black text-sm mb-0.5" style={{ textShadow: 'none' }}>
+                        <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
                           Community Management
                         </h3>
                         <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
                           Gestión profesional de comunidades online
                         </p>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -395,7 +430,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
                 href="#fourth"
                 className="font-bold transition-colors duration-200 text-xs xl:text-sm hover:text-[#13B9D5]"
                 style={{
-                  color: '#272F66',
+                  color: isScrolled ? '#272F66' : '#ffffff',
                   textShadow: 'none',
                 }}
               >
@@ -409,7 +444,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
                   pathname === '/contact' ? 'text-[#13B9D5]' : ''
                 }`}
                 style={{
-                  color: pathname === '/contact' ? '#13B9D5' : '#272F66',
+                  color: pathname === '/contact' ? '#13B9D5' : (isScrolled ? '#272F66' : '#ffffff'),
                   textShadow: 'none',
                 }}
               >
@@ -417,9 +452,10 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
               </Link>
             </li>
           </ul>
+          </div>
 
-          {/* Botones de navegación */}
-          <div ref={navButtonsRef} className="flex items-center space-x-3 xl:space-x-4">
+          {/* Botones de navegación - Derecha */}
+          <div ref={navButtonsRef} className="flex items-center gap-2 xl:gap-3 flex-shrink-0">
             {/* Selector de idioma */}
             <button
               onClick={() => {
@@ -437,7 +473,11 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
               )}
             </button>
 
-            <button className="hidden lg:block px-6 xl:px-7 py-2.5 xl:py-3 text-white bg-[#272F66] rounded-full font-medium hover:bg-[#1e2547] transition-all duration-300 text-xs xl:text-sm shadow-sm hover:shadow-md">
+            <button className={`hidden lg:block px-6 xl:px-7 py-2.5 xl:py-3 rounded-full font-medium transition-all duration-300 text-xs xl:text-sm shadow-sm hover:shadow-md ${
+              isScrolled 
+                ? 'text-white bg-[#272F66] hover:bg-[#1e2547]' 
+                : 'text-[#272F66] bg-white hover:bg-gray-100'
+            }`}>
               Queremos Impulsarte
             </button>
 
@@ -501,9 +541,9 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
             {/* Header del menú - Fondo blanco con logo */}
             <div className="flex items-center justify-between px-6 py-5 bg-white border-b border-gray-200" style={{ backgroundColor: '#ffffff' }}>
               <img 
-                src="/img/logo-artica-2.avif" 
+                src="/img/logo-artica-blanco.png" 
                 alt="ARTICA" 
-                className="h-8 sm:h-10 w-auto"
+                className="h-8 sm:h-16 w-auto"
               />
               <button
                 onClick={() => setIsMenuOpen(false)}
@@ -537,7 +577,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
                         : 'bg-gray-50 hover:bg-[#13B9D5]/10 hover:text-[#13B9D5]'
                     }`}
                     style={{
-                      fontFamily: 'var(--font-roboto), sans-serif',
+                      fontFamily: 'var(--font-poppins), sans-serif',
                       fontSize: '16px',
                       color: pathname === '/' ? '#ffffff' : '#1a1a2e',
                     }}
@@ -555,7 +595,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
                         : 'bg-gray-50 hover:bg-[#13B9D5]/10 hover:text-[#13B9D5]'
                     }`}
                     style={{
-                      fontFamily: 'var(--font-roboto), sans-serif',
+                      fontFamily: 'var(--font-poppins), sans-serif',
                       fontSize: '16px',
                       color: pathname === '/about' ? '#ffffff' : '#1a1a2e',
                     }}
@@ -570,7 +610,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
                     }}
                     className="w-full flex items-center justify-between font-bold py-4 px-5 rounded-xl transition-all duration-200 bg-gray-50 hover:bg-[#13B9D5]/10 hover:text-[#13B9D5]"
                     style={{
-                      fontFamily: 'var(--font-roboto), sans-serif',
+                      fontFamily: 'var(--font-poppins), sans-serif',
                       fontSize: '16px',
                       color: '#1a1a2e',
                     }}
@@ -588,29 +628,29 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
                   {isServicesOpen && (
                     <ul className="mt-2 ml-2 space-y-1 border-l-2 border-[#13B9D5]/30 pl-5">
                       <li>
-                        <a href="#servicio-web" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
+                        <Link href="/services/desarrollo-web" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
                           Desarrollo Web
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="#servicio-diseno" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
+                        <Link href="/services/diseno-grafico" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
                           Diseño Gráfico
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="#servicio-estrategia" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
+                        <Link href="/services/posicionamiento-comunicacion" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
                           Estrategia
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="#servicio-video" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
+                        <Link href="/services/edicion-videos" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
                           Edición de Videos
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="#servicio-publicidad" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
+                        <Link href="/services/publicidad-online" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
                           Publicidad Online
-                        </a>
+                        </Link>
                       </li>
                       <li>
                         <Link href="/services/creacion-contenido" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
@@ -618,14 +658,14 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
                         </Link>
                       </li>
                       <li>
-                        <a href="#servicio-ads" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
+                        <Link href="/services/campanas-ads" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
                           Campañas de Ads
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="#servicio-community" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
+                        <Link href="/services/community-management" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
                           Community Management
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   )}
@@ -636,7 +676,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
                     onClick={() => setIsMenuOpen(false)}
                     className="block font-bold py-4 px-5 rounded-xl transition-all duration-200 bg-gray-50 hover:bg-[#13B9D5]/10 hover:text-[#13B9D5]"
                     style={{
-                      fontFamily: 'var(--font-roboto), sans-serif',
+                      fontFamily: 'var(--font-poppins), sans-serif',
                       fontSize: '16px',
                       color: '#1a1a2e',
                     }}
@@ -654,7 +694,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
                         : 'bg-gray-50 hover:bg-[#13B9D5]/10 hover:text-[#13B9D5]'
                     }`}
                     style={{
-                      fontFamily: 'var(--font-roboto), sans-serif',
+                      fontFamily: 'var(--font-poppins), sans-serif',
                       fontSize: '16px',
                       color: pathname === '/contact' ? '#ffffff' : '#1a1a2e',
                     }}
@@ -702,15 +742,15 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
       {/* Contenido Principal */}
       <div ref={heroContentRef} className="relative z-20 w-full h-full flex items-center justify-center pt-20 sm:pt-24 md:pt-0">
         <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 md:px-8 lg:px-12">
-          <div className="w-full flex flex-col lg:flex-row items-start lg:items-start justify-between gap-6 sm:gap-8 lg:gap-12">
-            {/* Contenedor de texto - Izquierda */}
+          <div className="w-full flex flex-col items-center justify-center">
+            {/* Contenedor de texto - Centrado */}
             <div 
-              className="w-full lg:w-1/2 text-left lg:text-left"
+              className="w-full max-w-4xl text-center"
             >
           {/* Texto superior - Badge Style */}
           <div 
             ref={heroTopTextRef}
-            className="mb-3 sm:mb-4 md:mb-6 lg:mb-8 inline-flex items-center gap-2 px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 rounded-full"
+            className="mb-3 sm:mb-4 md:mb-6 lg:mb-8 inline-flex items-center gap-1.5 px-2 sm:px-2.5 md:px-3 py-1 sm:py-1.5 md:py-2 rounded-full"
             style={{ 
               backgroundColor: 'rgba(255, 255, 255, 0.95)',
               backdropFilter: 'blur(10px)',
@@ -726,19 +766,19 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
             {/* Punto azul brillante */}
             <div
               style={{
-                width: '8px',
-                height: '8px',
+                width: '6px',
+                height: '6px',
                 borderRadius: '50%',
                 backgroundColor: '#4A90E2',
-                boxShadow: '0 0 8px rgba(74, 144, 226, 0.6), 0 0 12px rgba(74, 144, 226, 0.4)',
+                boxShadow: '0 0 6px rgba(74, 144, 226, 0.6), 0 0 10px rgba(74, 144, 226, 0.4)',
                 flexShrink: 0
               }}
             />
             {/* Texto */}
             <p 
               style={{ 
-                fontFamily: 'var(--font-inter), system-ui, sans-serif',
-                fontSize: 'clamp(8px, 1.2vw, 12px)',
+                fontFamily: 'var(--font-poppins), sans-serif',
+                fontSize: 'clamp(7px, 1vw, 10px)',
                 fontWeight: 500,
                 letterSpacing: '0.05em',
                 color: '#272F66',
@@ -754,14 +794,14 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
           {/* Título principal */}
           <h1 
             ref={heroTitleRef}
-            className="mb-2 sm:mb-3 md:mb-4 lg:mb-6"
+            className="mb-2 sm:mb-3 md:mb-4 lg:mb-6 uppercase text-center"
             style={{ 
-              fontFamily: 'var(--font-inter), system-ui, sans-serif',
-              fontSize: 'clamp(32px, 8vw, 86px)',
-              fontWeight: 800,
-              letterSpacing: '-0.02em',
-              lineHeight: '1.1',
-              color: '#272F66',
+              fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif',
+              fontSize: 'clamp(32px, 6vw, 76px)',
+              fontWeight: 'normal',
+              letterSpacing: '0.02em',
+              lineHeight: '1.15',
+              color: '#ffffff',
               opacity: 1,
               visibility: 'visible',
               pointerEvents: 'auto',
@@ -771,22 +811,24 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
               WebkitUserSelect: 'text',
               MozUserSelect: 'text',
               msUserSelect: 'text',
-              wordBreak: 'break-word'
+              textTransform: 'uppercase',
+              textAlign: 'center',
+              width: '100%'
             }}
           >
-            Convertimos Clics<br />en Clientes
+            CONVERTIMOS CLICS EN CLIENTES
           </h1>
 
           {/* Subtítulo */}
           <p 
             ref={heroSubtitleRef}
-            className="mb-4 sm:mb-5 md:mb-6 lg:mb-8 max-w-2xl"
+            className="mb-4 sm:mb-5 md:mb-6 lg:mb-8 max-w-2xl mx-auto"
             style={{ 
-              fontFamily: 'var(--font-inter), system-ui, sans-serif',
+              fontFamily: 'var(--font-poppins), sans-serif',
               fontSize: 'clamp(14px, 2vw, 18px)',
               fontWeight: 400,
               lineHeight: '1.5',
-              color: '#272F66',
+              color: '#ffffff',
               opacity: 1,
               visibility: 'visible',
               pointerEvents: 'auto',
@@ -795,119 +837,88 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
               userSelect: 'text',
               WebkitUserSelect: 'text',
               MozUserSelect: 'text',
-              msUserSelect: 'text'
+              msUserSelect: 'text',
+              textAlign: 'center'
             }}
           >
             Impulsa el crecimiento de tu empresa con nosotros
           </p>
 
-          {/* Botón CTA */}
-          <a
-            ref={heroButtonRef}
-            href="#second"
-            className="inline-flex items-center gap-2.5 group transition-all duration-300"
-            style={{ 
-              fontFamily: 'var(--font-inter), system-ui, sans-serif',
-              fontSize: 'clamp(14px, 1.2vw, 16px)',
-              fontWeight: 600,
-              color: '#ffffff',
-              textDecoration: 'none',
-              opacity: 1,
-              visibility: 'visible',
-              backgroundColor: '#272F66',
-              padding: 'clamp(12px, 1.4vw, 14px) clamp(28px, 3.5vw, 32px)',
-              borderRadius: '9999px',
-              boxShadow: '0 2px 8px rgba(39, 47, 102, 0.2)',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = '#1e2547';
-              e.currentTarget.style.boxShadow = '0 4px 12px rgba(39, 47, 102, 0.3)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = '#272F66';
-              e.currentTarget.style.boxShadow = '0 2px 8px rgba(39, 47, 102, 0.2)';
-            }}
-          >
-            <span>Actúa y Crece</span>
-            <svg
-              className="transition-transform duration-300 group-hover:translate-x-1"
-              width="18"
-              height="18"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2.5}
-                d="M13 7l5 5m0 0l-5 5m5-5H6"
-              />
-            </svg>
-          </a>
-            </div>
-
-            {/* Contenedor de animación Lottie - Derecha */}
-            <div 
-              ref={lottieRef}
-              className="hidden lg:flex w-full lg:w-1/2 items-start justify-end lg:justify-end"
-              style={{
-                pointerEvents: 'none',
-                position: 'relative',
-                zIndex: 10,
-                paddingRight: 'clamp(0px, 8vw, 10px)',
-                marginRight: 'clamp(-20px, -1vw, 0px)',
-                alignSelf: 'stretch',
-                minHeight: '100%'
+          {/* Botones CTA */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+            {/* Botón Principal */}
+            <a
+              ref={heroButtonRef}
+              href="#second"
+              className="inline-flex items-center justify-center transition-all duration-300"
+              style={{ 
+                fontFamily: 'var(--font-poppins), sans-serif',
+                fontSize: 'clamp(14px, 1.2vw, 16px)',
+                fontWeight: 600,
+                color: '#ffffff',
+                textDecoration: 'none',
+                opacity: 1,
+                visibility: 'visible',
+                backgroundColor: '#272F66',
+                padding: 'clamp(12px, 1.4vw, 14px) clamp(28px, 3.5vw, 32px)',
+                borderRadius: '9999px',
+                boxShadow: '0 2px 8px rgba(39, 47, 102, 0.2)',
+                minWidth: '160px',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#1e2547';
+                e.currentTarget.style.boxShadow = '0 4px 12px rgba(39, 47, 102, 0.3)';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = '#272F66';
+                e.currentTarget.style.boxShadow = '0 2px 8px rgba(39, 47, 102, 0.2)';
+                e.currentTarget.style.transform = 'translateY(0)';
               }}
             >
-              <div 
-                className="w-full"
-                style={{
-                  maxWidth: '100%',
-                  height: '100%',
-                  display: 'flex',
-                  alignItems: 'flex-start',
-                  justifyContent: 'flex-end'
-                }}
-              >
-                <div 
-                  style={{
-                    width: 'clamp(300px, 50vw, 600px)',
-                    height: 'clamp(400px, 60vh, 700px)',
-                    maxWidth: '100%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                  }}
-                >
-                  <DotLottieReact
-                    src="https://lottie.host/32af5277-a9e3-46d6-9dc5-cb1eabeec4f7/HdnloFw57L.lottie"
-                    loop
-                    autoplay
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'contain'
-                    }}
-                  />
-                </div>
-              </div>
+              Actúa y Crece
+            </a>
+
+            {/* Botón Portafolio */}
+            <a
+              href="#fourth"
+              className="inline-flex items-center justify-center transition-all duration-300"
+              style={{ 
+                fontFamily: 'var(--font-poppins), sans-serif',
+                fontSize: 'clamp(14px, 1.2vw, 16px)',
+                fontWeight: 600,
+                color: '#ff9001',
+                textDecoration: 'none',
+                opacity: 1,
+                visibility: 'visible',
+                backgroundColor: 'transparent',
+                border: '2px solid #ff9001',
+                padding: 'clamp(12px, 1.4vw, 14px) clamp(28px, 3.5vw, 32px)',
+                borderRadius: '9999px',
+                boxShadow: '0 2px 8px rgba(255, 144, 1, 0.2)',
+                minWidth: '160px',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#ff9001';
+                e.currentTarget.style.color = '#ffffff';
+                e.currentTarget.style.boxShadow = '0 4px 12px rgba(255, 144, 1, 0.4)';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'transparent';
+                e.currentTarget.style.color = '#ff9001';
+                e.currentTarget.style.boxShadow = '0 2px 8px rgba(255, 144, 1, 0.2)';
+                e.currentTarget.style.transform = 'translateY(0)';
+              }}
+            >
+              Portafolio
+            </a>
+          </div>
             </div>
           </div>
         </div>
       </div>
       
-      {/* Degradado suave en la parte inferior para eliminar la línea divisoria */}
-      <div 
-        className="absolute bottom-0 left-0 right-0"
-        style={{
-          height: 'clamp(80px, 15vh, 150px)',
-          background: 'linear-gradient(to top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 30%, rgba(255, 255, 255, 0.4) 60%, rgba(255, 255, 255, 0) 100%)',
-          pointerEvents: 'none',
-          zIndex: 5,
-        }}
-      />
     </section>
   );
 }

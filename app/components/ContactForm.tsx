@@ -90,15 +90,15 @@ export default function ContactForm() {
                 Estamos aquí para ayudarte
               </p>
               
-              <h2 className="font-sans text-2xl sm:text-3xl md:text-3xl lg:text-5xl font-extrabold text-[#272F66] mb-3 sm:mb-4 md:mb-5 lg:mb-6 leading-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-3xl lg:text-5xl font-extrabold text-[#272F66] mb-3 sm:mb-4 md:mb-5 lg:mb-6 leading-tight" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
                 Hablemos y hagamos que suceda
               </h2>
               
-              <p className="font-sans text-sm sm:text-base md:text-sm lg:text-base text-gray-600 mb-4 sm:mb-5 md:mb-6 lg:mb-8 leading-relaxed">
+              <p className="text-sm sm:text-base md:text-sm lg:text-base text-gray-600 mb-4 sm:mb-5 md:mb-6 lg:mb-8 leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
                 Escríbenos y empecemos a crear juntos la estrategia que tu marca necesita.
               </p>
               
-              <p className="font-sans text-sm sm:text-base md:text-sm lg:text-base text-gray-600 font-semibold mb-6 sm:mb-7 md:mb-8 lg:mb-10">
+              <p className="text-sm sm:text-base md:text-sm lg:text-base text-gray-600 font-semibold mb-6 sm:mb-7 md:mb-8 lg:mb-10" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
                 ¡El primer paso está a un clic!
               </p>
 

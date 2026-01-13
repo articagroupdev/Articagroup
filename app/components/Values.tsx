@@ -120,7 +120,8 @@ export default function Values() {
             ref={titleRef}
             className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#272F66] mb-4 sm:mb-6 leading-tight"
             style={{
-              fontFamily: 'var(--font-roboto), sans-serif',
+              fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif',
+              fontWeight: 'bold',
               opacity: 0,
               transform: 'translateY(40px)',
             }}
@@ -131,7 +132,7 @@ export default function Values() {
             ref={subtitleRef}
             className="text-base sm:text-lg md:text-xl text-[#272F66]/70 max-w-3xl mx-auto leading-relaxed"
             style={{
-              fontFamily: 'var(--font-roboto), sans-serif',
+              fontFamily: 'var(--font-poppins), sans-serif',
               opacity: 0,
               transform: 'translateY(30px)',
             }}
@@ -174,7 +175,8 @@ export default function Values() {
                   <h3
                     className="text-lg sm:text-xl font-extrabold text-[#272F66] mb-2 sm:mb-3 leading-tight"
                     style={{
-                      fontFamily: 'var(--font-roboto), sans-serif',
+                      fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif',
+                      fontWeight: 'bold',
                     }}
                   >
                     {value.title}
@@ -182,7 +184,7 @@ export default function Values() {
                   <p
                     className="text-xs sm:text-sm md:text-base text-[#272F66]/70 leading-relaxed"
                     style={{
-                      fontFamily: 'var(--font-roboto), sans-serif',
+                      fontFamily: 'var(--font-poppins), sans-serif',
                       lineHeight: '1.6',
                     }}
                   >

@@ -124,7 +124,8 @@ export default function HowWeWork() {
             ref={titleRef}
             className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#272F66] mb-3 sm:mb-4 leading-tight tracking-tight"
             style={{
-              fontFamily: 'var(--font-roboto), sans-serif',
+              fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif',
+              fontWeight: 'bold',
               opacity: 0,
               transform: 'translateY(40px)',
             }}
@@ -135,7 +136,7 @@ export default function HowWeWork() {
             ref={subtitleRef}
             className="text-sm sm:text-base md:text-lg text-[#272F66]/70 max-w-3xl mx-auto leading-relaxed"
             style={{
-              fontFamily: 'var(--font-roboto), sans-serif',
+              fontFamily: 'var(--font-poppins), sans-serif',
               lineHeight: '1.7',
               opacity: 0,
               transform: 'translateY(30px)',
@@ -186,7 +187,8 @@ export default function HowWeWork() {
                           step.hasTopBackground ? 'text-white' : 'text-[#272F66]'
                         }`}
                         style={{
-                          fontFamily: 'var(--font-roboto), sans-serif',
+                          fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif',
+                          fontWeight: 'bold',
                         }}
                       >
                         {step.title}
@@ -196,7 +198,7 @@ export default function HowWeWork() {
                           step.hasTopBackground ? 'text-white/90' : 'text-[#272F66]/70'
                         }`}
                         style={{
-                          fontFamily: 'var(--font-roboto), sans-serif',
+                          fontFamily: 'var(--font-poppins), sans-serif',
                           lineHeight: '1.5',
                         }}
                       >

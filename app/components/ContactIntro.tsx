@@ -168,7 +168,8 @@ export default function ContactIntro() {
             ref={titleRef}
             className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#272F66] mb-6 sm:mb-8 leading-tight tracking-tight"
             style={{
-              fontFamily: 'var(--font-roboto), sans-serif',
+              fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif',
+              fontWeight: 'bold',
               opacity: 0,
               transform: 'translateY(40px)',
             }}
@@ -180,7 +181,7 @@ export default function ContactIntro() {
             ref={text1Ref}
             className="text-base sm:text-lg md:text-xl text-[#272F66]/80 mb-6 sm:mb-8 leading-relaxed max-w-2xl mx-auto"
             style={{
-              fontFamily: 'var(--font-roboto), sans-serif',
+              fontFamily: 'var(--font-poppins), sans-serif',
               opacity: 0,
               transform: 'translateY(30px)',
             }}
@@ -192,7 +193,7 @@ export default function ContactIntro() {
             ref={text2Ref}
             className="text-lg sm:text-xl md:text-2xl font-bold text-[#ff9001] leading-relaxed"
             style={{
-              fontFamily: 'var(--font-roboto), sans-serif',
+              fontFamily: 'var(--font-poppins), sans-serif',
               opacity: 0,
               transform: 'translateY(30px)',
             }}
