@@ -40,6 +40,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# large video files
-*.mp4
+# large video files (except video-nosotros.mp4 which is needed)
 public/img/artica-empresa.mp4
