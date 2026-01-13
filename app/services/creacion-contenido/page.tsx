@@ -407,7 +407,7 @@ export default function CreacionContenidoPage() {
           <div className="space-y-5">
             {/* FAQ 1 */}
             <div
-              ref={(el) => (faqItemsRef.current[0] = el)}
+              ref={(el) => { faqItemsRef.current[0] = el; }}
               className="group bg-white rounded-xl border border-gray-200 hover:border-[#ff9001] transition-all duration-300 shadow-sm hover:shadow-md overflow-hidden"
             >
               <button
@@ -445,7 +445,7 @@ export default function CreacionContenidoPage() {
 
             {/* FAQ 2 */}
             <div
-              ref={(el) => (faqItemsRef.current[1] = el)}
+              ref={(el) => { faqItemsRef.current[1] = el; }}
               className="group bg-white rounded-xl border border-gray-200 hover:border-[#ff9001] transition-all duration-300 shadow-sm hover:shadow-md overflow-hidden"
             >
               <button
