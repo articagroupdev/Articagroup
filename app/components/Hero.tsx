@@ -170,13 +170,25 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
         backgroundColor: '#212121',
       }}
     >
+      {/* Imagen de fondo como fallback */}
+      <div 
+        className="absolute inset-0 w-full h-full z-0"
+        style={{
+          backgroundImage: 'url(/img/fondo-hero1.webp)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      />
+      
       {/* Video de fondo */}
       <video
         autoPlay
         loop
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover z-0"
+        preload="auto"
+        className="absolute inset-0 w-full h-full object-cover z-[0.5]"
         style={{
           position: 'absolute',
           top: 0,
@@ -184,10 +196,23 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
           width: '100%',
           height: '100%',
           objectFit: 'cover',
-          zIndex: 0,
+          zIndex: 0.5,
+        }}
+        onError={(e) => {
+          console.error('Error loading video:', e);
+          // Ocultar video si hay error
+          const video = e.currentTarget;
+          video.style.display = 'none';
+        }}
+        onLoadStart={() => {
+          console.log('Video loading started');
+        }}
+        onCanPlay={() => {
+          console.log('Video can play');
         }}
       >
         <source src="/img/fondo-video.mp4" type="video/mp4" />
+        Tu navegador no soporta el elemento de video.
       </video>
 
       {/* Overlay oscuro para mejorar legibilidad del contenido */}
