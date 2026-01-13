@@ -11,7 +11,7 @@ import Footer from '../../components/Footer';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function CreacionContenidoPage() {
+export default function PublicidadOnlinePage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const heroRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -159,15 +159,22 @@ export default function CreacionContenidoPage() {
                 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#272F66] mb-6 leading-tight text-left"
                 style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'normal' }}
               >
-                Creación de Contenido
+                Publicidad Online
               </h1>
 
               <p
                 ref={subtitleRef}
-                className="text-xl sm:text-2xl text-[#272F66]/80 max-w-3xl leading-relaxed text-left"
+                className="text-xl sm:text-2xl text-[#272F66]/80 max-w-3xl leading-relaxed text-left mb-4"
                 style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
               >
-                Ideas innovadoras pero efectivas. Teniendo claras las bases y objetivos, crearemos contenido personalizado para tu negocio.
+                Genera Tráfico Calificado, Impulsa Ventas y Maximiza tu ROI.
+              </p>
+
+              <p
+                className="text-lg sm:text-xl text-[#272F66]/70 max-w-3xl leading-relaxed text-left"
+                style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
+              >
+                Implementamos campañas estratégicas que aseguran resultados inmediatos y medibles, convirtiendo tu inversión publicitaria en crecimiento exponencial.
               </p>
             </div>
 
@@ -175,7 +182,7 @@ export default function CreacionContenidoPage() {
             <div className="flex items-center justify-center lg:justify-end">
               <div className="w-full max-w-lg lg:max-w-xl xl:max-w-2xl">
                 <DotLottieReact
-                  src="https://lottie.host/46376bba-b9e6-4f5c-973e-3700a4254bf9/AGCAiOD5EC.lottie"
+                  src="https://lottie.host/361abbfd-6494-4cd3-93aa-4e63bd57503b/xyonr5hdmW.lottie"
                   loop
                   autoplay
                 />
@@ -210,7 +217,7 @@ export default function CreacionContenidoPage() {
               ¿En qué consiste?
             </h2>
             <p className="text-lg sm:text-xl text-white leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-              Creamos contenido viral que conecta con la personalidad de tu negocio. Desde posts visualmente impactantes hasta historias que resuenan, lo adaptamos todo a tus valores y tono de voz.
+              Con estrategias de Posicionamiento y Comunicación personalizadas, los clientes llegan a ti de manera orgánica, interesados en lo que ofreces. Sin anuncios molestos, solo contenido útil y bien posicionado que establece tu autoridad en el sector.
             </p>
           </div>
         </div>
@@ -228,50 +235,31 @@ export default function CreacionContenidoPage() {
               Estos son los beneficios para tu empresa
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-              Descubre cómo nuestro servicio de creación de contenido puede transformar tu presencia digital y generar resultados tangibles para tu negocio.
+              Descubre cómo nuestro servicio de publicidad online puede transformar tu presencia digital y generar resultados tangibles para tu negocio.
             </p>
           </div>
 
-          {/* Cards de beneficios */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Cards de beneficios - 3 cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {/* Beneficio 1 - Card destacada con fondo de color */}
             <div className="group relative bg-gradient-to-br from-[#ff9001] to-[#e67e00] rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
               <div className="absolute top-4 left-4 w-12 h-12 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                </svg>
-              </div>
-              
-              <div className="mt-12">
-                <h3 className="text-xl font-bold text-white mb-3" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                  Mayor visibilidad en redes sociales
-                </h3>
-                <p className="text-white/90 leading-relaxed text-sm" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                  El contenido adaptado a cada plataforma aumenta la interacción y garantiza que tu negocio llegue al público adecuado, lo que genera más seguidores y clientes potenciales.
-                </p>
-              </div>
-            </div>
-
-            {/* Beneficio 2 - Card con fondo blanco */}
-            <div className="group relative bg-white rounded-2xl p-6 sm:p-8 border border-gray-200 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-              <div className="absolute top-4 left-4 w-12 h-12 bg-gradient-to-br from-[#ff9001] to-[#e67e00] rounded-full flex items-center justify-center">
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </div>
               
               <div className="mt-12">
-                <h3 className="text-xl font-bold text-[#272F66] mb-3" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                  Conexión auténtica con tu audiencia
+                <h3 className="text-xl font-bold text-white mb-3" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
+                  Alcance masivo y segmentado
                 </h3>
-                <p className="text-gray-600 leading-relaxed text-sm" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                  Al crear contenido que refleja los valores de tu marca, estableces una relación de confianza con tu público, aumentando su lealtad y mejorando la reputación de tu negocio.
+                <p className="text-white/90 leading-relaxed text-sm" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
+                  Llega a miles de personas en Facebook, Instagram y TikTok, dirigiendo tus anuncios a clientes potenciales.
                 </p>
               </div>
             </div>
 
-            {/* Beneficio 3 - Card con fondo blanco */}
+            {/* Beneficio 2 - Card con fondo blanco */}
             <div className="group relative bg-white rounded-2xl p-6 sm:p-8 border border-gray-200 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
               <div className="absolute top-4 left-4 w-12 h-12 bg-gradient-to-br from-[#ff9001] to-[#e67e00] rounded-full flex items-center justify-center">
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -281,28 +269,28 @@ export default function CreacionContenidoPage() {
               
               <div className="mt-12">
                 <h3 className="text-xl font-bold text-[#272F66] mb-3" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                  Resultados medibles y crecimiento del negocio
+                  Resultados inmediatos y medibles
                 </h3>
                 <p className="text-gray-600 leading-relaxed text-sm" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                  Gracias a estrategias basadas en objetivos claros, tu contenido no solo es creativo, sino también efectivo para generar resultados concretos, como más ventas o leads.
+                  Obtén métricas claras sobre el rendimiento de tus campañas en tiempo real. Verás cómo crecen tus clics, ventas o interacciones sin tener que esperar meses para evaluar el impacto.
                 </p>
               </div>
             </div>
 
-            {/* Beneficio 4 - Card adicional con fondo blanco (opcional, puedes eliminar si solo quieres 3) */}
+            {/* Beneficio 3 - Card con fondo blanco */}
             <div className="group relative bg-white rounded-2xl p-6 sm:p-8 border border-gray-200 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
               <div className="absolute top-4 left-4 w-12 h-12 bg-gradient-to-br from-[#ff9001] to-[#e67e00] rounded-full flex items-center justify-center">
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
               </div>
               
               <div className="mt-12">
                 <h3 className="text-xl font-bold text-[#272F66] mb-3" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                  Contenido de calidad profesional
+                  Flexibilidad en plataformas
                 </h3>
                 <p className="text-gray-600 leading-relaxed text-sm" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                  Trabajamos con un equipo de profesionales que garantiza contenido de alta calidad, optimizado para cada plataforma y diseñado para generar engagement.
+                  Adaptamos tu publicidad a las redes donde tus clientes están más activos, ya sea Instagram, LinkedIn o TikTok, creando contenido dinámico y optimizado para cada una.
                 </p>
               </div>
             </div>
@@ -322,12 +310,12 @@ export default function CreacionContenidoPage() {
             <div className="flex flex-col">
               {/* Título */}
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#272F66] mb-4 uppercase" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                Nuestro Proceso para la Creación de Contenido
+                Nuestro Proceso de Publicidad Online
               </h2>
               
               {/* Subtítulo */}
               <p className="text-lg text-gray-600 leading-relaxed mb-6" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                Desarrollamos contenido relevante, valioso y optimizado que atrae a tu audiencia, genera autoridad de marca e impulsa la conversión.
+                Convertimos tu inversión en crecimiento. Hemos diseñado un proceso estratégico y transparente para garantizar el máximo Retorno de Inversión (ROI).
               </p>
 
               {/* Imagen horizontal (ancha y baja) que se alinea con el final del último paso */}
@@ -339,8 +327,8 @@ export default function CreacionContenidoPage() {
                   }}
                 >
                   <Image
-                    src="/img/servicios/contenido.jpg"
-                    alt="Creación de contenido"
+                    src="/img/servicios/publicidad.jpg"
+                    alt="Publicidad Online"
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
@@ -356,16 +344,16 @@ export default function CreacionContenidoPage() {
                 <div className="flex-shrink-0">
                   <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#13B9D5] to-[#0FA8C2] flex items-center justify-center shadow-lg">
                     <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                     </svg>
                   </div>
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-bold text-[#272F66] mb-2" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                    Estrategia y Temas Clave
+                    Análisis y Definición del Funnel
                   </h3>
                   <p className="text-gray-600 leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                    Basándonos en tu audiencia y objetivos, realizamos una investigación de palabras clave (SEO) y tendencias para definir un calendario editorial con temas que resuelvan las dudas de tus clientes.
+                    Analizamos tu audiencia ideal y definimos la arquitectura completa de la campaña (embudos de conversión). Establecemos los KPIs (clics, leads, ventas) y la estrategia de pujas más eficiente.
                   </p>
                 </div>
               </div>
@@ -375,16 +363,16 @@ export default function CreacionContenidoPage() {
                 <div className="flex-shrink-0">
                   <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#13B9D5] to-[#0FA8C2] flex items-center justify-center shadow-lg">
                     <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
                   </div>
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-bold text-[#272F66] mb-2" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                    Redacción y Diseño de Borradores
+                    Producción Creativa
                   </h3>
                   <p className="text-gray-600 leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                    Creamos el contenido principal (texto, guiones, storyboards) asegurando que el tono de voz sea el adecuado para tu marca. En esta fase se genera el primer borrador listo para revisión.
+                    Nuestro estudio crea los creativos de alto rendimiento (imágenes, vídeos) que detienen el scroll. Además, aseguramos que tus páginas de destino estén optimizadas para convertir ese tráfico en clientes.
                   </p>
                 </div>
               </div>
@@ -394,16 +382,16 @@ export default function CreacionContenidoPage() {
                 <div className="flex-shrink-0">
                   <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#13B9D5] to-[#0FA8C2] flex items-center justify-center shadow-lg">
                     <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                     </svg>
                   </div>
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-bold text-[#272F66] mb-2" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                    Producción y Maquetación Visual
+                    Activación y Segmentación Inteligente
                   </h3>
                   <p className="text-gray-600 leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                    Transformamos el borrador en la pieza final: diseñamos las imágenes, grabamos y editamos videos, o maquetamos el blog post, asegurando un formato atractivo para la plataforma de destino.
+                    Implementamos las campañas en las plataformas clave (Meta, Google, TikTok, etc.). Utilizamos herramientas avanzadas para segmentar con precisión, asegurando que tu mensaje llegue al público con mayor potencial de compra.
                   </p>
                 </div>
               </div>
@@ -413,16 +401,16 @@ export default function CreacionContenidoPage() {
                 <div className="flex-shrink-0">
                   <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#13B9D5] to-[#0FA8C2] flex items-center justify-center shadow-lg">
                     <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                   </div>
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-bold text-[#272F66] mb-2" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                    Publicación y Distribución Estratégica
+                    Optimización Diaria y Gestión del Presupuesto
                   </h3>
                   <p className="text-gray-600 leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                    Programamos y publicamos el contenido en los canales definidos (web, redes sociales, email). Además, definimos una estrategia de distribución para maximizar su alcance y visibilidad.
+                    Monitoreamos el rendimiento hora tras hora. Realizamos pruebas A/B constantes, ajustamos la segmentación y optimizamos el presupuesto en tiempo real para eliminar lo que no funciona y escalar lo que sí genera resultados.
                   </p>
                 </div>
               </div>
@@ -439,7 +427,7 @@ export default function CreacionContenidoPage() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#272F66] mb-4" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-              Preguntas frecuentes sobre la creación de contenido
+              Preguntas frecuentes sobre Publicidad Online
             </h2>
           </div>
 
@@ -467,7 +455,7 @@ export default function CreacionContenidoPage() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <h3 className="text-lg sm:text-xl font-bold text-[#272F66] mb-0 group-hover:text-[#ff9001] transition-colors duration-200" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                    ¿Qué tipo de contenido puedo crear para mi negocio?
+                    ¿Cuánto cuesta hacer publicidad online?
                   </h3>
                 </div>
               </button>
@@ -475,7 +463,7 @@ export default function CreacionContenidoPage() {
                 <div className="px-6 sm:px-8 pb-6 sm:pb-8 pl-20">
                   <div className="pt-2 border-t border-gray-100">
                     <p className="text-gray-600 leading-relaxed text-base" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                      Puedes generar desde contenido de marca y diseño gráfico hasta animaciones, videos para YouTube, y podcasts. Todo el contenido está personalizado para plataformas como Instagram, Facebook, TikTok, y cualquier red que sea relevante para ti.
+                      El costo varía según la plataforma y el tipo de anuncio. Algunas, como Facebook o Google, cobran por clic (PPC) o por impresión (CPM), lo que te da flexibilidad para ajustar tu inversión según tu presupuesto.
                     </p>
                   </div>
                 </div>
@@ -505,7 +493,7 @@ export default function CreacionContenidoPage() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <h3 className="text-lg sm:text-xl font-bold text-[#272F66] mb-0 group-hover:text-[#ff9001] transition-colors duration-200" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                    ¿Cómo sé si el contenido está funcionando?
+                    ¿Qué tipo de anuncio es más efectivo?
                   </h3>
                 </div>
               </button>
@@ -513,7 +501,7 @@ export default function CreacionContenidoPage() {
                 <div className="px-6 sm:px-8 pb-6 sm:pb-8 pl-20">
                   <div className="pt-2 border-t border-gray-100">
                     <p className="text-gray-600 leading-relaxed text-base" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                      Medimos el éxito de tu contenido mediante análisis de métricas, como interacción, seguidores, y conversiones. Así ajustamos las estrategias para optimizar resultados.
+                      Depende de tu público objetivo. En plataformas visuales como Instagram, los anuncios con videos o imágenes atractivas suelen funcionar mejor, mientras que en LinkedIn los anuncios enfocados en generación de leads son muy efectivos.
                     </p>
                   </div>
                 </div>

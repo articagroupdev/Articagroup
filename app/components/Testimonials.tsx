@@ -108,7 +108,7 @@ export default function Testimonials() {
               Testimonios
             </span>
           </div>
-          <h2 className="font-sans text-xl sm:text-2xl md:text-3xl lg:text-5xl font-extrabold text-white m-0 tracking-tight leading-[1.2] drop-shadow-sm px-2 sm:px-0">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-extrabold text-white m-0 tracking-tight leading-[1.2] drop-shadow-sm px-2 sm:px-0" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
             Lo que dicen nuestros clientes
           </h2>
         </div>
@@ -182,7 +182,7 @@ export default function Testimonials() {
 
                 {/* Testimonial Text */}
                 <div className="flex flex-col flex-1 relative z-10">
-                  <p className="font-sans text-[13px] sm:text-sm md:text-sm lg:text-[15px] font-normal text-[#272F66]/85 leading-relaxed mb-4 sm:mb-5 md:mb-4 lg:mb-6 pr-5 sm:pr-6 md:pr-6 lg:pr-8">
+                  <p className="text-[13px] sm:text-sm md:text-sm lg:text-[15px] font-normal text-[#272F66]/85 leading-relaxed mb-4 sm:mb-5 md:mb-4 lg:mb-6 pr-5 sm:pr-6 md:pr-6 lg:pr-8" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
                     {testimonial.text}
                   </p>
 

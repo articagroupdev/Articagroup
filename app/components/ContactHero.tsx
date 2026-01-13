@@ -197,8 +197,9 @@ export default function ContactHero() {
       {/* Navegación */}
       <nav
         ref={navRef}
-        className="fixed top-0 left-0 right-0 z-[9999] px-2 sm:px-4 md:px-6 lg:px-8 py-2 sm:py-3 md:py-4 transition-all duration-300 bg-white lg:bg-transparent shadow-sm lg:shadow-none"
+        className="fixed top-0 left-0 right-0 z-[9999] px-2 sm:px-4 md:px-6 lg:px-8 xl:px-12 py-2 sm:py-3 md:py-4 transition-all duration-300 bg-white lg:bg-transparent shadow-sm lg:shadow-none"
         style={{
+          overflow: 'visible',
           // En móvil siempre blanco, en desktop se controla con GSAP
           backgroundColor: isMobile || isMenuOpen 
             ? 'rgba(255, 255, 255, 1)' 
@@ -208,23 +209,26 @@ export default function ContactHero() {
             : undefined,
         }}
       >
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          {/* Logo */}
-          <div ref={logoRef} className="flex items-center">
-            <Link href="/" className="flex items-center">
-              <img 
-                src="/img/logo-artica-2.avif" 
-                alt="ARTICA" 
-                className="h-8 sm:h-10 md:h-12 w-auto"
-              />
-            </Link>
-          </div>
+        <div className="max-w-7xl mx-auto w-full flex items-center justify-between" style={{ overflow: 'visible' }}>
+          {/* Logo y Links de navegación - Izquierda */}
+          <div className="flex items-center gap-6 xl:gap-8" style={{ overflow: 'visible' }}>
+            {/* Logo */}
+            <div ref={logoRef} className="flex items-center">
+              <Link href="/" className="flex items-center">
+                <img 
+                  src="/img/logo-artica-2.avif" 
+                  alt="ARTICA" 
+                  className="h-8 sm:h-10 md:h-10 w-auto"
+                />
+              </Link>
+            </div>
 
-          {/* Links de navegación */}
-          <ul
-            ref={navLinksRef}
-            className="hidden lg:flex items-center space-x-4 xl:space-x-5"
-          >
+            {/* Links de navegación */}
+            <ul
+              ref={navLinksRef}
+              className="hidden lg:flex items-center space-x-4 xl:space-x-5 relative"
+              style={{ overflow: 'visible' }}
+            >
             <li>
               <Link
                 href="/"
@@ -295,6 +299,7 @@ export default function ContactHero() {
                   style={{
                     zIndex: 10000,
                     boxShadow: 'none',
+                    left: '300%',
                   }}
                   onMouseEnter={() => setIsServicesOpen(true)}
                   onMouseLeave={() => setIsServicesOpen(false)}
@@ -302,78 +307,78 @@ export default function ContactHero() {
                   <div className="grid grid-cols-3 gap-x-6 gap-y-3">
                     {/* Columna 1 */}
                     <div className="space-y-3">
-                      <a href="#servicio-web" className="block shadow-none" style={{ boxShadow: 'none', textDecoration: 'none', textShadow: 'none' }}>
+                      <Link href="/services/desarrollo-web" className="block shadow-none" style={{ boxShadow: 'none', textDecoration: 'none', textShadow: 'none' }}>
                         <div className="flex items-center justify-center w-10 h-10 rounded-lg border-2 border-[#13B9D5] mb-2 shadow-none" style={{ boxShadow: 'none' }}>
                           <svg className="w-5 h-5 text-[#13B9D5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                           </svg>
                         </div>
-                        <h3 className="font-bold text-black text-sm mb-0.5" style={{ textShadow: 'none' }}>
+                        <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
                           Desarrollo Web
                         </h3>
                         <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
                           Sitios web modernos y funcionales
                         </p>
-                      </a>
+                      </Link>
 
-                      <a href="#servicio-diseno" className="block transition-all duration-200 hover:translate-x-1 shadow-none" style={{ boxShadow: 'none' }}>
+                      <Link href="/services/diseno-grafico" className="block transition-all duration-200 hover:translate-x-1 shadow-none" style={{ boxShadow: 'none', textDecoration: 'none', textShadow: 'none' }}>
                         <div className="flex items-center justify-center w-10 h-10 rounded-lg border-2 border-[#13B9D5] mb-2 shadow-none" style={{ boxShadow: 'none' }}>
                           <svg className="w-5 h-5 text-[#13B9D5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
                           </svg>
                         </div>
-                        <h3 className="font-bold text-black text-sm mb-0.5" style={{ textShadow: 'none' }}>
+                        <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
                           Diseño Gráfico
                         </h3>
                         <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
                           Identidad visual y diseño creativo
                         </p>
-                      </a>
+                      </Link>
 
-                      <a href="#servicio-estrategia" className="block transition-all duration-200 hover:translate-x-1 shadow-none" style={{ boxShadow: 'none' }}>
+                      <Link href="/services/posicionamiento-comunicacion" className="block transition-all duration-200 hover:translate-x-1 shadow-none" style={{ boxShadow: 'none', textDecoration: 'none', textShadow: 'none' }}>
                         <div className="flex items-center justify-center w-10 h-10 rounded-lg border-2 border-[#13B9D5] mb-2 shadow-none" style={{ boxShadow: 'none' }}>
                           <svg className="w-5 h-5 text-[#13B9D5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                           </svg>
                         </div>
-                        <h3 className="font-bold text-black text-sm mb-0.5" style={{ textShadow: 'none' }}>
+                        <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
                           Estrategia Posicionamiento y Comunicación
                         </h3>
                         <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
                           Estrategias integrales de marca y comunicación
                         </p>
-                      </a>
+                      </Link>
                     </div>
 
                     {/* Columna 2 */}
                     <div className="space-y-3">
-                      <a href="#servicio-video" className="block transition-all duration-200 hover:translate-x-1 shadow-none" style={{ boxShadow: 'none' }}>
+                      <Link href="/services/edicion-videos" className="block transition-all duration-200 hover:translate-x-1 shadow-none" style={{ boxShadow: 'none', textDecoration: 'none', textShadow: 'none' }}>
                         <div className="flex items-center justify-center w-10 h-10 rounded-lg border-2 border-[#13B9D5] mb-2 shadow-none" style={{ boxShadow: 'none' }}>
                           <svg className="w-5 h-5 text-[#13B9D5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                           </svg>
                         </div>
-                        <h3 className="font-bold text-black text-sm mb-0.5" style={{ textShadow: 'none' }}>
+                        <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
                           Edición de Videos
                         </h3>
                         <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
                           Producción y edición profesional de video
                         </p>
-                      </a>
+                      </Link>
 
-                      <a href="#servicio-publicidad" className="block transition-all duration-200 hover:translate-x-1 shadow-none" style={{ boxShadow: 'none' }}>
+                      <Link href="/services/publicidad-online" className="block transition-all duration-200 hover:translate-x-1 shadow-none" style={{ boxShadow: 'none', textDecoration: 'none', textShadow: 'none' }}>
                         <div className="flex items-center justify-center w-10 h-10 rounded-lg border-2 border-[#13B9D5] mb-2 shadow-none" style={{ boxShadow: 'none' }}>
                           <svg className="w-5 h-5 text-[#13B9D5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
                           </svg>
                         </div>
-                        <h3 className="font-bold text-black text-sm mb-0.5" style={{ textShadow: 'none' }}>
+                        <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
                           Publicidad Online
                         </h3>
                         <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
                           Campañas publicitarias digitales efectivas
                         </p>
-                      </a>
+                      </Link>
                     </div>
 
                     {/* Columna 3 */}
@@ -384,7 +389,7 @@ export default function ContactHero() {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                           </svg>
                         </div>
-                        <h3 className="font-bold text-black text-sm mb-0.5" style={{ textShadow: 'none' }}>
+                        <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
                           Creación de Contenido
                         </h3>
                         <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
@@ -392,34 +397,34 @@ export default function ContactHero() {
                         </p>
                       </Link>
 
-                      <a href="#servicio-ads" className="block transition-all duration-200 hover:translate-x-1 shadow-none" style={{ boxShadow: 'none' }}>
+                      <Link href="/services/campanas-ads" className="block transition-all duration-200 hover:translate-x-1 shadow-none" style={{ boxShadow: 'none', textDecoration: 'none', textShadow: 'none' }}>
                         <div className="flex items-center justify-center w-10 h-10 rounded-lg border-2 border-[#13B9D5] mb-2 shadow-none" style={{ boxShadow: 'none' }}>
                           <svg className="w-5 h-5 text-[#13B9D5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
                           </svg>
                         </div>
-                        <h3 className="font-bold text-black text-sm mb-0.5" style={{ textShadow: 'none' }}>
+                        <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
                           Campañas de Ads
                         </h3>
                         <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
                           Publicidad efectiva en redes sociales
                         </p>
-                      </a>
+                      </Link>
 
-                      <a href="#servicio-community" className="block transition-all duration-200 hover:translate-x-1 shadow-none" style={{ boxShadow: 'none' }}>
+                      <Link href="/services/community-management" className="block transition-all duration-200 hover:translate-x-1 shadow-none" style={{ boxShadow: 'none', textDecoration: 'none', textShadow: 'none' }}>
                         <div className="flex items-center justify-center w-10 h-10 rounded-lg border-2 border-[#13B9D5] mb-2 shadow-none" style={{ boxShadow: 'none' }}>
                           <svg className="w-5 h-5 text-[#13B9D5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                           </svg>
                         </div>
-                        <h3 className="font-bold text-black text-sm mb-0.5" style={{ textShadow: 'none' }}>
+                        <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
                           Community Management
                         </h3>
                         <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
                           Gestión profesional de comunidades online
                         </p>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -452,9 +457,10 @@ export default function ContactHero() {
               </Link>
             </li>
           </ul>
+          </div>
 
-          {/* Botones de navegación */}
-          <div ref={navButtonsRef} className="flex items-center space-x-3 xl:space-x-4">
+          {/* Botones de navegación - Derecha */}
+          <div ref={navButtonsRef} className="flex items-center gap-2 xl:gap-3 flex-shrink-0">
             {/* Selector de idioma */}
             <button
               onClick={() => {
@@ -571,7 +577,7 @@ export default function ContactHero() {
                         : 'bg-gray-50 hover:bg-[#13B9D5]/10 hover:text-[#13B9D5]'
                     }`}
                     style={{
-                      fontFamily: 'var(--font-roboto), sans-serif',
+                      fontFamily: 'var(--font-poppins), sans-serif',
                       fontSize: '16px',
                       color: pathname === '/' ? '#ffffff' : '#1a1a2e',
                     }}
@@ -589,7 +595,7 @@ export default function ContactHero() {
                         : 'bg-gray-50 hover:bg-[#13B9D5]/10 hover:text-[#13B9D5]'
                     }`}
                     style={{
-                      fontFamily: 'var(--font-roboto), sans-serif',
+                      fontFamily: 'var(--font-poppins), sans-serif',
                       fontSize: '16px',
                       color: pathname === '/about' ? '#ffffff' : '#1a1a2e',
                     }}
@@ -604,7 +610,7 @@ export default function ContactHero() {
                     }}
                     className="w-full flex items-center justify-between font-bold py-4 px-5 rounded-xl transition-all duration-200 bg-gray-50 hover:bg-[#13B9D5]/10 hover:text-[#13B9D5]"
                     style={{
-                      fontFamily: 'var(--font-roboto), sans-serif',
+                      fontFamily: 'var(--font-poppins), sans-serif',
                       fontSize: '16px',
                       color: '#1a1a2e',
                     }}
@@ -622,29 +628,29 @@ export default function ContactHero() {
                   {isServicesOpen && (
                     <ul className="mt-2 ml-2 space-y-1 border-l-2 border-[#13B9D5]/30 pl-5">
                       <li>
-                        <a href="#servicio-web" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
+                        <Link href="/services/desarrollo-web" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
                           Desarrollo Web
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="#servicio-diseno" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
+                        <Link href="/services/diseno-grafico" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
                           Diseño Gráfico
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="#servicio-estrategia" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
+                        <Link href="/services/posicionamiento-comunicacion" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
                           Estrategia
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="#servicio-video" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
+                        <Link href="/services/edicion-videos" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
                           Edición de Videos
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="#servicio-publicidad" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
+                        <Link href="/services/publicidad-online" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
                           Publicidad Online
-                        </a>
+                        </Link>
                       </li>
                       <li>
                         <Link href="/services/creacion-contenido" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
@@ -652,14 +658,14 @@ export default function ContactHero() {
                         </Link>
                       </li>
                       <li>
-                        <a href="#servicio-ads" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
+                        <Link href="/services/campanas-ads" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
                           Campañas de Ads
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="#servicio-community" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
+                        <Link href="/services/community-management" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
                           Community Management
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   )}
@@ -670,7 +676,7 @@ export default function ContactHero() {
                     onClick={() => setIsMenuOpen(false)}
                     className="block font-bold py-4 px-5 rounded-xl transition-all duration-200 bg-gray-50 hover:bg-[#13B9D5]/10 hover:text-[#13B9D5]"
                     style={{
-                      fontFamily: 'var(--font-roboto), sans-serif',
+                      fontFamily: 'var(--font-poppins), sans-serif',
                       fontSize: '16px',
                       color: '#1a1a2e',
                     }}
@@ -688,7 +694,7 @@ export default function ContactHero() {
                         : 'bg-gray-50 hover:bg-[#13B9D5]/10 hover:text-[#13B9D5]'
                     }`}
                     style={{
-                      fontFamily: 'var(--font-roboto), sans-serif',
+                      fontFamily: 'var(--font-poppins), sans-serif',
                       fontSize: '16px',
                       color: pathname === '/contact' ? '#ffffff' : '#1a1a2e',
                     }}
@@ -744,7 +750,7 @@ export default function ContactHero() {
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
-          backgroundColor: '#212121'
+          backgroundColor: '#ffffff'
         }}
       >
         {/* Overlay claro para desvanecido suave */}
@@ -770,8 +776,8 @@ export default function ContactHero() {
             ref={titleRef}
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#272F66] mb-6 sm:mb-8 leading-tight tracking-tight text-center"
             style={{ 
-              fontFamily: 'var(--font-roboto), sans-serif',
-              fontWeight: 900,
+              fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif',
+              fontWeight: 'bold',
               color: '#272F66',
               pointerEvents: 'auto',
               position: 'relative',
@@ -790,7 +796,7 @@ export default function ContactHero() {
             ref={subtitleRef}
             className="text-sm sm:text-base md:text-lg lg:text-xl text-[#272F66] font-light max-w-3xl mx-auto leading-relaxed text-center"
             style={{ 
-              fontFamily: 'var(--font-roboto), sans-serif',
+              fontFamily: 'var(--font-poppins), sans-serif',
               color: '#272F66',
               pointerEvents: 'auto',
               position: 'relative',

@@ -46,7 +46,7 @@ export default function Footer() {
             <div className="mb-4">
               <Link href="/">
                 <Image
-                  src="/img/logo-artica-blanco-pequeno.png"
+                  src="/img/logo-artica-blanco.png"
                   alt="ARTICA"
                   width={100}
                   height={24}
@@ -54,23 +54,24 @@ export default function Footer() {
                 />
               </Link>
             </div>
-            <p className="font-sans text-sm sm:text-base text-gray-300 leading-relaxed">
+            <p className="text-sm sm:text-base text-gray-300 leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
               En Artica Group, nos apasiona convertir desafíos en logros.
             </p>
           </div>
 
           {/* Navegación */}
           <div>
-            <h3 className="font-sans text-base sm:text-lg font-bold text-white mb-4 sm:mb-5">
+            <h3 className="text-base sm:text-lg font-bold text-white mb-4 sm:mb-5" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
               Navegación
             </h3>
             <ul className="space-y-2 sm:space-y-3">
               <li>
                 <Link 
                   href="/" 
-                  className={`font-sans text-sm sm:text-base transition-colors ${
+                  className={`text-sm sm:text-base transition-colors ${
                     pathname === '/' ? 'text-[#ff9001]' : 'text-gray-300 hover:text-white'
                   }`}
+                  style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
                 >
                   Inicio
                 </Link>
@@ -78,9 +79,10 @@ export default function Footer() {
               <li>
                 <Link 
                   href="/about" 
-                  className={`font-sans text-sm sm:text-base transition-colors ${
+                  className={`text-sm sm:text-base transition-colors ${
                     pathname === '/about' ? 'text-[#ff9001]' : 'text-gray-300 hover:text-white'
                   }`}
+                  style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
                 >
                   Sobre Nosotros
                 </Link>
@@ -88,7 +90,8 @@ export default function Footer() {
               <li className="relative">
                 <button
                   onClick={() => setIsServicesOpen(!isServicesOpen)}
-                  className="font-sans text-sm sm:text-base text-gray-300 hover:text-white transition-colors flex items-center gap-1"
+                  className="text-sm sm:text-base text-gray-300 hover:text-white transition-colors flex items-center gap-1"
+                  style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
                 >
                   Servicios
                   <MdArrowDropDown className={`w-5 h-5 transition-transform ${isServicesOpen ? 'rotate-180' : ''}`} />
@@ -96,14 +99,44 @@ export default function Footer() {
                 {isServicesOpen && (
                   <ul className="mt-2 ml-4 space-y-2">
                     <li>
-                      <Link href="/services/creacion-contenido" className="font-sans text-sm text-gray-400 hover:text-white transition-colors">
+                      <Link href="/services/creacion-contenido" className="text-sm text-gray-400 hover:text-white transition-colors" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
                         Creación de Contenido
                       </Link>
                     </li>
                     <li>
-                      <a href="#services" className="font-sans text-sm text-gray-400 hover:text-white">
-                        Marketing Digital
-                      </a>
+                      <Link href="/services/campanas-ads" className="text-sm text-gray-400 hover:text-white transition-colors" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
+                        Campañas de Ads
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/services/community-management" className="text-sm text-gray-400 hover:text-white transition-colors" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
+                        Community Management
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/services/desarrollo-web" className="text-sm text-gray-400 hover:text-white transition-colors" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
+                        Desarrollo Web
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/services/diseno-grafico" className="text-sm text-gray-400 hover:text-white transition-colors" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
+                        Diseño Gráfico
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/services/posicionamiento-comunicacion" className="text-sm text-gray-400 hover:text-white transition-colors" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
+                        Posicionamiento y Comunicación
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/services/edicion-videos" className="text-sm text-gray-400 hover:text-white transition-colors" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
+                        Edición de Videos
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/services/publicidad-online" className="text-sm text-gray-400 hover:text-white transition-colors" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
+                        Publicidad Online
+                      </Link>
                     </li>
                   </ul>
                 )}
@@ -111,7 +144,8 @@ export default function Footer() {
               <li>
                 <a 
                   href="#portfolio" 
-                  className="font-sans text-sm sm:text-base text-gray-300 hover:text-white transition-colors"
+                  className="text-sm sm:text-base text-gray-300 hover:text-white transition-colors"
+                  style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
                 >
                   Portafolio
                 </a>
@@ -119,7 +153,8 @@ export default function Footer() {
               <li>
                 <a 
                   href="#success" 
-                  className="font-sans text-sm sm:text-base text-gray-300 hover:text-white transition-colors"
+                  className="text-sm sm:text-base text-gray-300 hover:text-white transition-colors"
+                  style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
                 >
                   Casos de Éxito
                 </a>
@@ -127,9 +162,10 @@ export default function Footer() {
               <li>
                 <Link 
                   href="/contact" 
-                  className={`font-sans text-sm sm:text-base transition-colors ${
+                  className={`text-sm sm:text-base transition-colors ${
                     pathname === '/contact' ? 'text-[#ff9001]' : 'text-gray-300 hover:text-white'
                   }`}
+                  style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
                 >
                   Contacto
                 </Link>
@@ -139,14 +175,15 @@ export default function Footer() {
 
           {/* Legal */}
           <div>
-            <h3 className="font-sans text-base sm:text-lg font-bold text-white mb-4 sm:mb-5">
+            <h3 className="text-base sm:text-lg font-bold text-white mb-4 sm:mb-5" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
               Legal
             </h3>
             <ul className="space-y-2 sm:space-y-3">
               <li>
                 <a 
                   href="#legal" 
-                  className="font-sans text-sm sm:text-base text-gray-300 hover:text-white transition-colors"
+                  className="text-sm sm:text-base text-gray-300 hover:text-white transition-colors"
+                  style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
                 >
                   Aviso legal
                 </a>
@@ -154,7 +191,8 @@ export default function Footer() {
               <li>
                 <a 
                   href="#terms" 
-                  className="font-sans text-sm sm:text-base text-gray-300 hover:text-white transition-colors"
+                  className="text-sm sm:text-base text-gray-300 hover:text-white transition-colors"
+                  style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
                 >
                   Condiciones de uso
                 </a>
@@ -162,7 +200,8 @@ export default function Footer() {
               <li>
                 <a 
                   href="#privacy" 
-                  className="font-sans text-sm sm:text-base text-gray-300 hover:text-white transition-colors"
+                  className="text-sm sm:text-base text-gray-300 hover:text-white transition-colors"
+                  style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
                 >
                   Política de privacidad
                 </a>
@@ -170,7 +209,8 @@ export default function Footer() {
               <li>
                 <a 
                   href="#cookies" 
-                  className="font-sans text-sm sm:text-base text-gray-300 hover:text-white transition-colors"
+                  className="text-sm sm:text-base text-gray-300 hover:text-white transition-colors"
+                  style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
                 >
                   Política de cookies
                 </a>
@@ -180,7 +220,7 @@ export default function Footer() {
 
           {/* Info */}
           <div>
-            <h3 className="font-sans text-base sm:text-lg font-bold text-white mb-4 sm:mb-5">
+            <h3 className="text-base sm:text-lg font-bold text-white mb-4 sm:mb-5" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
               Info
             </h3>
             <ul className="space-y-3 sm:space-y-4">
@@ -188,7 +228,8 @@ export default function Footer() {
                 <IoMailOutline className="w-5 h-5 text-[#ff9001] flex-shrink-0 mt-0.5" />
                 <a 
                   href="mailto:info@articagroup.us" 
-                  className="font-sans text-sm sm:text-base text-gray-300 hover:text-white transition-colors"
+                  className="text-sm sm:text-base text-gray-300 hover:text-white transition-colors"
+                  style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
                 >
                   info@articagroup.us
                 </a>
@@ -197,14 +238,15 @@ export default function Footer() {
                 <IoCallOutline className="w-5 h-5 text-[#ff9001] flex-shrink-0 mt-0.5" />
                 <a 
                   href="tel:+13056195878" 
-                  className="font-sans text-sm sm:text-base text-gray-300 hover:text-white transition-colors"
+                  className="text-sm sm:text-base text-gray-300 hover:text-white transition-colors"
+                  style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
                 >
                   +1 (305) 619-5878
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <IoLocationOutline className="w-5 h-5 text-[#ff9001] flex-shrink-0 mt-0.5" />
-                <span className="font-sans text-sm sm:text-base text-gray-300">
+                <span className="text-sm sm:text-base text-gray-300" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
                   7701 NW 46th St Suite 1-A, Miami, FL 33166, Estados Unidos
                 </span>
               </li>
@@ -263,7 +305,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="border-t border-white/10 pt-6 sm:pt-8">
-          <p className="font-sans text-xs sm:text-sm text-gray-400 text-center">
+          <p className="text-xs sm:text-sm text-gray-400 text-center" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
             Artica Group LLC © 2026 Todos los derechos reservados
           </p>
         </div>

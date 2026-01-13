@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter, Roboto, Open_Sans } from "next/font/google";
+import { Geist, Geist_Mono, Inter, Roboto, Open_Sans, Poppins } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -31,6 +31,12 @@ const openSans = Open_Sans({
   weight: ["300", "400", "600", "700", "800"],
 });
 
+const poppins = Poppins({
+  variable: "--font-poppins",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+});
+
 export const metadata: Metadata = {
   title: "ARTICA Creative Studio",
   description: "Logramos éxitos empresariales a través de medios digitales",
@@ -49,7 +55,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${roboto.variable} ${openSans.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${roboto.variable} ${openSans.variable} ${poppins.variable} antialiased`}
         suppressHydrationWarning
       >
         {children}

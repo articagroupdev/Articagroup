@@ -163,11 +163,11 @@ export default function Reviews() {
             <div className="w-4 h-4 text-[#ff9001] flex items-center justify-center flex-shrink-0">
               <MdStar className="fill-[#ff9001]" />
             </div>
-            <span className="font-sans text-[10px] sm:text-xs font-semibold text-[#ff9001] uppercase tracking-wider whitespace-nowrap">
+            <span className="text-[10px] sm:text-xs font-semibold text-[#ff9001] uppercase tracking-wider whitespace-nowrap" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
               Google Reviews
             </span>
           </div>
-          <h2 className="font-sans text-lg sm:text-xl md:text-2xl lg:text-3xl font-extrabold text-[#272F66] m-0 tracking-tight leading-[1.2] px-2 sm:px-0">
+          <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-extrabold text-[#272F66] m-0 tracking-tight leading-[1.2] px-2 sm:px-0" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
             Lo que dicen nuestros clientes en Google
           </h2>
         </div>
@@ -191,7 +191,7 @@ export default function Reviews() {
                   <div className="flex items-start gap-3 mb-3 sm:mb-4">
                     {/* Profile Image Placeholder */}
                     <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-[#13B9D5] to-[#0FA8C2] flex items-center justify-center flex-shrink-0 border-2 border-white shadow-md">
-                      <span className="font-sans text-sm sm:text-base font-bold text-white uppercase">
+                      <span className="text-sm sm:text-base font-bold text-white uppercase" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
                         {review.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
                       </span>
                     </div>
@@ -199,11 +199,11 @@ export default function Reviews() {
                     {/* Name, Date and Stars */}
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-1">
-                        <h3 className="font-sans text-sm sm:text-base font-bold text-[#272F66] truncate">
+                        <h3 className="text-sm sm:text-base font-bold text-[#272F66] truncate" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
                           {review.name}
                         </h3>
                       </div>
-                      <p className="font-sans text-xs text-gray-500 mb-1.5">
+                      <p className="text-xs text-gray-500 mb-1.5" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
                         {review.date}
                       </p>
                       <div className="flex items-center gap-0.5">
@@ -214,7 +214,7 @@ export default function Reviews() {
 
                   {/* Review Text */}
                   <div className="flex-1 mb-3 sm:mb-4">
-                    <p className="font-sans text-xs sm:text-sm font-normal text-[#272F66]/85 leading-relaxed whitespace-pre-line line-clamp-6">
+                    <p className="text-xs sm:text-sm font-normal text-[#272F66]/85 leading-relaxed whitespace-pre-line line-clamp-6" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
                       {review.text}
                     </p>
                   </div>
@@ -245,7 +245,7 @@ export default function Reviews() {
                           fill="#EA4335"
                         />
                       </svg>
-                      <span className="font-sans text-xs font-medium text-gray-600">
+                      <span className="text-xs font-medium text-gray-600" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
                         Google
                       </span>
                     </div>
