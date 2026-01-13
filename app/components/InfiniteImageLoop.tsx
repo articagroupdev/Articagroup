@@ -26,14 +26,32 @@ export default function InfiniteImageLoop({ images }: InfiniteImageLoopProps) {
     const topRow = topRowRef.current;
     const bottomRow = bottomRowRef.current;
 
+    let topAnimation: gsap.core.Tween | null = null;
+    let bottomAnimation: gsap.core.Tween | null = null;
+
     // Esperar a que las imágenes se carguen para obtener el ancho correcto
     const initAnimations = () => {
+      // Limpiar animaciones anteriores si existen
+      if (topAnimation) topAnimation.kill();
+      if (bottomAnimation) bottomAnimation.kill();
+
+      // Forzar un reflow para calcular correctamente el ancho
+      void topRow.offsetWidth;
+      void bottomRow.offsetWidth;
+
       // Obtener el ancho de una copia completa (mitad del scrollWidth total)
       const topRowWidth = topRow.scrollWidth / 2;
       const bottomRowWidth = bottomRow.scrollWidth / 2;
 
+      // Verificar que los anchos sean válidos
+      if (topRowWidth <= 0 || bottomRowWidth <= 0) {
+        console.warn('InfiniteImageLoop: Anchos inválidos, reintentando...');
+        setTimeout(initAnimations, 200);
+        return;
+      }
+
       // Animación para la fila superior (hacia la derecha - x negativo)
-      const topAnimation = gsap.to(topRow, {
+      topAnimation = gsap.to(topRow, {
         x: -topRowWidth,
         duration: 30,
         ease: 'none',
@@ -45,47 +63,64 @@ export default function InfiniteImageLoop({ images }: InfiniteImageLoopProps) {
       // y animamos hasta 0. Cuando se reinicia, vuelve a la posición negativa
       // pero la segunda copia de imágenes está en la posición correcta para el bucle infinito
       gsap.set(bottomRow, { x: -bottomRowWidth });
-      const bottomAnimation = gsap.to(bottomRow, {
+      bottomAnimation = gsap.to(bottomRow, {
         x: 0,
         duration: 30,
         ease: 'none',
         repeat: -1,
       });
-
-      return () => {
-        topAnimation.kill();
-        bottomAnimation.kill();
-      };
     };
 
-    // Esperar a que las imágenes se carguen
-    const images = topRow.querySelectorAll('img');
-    if (images.length > 0) {
+    // Función para verificar si las imágenes están cargadas
+    const checkImagesLoaded = () => {
+      const allImages = [
+        ...topRow.querySelectorAll('img'),
+        ...bottomRow.querySelectorAll('img'),
+      ];
+
+      if (allImages.length === 0) {
+        // Si no hay imágenes, inicializar después de un delay
+        setTimeout(initAnimations, 200);
+        return;
+      }
+
       let loadedCount = 0;
-      const totalImages = images.length;
+      const totalImages = allImages.length;
       
       const checkLoaded = () => {
         loadedCount++;
         if (loadedCount === totalImages) {
-          // Pequeño delay para asegurar que el layout esté calculado
-          setTimeout(initAnimations, 100);
+          // Usar requestAnimationFrame para asegurar que el layout esté calculado
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              initAnimations();
+            });
+          });
         }
       };
 
-      images.forEach((img) => {
-        if ((img as HTMLImageElement).complete) {
+      allImages.forEach((img) => {
+        const imageElement = img as HTMLImageElement;
+        if (imageElement.complete && imageElement.naturalHeight > 0) {
           checkLoaded();
         } else {
-          img.addEventListener('load', checkLoaded);
-          img.addEventListener('error', checkLoaded);
+          imageElement.addEventListener('load', checkLoaded, { once: true });
+          imageElement.addEventListener('error', checkLoaded, { once: true });
         }
       });
-    } else {
-      // Si no hay imágenes, inicializar inmediatamente
-      setTimeout(initAnimations, 100);
-    }
+    };
+
+    // Inicializar después de que el componente esté montado
+    // Usar múltiples requestAnimationFrame para asegurar que el DOM esté listo
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        checkImagesLoaded();
+      });
+    });
 
     return () => {
+      if (topAnimation) topAnimation.kill();
+      if (bottomAnimation) bottomAnimation.kill();
       gsap.killTweensOf([topRow, bottomRow]);
     };
   }, [images]);
