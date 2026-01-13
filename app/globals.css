@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "locomotive-scroll/dist/locomotive-scroll.css";
+/* Locomotive Scroll CSS - importado dinámicamente en componentes que lo usan */
 
 /* Hero Photography Banner Fonts */
 @font-face {
