@@ -125,15 +125,31 @@ export default function ContactHero() {
             boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
           });
         } else {
-          // Solo aplicar en desktop (lg y superior)
+          // En desktop: transparente inicialmente, blanco al hacer scroll
+          gsap.set(navRef.current, {
+            backgroundColor: 'rgba(255, 255, 255, 0)',
+            boxShadow: '0 0 0 rgba(0, 0, 0, 0)',
+          });
+          
+          // Animación al hacer scroll
           gsap.to(navRef.current, {
             backgroundColor: 'rgba(255, 255, 255, 1)',
             boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
             scrollTrigger: {
-              trigger: document.body,
-              start: 'top -80',
-              end: 'top -40',
-              scrub: true,
+              trigger: sectionRef.current || document.body,
+              start: 'top -100',
+              end: 'top -50',
+              scrub: 1,
+              onUpdate: (self) => {
+                // Asegurar que el estilo se aplique correctamente
+                if (navRef.current) {
+                  const progress = self.progress;
+                  navRef.current.style.backgroundColor = `rgba(255, 255, 255, ${progress})`;
+                  navRef.current.style.boxShadow = progress > 0.1 
+                    ? '0 4px 6px -1px rgba(0, 0, 0, 0.1)' 
+                    : '0 0 0 rgba(0, 0, 0, 0)';
+                }
+              },
             },
           });
         }
@@ -183,12 +199,13 @@ export default function ContactHero() {
         ref={navRef}
         className="fixed top-0 left-0 right-0 z-[9999] px-2 sm:px-4 md:px-6 lg:px-8 py-2 sm:py-3 md:py-4 transition-all duration-300 bg-white lg:bg-transparent shadow-sm lg:shadow-none"
         style={{
+          // En móvil siempre blanco, en desktop se controla con GSAP
           backgroundColor: isMobile || isMenuOpen 
             ? 'rgba(255, 255, 255, 1)' 
-            : 'transparent',
+            : undefined,
           boxShadow: isMobile || isMenuOpen
             ? '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
-            : 'none',
+            : undefined,
         }}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between">

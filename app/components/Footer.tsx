@@ -49,8 +49,8 @@ export default function Footer() {
                   src="/img/logo-artica-blanco-pequeno.png"
                   alt="ARTICA"
                   width={100}
-                  height={30}
-                  className="h-6 sm:h-7 w-auto"
+                  height={24}
+                  className="h-5 sm:h-6 w-auto max-w-[140px]"
                 />
               </Link>
             </div>
