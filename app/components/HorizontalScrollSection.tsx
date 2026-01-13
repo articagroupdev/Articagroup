@@ -150,19 +150,36 @@ export default function HorizontalScrollSection({
         });
 
         Promise.all(imagePromises).then(() => {
-          // Dar tiempo adicional para que el layout se calcule
-          setTimeout(() => {
-            initHorizontalScroll();
-          }, 100);
+          // Usar requestAnimationFrame para asegurar que el layout esté calculado
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              // Forzar un reflow
+              if (pinWrapRef.current) {
+                void pinWrapRef.current.offsetWidth;
+              }
+              initHorizontalScroll();
+              // Refrescar ScrollTrigger después de inicializar
+              ScrollTrigger.refresh();
+            });
+          });
         });
       };
 
       // Inicializar después de que todo esté cargado
+      const initializeScroll = () => {
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            setupScroll();
+          });
+        });
+      };
+
       if (document.readyState === 'complete') {
-        setTimeout(setupScroll, 100);
+        initializeScroll();
       } else {
-        window.addEventListener('load', () => setTimeout(setupScroll, 100), { once: true });
-        setTimeout(setupScroll, 300);
+        window.addEventListener('load', initializeScroll, { once: true });
+        // También intentar después de un delay por si acaso
+        setTimeout(initializeScroll, 300);
       }
 
       // Refrescar ScrollTrigger cuando cambie el tamaño de la ventana
