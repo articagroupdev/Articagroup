@@ -2,8 +2,9 @@
 
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import { Draggable } from 'gsap/Draggable';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+// @ts-ignore - Draggable puede tener problemas de case-sensitivity en diferentes sistemas
+import { Draggable } from 'gsap/Draggable';
 import { 
   MdCreate, 
   MdCampaign, 
@@ -16,7 +17,12 @@ import {
 } from 'react-icons/md';
 import styles from './GlassmorphismCarousel.module.css';
 
-gsap.registerPlugin(Draggable, ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
+// @ts-ignore
+if (typeof Draggable !== 'undefined') {
+  // @ts-ignore
+  gsap.registerPlugin(Draggable);
+}
 
 export default function GlassmorphismCarousel() {
   const sectionRef = useRef<HTMLElement>(null);
