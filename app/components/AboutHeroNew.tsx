@@ -808,13 +808,32 @@ export default function AboutHeroNew() {
           autoPlay
           loop
           playsInline
+          preload="auto"
           className="h-auto max-w-full"
           style={{ 
             width: '50%',
             minWidth: '50%',
             maxWidth: '100%'
           }}
-        />
+          onError={(e) => {
+            console.error('Error loading video:', e);
+            // Ocultar video si hay error y mostrar mensaje
+            const video = e.currentTarget;
+            video.style.display = 'none';
+            const container = video.parentElement;
+            if (container) {
+              container.innerHTML = '<p className="text-gray-500">Video no disponible</p>';
+            }
+          }}
+          onLoadStart={() => {
+            console.log('Video loading started');
+          }}
+          onCanPlay={() => {
+            console.log('Video can play');
+          }}
+        >
+          Tu navegador no soporta el elemento de video.
+        </video>
       </section>
 
       <style jsx>{`
