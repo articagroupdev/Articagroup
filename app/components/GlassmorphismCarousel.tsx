@@ -3,8 +3,6 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-// @ts-ignore - Draggable puede tener problemas de case-sensitivity en diferentes sistemas
-import { Draggable } from 'gsap/Draggable';
 import { 
   MdCreate, 
   MdCampaign, 
@@ -18,10 +16,17 @@ import {
 import styles from './GlassmorphismCarousel.module.css';
 
 gsap.registerPlugin(ScrollTrigger);
-// @ts-ignore
-if (typeof Draggable !== 'undefined') {
+
+// Importación dinámica de Draggable para evitar problemas de case-sensitivity
+let Draggable: any = null;
+try {
   // @ts-ignore
-  gsap.registerPlugin(Draggable);
+  Draggable = require('gsap/Draggable').Draggable;
+  if (Draggable) {
+    gsap.registerPlugin(Draggable);
+  }
+} catch (e) {
+  console.warn('Draggable plugin not available:', e);
 }
 
 export default function GlassmorphismCarousel() {
@@ -29,7 +34,7 @@ export default function GlassmorphismCarousel() {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const draggableInstance = useRef<Draggable | null>(null);
+  const draggableInstance = useRef<any>(null);
   const animationInstance = useRef<gsap.core.Tween | null>(null);
   const cardsRef = useRef<HTMLElement[]>([]);
 
@@ -172,6 +177,11 @@ export default function GlassmorphismCarousel() {
     };
 
     // Crear Draggable sin límites estrictos para scroll infinito
+    if (!Draggable) {
+      console.warn('Draggable plugin not available, using fallback');
+      return;
+    }
+    
     draggableInstance.current = Draggable.create(track, {
       type: 'x',
       // Sin bounds para permitir scroll infinito
@@ -185,7 +195,7 @@ export default function GlassmorphismCarousel() {
       throwProps: true, // Habilitar propiedades de inercia mejoradas
       liveSnap: false, // Deshabilitar snap en vivo para movimiento más fluido
       snap: {
-        x: function(endValue) {
+        x: function(endValue: number) {
           // Permitir movimiento libre sin snaps
           return endValue;
         }
