@@ -45,6 +45,28 @@ export const metadata: Metadata = {
     shortcut: '/img/icon.avif',
     apple: '/img/icon.avif',
   },
+  openGraph: {
+    title: "ARTICA Creative Studio",
+    description: "Logramos éxitos empresariales a través de medios digitales",
+    url: "https://articagroup.vercel.app",
+    siteName: "ARTICA Creative Studio",
+    images: [
+      {
+        url: "https://articagroup.vercel.app/img/logo-mini-blanco.png",
+        width: 1200,
+        height: 630,
+        alt: "ARTICA Creative Studio",
+      },
+    ],
+    locale: "es_ES",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ARTICA Creative Studio",
+    description: "Logramos éxitos empresariales a través de medios digitales",
+    images: ["https://articagroup.vercel.app/img/logo-mini-blanco.png"],
+  },
 };
 
 export default function RootLayout({
