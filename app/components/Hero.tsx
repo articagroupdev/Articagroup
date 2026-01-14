@@ -164,27 +164,57 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
     }
   }, []);
 
-  // Intentar cargar el video manualmente después de que el componente se monte
+  // Intentar cargar y reproducir el video después de que el componente se monte
   useEffect(() => {
     if (videoRef.current && !videoError && videoSrc) {
       const video = videoRef.current;
-      // Intentar cargar el video
-      video.load();
       
-      // Verificar si el video se puede reproducir después de un breve delay
-      const checkVideo = setTimeout(() => {
-        if (video.readyState >= 2) {
-          console.log('Video ready to play');
-        } else {
-          console.warn('Video not ready, checking error state');
-          if (video.error) {
-            console.error('Video has error:', video.error);
-            setVideoError(true);
+      // Función para intentar cargar el video
+      const loadVideo = async () => {
+        try {
+          video.load();
+          
+          // Esperar a que los metadatos se carguen
+          await new Promise((resolve, reject) => {
+            const onLoadedMetadata = () => {
+              video.removeEventListener('loadedmetadata', onLoadedMetadata);
+              video.removeEventListener('error', onError);
+              resolve(true);
+            };
+            const onError = () => {
+              video.removeEventListener('loadedmetadata', onLoadedMetadata);
+              video.removeEventListener('error', onError);
+              reject(new Error('Video load error'));
+            };
+            
+            if (video.readyState >= 1) {
+              resolve(true);
+            } else {
+              video.addEventListener('loadedmetadata', onLoadedMetadata);
+              video.addEventListener('error', onError);
+              
+              // Timeout después de 5 segundos
+              setTimeout(() => {
+                video.removeEventListener('loadedmetadata', onLoadedMetadata);
+                video.removeEventListener('error', onError);
+                reject(new Error('Video load timeout'));
+              }, 5000);
+            }
+          });
+          
+          // Intentar reproducir
+          const playPromise = video.play();
+          if (playPromise !== undefined) {
+            await playPromise;
+            console.log('Video playing successfully');
           }
+        } catch (error) {
+          console.error('Error loading/playing video:', error);
+          setVideoError(true);
         }
-      }, 2000);
-
-      return () => clearTimeout(checkVideo);
+      };
+      
+      loadVideo();
     }
   }, [videoError, videoSrc]);
 
@@ -224,7 +254,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
         loop
         muted
         playsInline
-        preload="none"
+        preload="metadata"
         className="absolute inset-0 w-full h-full object-cover z-[0.5]"
         style={{
           position: 'absolute',

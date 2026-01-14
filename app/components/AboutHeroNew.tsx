@@ -107,6 +107,60 @@ export default function AboutHeroNew() {
     }
   }, []);
 
+  // Intentar cargar y reproducir el video después de que el componente se monte
+  useEffect(() => {
+    if (videoRef.current && videoSrc) {
+      const video = videoRef.current;
+      
+      // Función para intentar cargar el video
+      const loadVideo = async () => {
+        try {
+          video.load();
+          
+          // Esperar a que los metadatos se carguen
+          await new Promise((resolve, reject) => {
+            const onLoadedMetadata = () => {
+              video.removeEventListener('loadedmetadata', onLoadedMetadata);
+              video.removeEventListener('error', onError);
+              resolve(true);
+            };
+            const onError = () => {
+              video.removeEventListener('loadedmetadata', onLoadedMetadata);
+              video.removeEventListener('error', onError);
+              reject(new Error('Video load error'));
+            };
+            
+            if (video.readyState >= 1) {
+              resolve(true);
+            } else {
+              video.addEventListener('loadedmetadata', onLoadedMetadata);
+              video.addEventListener('error', onError);
+              
+              // Timeout después de 5 segundos
+              setTimeout(() => {
+                video.removeEventListener('loadedmetadata', onLoadedMetadata);
+                video.removeEventListener('error', onError);
+                reject(new Error('Video load timeout'));
+              }, 5000);
+            }
+          });
+          
+          // Intentar reproducir
+          const playPromise = video.play();
+          if (playPromise !== undefined) {
+            await playPromise;
+            console.log('Video playing successfully');
+          }
+        } catch (error) {
+          console.error('Error loading/playing video:', error);
+          // No establecer error aquí, dejar que el onError del video lo maneje
+        }
+      };
+      
+      loadVideo();
+    }
+  }, [videoSrc]);
+
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Animación de la navegación
@@ -816,7 +870,7 @@ export default function AboutHeroNew() {
           autoPlay
           loop
           playsInline
-          preload="none"
+          preload="metadata"
           className="h-auto max-w-full"
           style={{ 
             width: '50%',
