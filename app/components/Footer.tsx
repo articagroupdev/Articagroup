@@ -142,13 +142,13 @@ export default function Footer() {
                 )}
               </li>
               <li>
-                <a 
-                  href="#portfolio" 
+                <Link 
+                  href="/portfolio" 
                   className="text-sm sm:text-base text-gray-300 hover:text-white transition-colors"
                   style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
                 >
                   Portafolio
-                </a>
+                </Link>
               </li>
               <li>
                 <a 

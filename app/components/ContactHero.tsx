@@ -431,8 +431,8 @@ export default function ContactHero() {
               )}
             </li>
             <li>
-              <a
-                href="#fourth"
+              <Link
+                href="/portfolio"
                 className="font-bold transition-colors duration-200 text-xs xl:text-sm hover:text-[#13B9D5]"
                 style={{
                   color: '#272F66',
@@ -440,7 +440,7 @@ export default function ContactHero() {
                 }}
               >
                 Portafolio
-              </a>
+              </Link>
             </li>
             <li>
               <Link
@@ -672,7 +672,7 @@ export default function ContactHero() {
                 </li>
                 <li>
                   <Link
-                    href="#fourth"
+                    href="/portfolio"
                     onClick={() => setIsMenuOpen(false)}
                     className="block font-bold py-4 px-5 rounded-xl transition-all duration-200 bg-gray-50 hover:bg-[#13B9D5]/10 hover:text-[#13B9D5]"
                     style={{
