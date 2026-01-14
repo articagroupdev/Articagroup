@@ -17,18 +17,6 @@ import styles from './GlassmorphismCarousel.module.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Importación dinámica de Draggable para evitar problemas de case-sensitivity
-let Draggable: any = null;
-try {
-  // @ts-ignore
-  Draggable = require('gsap/Draggable').Draggable;
-  if (Draggable) {
-    gsap.registerPlugin(Draggable);
-  }
-} catch (e) {
-  console.warn('Draggable plugin not available:', e);
-}
-
 export default function GlassmorphismCarousel() {
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -176,13 +164,23 @@ export default function GlassmorphismCarousel() {
       });
     };
 
-    // Crear Draggable sin límites estrictos para scroll infinito
-    if (!Draggable) {
-      console.warn('Draggable plugin not available, using fallback');
-      return;
-    }
-    
-    draggableInstance.current = Draggable.create(track, {
+    // Importación dinámica de Draggable dentro del useEffect para evitar problemas de build
+    const initDraggable = async () => {
+      try {
+        // @ts-ignore
+        const DraggableModule = await import('gsap/Draggable');
+        const Draggable = DraggableModule.Draggable;
+        
+        if (Draggable) {
+          gsap.registerPlugin(Draggable);
+        }
+
+        if (!Draggable) {
+          console.warn('Draggable plugin not available, using fallback');
+          return;
+        }
+        
+        draggableInstance.current = Draggable.create(track, {
       type: 'x',
       // Sin bounds para permitir scroll infinito
       inertia: true,
@@ -267,6 +265,14 @@ export default function GlassmorphismCarousel() {
         }
       },
     })[0];
+      } catch (error) {
+        console.warn('Error loading Draggable plugin:', error);
+        // Continuar sin Draggable, solo con la animación automática
+      }
+    };
+
+    // Inicializar Draggable
+    initDraggable();
 
     // Iniciar animación desde el inicio
     createAnimation(0);
