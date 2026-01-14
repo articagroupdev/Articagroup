@@ -111,14 +111,14 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
   useEffect(() => {
     if (typeof window === 'undefined') return;
     
-    // Solo aplicar en desktop (lg y superior)
-    if (window.innerWidth >= 1024 && navRef.current) {
-      const scrollTriggerInstance = ScrollTrigger.create({
-        trigger: document.body,
-        start: 'top -80',
-        end: 'top -40',
-        scrub: true,
-        onEnter: () => {
+    const isMobile = window.innerWidth < 1024;
+    
+    if (isMobile) {
+      // En móvil: usar scroll event listener
+      const handleScroll = () => {
+        const scrollY = window.scrollY;
+        
+        if (scrollY > 50) {
           setIsScrolled(true);
           if (navRef.current) {
             gsap.to(navRef.current, {
@@ -127,8 +127,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
               duration: 0.3,
             });
           }
-        },
-        onLeaveBack: () => {
+        } else {
           setIsScrolled(false);
           if (navRef.current) {
             gsap.to(navRef.current, {
@@ -137,12 +136,50 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
               duration: 0.3,
             });
           }
-        },
-      });
-
-      return () => {
-        scrollTriggerInstance.kill();
+        }
       };
+
+      // Aplicar inicialmente
+      handleScroll();
+      
+      window.addEventListener('scroll', handleScroll);
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    } else {
+      // En desktop: usar ScrollTrigger como antes
+      if (navRef.current) {
+        const scrollTriggerInstance = ScrollTrigger.create({
+          trigger: document.body,
+          start: 'top -80',
+          end: 'top -40',
+          scrub: true,
+          onEnter: () => {
+            setIsScrolled(true);
+            if (navRef.current) {
+              gsap.to(navRef.current, {
+                backgroundColor: 'rgba(255, 255, 255, 1)',
+                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+                duration: 0.3,
+              });
+            }
+          },
+          onLeaveBack: () => {
+            setIsScrolled(false);
+            if (navRef.current) {
+              gsap.to(navRef.current, {
+                backgroundColor: 'transparent',
+                boxShadow: 'none',
+                duration: 0.3,
+              });
+            }
+          },
+        });
+
+        return () => {
+          scrollTriggerInstance.kill();
+        };
+      }
     }
   }, []);
 
@@ -306,7 +343,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
       {/* Navegación */}
       <nav
         ref={navRef}
-        className="fixed top-0 left-0 right-0 z-[9999] px-2 sm:px-4 md:px-6 lg:px-8 xl:px-12 py-2 sm:py-3 md:py-4 transition-all duration-300 bg-white lg:bg-transparent shadow-sm lg:shadow-none"
+        className="fixed top-0 left-0 right-0 z-[9999] px-2 sm:px-4 md:px-6 lg:px-8 xl:px-12 py-2 sm:py-3 md:py-4 transition-all duration-300 bg-transparent lg:bg-transparent shadow-none lg:shadow-none"
         style={{ overflow: 'visible' }}
       >
         <div className="max-w-7xl mx-auto w-full flex items-center justify-between" style={{ overflow: 'visible' }}>
@@ -589,28 +626,30 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
             {/* Botón móvil */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="lg:hidden p-2 hover:text-[#1e2547] transition-colors font-bold"
+              className="lg:hidden p-2.5 hover:bg-gray-100 rounded-lg transition-all duration-200 font-bold"
               style={{
                 color: '#272F66',
                 textShadow: 'none',
               }}
               aria-label="Toggle menu"
             >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                {isMenuOpen ? (
-                  <path d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
+              <div className="relative w-6 h-5 flex flex-col justify-center items-center">
+                <span 
+                  className={`absolute w-6 h-0.5 bg-[#272F66] rounded-full transition-all duration-300 ${
+                    isMenuOpen ? 'rotate-45 top-2.5' : 'top-0'
+                  }`}
+                />
+                <span 
+                  className={`absolute w-6 h-0.5 bg-[#272F66] rounded-full transition-all duration-300 ${
+                    isMenuOpen ? 'opacity-0' : 'opacity-100 top-2'
+                  }`}
+                />
+                <span 
+                  className={`absolute w-6 h-0.5 bg-[#272F66] rounded-full transition-all duration-300 ${
+                    isMenuOpen ? '-rotate-45 top-2.5' : 'top-4'
+                  }`}
+                />
+              </div>
             </button>
           </div>
         </div>
@@ -646,9 +685,9 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
             {/* Header del menú - Fondo blanco con logo */}
             <div className="flex items-center justify-between px-6 py-5 bg-white border-b border-gray-200" style={{ backgroundColor: '#ffffff' }}>
               <img 
-                src="/img/logo-artica-blanco.png" 
+                src="/img/logo-artica-2.avif" 
                 alt="ARTICA" 
-                className="h-8 sm:h-16 w-auto"
+                className="h-8 sm:h-10 w-auto"
               />
               <button
                 onClick={() => setIsMenuOpen(false)}
