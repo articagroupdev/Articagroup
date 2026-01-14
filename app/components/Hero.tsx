@@ -187,7 +187,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
         loop
         muted
         playsInline
-        preload="metadata"
+        preload="auto"
         className="absolute inset-0 w-full h-full object-cover z-[0.5]"
         style={{
           position: 'absolute',

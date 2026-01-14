@@ -808,7 +808,7 @@ export default function AboutHeroNew() {
           autoPlay
           loop
           playsInline
-          preload="metadata"
+          preload="auto"
           className="h-auto max-w-full"
           style={{ 
             width: '50%',
