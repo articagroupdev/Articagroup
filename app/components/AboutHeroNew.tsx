@@ -14,6 +14,7 @@ export default function AboutHeroNew() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [language, setLanguage] = useState<'es' | 'en'>('es');
+  const [videoSrc, setVideoSrc] = useState<string>('');
   const pathname = usePathname();
   const navRef = useRef<HTMLElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
@@ -98,6 +99,13 @@ export default function AboutHeroNew() {
       document.body.style.overflow = '';
     };
   }, [isMenuOpen]);
+
+  // Establecer la ruta del video en el cliente
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setVideoSrc(`${window.location.origin}/img/video-nosotros1.mp4`);
+    }
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -803,12 +811,12 @@ export default function AboutHeroNew() {
       >
         <video
           ref={videoRef}
-          src="/img/video-nosotros1.mp4"
+          src={videoSrc}
           muted
           autoPlay
           loop
           playsInline
-          preload="metadata"
+          preload="none"
           className="h-auto max-w-full"
           style={{ 
             width: '50%',
@@ -831,14 +839,10 @@ export default function AboutHeroNew() {
             }
           }}
           onLoadStart={() => {
-            console.log('Video loading started: /img/video-nosotros1.mp4');
+            console.log('Video loading started');
           }}
           onLoadedMetadata={() => {
             console.log('Video metadata loaded');
-            // Intentar cargar el video después de que los metadatos estén listos
-            if (videoRef.current) {
-              videoRef.current.load();
-            }
           }}
           onCanPlay={() => {
             console.log('Video can play');
@@ -853,6 +857,7 @@ export default function AboutHeroNew() {
             console.warn('Video suspended');
           }}
         >
+          {videoSrc && <source src={videoSrc} type="video/mp4" />}
           Tu navegador no soporta el elemento de video.
         </video>
       </section>
