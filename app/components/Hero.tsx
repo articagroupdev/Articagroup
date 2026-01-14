@@ -568,8 +568,8 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
               )}
             </li>
             <li>
-              <a
-                href="#fourth"
+              <Link
+                href="/portfolio"
                 className="font-bold transition-colors duration-200 text-xs xl:text-sm hover:text-[#13B9D5]"
                 style={{
                   color: isScrolled ? '#272F66' : '#ffffff',
@@ -577,7 +577,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
                 }}
               >
                 Portafolio
-              </a>
+              </Link>
             </li>
             <li>
               <Link
@@ -816,7 +816,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
                 </li>
                 <li>
                   <Link
-                    href="#fourth"
+                    href="/portfolio"
                     onClick={() => setIsMenuOpen(false)}
                     className="block font-bold py-4 px-5 rounded-xl transition-all duration-200 bg-gray-50 hover:bg-[#13B9D5]/10 hover:text-[#13B9D5]"
                     style={{
@@ -989,7 +989,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
           </p>
 
           {/* Botones CTA */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+          <div className="flex flex-row items-center justify-center gap-2 sm:gap-3 md:gap-4">
             {/* Botón Principal */}
             <a
               ref={heroButtonRef}
@@ -997,17 +997,17 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
               className="inline-flex items-center justify-center transition-all duration-300"
               style={{ 
                 fontFamily: 'var(--font-poppins), sans-serif',
-                fontSize: 'clamp(14px, 1.2vw, 16px)',
+                fontSize: 'clamp(12px, 1vw, 16px)',
                 fontWeight: 600,
                 color: '#ffffff',
                 textDecoration: 'none',
                 opacity: 1,
                 visibility: 'visible',
                 backgroundColor: '#272F66',
-                padding: 'clamp(12px, 1.4vw, 14px) clamp(28px, 3.5vw, 32px)',
+                padding: 'clamp(10px, 1.2vw, 14px) clamp(20px, 2.5vw, 32px)',
                 borderRadius: '9999px',
                 boxShadow: '0 2px 8px rgba(39, 47, 102, 0.2)',
-                minWidth: '160px',
+                minWidth: 'auto',
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.backgroundColor = '#1e2547';
@@ -1024,12 +1024,12 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
             </a>
 
             {/* Botón Portafolio */}
-            <a
-              href="#fourth"
+            <Link
+              href="/portfolio"
               className="inline-flex items-center justify-center transition-all duration-300"
               style={{ 
                 fontFamily: 'var(--font-poppins), sans-serif',
-                fontSize: 'clamp(14px, 1.2vw, 16px)',
+                fontSize: 'clamp(12px, 1vw, 16px)',
                 fontWeight: 600,
                 color: '#ff9001',
                 textDecoration: 'none',
@@ -1037,10 +1037,10 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
                 visibility: 'visible',
                 backgroundColor: 'transparent',
                 border: '2px solid #ff9001',
-                padding: 'clamp(12px, 1.4vw, 14px) clamp(28px, 3.5vw, 32px)',
+                padding: 'clamp(10px, 1.2vw, 14px) clamp(20px, 2.5vw, 32px)',
                 borderRadius: '9999px',
                 boxShadow: '0 2px 8px rgba(255, 144, 1, 0.2)',
-                minWidth: '160px',
+                minWidth: 'auto',
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.backgroundColor = '#ff9001';
@@ -1056,7 +1056,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
               }}
             >
               Portafolio
-            </a>
+            </Link>
           </div>
             </div>
           </div>

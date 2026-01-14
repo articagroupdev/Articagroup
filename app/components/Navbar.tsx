@@ -15,6 +15,7 @@ export default function Navbar() {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [language, setLanguage] = useState<'es' | 'en'>('es');
   const pathname = usePathname();
+  const isPortfolioPage = pathname === '/portfolio';
   const navRef = useRef<HTMLElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
   const navLinksRef = useRef<HTMLUListElement>(null);
@@ -111,8 +112,8 @@ export default function Navbar() {
         });
       }
 
-      // Efecto de scroll en la navegación (solo en desktop)
-      if (navRef.current && typeof window !== 'undefined' && window.innerWidth >= 1024) {
+      // Efecto de scroll en la navegación (solo en desktop y solo si NO estamos en portfolio)
+      if (navRef.current && typeof window !== 'undefined' && window.innerWidth >= 1024 && !isPortfolioPage) {
         gsap.to(navRef.current, {
           backgroundColor: 'rgba(255, 255, 255, 1)',
           boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
@@ -129,13 +130,19 @@ export default function Navbar() {
     return () => {
       ctx.revert();
     };
-  }, []);
+  }, [isPortfolioPage]);
 
   return (
     <nav
       ref={navRef}
-      className="fixed top-0 left-0 right-0 z-[9997] px-2 sm:px-4 md:px-6 lg:px-8 xl:px-12 py-2 sm:py-3 md:py-4 transition-all duration-300 bg-white lg:bg-transparent shadow-sm lg:shadow-none"
-      style={{ overflow: 'visible' }}
+      className={`fixed top-0 left-0 right-0 z-[9997] px-2 sm:px-4 md:px-6 lg:px-8 xl:px-12 py-2 sm:py-3 md:py-4 transition-all duration-300 ${
+        isPortfolioPage ? 'bg-transparent shadow-none' : 'bg-white lg:bg-transparent shadow-sm lg:shadow-none'
+      }`}
+      style={{ 
+        overflow: 'visible',
+        backgroundColor: isPortfolioPage ? 'transparent' : undefined,
+        boxShadow: isPortfolioPage ? 'none' : undefined,
+      }}
     >
       <div className="max-w-7xl mx-auto w-full flex items-center justify-between" style={{ overflow: 'visible' }}>
         {/* Logo y Links de navegación - Izquierda */}
@@ -144,7 +151,7 @@ export default function Navbar() {
           <div ref={logoRef} className="flex items-center">
             <Link href="/" className="flex items-center">
               <img 
-                src="/img/logo-artica-2.avif" 
+                src={isPortfolioPage ? "/img/logo-artica-blanco.png" : "/img/logo-artica-2.avif"} 
                 alt="ARTICA" 
                 className="h-8 sm:h-10 md:h-10 w-auto"
               />
@@ -164,7 +171,7 @@ export default function Navbar() {
                 pathname === '/' ? 'text-[#13B9D5]' : ''
               }`}
               style={{
-                color: pathname === '/' ? '#13B9D5' : '#272F66',
+                color: pathname === '/' ? '#13B9D5' : (isPortfolioPage ? '#ffffff' : '#272F66'),
                 textShadow: 'none',
                 fontFamily: 'var(--font-poppins), sans-serif',
               }}
@@ -179,7 +186,7 @@ export default function Navbar() {
                 pathname === '/about' ? 'text-[#13B9D5]' : ''
               }`}
               style={{
-                color: pathname === '/about' ? '#13B9D5' : '#272F66',
+                color: pathname === '/about' ? '#13B9D5' : (isPortfolioPage ? '#ffffff' : '#272F66'),
                 textShadow: 'none',
                 fontFamily: 'var(--font-poppins), sans-serif',
               }}
@@ -207,7 +214,7 @@ export default function Navbar() {
               }}
               className="font-bold transition-colors duration-200 inline-flex items-center text-xs xl:text-sm cursor-pointer"
               style={{
-                color: isServicesOpen ? '#13B9D5' : '#272F66',
+                color: isServicesOpen ? '#13B9D5' : (isPortfolioPage ? '#ffffff' : '#272F66'),
                 textShadow: 'none',
                 fontFamily: 'var(--font-poppins), sans-serif',
               }}
@@ -364,10 +371,10 @@ export default function Navbar() {
           </li>
           <li>
             <Link
-              href="#fourth"
+              href="/portfolio"
               className="font-bold transition-colors duration-200 text-xs xl:text-sm hover:text-[#13B9D5]"
               style={{
-                color: '#272F66',
+                color: pathname === '/portfolio' ? '#13B9D5' : (isPortfolioPage ? '#ffffff' : '#272F66'),
                 textShadow: 'none',
                 fontFamily: 'var(--font-poppins), sans-serif',
               }}
@@ -382,7 +389,7 @@ export default function Navbar() {
                 pathname === '/contact' ? 'text-[#13B9D5]' : ''
               }`}
               style={{
-                color: pathname === '/contact' ? '#13B9D5' : '#272F66',
+                color: pathname === '/contact' ? '#13B9D5' : (isPortfolioPage ? '#ffffff' : '#272F66'),
                 textShadow: 'none',
                 fontFamily: 'var(--font-poppins), sans-serif',
               }}
@@ -412,7 +419,17 @@ export default function Navbar() {
             )}
           </button>
 
-          <Link href="#contact" className="hidden lg:block px-6 xl:px-7 py-2.5 xl:py-3 text-white bg-[#272F66] rounded-full font-medium hover:bg-[#1e2547] transition-all duration-300 text-xs xl:text-sm shadow-sm hover:shadow-md">
+          <Link 
+            href="#contact" 
+            className={`hidden lg:block px-6 xl:px-7 py-2.5 xl:py-3 rounded-full font-medium transition-all duration-300 text-xs xl:text-sm shadow-sm hover:shadow-md ${
+              isPortfolioPage 
+                ? 'bg-white hover:bg-gray-100' 
+                : 'text-white bg-[#272F66] hover:bg-[#1e2547]'
+            }`}
+            style={{
+              color: isPortfolioPage ? '#272F66' : '#ffffff',
+            }}
+          >
             Queremos Impulsarte
           </Link>
 
@@ -421,7 +438,7 @@ export default function Navbar() {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="lg:hidden p-2 hover:text-[#1e2547] transition-colors font-bold"
             style={{
-              color: '#272F66',
+              color: isPortfolioPage ? '#ffffff' : '#272F66',
               textShadow: 'none',
             }}
             aria-label="Toggle menu"
@@ -607,7 +624,7 @@ export default function Navbar() {
               </li>
               <li>
                 <Link
-                  href="#fourth"
+                  href="/portfolio"
                   onClick={() => setIsMenuOpen(false)}
                   className="block font-bold py-4 px-5 rounded-xl transition-all duration-200 bg-gray-50 hover:bg-[#13B9D5]/10 hover:text-[#13B9D5]"
                   style={{
