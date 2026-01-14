@@ -14,8 +14,9 @@ export default function AboutHeroNew() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [language, setLanguage] = useState<'es' | 'en'>('es');
-  const [videoSrc, setVideoSrc] = useState<string>('');
   const pathname = usePathname();
+  // URL de Cloudinary para el video de nosotros
+  const videoSrc = 'https://res.cloudinary.com/dobuhpxof/video/upload/v1768399807/video-nosotros1_di7izx.mp4';
   const navRef = useRef<HTMLElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
   const navLinksRef = useRef<HTMLUListElement>(null);
@@ -100,16 +101,9 @@ export default function AboutHeroNew() {
     };
   }, [isMenuOpen]);
 
-  // Establecer la ruta del video en el cliente
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setVideoSrc(`${window.location.origin}/img/video-nosotros1.mp4`);
-    }
-  }, []);
-
   // Intentar cargar y reproducir el video después de que el componente se monte
   useEffect(() => {
-    if (videoRef.current && videoSrc) {
+    if (videoRef.current) {
       const video = videoRef.current;
       
       // Función para intentar cargar el video
@@ -159,7 +153,7 @@ export default function AboutHeroNew() {
       
       loadVideo();
     }
-  }, [videoSrc]);
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
