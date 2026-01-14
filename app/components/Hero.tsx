@@ -187,7 +187,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
         loop
         muted
         playsInline
-        preload="auto"
+        preload="metadata"
         className="absolute inset-0 w-full h-full object-cover z-[0.5]"
         style={{
           position: 'absolute',
@@ -200,19 +200,29 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
         }}
         onError={(e) => {
           console.error('Error loading video:', e);
-          // Ocultar video si hay error
           const video = e.currentTarget;
+          const error = video.error;
+          if (error) {
+            console.error('Video error code:', error.code);
+            console.error('Video error message:', error.message);
+          }
+          // Ocultar video si hay error - el fallback de imagen ya está configurado
           video.style.display = 'none';
         }}
         onLoadStart={() => {
-          console.log('Video loading started');
+          console.log('Video loading started: /img/fondo-video.mp4');
+        }}
+        onLoadedMetadata={() => {
+          console.log('Video metadata loaded');
         }}
         onCanPlay={() => {
           console.log('Video can play');
         }}
+        onLoadedData={() => {
+          console.log('Video data loaded');
+        }}
       >
         <source src="/img/fondo-video.mp4" type="video/mp4" />
-        Tu navegador no soporta el elemento de video.
       </video>
 
       {/* Overlay oscuro para mejorar legibilidad del contenido */}
