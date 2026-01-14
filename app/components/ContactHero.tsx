@@ -193,7 +193,7 @@ export default function ContactHero() {
   }, []);
 
   return (
-    <div className="relative w-full bg-white overflow-x-hidden" style={{ minHeight: '100vh' }}>
+    <div className="relative w-full bg-white overflow-x-hidden">
       {/* Navegación */}
       <nav
         ref={navRef}
@@ -742,9 +742,9 @@ export default function ContactHero() {
       {/* Hero Text Container */}
       <main 
         ref={sectionRef}
-        className="w-full h-screen flex flex-col items-center justify-center z-10 relative overflow-hidden" 
+        className="w-full flex flex-col items-center justify-center z-10 relative overflow-hidden pt-24 pb-12 md:pt-28 md:pb-16" 
         style={{ 
-          minHeight: '100vh', 
+          minHeight: 'auto', 
           pointerEvents: 'auto',
           backgroundImage: 'url(/img/fondo-contacto.webp)',
           backgroundSize: 'cover',
@@ -756,10 +756,10 @@ export default function ContactHero() {
         {/* Overlay claro para desvanecido suave */}
         <div className="absolute top-0 left-0 w-full h-full bg-white/40 z-0" />
 
-        <div className="w-full flex flex-col items-center justify-center px-4 max-w-4xl mx-auto" style={{ pointerEvents: 'auto', position: 'relative', zIndex: 10 }}>
+        <div className="w-full flex flex-col items-center justify-center px-4 max-w-4xl mx-auto py-4 md:py-6" style={{ pointerEvents: 'auto', position: 'relative', zIndex: 10 }}>
           {/* Badge superior */}
           <div 
-            className="inline-flex items-center gap-2 px-4 py-2 mb-8 bg-[#ff9001]/10 rounded-full border border-[#ff9001]/20"
+            className="inline-flex items-center gap-2 px-4 py-2 mb-4 md:mb-6 bg-[#ff9001]/10 rounded-full border border-[#ff9001]/20"
             style={{
               pointerEvents: 'auto',
               position: 'relative',
@@ -774,7 +774,7 @@ export default function ContactHero() {
 
           <h1
             ref={titleRef}
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#272F66] mb-6 sm:mb-8 leading-tight tracking-tight text-center"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#272F66] mb-3 sm:mb-4 md:mb-4 leading-tight tracking-tight text-center"
             style={{ 
               fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif',
               fontWeight: 'bold',
