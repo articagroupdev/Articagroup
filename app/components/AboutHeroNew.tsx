@@ -808,7 +808,7 @@ export default function AboutHeroNew() {
           autoPlay
           loop
           playsInline
-          preload="auto"
+          preload="metadata"
           className="h-auto max-w-full"
           style={{ 
             width: '50%',
@@ -817,8 +817,13 @@ export default function AboutHeroNew() {
           }}
           onError={(e) => {
             console.error('Error loading video:', e);
-            // Ocultar video si hay error y mostrar mensaje
             const video = e.currentTarget;
+            const error = video.error;
+            if (error) {
+              console.error('Video error code:', error.code);
+              console.error('Video error message:', error.message);
+            }
+            // Ocultar video si hay error y mostrar mensaje
             video.style.display = 'none';
             const container = video.parentElement;
             if (container) {
@@ -826,10 +831,16 @@ export default function AboutHeroNew() {
             }
           }}
           onLoadStart={() => {
-            console.log('Video loading started');
+            console.log('Video loading started: /img/video-nosotros1.mp4');
+          }}
+          onLoadedMetadata={() => {
+            console.log('Video metadata loaded');
           }}
           onCanPlay={() => {
             console.log('Video can play');
+          }}
+          onLoadedData={() => {
+            console.log('Video data loaded');
           }}
         >
           Tu navegador no soporta el elemento de video.
