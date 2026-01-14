@@ -20,6 +20,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
   const [language, setLanguage] = useState<'es' | 'en'>('es');
   const [isScrolled, setIsScrolled] = useState(false);
   const [videoError, setVideoError] = useState(false);
+  const [videoSrc, setVideoSrc] = useState<string>('');
   const pathname = usePathname();
   const internalHeroRef = useRef<HTMLDivElement>(null);
   const heroRef = externalHeroRef || internalHeroRef;
@@ -156,9 +157,16 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
     };
   }, [isMenuOpen]);
 
+  // Establecer la ruta del video en el cliente
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setVideoSrc(`${window.location.origin}/img/fondo-video.mp4`);
+    }
+  }, []);
+
   // Intentar cargar el video manualmente después de que el componente se monte
   useEffect(() => {
-    if (videoRef.current && !videoError) {
+    if (videoRef.current && !videoError && videoSrc) {
       const video = videoRef.current;
       // Intentar cargar el video
       video.load();
@@ -174,11 +182,11 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
             setVideoError(true);
           }
         }
-      }, 1000);
+      }, 2000);
 
       return () => clearTimeout(checkVideo);
     }
-  }, [videoError]);
+  }, [videoError, videoSrc]);
 
 
   return (
@@ -216,7 +224,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
         loop
         muted
         playsInline
-        preload="metadata"
+        preload="none"
         className="absolute inset-0 w-full h-full object-cover z-[0.5]"
         style={{
           position: 'absolute',
@@ -241,7 +249,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
           video.style.display = 'none';
         }}
         onLoadStart={() => {
-          console.log('Video loading started: /img/fondo-video.mp4');
+          console.log('Video loading started');
         }}
         onLoadedMetadata={() => {
           console.log('Video metadata loaded');
@@ -260,7 +268,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
           console.warn('Video suspended');
         }}
       >
-        <source src="/img/fondo-video.mp4" type="video/mp4" />
+        {videoSrc && <source src={videoSrc} type="video/mp4" />}
       </video>
 
       {/* Overlay oscuro para mejorar legibilidad del contenido */}
