@@ -19,6 +19,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [language, setLanguage] = useState<'es' | 'en'>('es');
   const [isScrolled, setIsScrolled] = useState(false);
+  const [videoError, setVideoError] = useState(false);
   const pathname = usePathname();
   const internalHeroRef = useRef<HTMLDivElement>(null);
   const heroRef = externalHeroRef || internalHeroRef;
@@ -34,6 +35,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
   const servicesMenuRef = useRef<HTMLDivElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -154,6 +156,30 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
     };
   }, [isMenuOpen]);
 
+  // Intentar cargar el video manualmente después de que el componente se monte
+  useEffect(() => {
+    if (videoRef.current && !videoError) {
+      const video = videoRef.current;
+      // Intentar cargar el video
+      video.load();
+      
+      // Verificar si el video se puede reproducir después de un breve delay
+      const checkVideo = setTimeout(() => {
+        if (video.readyState >= 2) {
+          console.log('Video ready to play');
+        } else {
+          console.warn('Video not ready, checking error state');
+          if (video.error) {
+            console.error('Video has error:', video.error);
+            setVideoError(true);
+          }
+        }
+      }, 1000);
+
+      return () => clearTimeout(checkVideo);
+    }
+  }, [videoError]);
+
 
   return (
     <section
@@ -170,24 +196,27 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
         backgroundColor: '#212121',
       }}
     >
-      {/* Imagen de fondo como fallback */}
-      <div 
-        className="absolute inset-0 w-full h-full z-0"
-        style={{
-          backgroundImage: 'url(/img/fondo-hero1.webp)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-        }}
-      />
+      {/* Imagen de fondo como fallback - solo se muestra si el video falla */}
+      {videoError && (
+        <div 
+          className="absolute inset-0 w-full h-full z-0"
+          style={{
+            backgroundImage: 'url(/img/fondo-hero1.webp)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+          }}
+        />
+      )}
       
       {/* Video de fondo */}
       <video
+        ref={videoRef}
         autoPlay
         loop
         muted
         playsInline
-        preload="auto"
+        preload="metadata"
         className="absolute inset-0 w-full h-full object-cover z-[0.5]"
         style={{
           position: 'absolute',
@@ -197,6 +226,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
           height: '100%',
           objectFit: 'cover',
           zIndex: 0.5,
+          display: videoError ? 'none' : 'block',
         }}
         onError={(e) => {
           console.error('Error loading video:', e);
@@ -206,7 +236,8 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
             console.error('Video error code:', error.code);
             console.error('Video error message:', error.message);
           }
-          // Ocultar video si hay error - el fallback de imagen ya está configurado
+          // Mostrar imagen de fallback cuando el video falle
+          setVideoError(true);
           video.style.display = 'none';
         }}
         onLoadStart={() => {
@@ -217,9 +248,16 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
         }}
         onCanPlay={() => {
           console.log('Video can play');
+          setVideoError(false);
         }}
         onLoadedData={() => {
           console.log('Video data loaded');
+        }}
+        onStalled={() => {
+          console.warn('Video stalled');
+        }}
+        onSuspend={() => {
+          console.warn('Video suspended');
         }}
       >
         <source src="/img/fondo-video.mp4" type="video/mp4" />
