@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     siteName: "ARTICA Creative Studio",
     images: [
       {
-        url: "https://articagroup.vercel.app/img/logo-azul.png",
+        url: "https://articagroup.vercel.app/img/logo-mini-azul.png",
         width: 1200,
         height: 630,
         alt: "ARTICA Creative Studio",
