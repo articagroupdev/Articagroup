@@ -20,8 +20,9 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
   const [language, setLanguage] = useState<'es' | 'en'>('es');
   const [isScrolled, setIsScrolled] = useState(false);
   const [videoError, setVideoError] = useState(false);
-  const [videoSrc, setVideoSrc] = useState<string>('');
   const pathname = usePathname();
+  // URL de Cloudinary para el video de fondo
+  const videoSrc = 'https://res.cloudinary.com/dobuhpxof/video/upload/v1768399825/fondo-video_wnjx85.mp4';
   const internalHeroRef = useRef<HTMLDivElement>(null);
   const heroRef = externalHeroRef || internalHeroRef;
   const navRef = useRef<HTMLElement>(null);
@@ -157,16 +158,9 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
     };
   }, [isMenuOpen]);
 
-  // Establecer la ruta del video en el cliente
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setVideoSrc(`${window.location.origin}/img/fondo-video.mp4`);
-    }
-  }, []);
-
   // Intentar cargar y reproducir el video después de que el componente se monte
   useEffect(() => {
-    if (videoRef.current && !videoError && videoSrc) {
+    if (videoRef.current && !videoError) {
       const video = videoRef.current;
       
       // Función para intentar cargar el video
@@ -216,7 +210,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
       
       loadVideo();
     }
-  }, [videoError, videoSrc]);
+  }, [videoError]);
 
 
   return (
@@ -298,7 +292,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
           console.warn('Video suspended');
         }}
       >
-        {videoSrc && <source src={videoSrc} type="video/mp4" />}
+        <source src={videoSrc} type="video/mp4" />
       </video>
 
       {/* Overlay oscuro para mejorar legibilidad del contenido */}
