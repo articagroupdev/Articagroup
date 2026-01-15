@@ -163,6 +163,20 @@ a:hover {
   text-shadow: 0 0 10px currentColor;
 }
 
+/* Excepción para botones que deben tener texto azul oscuro */
+a[href="/contact"],
+a[href="#contact"] {
+  color: #272F66 !important;
+}
+
+/* Excepción para botones con fondo blanco que deben tener texto azul oscuro */
+a[href="/contact"].rounded-full[class*="bg-white"],
+a[href="#contact"].rounded-full[class*="bg-white"],
+a.rounded-full[href="/contact"][class*="bg-white"],
+a.rounded-full[href="#contact"][class*="bg-white"] {
+  color: #272F66 !important;
+}
+
 .section {
   height: 100%;
   width: 100%;

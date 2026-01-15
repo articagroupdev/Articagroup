@@ -615,13 +615,16 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
               )}
             </button>
 
-            <button className={`hidden lg:block px-6 xl:px-7 py-2.5 xl:py-3 rounded-full font-medium transition-all duration-300 text-xs xl:text-sm shadow-sm hover:shadow-md ${
-              isScrolled 
-                ? 'text-white bg-[#272F66] hover:bg-[#1e2547]' 
-                : 'text-[#272F66] bg-white hover:bg-gray-100'
-            }`}>
+            <Link 
+              href="/contact"
+              className={`hidden lg:block px-6 xl:px-7 py-2.5 xl:py-3 rounded-full font-medium transition-all duration-300 text-xs xl:text-sm shadow-sm hover:shadow-md ${
+                isScrolled 
+                  ? 'text-white bg-[#272F66] hover:bg-[#1e2547]' 
+                  : 'text-[#272F66] bg-white hover:bg-gray-100'
+              }`}
+            >
               Queremos Impulsarte
-            </button>
+            </Link>
 
             {/* Botón móvil */}
             <button
@@ -868,7 +871,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
                 </button>
               </div>
               <Link
-                href="#contact"
+                href="/contact"
                 onClick={() => setIsMenuOpen(false)}
                 className="block w-full px-6 py-4 text-white bg-gradient-to-r from-[#272F66] to-[#1a2050] rounded-full font-bold hover:from-[#1e2547] hover:to-[#272F66] transition-all duration-300 shadow-lg hover:shadow-xl text-center"
                 style={{
@@ -993,7 +996,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
             {/* Botón Principal */}
             <a
               ref={heroButtonRef}
-              href="#second"
+              href="/contact"
               className="inline-flex items-center justify-center transition-all duration-300"
               style={{ 
                 fontFamily: 'var(--font-poppins), sans-serif',

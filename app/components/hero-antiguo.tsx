@@ -433,12 +433,13 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
 
                 {/* CTA Buttons */}
                 <div className="flex justify-center items-center gap-3 sm:gap-4 flex-wrap px-2 sm:px-0">
-                  <button
+                  <a
                     ref={ctaButtonRef}
+                    href="/contact"
                     className="px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 text-white bg-[#272F66] border-2 border-[#272F66] rounded-full font-semibold shadow-lg shadow-[#272F66]/25 hover:bg-[#1e2547] hover:shadow-xl hover:shadow-[#272F66]/40 hover:scale-105 active:scale-100 transition-all duration-300 text-sm sm:text-base md:text-lg w-full sm:w-auto"
                   >
                     Actúa y Crece
-                  </button>
+                  </a>
                   <button
                     ref={portfolioButtonRef}
                     className="px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 text-white bg-[#00C7B7] border-2 border-[#00C7B7] rounded-full font-semibold shadow-lg shadow-[#00C7B7]/25 hover:bg-[#00B3A5] hover:shadow-xl hover:shadow-[#00C7B7]/40 hover:scale-105 active:scale-100 transition-all duration-300 text-sm sm:text-base md:text-lg w-full sm:w-auto"
