@@ -610,18 +610,114 @@
     font-size: 1.25rem;
   }
   
-  .videoInfoGrid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+  /* Video Info Modal - Mobile */
+  .videoInfoContent {
+    width: 95%;
+    max-width: 95%;
+    padding: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-height: 95vh;
+    overflow-y: auto;
   }
   
-  .videoInfoContent {
-    max-width: 95%;
-    padding: 1.5rem;
+  .videoInfoInner {
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+    min-height: auto;
+    max-height: none;
+  }
+  
+  .videoInfoGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    align-items: stretch;
+  }
+  
+  .videoPlayerColumn {
+    order: 1;
+    height: auto;
+  }
+  
+  .videoPlayer {
+    height: auto;
+    min-height: 160px;
+    max-height: 200px;
+  }
+  
+  .videoElement {
+    min-height: 160px;
+    max-height: 200px;
+    object-fit: contain;
+  }
+  
+  .videoDescriptionColumn {
+    order: 2;
+    height: auto;
+    gap: 0.5rem;
+  }
+  
+  .videoTitleSmall {
+    font-size: 0.7rem;
+    margin-bottom: 0.15rem;
+  }
+  
+  .videoTitle {
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.15rem;
   }
   
   .videoMainTitle {
-    font-size: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.2;
+    margin-bottom: 0.35rem;
+  }
+  
+  .videoClient {
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .videoTools {
+    margin-top: 0.35rem;
+  }
+  
+  .videoToolsTitle {
+    font-size: 0.7rem;
+    margin-bottom: 0.35rem;
+  }
+  
+  .videoToolsList {
+    font-size: 0.75rem;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+  
+  .videoToolItem {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.7rem;
+    border-radius: 0.35rem;
+  }
+  
+  .videoToolIcon {
+    font-size: 0.9rem;
+  }
+  
+  .videoDescription {
+    font-size: 0.75rem;
+    line-height: 1.5;
+    margin-top: 0.35rem;
+  }
+  
+  .closeButton {
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+    z-index: 10003;
   }
   
   .contentWrapper {
@@ -674,5 +770,95 @@
     width: 2rem;
     height: 2rem;
     font-size: 1rem;
+  }
+  
+  /* Video Info Modal - Small Mobile */
+  .videoInfoContent {
+    width: 98%;
+    max-width: 98%;
+    max-height: 98vh;
+  }
+  
+  .videoInfoInner {
+    padding: 0.6rem;
+    border-radius: 0.5rem;
+  }
+  
+  .videoInfoGrid {
+    gap: 0.75rem;
+  }
+  
+  .videoPlayer {
+    min-height: 140px;
+    max-height: 180px;
+  }
+  
+  .videoElement {
+    min-height: 140px;
+    max-height: 180px;
+  }
+  
+  .videoDescriptionColumn {
+    gap: 0.4rem;
+  }
+  
+  .videoTitleSmall {
+    font-size: 0.65rem;
+    margin-bottom: 0.1rem;
+  }
+  
+  .videoTitle {
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.1rem;
+  }
+  
+  .videoMainTitle {
+    font-size: 0.9rem;
+    line-height: 1.2;
+    margin-bottom: 0.25rem;
+  }
+  
+  .videoClient {
+    font-size: 0.75rem;
+    margin-bottom: 0.4rem;
+  }
+  
+  .videoTools {
+    margin-top: 0.25rem;
+  }
+  
+  .videoToolsTitle {
+    font-size: 0.65rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .videoToolsList {
+    font-size: 0.7rem;
+    gap: 0.3rem;
+  }
+  
+  .videoToolItem {
+    padding: 0.25rem 0.4rem;
+    font-size: 0.65rem;
+    border-radius: 0.3rem;
+  }
+  
+  .videoToolIcon {
+    font-size: 0.85rem;
+  }
+  
+  .videoDescription {
+    font-size: 0.7rem;
+    line-height: 1.4;
+    margin-top: 0.25rem;
+  }
+  
+  .closeButton {
+    top: 0.4rem;
+    right: 0.4rem;
+    width: 28px;
+    height: 28px;
+    font-size: 16px;
   }
 }

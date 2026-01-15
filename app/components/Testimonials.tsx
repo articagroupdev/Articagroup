@@ -41,8 +41,30 @@ const testimonials: Testimonial[] = [
 export default function Testimonials() {
   const sectionRef = useRef<HTMLElement>(null);
   const cardsRef = useRef<HTMLDivElement[]>([]);
+  const [paddingStyles, setPaddingStyles] = useState({
+    section: { paddingTop: '3rem', paddingBottom: '3rem' },
+    container: { paddingTop: '2.5rem', paddingBottom: '2.5rem' },
+  });
 
   useEffect(() => {
+    // Calcular padding responsive
+    const updatePadding = () => {
+      const width = window.innerWidth;
+      setPaddingStyles({
+        section: {
+          paddingTop: width >= 1024 ? '2em' : width >= 768 ? '2em' : '3rem',
+          paddingBottom: width >= 1024 ? '2em' : width >= 768 ? '2em' : '3rem',
+        },
+        container: {
+          paddingTop: width >= 1024 ? '4rem' : width >= 768 ? '3.5rem' : '2.5rem',
+          paddingBottom: width >= 1024 ? '4rem' : width >= 768 ? '3.5rem' : '2.5rem',
+        },
+      });
+    };
+
+    updatePadding();
+    window.addEventListener('resize', updatePadding);
+
     if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
@@ -89,15 +111,30 @@ export default function Testimonials() {
       });
     }, sectionRef);
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+      window.removeEventListener('resize', updatePadding);
+    };
   }, []);
 
   return (
     <section 
       ref={sectionRef} 
-      className="relative overflow-hidden bg-gradient-to-br from-[#13B9D5] via-[#0FA8C2] to-[#0D97B0] min-h-screen md:h-screen md:min-h-screen md:max-h-screen flex items-center justify-center z-0 m-0 p-0 py-24 md:py-20 lg:py-28"
+      className="testimonials-section relative overflow-hidden bg-gradient-to-br from-[#13B9D5] via-[#0FA8C2] to-[#0D97B0] min-h-screen md:min-h-screen flex items-center justify-center z-0 m-0"
+      style={{
+        ...paddingStyles.section,
+        paddingLeft: '0',
+        paddingRight: '0',
+        position: 'relative',
+        height: 'auto',
+        top: 'auto',
+        visibility: 'visible',
+      } as React.CSSProperties}
     >
-      <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 md:px-6 lg:px-8 py-20 md:py-24 lg:py-32 relative z-10 flex flex-col md:justify-center lg:justify-center md:h-full">
+      <div 
+        className="max-w-7xl w-full mx-auto px-4 sm:px-6 md:px-6 lg:px-8 relative z-10 flex flex-col md:justify-center lg:justify-center md:h-full"
+        style={paddingStyles.container as React.CSSProperties}
+      >
         {/* Header */}
         <div className="text-center mb-8 sm:mb-10 md:mb-8 lg:mb-12 max-w-4xl mx-auto relative z-10 flex-shrink-0">
           <div className="inline-flex items-center gap-1.5 sm:gap-2 mb-4 sm:mb-5 md:mb-6 px-3 sm:px-4 py-1.5 sm:py-2 bg-white/20 backdrop-blur-sm rounded-full border border-white/30">

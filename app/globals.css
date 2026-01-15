@@ -171,6 +171,14 @@ a:hover {
   visibility: hidden;
 }
 
+/* Excepción para la sección de testimonios */
+.testimonials-section {
+  position: relative !important;
+  height: auto !important;
+  top: auto !important;
+  visibility: visible !important;
+}
+
 .horizontal-scroll-section {
   position: relative;
   visibility: visible;
