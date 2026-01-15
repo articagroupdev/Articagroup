@@ -48,9 +48,9 @@ export default function Footer() {
                 <Image
                   src="/img/logo-artica-blanco.png"
                   alt="ARTICA"
-                  width={100}
-                  height={24}
-                  className="h-5 sm:h-6 w-auto max-w-[140px]"
+                  width={200}
+                  height={124}
+                  className="h-5 sm:h-6 w-auto max-w-[400px]"  
                 />
               </Link>
             </div>
@@ -180,40 +180,48 @@ export default function Footer() {
             </h3>
             <ul className="space-y-2 sm:space-y-3">
               <li>
-                <a 
-                  href="#legal" 
-                  className="text-sm sm:text-base text-gray-300 hover:text-white transition-colors"
+                <Link 
+                  href="/legal/aviso-legal" 
+                  className={`text-sm sm:text-base transition-colors ${
+                    pathname === '/legal/aviso-legal' ? 'text-[#ff9001]' : 'text-gray-300 hover:text-white'
+                  }`}
                   style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
                 >
                   Aviso legal
-                </a>
+                </Link>
               </li>
               <li>
-                <a 
-                  href="#terms" 
-                  className="text-sm sm:text-base text-gray-300 hover:text-white transition-colors"
+                <Link 
+                  href="/legal/condiciones-uso" 
+                  className={`text-sm sm:text-base transition-colors ${
+                    pathname === '/legal/condiciones-uso' ? 'text-[#ff9001]' : 'text-gray-300 hover:text-white'
+                  }`}
                   style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
                 >
                   Condiciones de uso
-                </a>
+                </Link>
               </li>
               <li>
-                <a 
-                  href="#privacy" 
-                  className="text-sm sm:text-base text-gray-300 hover:text-white transition-colors"
+                <Link 
+                  href="/legal/politica-privacidad" 
+                  className={`text-sm sm:text-base transition-colors ${
+                    pathname === '/legal/politica-privacidad' ? 'text-[#ff9001]' : 'text-gray-300 hover:text-white'
+                  }`}
                   style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
                 >
                   Política de privacidad
-                </a>
+                </Link>
               </li>
               <li>
-                <a 
-                  href="#cookies" 
-                  className="text-sm sm:text-base text-gray-300 hover:text-white transition-colors"
+                <Link 
+                  href="/legal/politica-cookies" 
+                  className={`text-sm sm:text-base transition-colors ${
+                    pathname === '/legal/politica-cookies' ? 'text-[#ff9001]' : 'text-gray-300 hover:text-white'
+                  }`}
                   style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
                 >
                   Política de cookies
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
