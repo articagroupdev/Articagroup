@@ -423,7 +423,7 @@ export default function Navbar() {
             href="/contact" 
             className={`hidden lg:block px-6 xl:px-7 py-2.5 xl:py-3 rounded-full font-medium transition-all duration-300 text-xs xl:text-sm shadow-sm hover:shadow-md ${
               isPortfolioPage 
-                ? 'bg-white hover:bg-gray-100' 
+                ? 'bg-white hover:bg-gray-100 text-[#272F66]' 
                 : 'text-white bg-[#272F66] hover:bg-[#1e2547]'
             }`}
             style={{

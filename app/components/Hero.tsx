@@ -622,6 +622,9 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
                   ? 'text-white bg-[#272F66] hover:bg-[#1e2547]' 
                   : 'text-[#272F66] bg-white hover:bg-gray-100'
               }`}
+              style={{
+                color: isScrolled ? '#ffffff' : '#272F66',
+              }}
             >
               Queremos Impulsarte
             </Link>

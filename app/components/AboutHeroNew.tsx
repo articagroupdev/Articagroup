@@ -510,6 +510,7 @@ export default function AboutHeroNew() {
             <Link 
               href="/contact"
               className="hidden lg:block px-6 xl:px-7 py-2.5 xl:py-3 text-white bg-[#272F66] rounded-full font-medium hover:bg-[#1e2547] transition-all duration-300 text-xs xl:text-sm shadow-sm hover:shadow-md"
+              style={{ color: '#ffffff' }}
             >
               Queremos Impulsarte
             </Link>
