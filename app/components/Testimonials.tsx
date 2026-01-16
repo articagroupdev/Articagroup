@@ -95,9 +95,9 @@ export default function Testimonials() {
   return (
     <section 
       ref={sectionRef} 
-      className="relative overflow-hidden bg-gradient-to-br from-[#13B9D5] via-[#0FA8C2] to-[#0D97B0] min-h-screen md:h-screen md:min-h-screen md:max-h-screen flex items-center justify-center z-0 m-0 p-0 py-16 md:py-12 lg:py-16"
+      className="relative overflow-hidden bg-gradient-to-br from-[#13B9D5] via-[#0FA8C2] to-[#0D97B0] min-h-screen md:h-screen md:min-h-screen md:max-h-screen flex items-center justify-center z-0 m-0 p-0 py-24 md:py-20 lg:py-28"
     >
-      <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 md:px-6 lg:px-8 py-16 md:py-16 lg:py-20 relative z-10 flex flex-col md:justify-center lg:justify-center md:h-full">
+      <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 md:px-6 lg:px-8 py-20 md:py-24 lg:py-32 relative z-10 flex flex-col md:justify-center lg:justify-center md:h-full">
         {/* Header */}
         <div className="text-center mb-8 sm:mb-10 md:mb-8 lg:mb-12 max-w-4xl mx-auto relative z-10 flex-shrink-0">
           <div className="inline-flex items-center gap-1.5 sm:gap-2 mb-4 sm:mb-5 md:mb-6 px-3 sm:px-4 py-1.5 sm:py-2 bg-white/20 backdrop-blur-sm rounded-full border border-white/30">

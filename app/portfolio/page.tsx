@@ -33,19 +33,19 @@ const portfolioSections: PortfolioSection[] = [
   {
     id: 'first',
     heading: 'Ediciones',
-    backgroundImage: '/img/Portafolio/fondo-edicion.png',
+    backgroundImage: '/img/Portafolio/fondo-edicion.avif',
     galleryImages: [
-      '/img/Portafolio/videos/554937645_827209430252257_209248943060033629_n.jpg',
+      '/img/Portafolio/videos/554937645_827209430252257_209248943060033629_n.avif',
       '/img/Portafolio/videos/590417600_1190962469666812_302998795666163362_n.avif',
       '/img/Portafolio/videos/videoframe_5450-scaled.avif',
       '/img/Portafolio/videos/videoframe_10849.avif',
       '/img/Portafolio/videos/videoframe_26173.avif',
       '/img/Portafolio/videos/videoframe_54502-scaled.avif',
-      '/img/Portafolio/videos/525987874_724416670415618_4017155133578734076_n.jpg',
+      '/img/Portafolio/videos/525987874_724416670415618_4017155133578734076_n.avif',
     ],
     videos: [
       {
-        image: '/img/Portafolio/videos/554937645_827209430252257_209248943060033629_n.jpg',
+        image: '/img/Portafolio/videos/554937645_827209430252257_209248943060033629_n.avif',
         videoLink: '#',
         title: '',
         videoTitle: '',
@@ -99,7 +99,7 @@ const portfolioSections: PortfolioSection[] = [
         description: '',
       },
       {
-        image: '/img/Portafolio/videos/525987874_724416670415618_4017155133578734076_n.jpg',
+        image: '/img/Portafolio/videos/525987874_724416670415618_4017155133578734076_n.avif',
         videoLink: '#',
         title: '',
         videoTitle: '',
@@ -112,7 +112,7 @@ const portfolioSections: PortfolioSection[] = [
   {
     id: 'second',
     heading: 'Diseño',
-    backgroundImage: '/img/Portafolio/fondo-diseño.png',
+    backgroundImage: '/img/Portafolio/fondo-diseño.avif',
     galleryImages: [
       '/img/Portafolio/diseño grafico/DEST-WALLPANEL-EXT-HOME-DECOR.avif',
       '/img/Portafolio/diseño grafico/FLYER-PROYECTOS-DG-CONCEPT.avif',
@@ -126,7 +126,7 @@ const portfolioSections: PortfolioSection[] = [
   {
     id: 'third',
     heading: 'Email',
-    backgroundImage: '/img/Portafolio/fondo-email.png',
+    backgroundImage: '/img/Portafolio/fondo-email.avif',
     galleryImages: [
       '/img/Portafolio/email marketing/EMAIL-CORTE-Y-CANTEO-DG-CONCEPT-1.avif',
       '/img/Portafolio/email marketing/EMAIL-PICK-UP-HN.avif',
@@ -137,7 +137,7 @@ const portfolioSections: PortfolioSection[] = [
   {
     id: 'fourth',
     heading: 'Web',
-    backgroundImage: '/img/Portafolio/fondo-web.png',
+    backgroundImage: '/img/Portafolio/fondo-web.avif',
     galleryImages: [
       '/img/Portafolio/diseño web/1.png',
       '/img/Portafolio/diseño web/2.png',
@@ -333,60 +333,143 @@ export default function PortfolioPage() {
           preventDefault: true,
         });
 
-        // Animaciones de entrada para la primera sección
+        // Función para esperar a que las imágenes se carguen antes de animar
+        const waitForImagesAndAnimate = () => {
+          const gallery = galleryRefs.current[0];
+          if (!gallery) {
+            setTimeout(waitForImagesAndAnimate, 200);
+            return;
+          }
+
+          // Buscar todas las imágenes en el carousel (incluyendo las duplicadas)
+          const allImages = gallery.querySelectorAll('li');
+          
+          if (allImages.length === 0) {
+            setTimeout(waitForImagesAndAnimate, 200);
+            return;
+          }
+
+          // Verificar que las imágenes de fondo estén cargadas
+          let loadedCount = 0;
+          const totalImages = allImages.length;
+          let hasStarted = false;
+
+          const checkImageLoaded = (element: HTMLElement) => {
+            // Para imágenes de fondo, verificar que el estilo backgroundImage esté aplicado
+            const bgImage = window.getComputedStyle(element).backgroundImage;
+            if (bgImage && bgImage !== 'none') {
+              // Crear una imagen para verificar que esté cargada
+              const img = new Image();
+              const urlMatch = bgImage.match(/url\(["']?([^"']+)["']?\)/);
+              if (urlMatch && urlMatch[1]) {
+                img.src = urlMatch[1];
+                if (img.complete) {
+                  loadedCount++;
+                } else {
+                  img.onload = () => {
+                    loadedCount++;
+                    if (loadedCount === totalImages && !hasStarted) {
+                      startAnimations();
+                    }
+                  };
+                  img.onerror = () => {
+                    loadedCount++;
+                    if (loadedCount === totalImages && !hasStarted) {
+                      startAnimations();
+                    }
+                  };
+                }
+              } else {
+                loadedCount++;
+              }
+            } else {
+              loadedCount++;
+            }
+
+            if (loadedCount === totalImages && !hasStarted) {
+              startAnimations();
+            }
+          };
+
+          const startAnimations = () => {
+            if (hasStarted) return;
+            hasStarted = true;
+
+            // Usar requestAnimationFrame para asegurar que el layout esté calculado
+            requestAnimationFrame(() => {
+              requestAnimationFrame(() => {
+                const entranceTimeline = gsap.timeline({ defaults: { ease: 'power3.out' } });
+                
+                // Animar el título
+                if (splitHeadingsRef.current[0] && splitHeadingsRef.current[0].chars) {
+                  gsap.set(splitHeadingsRef.current[0].chars, {
+                    autoAlpha: 0,
+                    yPercent: 150,
+                  });
+                  
+                  entranceTimeline.to(splitHeadingsRef.current[0].chars, {
+                    autoAlpha: 1,
+                    yPercent: 0,
+                    duration: 1.2,
+                    stagger: {
+                      each: 0.02,
+                      from: 'random',
+                    },
+                  }, 0);
+                }
+                
+                // Animar el carousel (si existe)
+                if (galleryRefs.current[0]) {
+                  gsap.set(galleryRefs.current[0], {
+                    opacity: 0,
+                    y: 50,
+                    scale: 0.95,
+                  });
+                  
+                  entranceTimeline.to(galleryRefs.current[0], {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    duration: 1,
+                    ease: 'power3.out',
+                  }, 0.3);
+                }
+                
+                // Animar los botones de navegación del carousel
+                if (prevButtonRefs.current[0] && nextButtonRefs.current[0]) {
+                  gsap.set([prevButtonRefs.current[0], nextButtonRefs.current[0]], {
+                    opacity: 0,
+                    y: 30,
+                  });
+                  
+                  entranceTimeline.to([prevButtonRefs.current[0], nextButtonRefs.current[0]], {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    stagger: 0.1,
+                    ease: 'power3.out',
+                  }, 0.6);
+                }
+              });
+            });
+          };
+
+          // Verificar cada elemento del carousel
+          allImages.forEach((li) => {
+            checkImageLoaded(li as HTMLElement);
+          });
+
+          // Fallback: si después de 3 segundos no se han cargado todas, inicializar de todos modos
+          setTimeout(() => {
+            if (!hasStarted) {
+              startAnimations();
+            }
+          }, 3000);
+        };
+
+        // Inicializar después de un pequeño delay para que el DOM esté listo
         setTimeout(() => {
-          const entranceTimeline = gsap.timeline({ defaults: { ease: 'power3.out' } });
-          
-          // Animar el título
-          if (splitHeadingsRef.current[0] && splitHeadingsRef.current[0].chars) {
-            gsap.set(splitHeadingsRef.current[0].chars, {
-              autoAlpha: 0,
-              yPercent: 150,
-            });
-            
-            entranceTimeline.to(splitHeadingsRef.current[0].chars, {
-              autoAlpha: 1,
-              yPercent: 0,
-              duration: 1.2,
-              stagger: {
-                each: 0.02,
-                from: 'random',
-              },
-            }, 0);
-          }
-          
-          // Animar el carousel (si existe)
-          if (galleryRefs.current[0]) {
-            gsap.set(galleryRefs.current[0], {
-              opacity: 0,
-              y: 50,
-              scale: 0.95,
-            });
-            
-            entranceTimeline.to(galleryRefs.current[0], {
-              opacity: 1,
-              y: 0,
-              scale: 1,
-              duration: 1,
-              ease: 'power3.out',
-            }, 0.3);
-          }
-          
-          // Animar los botones de navegación del carousel
-          if (prevButtonRefs.current[0] && nextButtonRefs.current[0]) {
-            gsap.set([prevButtonRefs.current[0], nextButtonRefs.current[0]], {
-              opacity: 0,
-              y: 30,
-            });
-            
-            entranceTimeline.to([prevButtonRefs.current[0], nextButtonRefs.current[0]], {
-              opacity: 1,
-              y: 0,
-              duration: 0.8,
-              stagger: 0.1,
-              ease: 'power3.out',
-            }, 0.6);
-          }
+          waitForImagesAndAnimate();
         }, 100);
       } catch (error) {
         console.warn('Observer plugin not available:', error);
