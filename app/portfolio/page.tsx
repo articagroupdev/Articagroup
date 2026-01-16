@@ -9,6 +9,7 @@ import Navbar from '../components/Navbar';
 import styles from './portfolio.module.css';
 import { MdPlayArrow, MdClose, MdEmail, MdCode, MdBrush, MdFullscreen, MdFullscreenExit, MdOpenInNew } from 'react-icons/md';
 import { SiAdobe, SiAdobeaftereffects, SiAdobepremierepro, SiAdobephotoshop, SiCanva, SiWordpress, SiNextdotjs, SiReact } from 'react-icons/si';
+import { useLanguage } from '../contexts/LanguageContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -32,10 +33,19 @@ interface PortfolioSection {
   designs?: VideoInfo[];
 }
 
-const portfolioSections: PortfolioSection[] = [
+// Función helper para obtener los datos del portafolio desde las traducciones
+const getPortfolioSections = (t: (key: string) => string): PortfolioSection[] => {
+  // Helper para obtener traducción de proyecto con fallback
+  const getProject = (section: string, key: string, field: 'title' | 'videoTitle' | 'client' | 'description', fallback: string) => {
+    const translationKey = `portfolio.projects.${section}.${key}.${field}`;
+    const translation = t(translationKey);
+    return translation !== translationKey ? translation : fallback;
+  };
+
+  return [
   {
     id: 'first',
-    heading: 'Ediciones',
+    heading: t('portfolio.sections.ediciones'),
     backgroundImage: '/img/Portafolio/fondo-edicion.avif',
     galleryImages: [
       '/img/Portafolio/videos/554937645_827209430252257_209248943060033629_n.avif',
@@ -50,71 +60,71 @@ const portfolioSections: PortfolioSection[] = [
       {
         image: '/img/Portafolio/videos/554937645_827209430252257_209248943060033629_n.avif',
         videoLink: 'https://res.cloudinary.com/dobuhpxof/video/upload/v1768505216/Magic-happens-_%EF%B8%8F-Were-thrilled-to-partner-with-an-amazing-company-from-South-Miami-bringing_1_ykbuj9.mp4',
-        title: 'Miami Outdoor Master',
-        videoTitle: 'Testimonio de Cocina Exterio',
-        client: 'Miami Outdoor Master',
+        title: getProject('ediciones', 'miamiOutdoorMaster', 'title', 'Miami Outdoor Master'),
+        videoTitle: getProject('ediciones', 'miamiOutdoorMaster', 'videoTitle', 'Testimonio de Cocina Exterio'),
+        client: getProject('ediciones', 'miamiOutdoorMaster', 'client', 'Miami Outdoor Master'),
         tools: 'Adobe Suite, Premiere Pro, After Effects',
-        description: 'Artica produjo un video testimonial para Miami Outdoor Master destacando la satisfacción del cliente con la remodelación de su cocina exterior. La clienta elogia la profesionalidad, fiabilidad y atención al detalle, confirmando que su visión fue «traída a la vida» con trabajo a tiempo. El clip muestra la instalación de gabinetes (Novacel) y parrillas (Blaze). Este es un activo clave para generar confianza y recomendación.',
+        description: getProject('ediciones', 'miamiOutdoorMaster', 'description', 'Artica produjo un video testimonial para Miami Outdoor Master destacando la satisfacción del cliente con la remodelación de su cocina exterior. La clienta elogia la profesionalidad, fiabilidad y atención al detalle, confirmando que su visión fue «traída a la vida» con trabajo a tiempo. El clip muestra la instalación de gabinetes (Novacel) y parrillas (Blaze). Este es un activo clave para generar confianza y recomendación.'),
       },
       {
         image: '/img/Portafolio/videos/590417600_1190962469666812_302998795666163362_n.avif',
         videoLink: 'https://res.cloudinary.com/dobuhpxof/video/upload/v1768418761/A%C3%BAn_no_conoc%C3%ADas_el_por_qu%C3%A9_de_nuestro_%C3%A9xito_en_el_mercado_digital_En_ARTICA_Group_manejamo_nkjfwd.mp4',
-        title: 'Construcción de Marcas Digitales',
-        videoTitle: 'Construcción de Marcas Digitales',
-        client: 'Artica Group',
+        title: getProject('ediciones', 'construccionMarcas', 'title', 'Construcción de Marcas Digitales'),
+        videoTitle: getProject('ediciones', 'construccionMarcas', 'videoTitle', 'Construcción de Marcas Digitales'),
+        client: getProject('ediciones', 'construccionMarcas', 'client', 'Artica Group'),
         tools: 'Adobe Suite, Premiere Pro, After Effects',
-        description: 'Esta pieza audiovisual corporativa y promocional fue desarrollada por Artica Group con el objetivo de establecer a la agencia como un socio estratégico clave en el ámbito digital. La propuesta de valor integral se articula en estrategia, creatividad y resultados tangibles para la construcción de marcas. El contenido detalla la especialización en creación de contenido personalizado y la activación de campañas publicitarias segmentadas (Facebook, Instagram, Google). Se enfatiza que el enfoque estratégico prioritario es la conversión de leads, garantizando un posicionamiento de marca efectivo y el crecimiento real de los clientes.',
+        description: getProject('ediciones', 'construccionMarcas', 'description', 'Esta pieza audiovisual corporativa y promocional fue desarrollada por Artica Group con el objetivo de establecer a la agencia como un socio estratégico clave en el ámbito digital. La propuesta de valor integral se articula en estrategia, creatividad y resultados tangibles para la construcción de marcas. El contenido detalla la especialización en creación de contenido personalizado y la activación de campañas publicitarias segmentadas (Facebook, Instagram, Google). Se enfatiza que el enfoque estratégico prioritario es la conversión de leads, garantizando un posicionamiento de marca efectivo y el crecimiento real de los clientes.'),
       },
       {
         image: '/img/Portafolio/videos/videoframe_5450-scaled.avif',
         videoLink: 'https://res.cloudinary.com/dobuhpxof/video/upload/v1768501830/AEREO-NAVIDENO-OTRA-MUSICA-1_ajgdll.mp4',
-        title: 'Conectando Navidades',
-        videoTitle: 'Conectando Navidades',
-        client: 'HN SHIPPING EXPRESS',
+        title: getProject('ediciones', 'conectandoNavidades', 'title', 'Conectando Navidades'),
+        videoTitle: getProject('ediciones', 'conectandoNavidades', 'videoTitle', 'Conectando Navidades'),
+        client: getProject('ediciones', 'conectandoNavidades', 'client', 'HN SHIPPING EXPRESS'),
         tools: 'Adobe Suite, Premiere Pro, After Effects',
-        description: 'El contenido, desarrollado por Artica Group, es un video corporativo con enfoque emocional dirigido a la comunidad venezolana en el extranjero. El objetivo fue establecer el servicio de envío aéreo de HN Shipping Express como un conector esencial de valores y afecto familiar durante la temporada navideña. La producción enfatizó visualmente las cajas con mensajes personales recibidas por las familias en Venezuela, destacando la eficiencia logística para una entrega oportuna. El material concluye con una llamada a la acción (CTA) de urgencia: «SOLICÍTALO Antes del 5 de diciembre», capitalizando la confiabilidad del servicio y el valor emocional.',
+        description: getProject('ediciones', 'conectandoNavidades', 'description', 'El contenido, desarrollado por Artica Group, es un video corporativo con enfoque emocional dirigido a la comunidad venezolana en el extranjero. El objetivo fue establecer el servicio de envío aéreo de HN Shipping Express como un conector esencial de valores y afecto familiar durante la temporada navideña. La producción enfatizó visualmente las cajas con mensajes personales recibidas por las familias en Venezuela, destacando la eficiencia logística para una entrega oportuna. El material concluye con una llamada a la acción (CTA) de urgencia: «SOLICÍTALO Antes del 5 de diciembre», capitalizando la confiabilidad del servicio y el valor emocional.'),
       },
       {
         image: '/img/Portafolio/videos/videoframe_10849.avif',
         videoLink: 'https://res.cloudinary.com/dobuhpxof/video/upload/v1768502683/5_m7qsal.mp4',
-        title: 'TOYOTA Promoción',
-        videoTitle: 'TOYOTA Promoción',
-        client: 'TOYOTA',
+        title: getProject('ediciones', 'toyotaPromocion', 'title', 'TOYOTA Promoción'),
+        videoTitle: getProject('ediciones', 'toyotaPromocion', 'videoTitle', 'TOYOTA Promoción'),
+        client: getProject('ediciones', 'toyotaPromocion', 'client', 'TOYOTA'),
         tools: 'Adobe Suite, Premiere Pro, After Effects',
-        description: 'Este es un video promocional de alta calidad centrado en atraer a la comunidad cubana en Miami para la compra de un nuevo vehículo Toyota. El objetivo es comunicar los beneficios únicos y exclusivos disponibles para este segmento de clientes, incentivando la adquisición de un carro nuevo. ofreciendo beneficios exclusivos: 2 años de mantenimiento GRATIS, 4 años de garantía Bumper-to-Bumper y hasta 90 días para el primer pago. También se incluyó un descuento adicional de hasta $1,500 para los primeros cinco clientes. El video usó tomas dinámicas en el concesionario e incitó a «Agenda TU CITA hoy mismo»',
+        description: getProject('ediciones', 'toyotaPromocion', 'description', 'Este es un video promocional de alta calidad centrado en atraer a la comunidad cubana en Miami para la compra de un nuevo vehículo Toyota. El objetivo es comunicar los beneficios únicos y exclusivos disponibles para este segmento de clientes, incentivando la adquisición de un carro nuevo. ofreciendo beneficios exclusivos: 2 años de mantenimiento GRATIS, 4 años de garantía Bumper-to-Bumper y hasta 90 días para el primer pago. También se incluyó un descuento adicional de hasta $1,500 para los primeros cinco clientes. El video usó tomas dinámicas en el concesionario e incitó a «Agenda TU CITA hoy mismo»'),
       },
       {
         image: '/img/Portafolio/videos/videoframe_26173.avif',
         videoLink: 'https://res.cloudinary.com/dobuhpxof/video/upload/v1768503138/Realtor-video-AE-Blanco-y-negro-cc-1_rwqsrg.mp4',
-        title: 'Tour Inmobiliario',
-        videoTitle: 'Tour Inmobiliario',
-        client: 'Campaña de Marketing residencial',
+        title: getProject('ediciones', 'tourInmobiliario', 'title', 'Tour Inmobiliario'),
+        videoTitle: getProject('ediciones', 'tourInmobiliario', 'videoTitle', 'Tour Inmobiliario'),
+        client: getProject('ediciones', 'tourInmobiliario', 'client', 'Campaña de Marketing residencial'),
         tools: 'Adobe Suite, Premiere Pro, After Effects',
-        description: 'Desarrollamos esta pieza audiovisual profesional y dinámica para el segmento inmobiliario de lujo, con el objetivo de exhibir una residencia excepcional en Pinecrest y comunicar su valor de lujo y habitabilidad. El contenido se basa en una narración directa que guía al potencial comprador a través de sus características premium: tomas aéreas para impacto exterior, diseño de concepto abierto, cocina State of the art con acabados de mármol, y espacios flexibles (oficina privada/sala de juegos). El recorrido culmina en la suite principal con amenities de lujo. Este es un activo de marketing fundamental diseñado para generar interés calificado al posicionar la propiedad como una combinación óptima de confort, lujo y ubicación.',
+        description: getProject('ediciones', 'tourInmobiliario', 'description', 'Desarrollamos esta pieza audiovisual profesional y dinámica para el segmento inmobiliario de lujo, con el objetivo de exhibir una residencia excepcional en Pinecrest y comunicar su valor de lujo y habitabilidad. El contenido se basa en una narración directa que guía al potencial comprador a través de sus características premium: tomas aéreas para impacto exterior, diseño de concepto abierto, cocina State of the art con acabados de mármol, y espacios flexibles (oficina privada/sala de juegos). El recorrido culmina en la suite principal con amenities de lujo. Este es un activo de marketing fundamental diseñado para generar interés calificado al posicionar la propiedad como una combinación óptima de confort, lujo y ubicación.'),
       },
       {
         image: '/img/Portafolio/videos/videoframe_54502-scaled.avif',
         videoLink: 'https://res.cloudinary.com/dobuhpxof/video/upload/v1768503525/POR-QUE-VENEZUELA_tjz3wf.mp4',
-        title: 'POR QUÉ VENEZUELA',
-        videoTitle: 'POR QUÉ VENEZUELA',
-        client: 'Potencial de Inversión y RR.HH. en Venezuela',
+        title: getProject('ediciones', 'porQueVenezuela', 'title', 'POR QUÉ VENEZUELA'),
+        videoTitle: getProject('ediciones', 'porQueVenezuela', 'videoTitle', 'POR QUÉ VENEZUELA'),
+        client: getProject('ediciones', 'porQueVenezuela', 'client', 'Potencial de Inversión y RR.HH. en Venezuela'),
         tools: 'Adobe Suite, Premiere Pro, After Effects',
-        description: 'Desarrollamos este segmento de entrevista profesional con el objetivo de proyectar una visión de negocios optimista sobre la inversión en Venezuela. La ejecutiva entrevistada sostiene que, pese a los desafíos, el país posee un «mucho potencial», destacando particularmente la calidad del capital humano y el «talento increíble» local. Ella revela que su estrategia corporativa se centró en desarrollar el departamento de Recursos Humanos en Venezuela, dada su profunda confianza en la fuerza laboral. La pieza audiovisual utiliza imágenes de Caracas y referencias culturales para reforzar la riqueza del país, sirviendo como un activo estratégico de comunicación que valida el potencial de inversión.',
+        description: getProject('ediciones', 'porQueVenezuela', 'description', 'Desarrollamos este segmento de entrevista profesional con el objetivo de proyectar una visión de negocios optimista sobre la inversión en Venezuela. La ejecutiva entrevistada sostiene que, pese a los desafíos, el país posee un «mucho potencial», destacando particularmente la calidad del capital humano y el «talento increíble» local. Ella revela que su estrategia corporativa se centró en desarrollar el departamento de Recursos Humanos en Venezuela, dada su profunda confianza en la fuerza laboral. La pieza audiovisual utiliza imágenes de Caracas y referencias culturales para reforzar la riqueza del país, sirviendo como un activo estratégico de comunicación que valida el potencial de inversión.'),
       },
       {
         image: '/img/Portafolio/videos/525987874_724416670415618_4017155133578734076_n.avif',
         videoLink: 'https://res.cloudinary.com/dobuhpxof/video/upload/v1768504884/Garantias-extendidas-la-marca-mas-vendidas-y-mejor-calificada-en-Estados-Unidos-de-vehiculos-a_te3mtm.mp4',
-        title: 'Toyota',
-        videoTitle: 'Toyota Confianza',
-        client: 'Toyota',
+        title: getProject('ediciones', 'toyotaConfianza', 'title', 'Toyota'),
+        videoTitle: getProject('ediciones', 'toyotaConfianza', 'videoTitle', 'Toyota Confianza'),
+        client: getProject('ediciones', 'toyotaConfianza', 'client', 'Toyota'),
         tools: 'Adobe Suite, Premiere Pro, After Effects',
-        description: 'Artica desarrolló una pieza clave de storytelling para Toyota, la marca de vehículos más vendida en EE. UU., con el objetivo de potenciar las ventas. La estrategia se centró en la confianza y durabilidad de la marca, argumentando que la alta fidelidad de los clientes a Toyota «no se improvisa». El video aborda preguntas sobre el rendimiento de vehículos anteriores del cliente. Además, el clip promueve activamente las soluciones de venta y financiamiento de la agencia, destacando que ofrecen modelos nuevos y usados, planes flexibles y un proceso rápido, apto incluso para clientes con ITIN o crédito desafiante. El ambiente festivo de la activación temática de circo (The Big Top) en el showroom refuerza la experiencia de compra emocionante y accesible.',
+        description: getProject('ediciones', 'toyotaConfianza', 'description', 'Artica desarrolló una pieza clave de storytelling para Toyota, la marca de vehículos más vendida en EE. UU., con el objetivo de potenciar las ventas. La estrategia se centró en la confianza y durabilidad de la marca, argumentando que la alta fidelidad de los clientes a Toyota «no se improvisa». El video aborda preguntas sobre el rendimiento de vehículos anteriores del cliente. Además, el clip promueve activamente las soluciones de venta y financiamiento de la agencia, destacando que ofrecen modelos nuevos y usados, planes flexibles y un proceso rápido, apto incluso para clientes con ITIN o crédito desafiante. El ambiente festivo de la activación temática de circo (The Big Top) en el showroom refuerza la experiencia de compra emocionante y accesible.'),
       },
     ],
   },
   {
     id: 'second',
-    heading: 'Diseño',
+    heading: t('portfolio.sections.diseno'),
     backgroundImage: '/img/Portafolio/fondo-diseño.avif',
     galleryImages: [
       '/img/Portafolio/diseño grafico/DEST-WALLPANEL-EXT-HOME-DECOR.avif',
@@ -128,97 +138,97 @@ const portfolioSections: PortfolioSection[] = [
     designs: [
       {
         image: '/img/Portafolio/diseño grafico/POST-LINKEDIN-RSG.avif',
-        title: 'Temporada de Huracanes',
-        videoTitle: 'Temporada de Huracanes',
-        client: 'Rain Shield Gutters Corp',
+        title: getProject('diseno', 'temporadaHuracanes', 'title', 'Temporada de Huracanes'),
+        videoTitle: getProject('diseno', 'temporadaHuracanes', 'videoTitle', 'Temporada de Huracanes'),
+        client: getProject('diseno', 'temporadaHuracanes', 'client', 'Rain Shield Gutters Corp'),
         tools: 'Adobe Photoshop, Canva',
-        description: 'Desarrollamos esta pieza gráfica promocional para Rain Shield Gutters Corp., con un objetivo estratégico claro: apelar a la preocupación de los clientes por la temporada de huracanes para ofrecer una solución preventiva y generar ventas. El mensaje principal es de urgencia y solución: «The hurricane season is not over yet! And we have the formula to end the year Damage Free» (¡La temporada de huracanes aún no ha terminado! Y tenemos la fórmula para terminar el año Libre de Daños).',
+        description: getProject('diseno', 'temporadaHuracanes', 'description', 'Desarrollamos esta pieza gráfica promocional para Rain Shield Gutters Corp., con un objetivo estratégico claro: apelar a la preocupación de los clientes por la temporada de huracanes para ofrecer una solución preventiva y generar ventas. El mensaje principal es de urgencia y solución: «The hurricane season is not over yet! And we have the formula to end the year Damage Free» (¡La temporada de huracanes aún no ha terminado! Y tenemos la fórmula para terminar el año Libre de Daños).'),
       },
       {
         image: '/img/Portafolio/diseño grafico/THANKSGIVING-JET-AIR-4.avif',
-        title: 'Campaña Emocional de Thanksgiving',
-        videoTitle: 'Campaña Emocional de Thanksgiving',
-        client: 'JET AIR MRO',
+        title: getProject('diseno', 'thanksgivingJetAir', 'title', 'Campaña Emocional de Thanksgiving'),
+        videoTitle: getProject('diseno', 'thanksgivingJetAir', 'videoTitle', 'Campaña Emocional de Thanksgiving'),
+        client: getProject('diseno', 'thanksgivingJetAir', 'client', 'JET AIR MRO'),
         tools: 'Canva',
-        description: 'Desarrollamos esta pieza gráfica promocional para JET AIR MRO, enfocada en una campaña de marketing de temporada por Thanksgiving. El mensaje principal es «HAPPY THANKSGIVING». La estrategia busca humanizar la marca y asociar el servicio de transporte aéreo con los valores familiares. La imagen muestra una emotiva reunión en un aeropuerto, y el mensaje final invoca la gratitud. Este material es una herramienta de branding que busca generar una asociación emocional positiva con la empresa.',
+        description: getProject('diseno', 'thanksgivingJetAir', 'description', 'Desarrollamos esta pieza gráfica promocional para JET AIR MRO, enfocada en una campaña de marketing de temporada por Thanksgiving. El mensaje principal es «HAPPY THANKSGIVING». La estrategia busca humanizar la marca y asociar el servicio de transporte aéreo con los valores familiares. La imagen muestra una emotiva reunión en un aeropuerto, y el mensaje final invoca la gratitud. Este material es una herramienta de branding que busca generar una asociación emocional positiva con la empresa.'),
       },
       {
         image: '/img/Portafolio/diseño grafico/DEST-WALLPANEL-EXT-HOME-DECOR.avif',
-        title: 'Flyer Promocional',
-        videoTitle: 'Flyer Promocional',
-        client: 'AD Home Decor',
+        title: getProject('diseno', 'flyerAdHomeDecor', 'title', 'Flyer Promocional'),
+        videoTitle: getProject('diseno', 'flyerAdHomeDecor', 'videoTitle', 'Flyer Promocional'),
+        client: getProject('diseno', 'flyerAdHomeDecor', 'client', 'AD Home Decor'),
         tools: 'Adobe Photoshop, Canva',
-        description: 'Desarrollamos para AD Home Decor un material gráfico promocional (flyer) centrado en el panel de pared exterior Black Exterior Design (código WPX-01). Este activo se diseñó para comunicar la estética moderna del producto, mostrando su aplicación en la fachada de una vivienda contemporánea. Además de la referencia visual, el flyer comunica las especificaciones técnicas exactas del panel en dimensiones de $8.5 \\times 144″ \\times 3/4″$, sirviendo como una herramienta de marketing directo que combina la estética premium con la información técnica esencial.',
+        description: getProject('diseno', 'flyerAdHomeDecor', 'description', 'Desarrollamos para AD Home Decor un material gráfico promocional (flyer) centrado en el panel de pared exterior Black Exterior Design (código WPX-01). Este activo se diseñó para comunicar la estética moderna del producto, mostrando su aplicación en la fachada de una vivienda contemporánea. Además de la referencia visual, el flyer comunica las especificaciones técnicas exactas del panel en dimensiones de $8.5 \\times 144″ \\times 3/4″$, sirviendo como una herramienta de marketing directo que combina la estética premium con la información técnica esencial.'),
       },
       {
         image: '/img/Portafolio/diseño grafico/FLYER-PROYECTOS-DG-CONCEPT.avif',
-        title: 'Estrategia Integral',
-        videoTitle: 'Estrategia Integral',
-        client: 'CONCEPT DESIGN',
+        title: getProject('diseno', 'estrategiaIntegral', 'title', 'Estrategia Integral'),
+        videoTitle: getProject('diseno', 'estrategiaIntegral', 'videoTitle', 'Estrategia Integral'),
+        client: getProject('diseno', 'estrategiaIntegral', 'client', 'CONCEPT DESIGN'),
         tools: 'Adobe Photoshop',
-        description: 'Desarrollamos este material gráfico promocional para CONCEPT DESIGN: STYLE & HOME, cuya propuesta de valor central se condensa en la promesa: "Más que diseño, creamos SOLUCIONES PARA TI". Este activo fue diseñado estratégicamente para comunicar la capacidad integral de la marca en la gestión de proyectos de diseño de interiores. La pieza segmenta visualmente la oferta en tres áreas de servicio clave, cada una representada por una imagen de alta calidad: INTERIOR DESIGN (enfocado en espacios comerciales), SOLUCIONES MODULARES (con foco en cocinas modernas y funcionales) y PROJECT MANAGEMENT (destacando la gestión y selección de materiales). El diseño utiliza una estética premium en tonos oscuros, proyectando sofisticación. El material concluye con un llamado a la acción (CTA) directo que busca impulsar la conversión y el inicio inmediato del proyecto por parte del cliente: «EMPECEMOS TU PROYECTO HOY MISMO».',
+        description: getProject('diseno', 'estrategiaIntegral', 'description', 'Desarrollamos este material gráfico promocional para CONCEPT DESIGN: STYLE & HOME, cuya propuesta de valor central se condensa en la promesa: "Más que diseño, creamos SOLUCIONES PARA TI". Este activo fue diseñado estratégicamente para comunicar la capacidad integral de la marca en la gestión de proyectos de diseño de interiores. La pieza segmenta visualmente la oferta en tres áreas de servicio clave, cada una representada por una imagen de alta calidad: INTERIOR DESIGN (enfocado en espacios comerciales), SOLUCIONES MODULARES (con foco en cocinas modernas y funcionales) y PROJECT MANAGEMENT (destacando la gestión y selección de materiales). El diseño utiliza una estética premium en tonos oscuros, proyectando sofisticación. El material concluye con un llamado a la acción (CTA) directo que busca impulsar la conversión y el inicio inmediato del proyecto por parte del cliente: «EMPECEMOS TU PROYECTO HOY MISMO».'),
       },
       {
         image: '/img/Portafolio/diseño grafico/HISTORIA-ADS-VENEZUELA-HN.avif',
-        title: 'Envíos Internacionales',
-        videoTitle: 'Envíos Internacionales',
-        client: 'HN Shipping Express',
+        title: getProject('diseno', 'enviosInternacionalesHn', 'title', 'Envíos Internacionales'),
+        videoTitle: getProject('diseno', 'enviosInternacionalesHn', 'videoTitle', 'Envíos Internacionales'),
+        client: getProject('diseno', 'enviosInternacionalesHn', 'client', 'HN Shipping Express'),
         tools: 'Adobe Photoshop, Canva',
-        description: 'Desarrollamos este material gráfico publicitario (flyer) para HN Shipping Express, con el objetivo de promover un servicio de envío específico a Venezuela. La pieza fue diseñada para destacar los beneficios logísticos clave para la comunidad en el extranjero. El mensaje principal de la campaña es la promoción de un servicio valorado y gratuito: REEMPAQUE y PICK UP GRATIS. El flyer utiliza una imagen de Caracas con un avión y un contenedor de envío, reforzando la idea de transporte aéreo y marítimo. La propuesta de valor se resume en una línea final de posicionamiento: «OPTIMIZAMOS TU ENVÍO PARA QUE AHORRES Y LO RECOGEMOS POR TI». Este material es una herramienta de marketing directo que busca atraer envíos al eliminar la barrera del reempaque y la recolección, comunicando conveniencia y ahorro.',
+        description: getProject('diseno', 'enviosInternacionalesHn', 'description', 'Desarrollamos este material gráfico publicitario (flyer) para HN Shipping Express, con el objetivo de promover un servicio de envío específico a Venezuela. La pieza fue diseñada para destacar los beneficios logísticos clave para la comunidad en el extranjero. El mensaje principal de la campaña es la promoción de un servicio valorado y gratuito: REEMPAQUE y PICK UP GRATIS. El flyer utiliza una imagen de Caracas con un avión y un contenedor de envío, reforzando la idea de transporte aéreo y marítimo. La propuesta de valor se resume en una línea final de posicionamiento: «OPTIMIZAMOS TU ENVÍO PARA QUE AHORRES Y LO RECOGEMOS POR TI». Este material es una herramienta de marketing directo que busca atraer envíos al eliminar la barrera del reempaque y la recolección, comunicando conveniencia y ahorro.'),
       },
       {
         image: '/img/Portafolio/diseño grafico/PORTADA-KITCHEN-MIAMI-OUTDOORS.avif',
-        title: 'Envíos Internacionales',
-        videoTitle: 'Envíos Internacionales',
-        client: 'HN Shipping Express',
+        title: getProject('diseno', 'enviosInternacionalesHn', 'title', 'Envíos Internacionales'),
+        videoTitle: getProject('diseno', 'enviosInternacionalesHn', 'videoTitle', 'Envíos Internacionales'),
+        client: getProject('diseno', 'enviosInternacionalesHn', 'client', 'HN Shipping Express'),
         tools: 'Adobe Photoshop, Canva',
-        description: 'Desarrollamos este material gráfico publicitario (flyer) para HN Shipping Express, con el objetivo de promover un servicio de envío específico a Venezuela. La pieza fue diseñada para destacar los beneficios logísticos clave para la comunidad en el extranjero. El mensaje principal de la campaña es la promoción de un servicio valorado y gratuito: REEMPAQUE y PICK UP GRATIS. El flyer utiliza una imagen de Caracas con un avión y un contenedor de envío, reforzando la idea de transporte aéreo y marítimo. La propuesta de valor se resume en una línea final de posicionamiento: «OPTIMIZAMOS TU ENVÍO PARA QUE AHORRES Y LO RECOGEMOS POR TI». Este material es una herramienta de marketing directo que busca atraer envíos al eliminar la barrera del reempaque y la recolección, comunicando conveniencia y ahorro.',
+        description: getProject('diseno', 'enviosInternacionalesHn', 'description', 'Desarrollamos este material gráfico publicitario (flyer) para HN Shipping Express, con el objetivo de promover un servicio de envío específico a Venezuela. La pieza fue diseñada para destacar los beneficios logísticos clave para la comunidad en el extranjero. El mensaje principal de la campaña es la promoción de un servicio valorado y gratuito: REEMPAQUE y PICK UP GRATIS. El flyer utiliza una imagen de Caracas con un avión y un contenedor de envío, reforzando la idea de transporte aéreo y marítimo. La propuesta de valor se resume en una línea final de posicionamiento: «OPTIMIZAMOS TU ENVÍO PARA QUE AHORRES Y LO RECOGEMOS POR TI». Este material es una herramienta de marketing directo que busca atraer envíos al eliminar la barrera del reempaque y la recolección, comunicando conveniencia y ahorro.'),
       },
       {
         image: '/img/Portafolio/diseño grafico/PORTADA-NIGHT-FANA-MILLING-CENTER.avif',
-        title: 'Servicio de Laboratorio Dental',
-        videoTitle: 'Servicio de Laboratorio Dental',
-        client: 'FANA MILLING CENTER',
+        title: getProject('diseno', 'servicioLaboratorioDental', 'title', 'Servicio de Laboratorio Dental'),
+        videoTitle: getProject('diseno', 'servicioLaboratorioDental', 'videoTitle', 'Servicio de Laboratorio Dental'),
+        client: getProject('diseno', 'servicioLaboratorioDental', 'client', 'FANA MILLING CENTER'),
         tools: 'Canva',
-        description: 'Desarrollamos esta pieza gráfica promocional para FANA MILLING CENTER, cuyo objetivo es destacar su servicio de creación de Night Guard (férula de descarga). El mensaje principal enfatiza la precisión técnica: «Night Guard: from prescription to Perfect fit». La imagen central muestra el producto siendo manipulado por un técnico, comunicando profesionalismo y atención al detalle. Este material garantiza que el servicio abarca desde la prescripción hasta un ajuste final perfecto, posicionando al laboratorio como un proveedor de alta calidad y fiabilidad.',
+        description: getProject('diseno', 'servicioLaboratorioDental', 'description', 'Desarrollamos esta pieza gráfica promocional para FANA MILLING CENTER, cuyo objetivo es destacar su servicio de creación de Night Guard (férula de descarga). El mensaje principal enfatiza la precisión técnica: «Night Guard: from prescription to Perfect fit». La imagen central muestra el producto siendo manipulado por un técnico, comunicando profesionalismo y atención al detalle. Este material garantiza que el servicio abarca desde la prescripción hasta un ajuste final perfecto, posicionando al laboratorio como un proveedor de alta calidad y fiabilidad.'),
       },
       {
         image: '/img/Portafolio/diseño grafico/EMAIL-PICK-UP-HN.avif',
-        title: 'Servicio Gratuito de Recolección de Carga',
-        videoTitle: 'Email Marketing',
-        client: 'HN Shipping Express',
+        title: getProject('diseno', 'servicioRecoleccionCarga', 'title', 'Servicio Gratuito de Recolección de Carga'),
+        videoTitle: getProject('diseno', 'servicioRecoleccionCarga', 'videoTitle', 'Email Marketing'),
+        client: getProject('diseno', 'servicioRecoleccionCarga', 'client', 'HN Shipping Express'),
         tools: 'Canva, Mailchimp',
-        description: 'Desarrollamos este diseño de campaña de Email Marketing para HN Shipping Express, con el objetivo de promover un servicio de valor añadido esencial: la recolección de carga (Pick Up) de manera gratuita en Miami. La estrategia se basa en un mensaje directo y altamente competitivo: «SÍ, GRATIS RETIRAMOS TU CARGA EN MIAMI SIN COBRARTE EL PICK UP». Visualmente, la pieza utiliza un formato vertical optimizado para la lectura móvil, con una imagen que refuerza la conveniencia del servicio a domicilio, mostrando una mano que entrega una caja en la puerta de una casa.',
+        description: getProject('diseno', 'servicioRecoleccionCarga', 'description', 'Desarrollamos este diseño de campaña de Email Marketing para HN Shipping Express, con el objetivo de promover un servicio de valor añadido esencial: la recolección de carga (Pick Up) de manera gratuita en Miami. La estrategia se basa en un mensaje directo y altamente competitivo: «SÍ, GRATIS RETIRAMOS TU CARGA EN MIAMI SIN COBRARTE EL PICK UP». Visualmente, la pieza utiliza un formato vertical optimizado para la lectura móvil, con una imagen que refuerza la conveniencia del servicio a domicilio, mostrando una mano que entrega una caja en la puerta de una casa.'),
       },
       {
         image: '/img/Portafolio/diseño grafico/EMAIL-SEASON-RSG.avif',
-        title: 'Email Mantenimiento Estacional',
-        videoTitle: 'Email Marketing',
-        client: 'Rain Shield Gutters',
+        title: getProject('diseno', 'emailMantenimientoEstacional', 'title', 'Email Mantenimiento Estacional'),
+        videoTitle: getProject('diseno', 'emailMantenimientoEstacional', 'videoTitle', 'Email Marketing'),
+        client: getProject('diseno', 'emailMantenimientoEstacional', 'client', 'Rain Shield Gutters'),
         tools: 'Canva, Mailchimp',
-        description: 'Desarrollamos este diseño de campaña de Email Marketing para Rain Shield Gutters Corp. (RSG), con el objetivo estratégico de impulsar la venta de servicios de mantenimiento de canaletas antes del inicio de la temporada de festividades. La estrategia se fundamenta en un enfoque de gestión del tiempo y calidad de vida, utilizando el mensaje principal: «The holiday season means gatherings, Not gutter cleaning» (La temporada de vacaciones significa reuniones, no limpieza de canaletas). Esta formulación apela directamente al valor del tiempo del cliente, posicionando el servicio de RSG como la solución que permite disfrutar las fiestas sin preocuparse por el mantenimiento. Visualmente, la pieza contrasta un acercamiento a la canaleta con una escena borrosa de reunión familiar, reforzando el mensaje de delegar el trabajo preventivo.',
+        description: getProject('diseno', 'emailMantenimientoEstacional', 'description', 'Desarrollamos este diseño de campaña de Email Marketing para Rain Shield Gutters Corp. (RSG), con el objetivo estratégico de impulsar la venta de servicios de mantenimiento de canaletas antes del inicio de la temporada de festividades. La estrategia se fundamenta en un enfoque de gestión del tiempo y calidad de vida, utilizando el mensaje principal: «The holiday season means gatherings, Not gutter cleaning» (La temporada de vacaciones significa reuniones, no limpieza de canaletas). Esta formulación apela directamente al valor del tiempo del cliente, posicionando el servicio de RSG como la solución que permite disfrutar las fiestas sin preocuparse por el mantenimiento. Visualmente, la pieza contrasta un acercamiento a la canaleta con una escena borrosa de reunión familiar, reforzando el mensaje de delegar el trabajo preventivo.'),
       },
       {
         image: '/img/Portafolio/diseño grafico/THANKSGIVING.avif',
-        title: 'Campaña Emocional de Thanksgiving',
-        videoTitle: 'Email Marketing',
-        client: 'Skyway',
+        title: getProject('diseno', 'thanksgivingSkyway', 'title', 'Campaña Emocional de Thanksgiving'),
+        videoTitle: getProject('diseno', 'thanksgivingSkyway', 'videoTitle', 'Email Marketing'),
+        client: getProject('diseno', 'thanksgivingSkyway', 'client', 'Skyway'),
         tools: 'Canva, Mailchimp',
-        description: 'Desarrollamos este diseño de campaña de Email Marketing para SKYWAY FAMILY CARGO LLC, con el objetivo de generar un mensaje de branding estacional y de gratitud centrado en la festividad de Thanksgiving (Día de Acción de Gracias). El mensaje principal es una expresión de agradecimiento directa al cliente: «GRACIAS A CADA ENVÍO QUE HACES CON NOSOTROS», asociando el uso del servicio con la consolidación del «compromiso, responsabilidad y cercanía» de la marca. Visualmente, la pieza utiliza una imagen emotiva de un paquete entregado en una puerta durante el otoño, lo que refuerza la conexión entre los servicios logísticos (COURIER • MAILBOX • EXPORT • STORAGE) y el valor familiar.',
+        description: getProject('diseno', 'thanksgivingSkyway', 'description', 'Desarrollamos este diseño de campaña de Email Marketing para SKYWAY FAMILY CARGO LLC, con el objetivo de generar un mensaje de branding estacional y de gratitud centrado en la festividad de Thanksgiving (Día de Acción de Gracias). El mensaje principal es una expresión de agradecimiento directa al cliente: «GRACIAS A CADA ENVÍO QUE HACES CON NOSOTROS», asociando el uso del servicio con la consolidación del «compromiso, responsabilidad y cercanía» de la marca. Visualmente, la pieza utiliza una imagen emotiva de un paquete entregado en una puerta durante el otoño, lo que refuerza la conexión entre los servicios logísticos (COURIER • MAILBOX • EXPORT • STORAGE) y el valor familiar.'),
       },
       {
         image: '/img/Portafolio/diseño grafico/EMAIL-CORTE-Y-CANTEO-DG-CONCEPT-1.avif',
-        title: 'Email Servicio de Corte y Canteo',
-        videoTitle: 'Email Marketing',
-        client: 'CONCEPT DESIGN',
+        title: getProject('diseno', 'emailCorteCanteo', 'title', 'Email Servicio de Corte y Canteo'),
+        videoTitle: getProject('diseno', 'emailCorteCanteo', 'videoTitle', 'Email Marketing'),
+        client: getProject('diseno', 'emailCorteCanteo', 'client', 'CONCEPT DESIGN'),
         tools: 'Canva, Mailchimp',
-        description: 'Desarrollamos este diseño de campaña de Email Marketing para CONCEPT DESIGN: STYLE & HOME, promocionando el servicio técnico de CORTE Y CANTEO. El mensaje principal utiliza el slogan: «Dale forma a tus proyectos con nuestro servicio». El contenido destaca la maquinaria de alta tecnología que garantiza «medidas exactas» y «Bordes perfectos». El diseño está optimizado para la lectura móvil y su Llamado a la Acción (CTA) finaliza con «ASEGURA LA PRECISIÓN QUE TU PROYECTO MERECE».',
+        description: getProject('diseno', 'emailCorteCanteo', 'description', 'Desarrollamos este diseño de campaña de Email Marketing para CONCEPT DESIGN: STYLE & HOME, promocionando el servicio técnico de CORTE Y CANTEO. El mensaje principal utiliza el slogan: «Dale forma a tus proyectos con nuestro servicio». El contenido destaca la maquinaria de alta tecnología que garantiza «medidas exactas» y «Bordes perfectos». El diseño está optimizado para la lectura móvil y su Llamado a la Acción (CTA) finaliza con «ASEGURA LA PRECISIÓN QUE TU PROYECTO MERECE».'),
       },
     ],
   },
   {
     id: 'third',
-    heading: 'Email',
+    heading: t('portfolio.sections.email'),
     backgroundImage: '/img/Portafolio/fondo-email.avif',
     galleryImages: [
       '/img/Portafolio/email marketing/EMAIL-CORTE-Y-CANTEO-DG-CONCEPT-1.avif',
@@ -229,41 +239,41 @@ const portfolioSections: PortfolioSection[] = [
     designs: [
       {
         image: '/img/Portafolio/email marketing/EMAIL-PICK-UP-HN.avif',
-        title: 'Servicio Gratuito de Recolección de Carga',
-        videoTitle: 'Email Marketing',
-        client: 'HN Shipping Express',
+        title: getProject('email', 'servicioRecoleccionCarga', 'title', 'Servicio Gratuito de Recolección de Carga'),
+        videoTitle: getProject('email', 'servicioRecoleccionCarga', 'videoTitle', 'Email Marketing'),
+        client: getProject('email', 'servicioRecoleccionCarga', 'client', 'HN Shipping Express'),
         tools: 'Canva, Mailchimp',
-        description: 'Desarrollamos este diseño de campaña de Email Marketing para HN Shipping Express, con el objetivo de promover un servicio de valor añadido esencial: la recolección de carga (Pick Up) de manera gratuita en Miami. La estrategia se basa en un mensaje directo y altamente competitivo: «SÍ, GRATIS RETIRAMOS TU CARGA EN MIAMI SIN COBRARTE EL PICK UP». Visualmente, la pieza utiliza un formato vertical optimizado para la lectura móvil, con una imagen que refuerza la conveniencia del servicio a domicilio, mostrando una mano que entrega una caja en la puerta de una casa.',
+        description: getProject('email', 'servicioRecoleccionCarga', 'description', 'Desarrollamos este diseño de campaña de Email Marketing para HN Shipping Express, con el objetivo de promover un servicio de valor añadido esencial: la recolección de carga (Pick Up) de manera gratuita en Miami. La estrategia se basa en un mensaje directo y altamente competitivo: «SÍ, GRATIS RETIRAMOS TU CARGA EN MIAMI SIN COBRARTE EL PICK UP». Visualmente, la pieza utiliza un formato vertical optimizado para la lectura móvil, con una imagen que refuerza la conveniencia del servicio a domicilio, mostrando una mano que entrega una caja en la puerta de una casa.'),
       },
       {
         image: '/img/Portafolio/email marketing/EMAIL-SEASON-RSG.avif',
-        title: 'Email Mantenimiento Estacional',
-        videoTitle: 'Email Marketing',
-        client: 'Rain Shield Gutters',
+        title: getProject('email', 'emailMantenimientoEstacional', 'title', 'Email Mantenimiento Estacional'),
+        videoTitle: getProject('email', 'emailMantenimientoEstacional', 'videoTitle', 'Email Marketing'),
+        client: getProject('email', 'emailMantenimientoEstacional', 'client', 'Rain Shield Gutters'),
         tools: 'Canva, Mailchimp',
-        description: 'Desarrollamos este diseño de campaña de Email Marketing para Rain Shield Gutters Corp. (RSG), con el objetivo estratégico de impulsar la venta de servicios de mantenimiento de canaletas antes del inicio de la temporada de festividades. La estrategia se fundamenta en un enfoque de gestión del tiempo y calidad de vida, utilizando el mensaje principal: «The holiday season means gatherings, Not gutter cleaning» (La temporada de vacaciones significa reuniones, no limpieza de canaletas). Esta formulación apela directamente al valor del tiempo del cliente, posicionando el servicio de RSG como la solución que permite disfrutar las fiestas sin preocuparse por el mantenimiento. Visualmente, la pieza contrasta un acercamiento a la canaleta con una escena borrosa de reunión familiar, reforzando el mensaje de delegar el trabajo preventivo.',
+        description: getProject('email', 'emailMantenimientoEstacional', 'description', 'Desarrollamos este diseño de campaña de Email Marketing para Rain Shield Gutters Corp. (RSG), con el objetivo estratégico de impulsar la venta de servicios de mantenimiento de canaletas antes del inicio de la temporada de festividades. La estrategia se fundamenta en un enfoque de gestión del tiempo y calidad de vida, utilizando el mensaje principal: «The holiday season means gatherings, Not gutter cleaning» (La temporada de vacaciones significa reuniones, no limpieza de canaletas). Esta formulación apela directamente al valor del tiempo del cliente, posicionando el servicio de RSG como la solución que permite disfrutar las fiestas sin preocuparse por el mantenimiento. Visualmente, la pieza contrasta un acercamiento a la canaleta con una escena borrosa de reunión familiar, reforzando el mensaje de delegar el trabajo preventivo.'),
       },
       {
         image: '/img/Portafolio/email marketing/THANKSGIVING.avif',
-        title: 'Campaña Emocional de Thanksgiving',
-        videoTitle: 'Email Marketing',
-        client: 'Skyway',
+        title: getProject('email', 'thanksgivingSkyway', 'title', 'Campaña Emocional de Thanksgiving'),
+        videoTitle: getProject('email', 'thanksgivingSkyway', 'videoTitle', 'Email Marketing'),
+        client: getProject('email', 'thanksgivingSkyway', 'client', 'Skyway'),
         tools: 'Canva, Mailchimp',
-        description: 'Desarrollamos este diseño de campaña de Email Marketing para SKYWAY FAMILY CARGO LLC, con el objetivo de generar un mensaje de branding estacional y de gratitud centrado en la festividad de Thanksgiving (Día de Acción de Gracias). El mensaje principal es una expresión de agradecimiento directa al cliente: «GRACIAS A CADA ENVÍO QUE HACES CON NOSOTROS», asociando el uso del servicio con la consolidación del «compromiso, responsabilidad y cercanía» de la marca. Visualmente, la pieza utiliza una imagen emotiva de un paquete entregado en una puerta durante el otoño, lo que refuerza la conexión entre los servicios logísticos (COURIER • MAILBOX • EXPORT • STORAGE) y el valor familiar.',
+        description: getProject('email', 'thanksgivingSkyway', 'description', 'Desarrollamos este diseño de campaña de Email Marketing para SKYWAY FAMILY CARGO LLC, con el objetivo de generar un mensaje de branding estacional y de gratitud centrado en la festividad de Thanksgiving (Día de Acción de Gracias). El mensaje principal es una expresión de agradecimiento directa al cliente: «GRACIAS A CADA ENVÍO QUE HACES CON NOSOTROS», asociando el uso del servicio con la consolidación del «compromiso, responsabilidad y cercanía» de la marca. Visualmente, la pieza utiliza una imagen emotiva de un paquete entregado en una puerta durante el otoño, lo que refuerza la conexión entre los servicios logísticos (COURIER • MAILBOX • EXPORT • STORAGE) y el valor familiar.'),
       },
       {
         image: '/img/Portafolio/email marketing/EMAIL-CORTE-Y-CANTEO-DG-CONCEPT-1.avif',
-        title: 'Email Servicio de Corte y Canteo',
-        videoTitle: 'Email Marketing',
-        client: 'CONCEPT DESIGN',
+        title: getProject('email', 'emailCorteCanteo', 'title', 'Email Servicio de Corte y Canteo'),
+        videoTitle: getProject('email', 'emailCorteCanteo', 'videoTitle', 'Email Marketing'),
+        client: getProject('email', 'emailCorteCanteo', 'client', 'CONCEPT DESIGN'),
         tools: 'Canva, Mailchimp',
-        description: 'Desarrollamos este diseño de campaña de Email Marketing para CONCEPT DESIGN: STYLE & HOME, promocionando el servicio técnico de CORTE Y CANTEO. El mensaje principal utiliza el slogan: «Dale forma a tus proyectos con nuestro servicio». El contenido destaca la maquinaria de alta tecnología que garantiza «medidas exactas» y «Bordes perfectos». El diseño está optimizado para la lectura móvil y su Llamado a la Acción (CTA) finaliza con «ASEGURA LA PRECISIÓN QUE TU PROYECTO MERECE».',
+        description: getProject('email', 'emailCorteCanteo', 'description', 'Desarrollamos este diseño de campaña de Email Marketing para CONCEPT DESIGN: STYLE & HOME, promocionando el servicio técnico de CORTE Y CANTEO. El mensaje principal utiliza el slogan: «Dale forma a tus proyectos con nuestro servicio». El contenido destaca la maquinaria de alta tecnología que garantiza «medidas exactas» y «Bordes perfectos». El diseño está optimizado para la lectura móvil y su Llamado a la Acción (CTA) finaliza con «ASEGURA LA PRECISIÓN QUE TU PROYECTO MERECE».'),
       },
     ],
   },
   {
     id: 'fourth',
-    heading: 'Web',
+    heading: t('portfolio.sections.web'),
     backgroundImage: '/img/Portafolio/fondo-web.avif',
     galleryImages: [
       '/img/Portafolio/diseño web/1.png',
@@ -276,63 +286,66 @@ const portfolioSections: PortfolioSection[] = [
     designs: [
       {
         image: '/img/Portafolio/diseño web/6.png',
-        title: 'Plataforma de Financiamiento',
-        videoTitle: 'Desarrollo Web',
-        client: 'CREDIT WITH RAMI',
+        title: getProject('web', 'plataformaFinanciamiento', 'title', 'Plataforma de Financiamiento'),
+        videoTitle: getProject('web', 'plataformaFinanciamiento', 'videoTitle', 'Desarrollo Web'),
+        client: getProject('web', 'plataformaFinanciamiento', 'client', 'CREDIT WITH RAMI'),
         tools: 'Next JS',
         websiteLink: 'https://creditwithrami.com/',
-        description: 'Desarrollamos esta plataforma web corporativa para CREDIT WITH RAMI: BUSINESS FUNDING, cuyo objetivo es ofrecer una solución digital simplificada para que los propietarios de negocios en EE. UU. accedan a capital de financiamiento. La solución fue diseñada full responsive, lo cual garantiza una accesibilidad y experiencia de usuario perfectas en dispositivos móviles y de escritorio.',
+        description: getProject('web', 'plataformaFinanciamiento', 'description', 'Desarrollamos esta plataforma web corporativa para CREDIT WITH RAMI: BUSINESS FUNDING, cuyo objetivo es ofrecer una solución digital simplificada para que los propietarios de negocios en EE. UU. accedan a capital de financiamiento. La solución fue diseñada full responsive, lo cual garantiza una accesibilidad y experiencia de usuario perfectas en dispositivos móviles y de escritorio.'),
       },
       {
         image: '/img/Portafolio/diseño web/5.png',
-        title: 'Plataforma Corporativa',
-        videoTitle: 'Desarrollo Web',
-        client: '4101',
+        title: getProject('web', 'plataformaCorporativa4101', 'title', 'Plataforma Corporativa'),
+        videoTitle: getProject('web', 'plataformaCorporativa4101', 'videoTitle', 'Desarrollo Web'),
+        client: getProject('web', 'plataformaCorporativa4101', 'client', '4101'),
         tools: 'React JS',
         websiteLink: 'https://www.4101media.com/',
-        description: 'Desarrollamos esta plataforma web corporativa para 4101 Media, la sede en Venezuela de la empresa, con el objetivo de posicionarla como una productora audiovisual estratégica que acelera el crecimiento de marcas en el ámbito digital. El sitio fue diseñado full responsive, lo cual se evidencia en la vista optimizada para dispositivos de escritorio y móviles. La propuesta de valor se comunica de manera directa en la portada: «Aceleramos el Crecimiento de tu Marca en el Mundo Digital». La descripción complementaria enfatiza el uso de estrategias de marketing digital y contenido de alto impacto para impulsar empresas y emprendedores. La navegación es integral, incluyendo secciones clave como «Nosotros», «Servicios», «Academia» y «Portafolio», y utiliza llamados a la acción (CTAs) prominentemente ubicados como «Ver Proyectos» y «Nuestros Servicios» para guiar la interacción del usuario. Este desarrollo es un activo digital clave que refuerza la identidad de marca y facilita la conversión de prospectos interesados en servicios audiovisuales estratégicos.',
+        description: getProject('web', 'plataformaCorporativa4101', 'description', 'Desarrollamos esta plataforma web corporativa para 4101 Media, la sede en Venezuela de la empresa, con el objetivo de posicionarla como una productora audiovisual estratégica que acelera el crecimiento de marcas en el ámbito digital. El sitio fue diseñado full responsive, lo cual se evidencia en la vista optimizada para dispositivos de escritorio y móviles. La propuesta de valor se comunica de manera directa en la portada: «Aceleramos el Crecimiento de tu Marca en el Mundo Digital». La descripción complementaria enfatiza el uso de estrategias de marketing digital y contenido de alto impacto para impulsar empresas y emprendedores. La navegación es integral, incluyendo secciones clave como «Nosotros», «Servicios», «Academia» y «Portafolio», y utiliza llamados a la acción (CTAs) prominentemente ubicados como «Ver Proyectos» y «Nuestros Servicios» para guiar la interacción del usuario. Este desarrollo es un activo digital clave que refuerza la identidad de marca y facilita la conversión de prospectos interesados en servicios audiovisuales estratégicos.'),
       },
       {
         image: '/img/Portafolio/diseño web/3.png',
-        title: 'Plataforma de Catalogo Diseño de Interiores',
-        videoTitle: 'Desarrollo Web',
-        client: 'AD HOME DECOR',
+        title: getProject('web', 'plataformaCatalogoInteriores', 'title', 'Plataforma de Catalogo Diseño de Interiores'),
+        videoTitle: getProject('web', 'plataformaCatalogoInteriores', 'videoTitle', 'Desarrollo Web'),
+        client: getProject('web', 'plataformaCatalogoInteriores', 'client', 'AD HOME DECOR'),
         tools: 'Wordpress',
         websiteLink: 'https://aydhomedecor.com/',
-        description: 'Desarrollamos esta plataforma web corporativa para AD HOME DECOR, con el objetivo de establecer un catalogo digital que posicione a la marca como «LA SOLUCIÓN INTEGRAL EN DECORACIÓN DE TUS ESPACIOS». La solución fue diseñada full responsive, garantizando la optimización y accesibilidad en dispositivos de escritorio y móviles.',
+        description: getProject('web', 'plataformaCatalogoInteriores', 'description', 'Desarrollamos esta plataforma web corporativa para AD HOME DECOR, con el objetivo de establecer un catalogo digital que posicione a la marca como «LA SOLUCIÓN INTEGRAL EN DECORACIÓN DE TUS ESPACIOS». La solución fue diseñada full responsive, garantizando la optimización y accesibilidad en dispositivos de escritorio y móviles.'),
       },
       {
         image: '/img/Portafolio/diseño web/4.png',
-        title: 'Plataforma E-commerce',
-        videoTitle: 'Desarrollo Web',
-        client: 'Vynk',
+        title: getProject('web', 'plataformaEcommerceVynk', 'title', 'Plataforma E-commerce'),
+        videoTitle: getProject('web', 'plataformaEcommerceVynk', 'videoTitle', 'Desarrollo Web'),
+        client: getProject('web', 'plataformaEcommerceVynk', 'client', 'Vynk'),
         tools: 'Wordpress',
         websiteLink: 'https://vynk.us/',
-        description: 'Desarrollamos esta plataforma web para VYNK, una marca enfocada en la comercialización de equipos de fotografía y video profesional. El objetivo del proyecto fue establecer una presencia digital moderna y optimizada para el comercio electrónico de productos de alta tecnología. El sitio fue diseñado full responsive, lo que garantiza una navegación y experiencia de usuario perfectas tanto en la vista de escritorio como en la móvil.',
+        description: getProject('web', 'plataformaEcommerceVynk', 'description', 'Desarrollamos esta plataforma web para VYNK, una marca enfocada en la comercialización de equipos de fotografía y video profesional. El objetivo del proyecto fue establecer una presencia digital moderna y optimizada para el comercio electrónico de productos de alta tecnología. El sitio fue diseñado full responsive, lo que garantiza una navegación y experiencia de usuario perfectas tanto en la vista de escritorio como en la móvil.'),
       },
       {
         image: '/img/Portafolio/diseño web/1.png',
-        title: 'Plataforma E-commerce',
-        videoTitle: 'Desarrollo Web',
-        client: 'ZX',
+        title: getProject('web', 'plataformaEcommerceZx', 'title', 'Plataforma E-commerce'),
+        videoTitle: getProject('web', 'plataformaEcommerceZx', 'videoTitle', 'Desarrollo Web'),
+        client: getProject('web', 'plataformaEcommerceZx', 'client', 'ZX'),
         tools: 'Wordpress',
         websiteLink: 'https://zxline.us/',
-        description: 'Desarrollamos una plataforma de comercio electrónico de alto impacto visual para la marca ZX. La solución fue desarrollada full responsive, garantizando la optimización para dispositivos de escritorio y móviles. El diseño se centró en el branding y el storytelling («IT ALL STARTS WITH A DESIRE»). La plataforma incluye un e-commerce completamente integrado con navegación intuitiva, sirviendo como un activo digital clave para la venta y el posicionamiento premium de la marca.',
+        description: getProject('web', 'plataformaEcommerceZx', 'description', 'Desarrollamos una plataforma de comercio electrónico de alto impacto visual para la marca ZX. La solución fue desarrollada full responsive, garantizando la optimización para dispositivos de escritorio y móviles. El diseño se centró en el branding y el storytelling («IT ALL STARTS WITH A DESIRE»). La plataforma incluye un e-commerce completamente integrado con navegación intuitiva, sirviendo como un activo digital clave para la venta y el posicionamiento premium de la marca.'),
       },
       {
         image: '/img/Portafolio/diseño web/2.png',
-        title: 'Plataforma Digital corporativa',
-        videoTitle: 'Desarrollo Web',
-        client: 'FANA Milling Center',
+        title: getProject('web', 'plataformaDigitalCorporativa', 'title', 'Plataforma Digital corporativa'),
+        videoTitle: getProject('web', 'plataformaDigitalCorporativa', 'videoTitle', 'Desarrollo Web'),
+        client: getProject('web', 'plataformaDigitalCorporativa', 'client', 'FANA Milling Center'),
         tools: 'Next JS',
         websiteLink: 'https://fanamillingcenter.com/es',
-        description: 'Desarrollamos esta plataforma web corporativa para FANA Milling Center, un laboratorio especializado en Fresado Dental de Precisión. El objetivo del proyecto fue establecer una presencia digital robusta que comunicara la alta tecnología y la confiabilidad del servicio. La arquitectura del sitio fue diseñada full responsive, garantizando una experiencia de usuario óptima tanto en escritorio como en dispositivos móviles.',
+        description: getProject('web', 'plataformaDigitalCorporativa', 'description', 'Desarrollamos esta plataforma web corporativa para FANA Milling Center, un laboratorio especializado en Fresado Dental de Precisión. El objetivo del proyecto fue establecer una presencia digital robusta que comunicara la alta tecnología y la confiabilidad del servicio. La arquitectura del sitio fue diseñada full responsive, garantizando una experiencia de usuario óptima tanto en escritorio como en dispositivos móviles.'),
       },
     ],
   },
-];
+  ];
+};
 
 export default function PortfolioPage() {
+  const { t } = useLanguage();
+  const portfolioSections = getPortfolioSections(t);
   const sectionsRef = useRef<(HTMLElement | null)[]>([]);
   const imagesRef = useRef<(HTMLDivElement | null)[]>([]);
   const headingsRef = useRef<(HTMLHeadingElement | null)[]>([]);
@@ -1125,6 +1138,7 @@ export default function PortfolioPage() {
           transitionRef={transitionRef}
           videoInfoRef={videoInfoRef}
           transitionWrapperRef={transitionWrapperRef}
+          t={t}
         />
       )}
       
@@ -1159,6 +1173,7 @@ export default function PortfolioPage() {
                 transitionRef={designTransitionRef}
                 designInfoRef={designInfoRef}
                 transitionWrapperRef={designTransitionWrapperRef}
+                t={t}
               />
             );
           } else {
@@ -1172,6 +1187,7 @@ export default function PortfolioPage() {
                 transitionRef={designTransitionRef}
                 designInfoRef={designInfoRef}
                 transitionWrapperRef={designTransitionWrapperRef}
+                t={t}
               />
             );
           }
@@ -1189,12 +1205,14 @@ function VideoInfoSection({
   transitionRef,
   videoInfoRef,
   transitionWrapperRef,
+  t,
 }: {
   video: VideoInfo;
   onClose: () => void;
   transitionRef: React.RefObject<SVGPathElement | null>;
   videoInfoRef: React.RefObject<HTMLDivElement | null>;
   transitionWrapperRef: React.RefObject<HTMLDivElement | null>;
+  t: (key: string) => string;
 }) {
   useEffect(() => {
     if (!transitionRef.current) return;
@@ -1309,7 +1327,7 @@ function VideoInfoSection({
       </div>
       
       <div ref={videoInfoRef} className={styles.videoInfoContent}>
-        <button className={styles.closeButton} onClick={handleClose} aria-label="Cerrar">
+        <button className={styles.closeButton} onClick={handleClose} aria-label={t('portfolio.modal.cerrar')}>
           <MdClose />
         </button>
         
@@ -1357,7 +1375,7 @@ function VideoInfoSection({
               
               {video.tools && (
                 <div className={styles.videoTools}>
-                  <h4 className={styles.videoToolsTitle}>Herramientas Utilizadas</h4>
+                  <h4 className={styles.videoToolsTitle}>{t('portfolio.modal.herramientasUtilizadas')}</h4>
                   <div className={styles.videoToolsList}>
                     {video.tools.split(',').map((tool, index) => {
                       const toolName = tool.trim();
@@ -1402,12 +1420,14 @@ function DesignInfoSection({
   transitionRef,
   designInfoRef,
   transitionWrapperRef,
+  t,
 }: {
   design: VideoInfo;
   onClose: () => void;
   transitionRef: React.RefObject<SVGPathElement | null>;
   designInfoRef: React.RefObject<HTMLDivElement | null>;
   transitionWrapperRef: React.RefObject<HTMLDivElement | null>;
+  t: (key: string) => string;
 }) {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -1505,7 +1525,7 @@ function DesignInfoSection({
       </div>
       
       <div ref={designInfoRef} className={styles.videoInfoContent}>
-        <button className={styles.closeButton} onClick={handleClose} aria-label="Cerrar">
+        <button className={styles.closeButton} onClick={handleClose} aria-label={t('portfolio.modal.cerrar')}>
           <MdClose />
         </button>
         
@@ -1517,13 +1537,13 @@ function DesignInfoSection({
                 <div className={styles.videoPlayer} style={{ position: 'relative' }}>
                   <img
                     src={design.image}
-                    alt={design.videoTitle || design.title || 'Diseño gráfico'}
+                    alt={design.videoTitle || design.title || t('portfolio.modal.disenoGrafico')}
                     className={styles.videoElement}
                   />
                   <button
                     onClick={() => setIsFullscreen(true)}
                     className={styles.fullscreenButton}
-                    aria-label="Ver en pantalla completa"
+                    aria-label={t('portfolio.modal.verEnPantallaCompleta')}
                     style={{
                       position: 'absolute',
                       bottom: '1rem',
@@ -1556,7 +1576,7 @@ function DesignInfoSection({
               ) : (
                 <div className={styles.videoPlayer}>
                   <p style={{ color: 'white', padding: '2rem', textAlign: 'center' }}>
-                    Imagen no disponible
+                    {t('portfolio.modal.imagenNoDisponible')}
                   </p>
                 </div>
               )}
@@ -1614,7 +1634,7 @@ function DesignInfoSection({
                     e.currentTarget.style.transform = 'scale(1)';
                     e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
                   }}
-                  aria-label="Cerrar pantalla completa"
+                    aria-label={t('portfolio.modal.cerrarPantallaCompleta')}
                 >
                   <MdFullscreenExit size={28} />
                 </button>
@@ -1643,7 +1663,7 @@ function DesignInfoSection({
                 <p className={styles.videoTitleSmall}>{design.title}</p>
               )}
               
-              <h3 className={styles.videoTitle}>Diseño gráfico</h3>
+              <h3 className={styles.videoTitle}>{t('portfolio.modal.disenoGrafico')}</h3>
               
               {design.videoTitle && (
                 <h2 className={styles.videoMainTitle}>{design.videoTitle}</h2>
@@ -1655,7 +1675,7 @@ function DesignInfoSection({
               
               {design.tools && (
                 <div className={styles.videoTools}>
-                  <h4 className={styles.videoToolsTitle}>Herramientas Utilizadas</h4>
+                  <h4 className={styles.videoToolsTitle}>{t('portfolio.modal.herramientasUtilizadas')}</h4>
                   <div className={styles.videoToolsList}>
                     {design.tools.split(',').map((tool, index) => {
                       const toolName = tool.trim();
@@ -1700,12 +1720,14 @@ function WebInfoSection({
   transitionRef,
   designInfoRef,
   transitionWrapperRef,
+  t,
 }: {
   design: VideoInfo;
   onClose: () => void;
   transitionRef: React.RefObject<SVGPathElement | null>;
   designInfoRef: React.RefObject<HTMLDivElement | null>;
   transitionWrapperRef: React.RefObject<HTMLDivElement | null>;
+  t: (key: string) => string;
 }) {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -1803,7 +1825,7 @@ function WebInfoSection({
       </div>
       
       <div ref={designInfoRef} className={styles.videoInfoContent}>
-        <button className={styles.closeButton} onClick={handleClose} aria-label="Cerrar">
+        <button className={styles.closeButton} onClick={handleClose} aria-label={t('portfolio.modal.cerrar')}>
           <MdClose />
         </button>
         
@@ -1821,7 +1843,7 @@ function WebInfoSection({
                   <button
                     onClick={() => setIsFullscreen(true)}
                     className={styles.fullscreenButton}
-                    aria-label="Ver en pantalla completa"
+                    aria-label={t('portfolio.modal.verEnPantallaCompleta')}
                     style={{
                       position: 'absolute',
                       bottom: '1rem',
@@ -1854,7 +1876,7 @@ function WebInfoSection({
               ) : (
                 <div className={styles.videoPlayer}>
                   <p style={{ color: 'white', padding: '2rem', textAlign: 'center' }}>
-                    Imagen no disponible
+                    {t('portfolio.modal.imagenNoDisponible')}
                   </p>
                 </div>
               )}
@@ -1912,7 +1934,7 @@ function WebInfoSection({
                     e.currentTarget.style.transform = 'scale(1)';
                     e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
                   }}
-                  aria-label="Cerrar pantalla completa"
+                    aria-label={t('portfolio.modal.cerrarPantallaCompleta')}
                 >
                   <MdFullscreenExit size={28} />
                 </button>
@@ -1951,7 +1973,7 @@ function WebInfoSection({
               
               {design.tools && (
                 <div className={styles.videoTools}>
-                  <h4 className={styles.videoToolsTitle}>Herramientas Utilizadas</h4>
+                  <h4 className={styles.videoToolsTitle}>{t('portfolio.modal.herramientasUtilizadas')}</h4>
                   <div className={styles.videoToolsList}>
                     {design.tools.split(',').map((tool, index) => {
                       const toolName = tool.trim();
@@ -2017,7 +2039,7 @@ function WebInfoSection({
                     e.currentTarget.style.boxShadow = '0 2px 8px rgba(19, 185, 213, 0.2)';
                   }}
                 >
-                  <span>Visitar Sitio Web</span>
+                  <span>{t('portfolio.modal.visitarSitioWeb')}</span>
                   <MdOpenInNew size={20} />
                 </a>
               )}

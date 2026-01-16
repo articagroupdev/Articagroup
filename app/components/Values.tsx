@@ -4,33 +4,35 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { FaLightbulb, FaChartLine, FaEye, FaHandshake } from 'react-icons/fa';
+import { useLanguage } from '../contexts/LanguageContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const values = [
-  {
-    icon: FaLightbulb,
-    title: 'Innovación',
-    description: 'Buscamos constantemente nuevas ideas, tecnologías y enfoques para ofrecer soluciones de marketing digital creativas y de vanguardia.',
-  },
-  {
-    icon: FaChartLine,
-    title: 'Resultados',
-    description: 'Nuestro éxito se mide por el éxito de nuestros clientes. Nos enfocamos en generar resultados tangibles y medibles que impacten positivamente en su negocio.',
-  },
-  {
-    icon: FaEye,
-    title: 'Transparencia',
-    description: 'Creemos en una comunicación abierta y honesta con nuestros clientes, manteniéndolos informados en cada etapa del proceso.',
-  },
-  {
-    icon: FaHandshake,
-    title: 'Colaboración',
-    description: 'Trabajamos en estrecha colaboración con nuestros clientes, entendiendo sus necesidades y objetivos para construir estrategias conjuntas y efectivas.',
-  },
-];
-
 export default function Values() {
+  const { t } = useLanguage();
+  
+  const values = [
+    {
+      icon: FaLightbulb,
+      title: t('about.values.items.innovacion.title'),
+      description: t('about.values.items.innovacion.description'),
+    },
+    {
+      icon: FaChartLine,
+      title: t('about.values.items.resultados.title'),
+      description: t('about.values.items.resultados.description'),
+    },
+    {
+      icon: FaEye,
+      title: t('about.values.items.transparencia.title'),
+      description: t('about.values.items.transparencia.description'),
+    },
+    {
+      icon: FaHandshake,
+      title: t('about.values.items.colaboracion.title'),
+      description: t('about.values.items.colaboracion.description'),
+    },
+  ];
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
@@ -100,7 +102,7 @@ export default function Values() {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [t]);
 
   return (
     <section
@@ -126,7 +128,7 @@ export default function Values() {
               transform: 'translateY(40px)',
             }}
           >
-            Nuestros Valores Fundamentales
+            {t('about.values.title')}
           </h2>
           <p
             ref={subtitleRef}
@@ -137,7 +139,7 @@ export default function Values() {
               transform: 'translateY(30px)',
             }}
           >
-            En Artica Group, nuestros valores son el cimiento de todo lo que hacemos
+            {t('about.values.subtitle')}
           </p>
         </div>
 

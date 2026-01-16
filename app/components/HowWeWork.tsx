@@ -3,37 +3,39 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useLanguage } from '../contexts/LanguageContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const steps = [
-  {
-    number: 1,
-    title: 'Análisis y Diagnóstico',
-    description: 'Comenzamos por comprender a fondo tu negocio, tu mercado objetivo y tus objetivos específicos. Realizamos un análisis exhaustivo de tu presencia digital actual y la de tu competencia.',
-    hasTopBackground: true,
-  },
-  {
-    number: 2,
-    title: 'Desarrollo de Estrategia',
-    description: 'Basándonos en el análisis, diseñamos una estrategia de marketing digital a medida, seleccionando los canales y tácticas más adecuados para alcanzar tus metas.',
-    hasTopBackground: false,
-  },
-  {
-    number: 3,
-    title: 'Implementación y Ejecución',
-    description: 'Nuestro equipo de expertos diseñadores, filmmakers, communities, traffickers y más, se encarga de la implementación impecable de la estrategia, creando contenido atractivo, gestionando campañas publicitarias efectivas y optimizando cada detalle.',
-    hasTopBackground: false,
-  },
-  {
-    number: 4,
-    title: 'Optimización y Crecimiento',
-    description: 'Nuestro objetivo es la mejora continua. Utilizamos los insights obtenidos del análisis para optimizar las campañas y asegurar un crecimiento constante y sostenible para tu negocio.',
-    hasTopBackground: false,
-  },
-];
-
 export default function HowWeWork() {
+  const { t } = useLanguage();
+  
+  const steps = [
+    {
+      number: 1,
+      title: t('about.howWeWork.steps.analisis.title'),
+      description: t('about.howWeWork.steps.analisis.description'),
+      hasTopBackground: true,
+    },
+    {
+      number: 2,
+      title: t('about.howWeWork.steps.estrategia.title'),
+      description: t('about.howWeWork.steps.estrategia.description'),
+      hasTopBackground: false,
+    },
+    {
+      number: 3,
+      title: t('about.howWeWork.steps.implementacion.title'),
+      description: t('about.howWeWork.steps.implementacion.description'),
+      hasTopBackground: false,
+    },
+    {
+      number: 4,
+      title: t('about.howWeWork.steps.optimizacion.title'),
+      description: t('about.howWeWork.steps.optimizacion.description'),
+      hasTopBackground: false,
+    },
+  ];
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
@@ -104,7 +106,7 @@ export default function HowWeWork() {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [t]);
 
   return (
     <section
@@ -130,7 +132,7 @@ export default function HowWeWork() {
               transform: 'translateY(40px)',
             }}
           >
-            Cómo trabajamos en Artica
+            {t('about.howWeWork.title')}
           </h2>
           <p
             ref={subtitleRef}
@@ -142,7 +144,7 @@ export default function HowWeWork() {
               transform: 'translateY(30px)',
             }}
           >
-            En Artica Group, creemos en un enfoque de marketing digital integral y personalizado:
+            {t('about.howWeWork.subtitle')}
           </p>
         </div>
 

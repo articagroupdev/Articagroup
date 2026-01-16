@@ -10,33 +10,35 @@ import {
   MdCheckCircle, 
   MdAutoAwesome
 } from 'react-icons/md';
+import { useLanguage } from '../contexts/LanguageContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const features = [
-  {
-    icon: MdTrendingUp,
-    title: 'Estrategias personalizadas que funcionan',
-    description: 'No creemos en soluciones genéricas. Creamos estrategias digitales a tu medida que se alinean con tus metas y generan resultados medibles.',
-  },
-  {
-    icon: MdPalette,
-    title: 'Expertos en branding y marketing digital',
-    description: 'Desde darle una identidad única a tu marca hasta ejecutar campañas de marketing digital que atraen a tu público ideal, lo hacemos todo con precisión y creatividad.',
-  },
-  {
-    icon: MdCheckCircle,
-    title: 'Compromiso en cada objetivo',
-    description: 'Trabajamos contigo en cada paso del camino, transformando objetivos en acciones concretas que aumentan conversiones, engagement y, lo más importante, clientes.',
-  },
-  {
-    icon: MdAutoAwesome,
-    title: 'Creatividad que marca la diferencia',
-    description: 'Nuestro estudio creativo produce contenido visual que impresiona y conecta con tu audiencia. Cada foto, video y pieza audiovisual cuenta tu historia de manera auténtica.',
-  },
-];
-
 export default function WhyChooseUsAbout() {
+  const { t } = useLanguage();
+  
+  const features = [
+    {
+      icon: MdTrendingUp,
+      title: t('whyChooseUs.features.estrategias.title'),
+      description: t('whyChooseUs.features.estrategias.description'),
+    },
+    {
+      icon: MdPalette,
+      title: t('whyChooseUs.features.expertos.title'),
+      description: t('whyChooseUs.features.expertos.description'),
+    },
+    {
+      icon: MdCheckCircle,
+      title: t('whyChooseUs.features.compromiso.title'),
+      description: t('whyChooseUs.features.compromiso.description'),
+    },
+    {
+      icon: MdAutoAwesome,
+      title: t('whyChooseUs.features.creatividad.title'),
+      description: t('whyChooseUs.features.creatividad.description'),
+    },
+  ];
   const sectionRef = useRef<HTMLElement>(null);
   const badgeRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -123,7 +125,7 @@ export default function WhyChooseUsAbout() {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [t]);
 
   return (
     <section ref={sectionRef} className={styles.section}>
@@ -133,13 +135,13 @@ export default function WhyChooseUsAbout() {
             <div className={styles.badgeIcon}>
               <MdCheckCircle />
             </div>
-            <span className={styles.badgeText}>Descubre más</span>
+            <span className={styles.badgeText}>{t('whyChooseUs.badge')}</span>
           </div>
           <h2 ref={titleRef} className={styles.subtitle}>
-            ¿Por qué somos tu mejor opción?
+            {t('whyChooseUs.title')}
           </h2>
           <p ref={descriptionRef} className={styles.description}>
-            Porque en Artica Group entendemos lo que necesitas para llevar tu negocio a alcanzar sus objetivos.
+            {t('whyChooseUs.description')}
           </p>
         </div>
 

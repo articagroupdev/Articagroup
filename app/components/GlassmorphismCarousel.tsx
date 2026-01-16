@@ -14,10 +14,12 @@ import {
   MdAdsClick 
 } from 'react-icons/md';
 import styles from './GlassmorphismCarousel.module.css';
+import { useLanguage } from '../contexts/LanguageContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function GlassmorphismCarousel() {
+  const { t } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
@@ -29,54 +31,53 @@ export default function GlassmorphismCarousel() {
   const cards = [
     {
       id: 1,
-      title: 'Creación de Contenido',
-      subtitle: 'Capturamos la esencia de tu marca con visuales que conectan y emocionan, dejando una huella memorable en tus clientes.',
+      title: t('glassmorphismCarousel.creacionContenido.title'),
+      subtitle: t('glassmorphismCarousel.creacionContenido.subtitle'),
       icon: MdCreate,
     },
     {
       id: 2,
-      title: 'Campañas de Ads',
-      subtitle: 'Diseñamos anuncios impactantes para alcanzar a tu audiencia ideal, maximizando tu inversión y obteniendo resultados medibles.',
+      title: t('glassmorphismCarousel.campanasAds.title'),
+      subtitle: t('glassmorphismCarousel.campanasAds.subtitle'),
       icon: MdCampaign,
     },
     {
       id: 3,
-      title: 'Community Management',
-      subtitle: 'Gestionamos tus redes sociales de manera estratégica, construyendo una comunidad activa y respondiendo a tus clientes con voz propia.',
+      title: t('glassmorphismCarousel.communityManagement.title'),
+      subtitle: t('glassmorphismCarousel.communityManagement.subtitle'),
       icon: MdPeople,
     },
     {
       id: 4,
-      title: 'Desarrollo Web',
-      subtitle: 'Creamos sitios web modernos, intuitivos y completamente optimizados que funcionan como el centro digital perfecto para tu negocio.',
+      title: t('glassmorphismCarousel.desarrolloWeb.title'),
+      subtitle: t('glassmorphismCarousel.desarrolloWeb.subtitle'),
       icon: MdCode,
     },
     {
       id: 5,
-      title: 'Edición de Videos',
-      subtitle: 'Convertimos tus grabaciones originales en piezas audiovisuales dinámicas y cautivadoras, listas para atraer y retener a tu audiencia.',
+      title: t('glassmorphismCarousel.edicionVideos.title'),
+      subtitle: t('glassmorphismCarousel.edicionVideos.subtitle'),
       icon: MdVideoLibrary,
     },
     {
       id: 6,
-      title: 'Diseño Gráfico',
-      subtitle: 'Transformamos tus ideas en elementos visuales profesionales y atractivos, abarcando desde logotipos hasta material corporativo.',
+      title: t('glassmorphismCarousel.disenoGrafico.title'),
+      subtitle: t('glassmorphismCarousel.disenoGrafico.subtitle'),
       icon: MdPalette,
     },
     {
       id: 7,
-      title: 'Estrategia Posicionamiento',
-      subtitle: 'Definimos el camino para que tu marca destaque, se posicione en la mente de tus clientes y comunique su valor único.',
+      title: t('glassmorphismCarousel.posicionamiento.title'),
+      subtitle: t('glassmorphismCarousel.posicionamiento.subtitle'),
       icon: MdTrendingUp,
     },
     {
       id: 8,
-      title: 'Publicidad Online',
-      subtitle: 'Implementamos soluciones de marketing digital estratégicas enfocadas en resultados, llevando tu marca directamente a nuevos clientes.',
+      title: t('glassmorphismCarousel.publicidadOnline.title'),
+      subtitle: t('glassmorphismCarousel.publicidadOnline.subtitle'),
       icon: MdAdsClick,
     },
   ];
-
 
   // Duplicar las cards para el efecto de scroll infinito
   const duplicatedCards = [...cards, ...cards];
@@ -286,7 +287,7 @@ export default function GlassmorphismCarousel() {
       }
       ctx.revert();
     };
-  }, []);
+  }, [t]);
 
   return (
     <section 
@@ -301,7 +302,7 @@ export default function GlassmorphismCarousel() {
           className={styles.sectionTitle}
           style={{ opacity: 0, transform: 'translateY(40px)' }}
         >
-          ¿Qué podemos hacer por ti?
+          {t('glassmorphismCarousel.title')}
         </h2>
         <div ref={containerRef} className={styles.marquee} style={{ position: 'relative', zIndex: 2 }}>
           <div ref={trackRef} className={styles.track}>

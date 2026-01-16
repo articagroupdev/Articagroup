@@ -153,11 +153,11 @@ export default function InfiniteImageLoop({ images }: InfiniteImageLoopProps) {
         // También intentar después de un delay por si acaso
         setTimeout(() => {
           if (document.readyState === 'complete') {
-            requestAnimationFrame(() => {
-              requestAnimationFrame(() => {
-                checkImagesLoaded();
-              });
-            });
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        checkImagesLoaded();
+      });
+    });
           }
         }, 500);
       }

@@ -1,0 +1,950 @@
+{
+  "nav": {
+    "inicio": "Home",
+    "sobreNosotros": "About Us",
+    "servicios": "Services",
+    "portafolio": "Portfolio",
+    "contacto": "Contact",
+    "queremosImpulsarte": "We Want to Boost You",
+    "actuaYCrece": "Act and Grow",
+    "casosDeExito": "Success Cases"
+  },
+  "services": {
+    "desarrolloWeb": "Web Development",
+    "desarrolloWebDesc": "Modern and functional websites",
+    "disenoGrafico": "Graphic Design",
+    "disenoGraficoDesc": "Visual identity and creative design",
+    "posicionamientoComunicacion": "Positioning and Communication Strategy",
+    "posicionamientoComunicacionDesc": "Comprehensive brand and communication strategies",
+    "edicionVideos": "Video Editing",
+    "edicionVideosDesc": "Audiovisual production and post-production",
+    "creacionContenido": "Content Creation",
+    "creacionContenidoDesc": "Visual content that connects and inspires",
+    "campanasAds": "Ad Campaigns",
+    "campanasAdsDesc": "Impactful ads for your audience",
+    "communityManagement": "Community Management",
+    "communityManagementDesc": "Strategic social media management",
+    "publicidadOnline": "Online Advertising",
+    "publicidadOnlineDesc": "Digital advertising strategies"
+  },
+  "hero": {
+    "badge": "We achieve business success through digital media",
+    "title": "WE TURN CLICKS INTO CLIENTS",
+    "subtitle": "Boost your company's growth with us"
+  },
+  "footer": {
+    "description": "At Artica Group, we are passionate about turning challenges into achievements.",
+    "navegacion": "Navigation",
+    "legal": "Legal",
+    "info": "Info",
+    "avisoLegal": "Legal Notice",
+    "condicionesUso": "Terms of Use",
+    "politicaPrivacidad": "Privacy Policy",
+    "politicaCookies": "Cookie Policy",
+    "contacto": "Contact",
+    "email": "Email",
+    "telefono": "Phone",
+    "direccion": "Address",
+    "siguenos": "Follow Us",
+    "derechosReservados": "All rights reserved"
+  },
+  "contact": {
+    "badge": "Contact",
+    "title": "Write to us, tell us your vision and let's start creating something incredible.",
+    "subtitle": "We are here to help you turn your ideas into real results.",
+    "intro": {
+      "title": "You take the first step!",
+      "text1": "Write to us and let's start creating together the strategy your brand needs.",
+      "text2": "The first step is just a click away!"
+    },
+    "form": {
+      "estamosAqui": "We are here to help you",
+      "hablemos": "Let's talk and make it happen",
+      "escribenos": "Write to us and let's start creating together the strategy your brand needs.",
+      "primerPaso": "The first step is just a click away!",
+      "nombre": "Name and surname",
+      "email": "Email",
+      "empresa": "Company",
+      "telefono": "Phone",
+      "comoNosConociste": "How did you know us?",
+      "mensaje": "Message",
+      "enviar": "Send message",
+      "enviando": "Sending...",
+      "eMail": "E-mail",
+      "telefonoLabel": "Phone",
+      "opcionesConociste": {
+        "redesSociales": "Social Media",
+        "busquedaGoogle": "Google Search",
+        "recomendacion": "Recommendation",
+        "otro": "Other"
+      }
+    }
+  },
+  "about": {
+    "badge": "About Us",
+    "title": "Artica Model",
+    "subtitle": "Get to know us and discover how we can boost your brand's growth",
+    "aboutSection": {
+      "title": "Meet Artica Group",
+      "paragraph1": "At Artica Group, we are more than a digital marketing agency: we are your strategic partners in the competitive online world. With a deep passion for innovation and a results-focused approach, we drive the growth of brands like yours through personalized and effective digital strategies.",
+      "paragraph2": "We understand that every business is unique, which is why we dedicate our expertise and creativity to building solutions that exceed your expectations and achieve your goals."
+    },
+    "missionVision": {
+      "mission": {
+        "title": "Our Mission",
+        "description": "Our mission is clear: to empower businesses to thrive in the digital environment. We achieve this by designing and implementing innovative, data-driven marketing strategies tailored to each client's specific needs. We strive to be the engine of their online growth, turning challenges into opportunities and goals into realities."
+      },
+      "vision": {
+        "title": "Our Vision",
+        "description": "We aspire to be the leading digital marketing agency, recognized for our excellence, the constant generation of outstanding results, and the building of long-term relationships based on trust and mutual success. We seek to lead the forefront of digital transformation, anticipating trends and offering solutions that prepare our clients for the future."
+      }
+    },
+    "values": {
+      "title": "Our Core Values",
+      "subtitle": "At Artica Group, our values are the foundation of everything we do",
+      "items": {
+        "innovacion": {
+          "title": "Innovation",
+          "description": "We constantly seek new ideas, technologies, and approaches to offer creative and cutting-edge digital marketing solutions."
+        },
+        "resultados": {
+          "title": "Results",
+          "description": "Our success is measured by our clients' success. We focus on generating tangible and measurable results that positively impact their business."
+        },
+        "transparencia": {
+          "title": "Transparency",
+          "description": "We believe in open and honest communication with our clients, keeping them informed at every stage of the process."
+        },
+        "colaboracion": {
+          "title": "Collaboration",
+          "description": "We work closely with our clients, understanding their needs and objectives to build joint and effective strategies."
+        }
+      }
+    },
+    "team": {
+      "title": "Our Team",
+      "subtitle": "Meet Our Team of Experts",
+      "members": {
+        "rodrigo": {
+          "name": "Rodrigo Timaure",
+          "role": "Founder",
+          "description": "Strategic leader with a solid track record in business management and business development in the creative industry. Has advanced studies in administration and marketing, driving the growth of the production company."
+        },
+        "michelle": {
+          "name": "Michelle Guerra",
+          "role": "Co-Founder",
+          "description": "Experience in project management and resource optimization in dynamic environments. Her background in administration and her vision for efficiency are key to operational success."
+        },
+        "cesar": {
+          "name": "Cesar Arteaga",
+          "role": "Special Operations",
+          "description": "Expert in production logistics with years of experience in planning and executing complex shoots. His technical and organizational knowledge ensures smoothness in every project."
+        }
+      }
+    },
+    "howWeWork": {
+      "title": "How we work at Artica",
+      "subtitle": "At Artica Group, we believe in a comprehensive and personalized digital marketing approach:",
+      "steps": {
+        "analisis": {
+          "title": "Analysis and Diagnosis",
+          "description": "We start by thoroughly understanding your business, your target market, and your specific objectives. We conduct a comprehensive analysis of your current digital presence and that of your competition."
+        },
+        "estrategia": {
+          "title": "Strategy Development",
+          "description": "Based on the analysis, we design a tailored digital marketing strategy, selecting the most appropriate channels and tactics to achieve your goals."
+        },
+        "implementacion": {
+          "title": "Implementation and Execution",
+          "description": "Our team of expert designers, filmmakers, community managers, traffickers, and more, handles the flawless implementation of the strategy, creating attractive content, managing effective advertising campaigns, and optimizing every detail."
+        },
+        "optimizacion": {
+          "title": "Optimization and Growth",
+          "description": "Our goal is continuous improvement. We use insights from the analysis to optimize campaigns and ensure constant and sustainable growth for your business."
+        }
+      }
+    }
+  },
+  "whyChooseUs": {
+    "badge": "Discover more",
+    "title": "Why are we your best option?",
+    "description": "Because at Artica Group we understand what you need to take your business to achieve its objectives.",
+    "features": {
+      "estrategias": {
+        "title": "Customized strategies that work",
+        "description": "We don't believe in generic solutions. We create digital strategies tailored to you that align with your goals and generate measurable results."
+      },
+      "expertos": {
+        "title": "Experts in branding and digital marketing",
+        "description": "From giving your brand a unique identity to executing digital marketing campaigns that attract your ideal audience, we do it all with precision and creativity."
+      },
+      "compromiso": {
+        "title": "Commitment to every goal",
+        "description": "We work with you every step of the way, transforming goals into concrete actions that increase conversions, engagement and, most importantly, customers."
+      },
+      "creatividad": {
+        "title": "Creativity that makes a difference",
+        "description": "Our creative studio produces visual content that impresses and connects with your audience. Every photo, video and audiovisual piece tells your story authentically."
+      }
+    }
+  },
+  "glassmorphismCarousel": {
+    "title": "What can we do for you?",
+    "creacionContenido": {
+      "title": "Content Creation",
+      "subtitle": "We capture the essence of your brand with visuals that connect and inspire, leaving a memorable mark on your customers."
+    },
+    "campanasAds": {
+      "title": "Ad Campaigns",
+      "subtitle": "We design impactful ads to reach your ideal audience, maximizing your investment and achieving measurable results."
+    },
+    "communityManagement": {
+      "title": "Community Management",
+      "subtitle": "We manage your social media strategically, building an active community and responding to your customers with your own voice."
+    },
+    "desarrolloWeb": {
+      "title": "Web Development",
+      "subtitle": "We create modern, intuitive and fully optimized websites that work as the perfect digital center for your business."
+    },
+    "edicionVideos": {
+      "title": "Video Editing",
+      "subtitle": "We turn your original recordings into dynamic and captivating audiovisual pieces, ready to attract and retain your audience."
+    },
+    "disenoGrafico": {
+      "title": "Graphic Design",
+      "subtitle": "We transform your ideas into professional and attractive visual elements, from logos to corporate materials."
+    },
+    "posicionamiento": {
+      "title": "Positioning Strategy",
+      "subtitle": "We define the path for your brand to stand out, position itself in your customers' minds and communicate its unique value."
+    },
+    "publicidadOnline": {
+      "title": "Online Advertising",
+      "subtitle": "We implement strategic digital marketing solutions focused on results, taking your brand directly to new customers."
+    }
+  },
+  "horizontalScroll": {
+    "title": "Digital innovation designed to grow your business"
+  },
+  "testimonials": {
+    "badge": "Testimonials",
+    "title": "What our clients say",
+    "items": {
+      "airAccessories": {
+        "text": "Their team is professional, committed and creative. Thanks to their work, our brand is better positioned! We are very pleased",
+        "company": "Air Accessories & Avionics",
+        "author": "Marlon Bustos"
+      },
+      "jetAir": {
+        "text": "We are very satisfied with their work; we have created a more professional image for our brand. Without a doubt, they are our allies for future projects",
+        "company": "Jet Air Mro",
+        "author": "Jose Herrera"
+      },
+      "lajaAviation": {
+        "text": "They perfectly understood what we wanted to convey as a brand and carried it out, exceeding our expectations",
+        "company": "Laja Aviation",
+        "author": "Rodrigo Vasquez"
+      }
+    }
+  },
+  "reviews": {
+    "badge": "Google Reviews",
+    "title": "What our clients say on Google"
+  },
+  "logoCarousel": {
+    "title": "Brands that already trust us"
+  },
+  "portfolio": {
+    "sections": {
+      "ediciones": "Editions",
+      "diseno": "Design",
+      "email": "Email",
+      "web": "Web"
+    },
+    "modal": {
+      "herramientasUtilizadas": "Tools Used",
+      "visitarSitioWeb": "Visit Website",
+      "verEnPantallaCompleta": "View in fullscreen",
+      "cerrarPantallaCompleta": "Close fullscreen",
+      "cerrar": "Close",
+      "imagenNoDisponible": "Image not available",
+      "disenoGrafico": "Graphic Design"
+    },
+    "projects": {
+      "ediciones": {
+        "miamiOutdoorMaster": {
+          "title": "Miami Outdoor Master",
+          "videoTitle": "Outdoor Kitchen Testimonial",
+          "client": "Miami Outdoor Master",
+          "description": "Artica produced a testimonial video for Miami Outdoor Master highlighting customer satisfaction with their outdoor kitchen remodeling. The client praises professionalism, reliability, and attention to detail, confirming that her vision was \"brought to life\" with timely work. The clip shows the installation of cabinets (Novacel) and grills (Blaze). This is a key asset for generating trust and recommendations."
+        },
+        "construccionMarcas": {
+          "title": "Digital Brand Building",
+          "videoTitle": "Digital Brand Building",
+          "client": "Artica Group",
+          "description": "This corporate and promotional audiovisual piece was developed by Artica Group with the goal of establishing the agency as a key strategic partner in the digital realm. The comprehensive value proposition is articulated in strategy, creativity, and tangible results for brand building. The content details specialization in personalized content creation and the activation of segmented advertising campaigns (Facebook, Instagram, Google). It emphasizes that the priority strategic focus is lead conversion, ensuring effective brand positioning and real client growth."
+        },
+        "conectandoNavidades": {
+          "title": "Connecting Christmases",
+          "videoTitle": "Connecting Christmases",
+          "client": "HN SHIPPING EXPRESS",
+          "description": "The content, developed by Artica Group, is a corporate video with an emotional approach aimed at the Venezuelan community abroad. The goal was to establish HN Shipping Express's air shipping service as an essential connector of values and family affection during the Christmas season. The production visually emphasized boxes with personal messages received by families in Venezuela, highlighting logistical efficiency for timely delivery. The material concludes with an urgent call to action (CTA): \"ORDER IT Before December 5th\", capitalizing on service reliability and emotional value."
+        },
+        "toyotaPromocion": {
+          "title": "TOYOTA Promotion",
+          "videoTitle": "TOYOTA Promotion",
+          "client": "TOYOTA",
+          "description": "This is a high-quality promotional video focused on attracting the Cuban community in Miami to purchase a new Toyota vehicle. The goal is to communicate unique and exclusive benefits available to this customer segment, incentivizing the purchase of a new car. offering exclusive benefits: 2 years of FREE maintenance, 4 years of Bumper-to-Bumper warranty, and up to 90 days for the first payment. An additional discount of up to $1,500 was also included for the first five customers. The video used dynamic shots at the dealership and encouraged \"Schedule YOUR APPOINTMENT today\""
+        },
+        "tourInmobiliario": {
+          "title": "Real Estate Tour",
+          "videoTitle": "Real Estate Tour",
+          "client": "Residential Marketing Campaign",
+          "description": "We developed this professional and dynamic audiovisual piece for the luxury real estate segment, with the goal of showcasing an exceptional residence in Pinecrest and communicating its luxury and livability value. The content is based on direct narration that guides the potential buyer through its premium features: aerial shots for exterior impact, open concept design, state-of-the-art kitchen with marble finishes, and flexible spaces (private office/game room). The tour culminates in the main suite with luxury amenities. This is a fundamental marketing asset designed to generate qualified interest by positioning the property as an optimal combination of comfort, luxury, and location."
+        },
+        "porQueVenezuela": {
+          "title": "WHY VENEZUELA",
+          "videoTitle": "WHY VENEZUELA",
+          "client": "Investment Potential and HR in Venezuela",
+          "description": "We developed this professional interview segment with the goal of projecting an optimistic business vision about investment in Venezuela. The interviewed executive maintains that, despite challenges, the country has \"great potential\", particularly highlighting the quality of human capital and the \"incredible talent\" locally. She reveals that her corporate strategy focused on developing the Human Resources department in Venezuela, given her deep trust in the workforce. The audiovisual piece uses images of Caracas and cultural references to reinforce the country's wealth, serving as a strategic communication asset that validates investment potential."
+        },
+        "toyotaConfianza": {
+          "title": "Toyota",
+          "videoTitle": "Toyota Trust",
+          "client": "Toyota",
+          "description": "Artica developed a key storytelling piece for Toyota, the best-selling vehicle brand in the U.S., with the goal of boosting sales. The strategy focused on brand trust and durability, arguing that high customer loyalty to Toyota \"is not improvised\". The video addresses questions about the performance of the customer's previous vehicles. Additionally, the clip actively promotes the agency's sales and financing solutions, highlighting that they offer new and used models, flexible plans, and a fast process, suitable even for customers with ITIN or challenging credit. The festive atmosphere of the circus-themed activation (The Big Top) in the showroom reinforces the exciting and accessible shopping experience."
+        }
+      },
+      "diseno": {
+        "temporadaHuracanes": {
+          "title": "Hurricane Season",
+          "videoTitle": "Hurricane Season",
+          "client": "Rain Shield Gutters Corp",
+          "description": "We developed this promotional graphic piece for Rain Shield Gutters Corp., with a clear strategic objective: to appeal to customers' concern about hurricane season to offer a preventive solution and generate sales. The main message is one of urgency and solution: \"The hurricane season is not over yet! And we have the formula to end the year Damage Free\"."
+        },
+        "thanksgivingJetAir": {
+          "title": "Thanksgiving Emotional Campaign",
+          "videoTitle": "Thanksgiving Emotional Campaign",
+          "client": "JET AIR MRO",
+          "description": "We developed this promotional graphic piece for JET AIR MRO, focused on a seasonal marketing campaign for Thanksgiving. The main message is \"HAPPY THANKSGIVING\". The strategy seeks to humanize the brand and associate the air transport service with family values. The image shows an emotional gathering at an airport, and the final message invokes gratitude. This material is a branding tool that seeks to generate a positive emotional association with the company."
+        },
+        "flyerAdHomeDecor": {
+          "title": "Promotional Flyer",
+          "videoTitle": "Promotional Flyer",
+          "client": "AD Home Decor",
+          "description": "We developed a promotional graphic material (flyer) for AD Home Decor focused on the Black Exterior Design wall panel (code WPX-01). This asset was designed to communicate the modern aesthetics of the product, showing its application on the facade of a contemporary home. In addition to the visual reference, the flyer communicates the exact technical specifications of the panel in dimensions of $8.5 \\times 144″ \\times 3/4″$, serving as a direct marketing tool that combines premium aesthetics with essential technical information."
+        },
+        "estrategiaIntegral": {
+          "title": "Comprehensive Strategy",
+          "videoTitle": "Comprehensive Strategy",
+          "client": "CONCEPT DESIGN",
+          "description": "We developed this promotional graphic material for CONCEPT DESIGN: STYLE & HOME, whose central value proposition is condensed in the promise: \"More than design, we create SOLUTIONS FOR YOU\". This asset was strategically designed to communicate the brand's comprehensive capacity in managing interior design projects. The piece visually segments the offering into three key service areas, each represented by a high-quality image: INTERIOR DESIGN (focused on commercial spaces), MODULAR SOLUTIONS (with a focus on modern and functional kitchens), and PROJECT MANAGEMENT (highlighting material management and selection). The design uses a premium aesthetic in dark tones, projecting sophistication. The material concludes with a direct call to action (CTA) that seeks to drive conversion and immediate project initiation by the client: \"LET'S START YOUR PROJECT TODAY\"."
+        },
+        "enviosInternacionalesHn": {
+          "title": "International Shipping",
+          "videoTitle": "International Shipping",
+          "client": "HN Shipping Express",
+          "description": "We developed this advertising graphic material (flyer) for HN Shipping Express, with the goal of promoting a specific shipping service to Venezuela. The piece was designed to highlight key logistical benefits for the expatriate community. The campaign's main message is the promotion of a valued and free service: FREE REPACKAGING and FREE PICK UP. The flyer uses an image of Caracas with an airplane and a shipping container, reinforcing the idea of air and sea transport. The value proposition is summarized in a final positioning line: \"WE OPTIMIZE YOUR SHIPMENT SO YOU SAVE AND WE PICK IT UP FOR YOU\". This material is a direct marketing tool that seeks to attract shipments by eliminating the barrier of repackaging and collection, communicating convenience and savings."
+        },
+        "servicioLaboratorioDental": {
+          "title": "Dental Laboratory Service",
+          "videoTitle": "Dental Laboratory Service",
+          "client": "FANA MILLING CENTER",
+          "description": "We developed this promotional graphic piece for FANA MILLING CENTER, whose goal is to highlight its Night Guard (occlusal splint) creation service. The main message emphasizes technical precision: \"Night Guard: from prescription to Perfect fit\". The central image shows the product being handled by a technician, communicating professionalism and attention to detail. This material ensures that the service spans from prescription to a perfect final fit, positioning the laboratory as a high-quality and reliable provider."
+        },
+        "servicioRecoleccionCarga": {
+          "title": "Free Cargo Collection Service",
+          "videoTitle": "Email Marketing",
+          "client": "HN Shipping Express",
+          "description": "We developed this Email Marketing campaign design for HN Shipping Express, with the goal of promoting an essential value-added service: free cargo collection (Pick Up) in Miami. The strategy is based on a direct and highly competitive message: \"YES, WE PICK UP YOUR CARGO IN MIAMI FOR FREE WITHOUT CHARGING YOU THE PICK UP\". Visually, the piece uses a vertical format optimized for mobile reading, with an image that reinforces the convenience of the home service, showing a hand delivering a box at a house door."
+        },
+        "emailMantenimientoEstacional": {
+          "title": "Seasonal Maintenance Email",
+          "videoTitle": "Email Marketing",
+          "client": "Rain Shield Gutters",
+          "description": "We developed this Email Marketing campaign design for Rain Shield Gutters Corp. (RSG), with the strategic goal of driving sales of gutter maintenance services before the start of the holiday season. The strategy is based on a time management and quality of life approach, using the main message: \"The holiday season means gatherings, Not gutter cleaning\". This formulation directly appeals to the customer's time value, positioning RSG's service as the solution that allows enjoying the holidays without worrying about maintenance. Visually, the piece contrasts a close-up of the gutter with a blurred family gathering scene, reinforcing the message of delegating preventive work."
+        },
+        "thanksgivingSkyway": {
+          "title": "Thanksgiving Emotional Campaign",
+          "videoTitle": "Email Marketing",
+          "client": "Skyway",
+          "description": "We developed this Email Marketing campaign design for SKYWAY FAMILY CARGO LLC, with the goal of generating a seasonal branding and gratitude message centered on the Thanksgiving holiday. The main message is a direct expression of gratitude to the customer: \"THANKS FOR EVERY SHIPMENT YOU MAKE WITH US\", associating the use of the service with the consolidation of the brand's \"commitment, responsibility, and closeness\". Visually, the piece uses an emotional image of a package delivered at a door during autumn, which reinforces the connection between logistical services (COURIER • MAILBOX • EXPORT • STORAGE) and family value."
+        },
+        "emailCorteCanteo": {
+          "title": "Cutting and Edging Service Email",
+          "videoTitle": "Email Marketing",
+          "client": "CONCEPT DESIGN",
+          "description": "We developed this Email Marketing campaign design for CONCEPT DESIGN: STYLE & HOME, promoting the CUTTING AND EDGING technical service. The main message uses the slogan: \"Shape your projects with our service\". The content highlights the high-tech machinery that guarantees \"exact measurements\" and \"Perfect edges\". The design is optimized for mobile reading and its Call to Action (CTA) concludes with \"ENSURE THE PRECISION YOUR PROJECT DESERVES\"."
+        }
+      },
+      "email": {
+        "servicioRecoleccionCarga": {
+          "title": "Free Cargo Collection Service",
+          "videoTitle": "Email Marketing",
+          "client": "HN Shipping Express",
+          "description": "We developed this Email Marketing campaign design for HN Shipping Express, with the goal of promoting an essential value-added service: free cargo collection (Pick Up) in Miami. The strategy is based on a direct and highly competitive message: \"YES, WE PICK UP YOUR CARGO IN MIAMI FOR FREE WITHOUT CHARGING YOU THE PICK UP\". Visually, the piece uses a vertical format optimized for mobile reading, with an image that reinforces the convenience of the home service, showing a hand delivering a box at a house door."
+        },
+        "emailMantenimientoEstacional": {
+          "title": "Seasonal Maintenance Email",
+          "videoTitle": "Email Marketing",
+          "client": "Rain Shield Gutters",
+          "description": "We developed this Email Marketing campaign design for Rain Shield Gutters Corp. (RSG), with the strategic goal of driving sales of gutter maintenance services before the start of the holiday season. The strategy is based on a time management and quality of life approach, using the main message: \"The holiday season means gatherings, Not gutter cleaning\". This formulation directly appeals to the customer's time value, positioning RSG's service as the solution that allows enjoying the holidays without worrying about maintenance. Visually, the piece contrasts a close-up of the gutter with a blurred family gathering scene, reinforcing the message of delegating preventive work."
+        },
+        "thanksgivingSkyway": {
+          "title": "Thanksgiving Emotional Campaign",
+          "videoTitle": "Email Marketing",
+          "client": "Skyway",
+          "description": "We developed this Email Marketing campaign design for SKYWAY FAMILY CARGO LLC, with the goal of generating a seasonal branding and gratitude message centered on the Thanksgiving holiday. The main message is a direct expression of gratitude to the customer: \"THANKS FOR EVERY SHIPMENT YOU MAKE WITH US\", associating the use of the service with the consolidation of the brand's \"commitment, responsibility, and closeness\". Visually, the piece uses an emotional image of a package delivered at a door during autumn, which reinforces the connection between logistical services (COURIER • MAILBOX • EXPORT • STORAGE) and family value."
+        },
+        "emailCorteCanteo": {
+          "title": "Cutting and Edging Service Email",
+          "videoTitle": "Email Marketing",
+          "client": "CONCEPT DESIGN",
+          "description": "We developed this Email Marketing campaign design for CONCEPT DESIGN: STYLE & HOME, promoting the CUTTING AND EDGING technical service. The main message uses the slogan: \"Shape your projects with our service\". The content highlights the high-tech machinery that guarantees \"exact measurements\" and \"Perfect edges\". The design is optimized for mobile reading and its Call to Action (CTA) concludes with \"ENSURE THE PRECISION YOUR PROJECT DESERVES\"."
+        }
+      },
+      "web": {
+        "plataformaFinanciamiento": {
+          "title": "Funding Platform",
+          "videoTitle": "Web Development",
+          "client": "CREDIT WITH RAMI",
+          "description": "We developed this corporate web platform for CREDIT WITH RAMI: BUSINESS FUNDING, whose goal is to offer a simplified digital solution for business owners in the U.S. to access funding capital. The solution was designed fully responsive, which guarantees perfect accessibility and user experience on mobile and desktop devices."
+        },
+        "plataformaCorporativa4101": {
+          "title": "Corporate Platform",
+          "videoTitle": "Web Development",
+          "client": "4101",
+          "description": "We developed this corporate web platform for 4101 Media, the company's headquarters in Venezuela, with the goal of positioning it as a strategic audiovisual production company that accelerates brand growth in the digital realm. The site was designed fully responsive, which is evident in the optimized view for desktop and mobile devices. The value proposition is communicated directly on the homepage: \"We Accelerate Your Brand's Growth in the Digital World\". The complementary description emphasizes the use of digital marketing strategies and high-impact content to drive businesses and entrepreneurs. Navigation is comprehensive, including key sections such as \"About Us\", \"Services\", \"Academy\", and \"Portfolio\", and uses prominently placed calls to action (CTAs) such as \"View Projects\" and \"Our Services\" to guide user interaction. This development is a key digital asset that reinforces brand identity and facilitates the conversion of prospects interested in strategic audiovisual services."
+        },
+        "plataformaCatalogoInteriores": {
+          "title": "Interior Design Catalog Platform",
+          "videoTitle": "Web Development",
+          "client": "AD HOME DECOR",
+          "description": "We developed this corporate web platform for AD HOME DECOR, with the goal of establishing a digital catalog that positions the brand as \"THE COMPREHENSIVE SOLUTION FOR DECORATING YOUR SPACES\". The solution was designed fully responsive, guaranteeing optimization and accessibility on desktop and mobile devices."
+        },
+        "plataformaEcommerceVynk": {
+          "title": "E-commerce Platform",
+          "videoTitle": "Web Development",
+          "client": "Vynk",
+          "description": "We developed this web platform for VYNK, a brand focused on marketing professional photography and video equipment. The project's goal was to establish a modern and optimized digital presence for e-commerce of high-tech products. The site was designed fully responsive, which guarantees perfect navigation and user experience in both desktop and mobile views."
+        },
+        "plataformaEcommerceZx": {
+          "title": "E-commerce Platform",
+          "videoTitle": "Web Development",
+          "client": "ZX",
+          "description": "We developed a high visual impact e-commerce platform for the ZX brand. The solution was developed fully responsive, guaranteeing optimization for desktop and mobile devices. The design focused on branding and storytelling (\"IT ALL STARTS WITH A DESIRE\"). The platform includes a fully integrated e-commerce with intuitive navigation, serving as a key digital asset for sales and premium brand positioning."
+        },
+        "plataformaDigitalCorporativa": {
+          "title": "Corporate Digital Platform",
+          "videoTitle": "Web Development",
+          "client": "FANA Milling Center",
+          "description": "We developed this corporate web platform for FANA Milling Center, a laboratory specialized in Precision Dental Milling. The project's goal was to establish a robust digital presence that communicated high technology and service reliability. The site architecture was designed fully responsive, guaranteeing an optimal user experience on both desktop and mobile devices."
+        }
+      }
+    }
+  },
+  "servicePages": {
+    "common": {
+      "badge": "Service",
+      "consistsTitle": "What does it consist of?",
+      "benefitsTitle": "These are the benefits for your company",
+      "benefitsSubtitle": "Discover how our service can transform your digital presence and generate tangible results for your business."
+    },
+    "desarrolloWeb": {
+      "hero": {
+        "title": "Web Development",
+        "subtitle": "The digital presence that drives your brand.",
+        "description": "We create modern, secure and optimized websites and applications that connect with your audience and boost your business."
+      },
+      "consists": {
+        "description": "Our development team focuses on building digital platforms that are not only functional, but also strategic and scalable. From corporate pages to complex digital solutions (e-commerce, SaaS, interactive portals), we work with CMS and cutting-edge technologies like React, Astro and Next.js, guaranteeing speed, security and an impeccable user experience."
+      },
+      "benefits": {
+        "items": {
+          "presencia": {
+            "title": "Professional Digital Presence",
+            "description": "Modern and responsive websites that convey trust and credibility."
+          },
+          "visibilidad": {
+            "title": "Greater Online Visibility",
+            "description": "We implement SEO best practices so your site stands out in search engines and attracts more customers."
+          },
+          "escalabilidad": {
+            "title": "Scalability and Performance",
+            "description": "Technologies like React, Astro and Next.js enable fast, secure pages ready to grow with your business."
+          }
+        }
+      },
+      "process": {
+        "title": "Our Web Development Process",
+        "subtitle": "We create digital solutions that become a key asset for your company.",
+        "steps": {
+          "analisis": {
+            "title": "Analysis and Technical Briefing",
+            "description": "We start by immersing ourselves in your objectives, audience and needs. We define the architecture and functionalities your project requires."
+          },
+          "diseno": {
+            "title": "UX/UI Design and Prototyping",
+            "description": "We design attractive and responsive interfaces that ensure smooth navigation and consistency with your brand identity."
+          },
+          "desarrollo": {
+            "title": "Front-End and Back-End Development",
+            "description": "We build the visual part and internal logic of your site, integrating databases, payment systems and advanced functionalities with modern technologies."
+          },
+          "optimizacion": {
+            "title": "Optimization and Security",
+            "description": "We perform performance tests, SEO optimization and configure security protocols to guarantee stability and trust."
+          },
+          "entrega": {
+            "title": "Delivery and Maintenance",
+            "description": "We finish with the organized delivery of your website and offer continuous support for updates and improvements."
+          }
+        }
+      },
+      "faq": {
+        "title": "Frequently asked questions about Web Development",
+        "items": {
+          "tipos": {
+            "question": "What types of sites can you develop?",
+            "answer": "From corporate pages and blogs to online stores, SaaS platforms and custom web applications."
+          },
+          "existente": {
+            "question": "Do you work with my current website?",
+            "answer": "Yes. We can optimize your existing page or create a new solution from scratch, adapted to your objectives."
+          }
+        }
+      }
+    },
+    "disenoGrafico": {
+      "hero": {
+        "title": "Graphic Design",
+        "subtitle": "The image that speaks for your brand.",
+        "description": "We create an impactful and professional visual identity that captivates your audience and communicates your values."
+      },
+      "consists": {
+        "description": "Our design team focuses on creating visual pieces that are not only aesthetically pleasing, but also strategic. From the renewal of your corporate identity (logos, color palettes) to the creation of digital and print materials (posts, brochures, presentations), we guarantee total brand coherence."
+      },
+      "benefits": {
+        "items": {
+          "identidad": {
+            "title": "Memorable Brand Identity",
+            "description": "Professional and unique designs that make you stand out from the competition. We ensure that each graphic piece reinforces the personality of your business and is easily recognizable."
+          },
+          "comunicacion": {
+            "title": "Clear and Effective Communication",
+            "description": "We transform complex ideas into intuitive visuals. Well-designed graphics improve understanding of your message, product or service in seconds."
+          },
+          "credibilidad": {
+            "title": "Reinforced Credibility and Trust",
+            "description": "A clean and coherent corporate image generates trust in your audience. It demonstrates professionalism and attention to detail at every point of contact."
+          }
+        }
+      },
+      "process": {
+        "title": "Our Design and Branding Process",
+        "subtitle": "We create a memorable visual identity that not only impresses, but becomes a key asset for your business.",
+        "steps": {
+          "conceptualizacion": {
+            "title": "Conceptualization and Creative Briefing",
+            "description": "We start with an immersion to understand your objectives, audience and positioning. We translate your vision into a clear creative brief that will establish the aesthetic direction, visual tone and design requirements."
+          },
+          "desarrollo": {
+            "title": "Visual Development and Identity Creation",
+            "description": "We create the complete visual identity: from the design of your Logo and the definition of corporate color palettes, to the selection of typographies and graphic styles that represent the unique essence of your brand."
+          },
+          "aplicacion": {
+            "title": "Application in Key Materials",
+            "description": "We bring the identity to practice, designing the essential materials your business needs: assets for social media, web templates, flyers, corporate presentations or POP material, ensuring total coherence."
+          },
+          "entrega": {
+            "title": "File Delivery and Brand Manual",
+            "description": "We finish with the organized delivery of all source files and necessary versions. We include a detailed Brand Manual to guarantee the correct application of the design and visual coherence in the long term."
+          }
+        }
+      },
+      "faq": {
+        "title": "Frequently asked questions about Graphic Design",
+        "items": {
+          "material": {
+            "question": "What type of graphic material can you design?",
+            "answer": "We design a wide variety of materials, including complete corporate identity, posts for social media, infographics, brochures, presentations, web banners, email marketing templates and design for digital advertising."
+          },
+          "identidad": {
+            "question": "Do you work with the visual identity I already have?",
+            "answer": "Yes. If you already have an established brand, we work respecting your brand manual and color palette. If you're starting out, we help you create a visual identity from scratch that resonates with your values and objectives."
+          }
+        }
+      }
+    },
+    "edicionVideos": {
+      "hero": {
+        "title": "Video Editing",
+        "subtitle": "Video is king. Make your content shine.",
+        "description": "We transform your recorded material into professional, captivating pieces that generate impact."
+      },
+      "consists": {
+        "description": "Our team converts your recordings into high-quality videos that connect with your business personality. From editing and color correction to sound design and motion graphics integration, we adapt every detail to the platform and final objective."
+      },
+      "benefits": {
+        "items": {
+          "engagement": {
+            "title": "Increased Engagement and Retention",
+            "description": "Videos with a polished and dynamic finish retain audience attention longer, increasing interactions and ensuring your message is seen in full."
+          },
+          "profesionalidad": {
+            "title": "Perception of Professionalism and Solid Brand",
+            "description": "Impeccable and consistent editing elevates your brand image, establishing you as a serious, high-quality reference in your sector."
+          },
+          "optimizacion": {
+            "title": "Optimization for Each Platform",
+            "description": "We adapt the format (vertical, horizontal, square) and duration so your video performs to the maximum on YouTube, Instagram, TikTok or any channel, ensuring the best return."
+          }
+        }
+      },
+      "process": {
+        "title": "Our Video Editing Process",
+        "subtitle": "We transform your recordings into captivating stories, optimized to connect and retain the attention of your digital audience.",
+        "steps": {
+          "comprension": {
+            "title": "Understanding the Objective and Scripting",
+            "description": "We analyze the recorded material and define the main objective of the video (conversion, engagement, branding). We develop the narrative structure and editing script to maximize effectiveness on the target platform."
+          },
+          "edicion": {
+            "title": "Editing, Rhythm and Narrative Structure",
+            "description": "Our team brings the story to life. We cut, assemble and adjust the rhythm, selecting the best shots. We integrate narration, royalty-free music and sound effects to keep the audience engaged."
+          },
+          "postproduccion": {
+            "title": "Post-Production and Motion Graphic Design",
+            "description": "We add value with professional color correction, motion graphics, animated texts and dynamic subtitles. This ensures the video not only looks impeccable, but also meets the aesthetic standards of your brand."
+          },
+          "optimizacion": {
+            "title": "Platform Optimization and Final Delivery",
+            "description": "The video is exported and optimized in the ideal format and duration for each platform (Instagram Reels, YouTube, TikTok, Paid Campaigns). We deliver the material ready to be published, guaranteeing maximum quality on any device."
+          }
+        }
+      },
+      "faq": {
+        "title": "Frequently asked questions about Video Editing",
+        "items": {
+          "tipos": {
+            "question": "What types of videos can you edit?",
+            "answer": "We edit a wide range of formats, including videos for social media (Reels, Shorts), tutorials, interviews, corporate videos, and ads. We adapt to the specifications of platforms like Instagram, TikTok and YouTube."
+          },
+          "incluye": {
+            "question": "What does the editing service include?",
+            "answer": "The service includes creative editing, professional color correction, cleanup and sound design, speed optimization (slow or fast motion) and the integration of motion graphics and subtitles if necessary."
+          }
+        }
+      }
+    },
+    "posicionamientoComunicacion": {
+      "hero": {
+        "title": "Positioning and Communication",
+        "subtitle": "Attract, connect and retain",
+        "description": "We make your brand the reference and customers contact you organically."
+      },
+      "consists": {
+        "description": "With personalized Positioning and Communication strategies, customers come to you organically, interested in what you offer. Without annoying ads, just useful and well-positioned content that establishes your authority in the sector."
+      },
+      "benefits": {
+        "items": {
+          "leads": {
+            "title": "High-quality lead generation",
+            "description": "Unlike more intrusive strategies, positioning attracts people who are already interested in what you offer and trust your expertise."
+          },
+          "confianza": {
+            "title": "Improved customer trust and loyalty",
+            "description": "By offering useful and relevant content, you create solid relationships with your potential customers."
+          },
+          "ahorro": {
+            "title": "Savings on customer acquisition costs",
+            "description": "Positioning and Communication strategies can offer long-term results without the high costs of paid advertising, focusing on organic visibility."
+          }
+        }
+      },
+      "process": {
+        "title": "Our Strategic Positioning Process",
+        "subtitle": "We define the unique identity of your brand and build the communication map to dominate your market.",
+        "steps": {
+          "diagnostico": {
+            "title": "Deep Diagnosis and Differentiation",
+            "description": "We conduct a brand audit and comprehensive competitive analysis. We define or restructure your Unique Selling Proposition (USP) and the values that will differentiate you from the competition in the digital market."
+          },
+          "audiencia": {
+            "title": "Audience Definition and Tone of Voice",
+            "description": "We create your detailed Buyer Personas, understanding their motivations and pain points. We establish your brand's Tone of Voice to ensure that every interaction is authentic and emotionally connects with your ideal customer."
+          },
+          "plan": {
+            "title": "Creation of the Master Communication Plan",
+            "description": "We develop a strategic communication plan that includes content pillars and key messages. We define what to say at each stage of the sales funnel to guide the audience from simple follower to loyal customer."
+          },
+          "entrega": {
+            "title": "Delivery of Guides and Brand Coherence",
+            "description": "We finish with the delivery of brand and communication manuals. This ensures that identity and message remain consistent across all digital channels, protecting and reinforcing your positioning in the long term."
+          }
+        }
+      },
+      "faq": {
+        "title": "Frequently asked questions about Positioning and Communication",
+        "items": {
+          "inbound": {
+            "question": "What is inbound marketing and how does it work?",
+            "answer": "Inbound marketing is a strategy that seeks to attract customers organically through useful and relevant content. Instead of interrupting with ads, it allows you to be present when customers are looking for solutions, positioning your brand as the answer."
+          },
+          "publico": {
+            "question": "How does this strategy relate to my target audience?",
+            "answer": "It depends on your target audience. On visual platforms like Instagram, communication through attractive videos or images usually works better, while on LinkedIn positioning focused on lead generation and authority is very effective."
+          }
+        }
+      }
+    },
+    "publicidadOnline": {
+      "hero": {
+        "title": "Online Advertising",
+        "subtitle": "Generate Qualified Traffic, Boost Sales and Maximize your ROI.",
+        "description": "We implement strategic campaigns that ensure immediate and measurable results, turning your advertising investment into exponential growth."
+      },
+      "consists": {
+        "description": "With personalized Positioning and Communication strategies, customers come to you organically, interested in what you offer. Without annoying ads, just useful and well-positioned content that establishes your authority in the sector."
+      },
+      "benefits": {
+        "items": {
+          "alcance": {
+            "title": "Massive and segmented reach",
+            "description": "Reach thousands of people on Facebook, Instagram and TikTok, directing your ads to potential customers."
+          },
+          "resultados": {
+            "title": "Immediate and measurable results",
+            "description": "Get clear metrics on your campaign performance in real time. You'll see how your clicks, sales or interactions grow without having to wait months to evaluate the impact."
+          },
+          "flexibilidad": {
+            "title": "Platform flexibility",
+            "description": "We adapt your advertising to the networks where your customers are most active, whether Instagram, LinkedIn or TikTok, creating dynamic and optimized content for each one."
+          }
+        }
+      },
+      "process": {
+        "title": "Our Online Advertising Process",
+        "subtitle": "We turn your investment into growth. We have designed a strategic and transparent process to guarantee maximum Return on Investment (ROI).",
+        "steps": {
+          "analisis": {
+            "title": "Analysis and Funnel Definition",
+            "description": "We analyze your ideal audience and define the complete campaign architecture (conversion funnels). We establish KPIs (clicks, leads, sales) and the most efficient bidding strategy."
+          },
+          "produccion": {
+            "title": "Creative Production",
+            "description": "Our studio creates high-performance creatives (images, videos) that stop the scroll. In addition, we ensure that your landing pages are optimized to convert that traffic into customers."
+          },
+          "activacion": {
+            "title": "Activation and Smart Segmentation",
+            "description": "We implement campaigns on key platforms (Meta, Google, TikTok, etc.). We use advanced tools to segment precisely, ensuring your message reaches the audience with the highest purchase potential."
+          },
+          "optimizacion": {
+            "title": "Daily Optimization and Budget Management",
+            "description": "We monitor performance hour by hour. We conduct constant A/B tests, adjust segmentation and optimize the budget in real time to eliminate what doesn't work and scale what generates results."
+          }
+        }
+      },
+      "faq": {
+        "title": "Frequently asked questions about Online Advertising",
+        "items": {
+          "costo": {
+            "question": "How much does online advertising cost?",
+            "answer": "The cost varies depending on the platform and type of ad. Some, like Facebook or Google, charge per click (PPC) or per impression (CPM), giving you flexibility to adjust your investment according to your budget."
+          },
+          "efectivo": {
+            "question": "What type of ad is most effective?",
+            "answer": "It depends on your target audience. On visual platforms like Instagram, ads with attractive videos or images usually work better, while on LinkedIn ads focused on lead generation are very effective."
+          }
+        }
+      }
+    },
+    "creacionContenido": {
+      "hero": {
+        "title": "Content Creation",
+        "subtitle": "Innovative but effective ideas. With clear foundations and objectives, we will create personalized content for your business.",
+        "description": ""
+      },
+      "consists": {
+        "description": "We create viral content that connects with your business personality. From visually impactful posts to stories that resonate, we adapt everything to your values and tone of voice."
+      },
+      "benefits": {
+        "items": {
+          "visibilidad": {
+            "title": "Greater visibility on social media",
+            "description": "Content adapted to each platform increases interaction and ensures your business reaches the right audience, generating more followers and potential customers."
+          },
+          "conexion": {
+            "title": "Authentic connection with your audience",
+            "description": "By creating content that reflects your brand values, you establish a relationship of trust with your audience, increasing their loyalty and improving your business reputation."
+          },
+          "resultados": {
+            "title": "Measurable results and business growth",
+            "description": "Thanks to strategies based on clear objectives, your content is not only creative, but also effective in generating concrete results, such as more sales or leads."
+          },
+          "calidad": {
+            "title": "Professional quality content",
+            "description": "We work with a team of professionals that guarantees high-quality content, optimized for each platform and designed to generate engagement."
+          }
+        }
+      },
+      "process": {
+        "title": "Our Content Creation Process",
+        "subtitle": "We develop relevant, valuable and optimized content that attracts your audience, generates brand authority and drives conversion.",
+        "steps": {
+          "estrategia": {
+            "title": "Strategy and Key Topics",
+            "description": "Based on your audience and objectives, we conduct keyword (SEO) and trend research to define an editorial calendar with topics that solve your customers' questions."
+          },
+          "redaccion": {
+            "title": "Writing and Draft Design",
+            "description": "We create the main content (text, scripts, storyboards) ensuring that the tone of voice is appropriate for your brand. In this phase, the first draft ready for review is generated."
+          },
+          "produccion": {
+            "title": "Production and Visual Layout",
+            "description": "We transform the draft into the final piece: we design images, record and edit videos, or layout the blog post, ensuring an attractive format for the target platform."
+          },
+          "publicacion": {
+            "title": "Strategic Publication and Distribution",
+            "description": "We schedule and publish content on defined channels (web, social media, email). In addition, we define a distribution strategy to maximize its reach and visibility."
+          }
+        }
+      },
+      "faq": {
+        "title": "Frequently asked questions about content creation",
+        "items": {
+          "tipo": {
+            "question": "What type of content can I create for my business?",
+            "answer": "You can generate from brand content and graphic design to animations, YouTube videos, and podcasts. All content is personalized for platforms like Instagram, Facebook, TikTok, and any network that is relevant to you."
+          },
+          "funcionando": {
+            "question": "How do I know if the content is working?",
+            "answer": "We measure the success of your content through metric analysis, such as interaction, followers, and conversions. This way we adjust strategies to optimize results."
+          }
+        }
+      }
+    },
+    "campanasAds": {
+      "hero": {
+        "title": "Ad Campaigns",
+        "subtitle": "Maximize your reach and boost your results.",
+        "description": "We reach your ideal customer at the right moment with strategic and conversion-optimized ads."
+      },
+      "consists": {
+        "description": "We design, launch and optimize advertising campaigns focused 100% on conversion, ensuring maximum Return on Investment (ROI). We reach your ideal customer at the right moment with strategic and optimized ads for each platform, maximizing your reach and boosting your results."
+      },
+      "benefits": {
+        "items": {
+          "resultados": {
+            "title": "Immediate and Measurable Results",
+            "description": "Ad campaigns offer instant visibility and allow you to accurately measure the return on investment (ROI) of every dollar invested, optimizing the budget in real time."
+          },
+          "segmentacion": {
+            "title": "Hyper-Effective Segmentation",
+            "description": "We reach exclusively the people most likely to buy your products or services, based on their interests, demographics and behavior, avoiding unnecessary spending."
+          },
+          "crecimiento": {
+            "title": "Scalable Business Growth",
+            "description": "Once we find the campaigns that work, we can quickly scale your investment to significantly increase the volume of potential customers or sales for your business."
+          }
+        }
+      },
+      "process": {
+        "title": "Our Ad Campaigns Process",
+        "subtitle": "We design, launch and optimize advertising campaigns focused 100% on conversion, ensuring maximum Return on Investment (ROI).",
+        "steps": {
+          "configuracion": {
+            "title": "Strategic Configuration and Segmentation",
+            "description": "We define the clear objectives of the campaign (Leads, Sales, Traffic) and build the advertising funnel. We configure precise audience segmentation and correct installation of pixels and conversion events."
+          },
+          "produccion": {
+            "title": "High-Performance Creative Production",
+            "description": "Our creative team designs and produces ads (images, videos, copies) optimized for each platform. We apply proven techniques to capture attention and motivate immediate action in the target audience."
+          },
+          "lanzamiento": {
+            "title": "Launch, A/B Testing and Daily Optimization",
+            "description": "We activate the campaign with test budgets, conducting constant A/B tests on audiences and creatives. We monitor key metrics (CTR, CPA) to optimize spending daily and quickly eliminate what doesn't work."
+          },
+          "escalabilidad": {
+            "title": "Scalability and ROI Reporting",
+            "description": "Once winning ads are identified, we proceed to scale campaigns to maximize results. We deliver transparent reports detailing investment performance (ROI) and strategies for the next cycle."
+          }
+        }
+      },
+      "faq": {
+        "title": "Frequently asked questions about Ad Campaigns",
+        "items": {
+          "plataformas": {
+            "question": "On which platforms do you implement ad campaigns?",
+            "answer": "We work with the main digital advertising platforms, including Google Ads (search, display, YouTube), Meta Ads (Facebook and Instagram), TikTok Ads and LinkedIn Ads, selecting those that best fit your target audience."
+          },
+          "necesito": {
+            "question": "What do I need to start an ad campaign?",
+            "answer": "You need a clear objective (more sales, leads or traffic?), a defined budget for advertising investment and the certainty that your website or landing page is optimized to receive the traffic we will generate."
+          }
+        }
+      }
+    },
+    "communityManagement": {
+      "hero": {
+        "title": "Community Management",
+        "subtitle": "Connect, listen and retain your community.",
+        "description": "We build solid relationships with your followers, humanizing your brand and turning customers into true fans."
+      },
+      "consists": {
+        "description": "We handle the comprehensive management of your social channels. This includes daily interaction with your audience (responding to comments and messages), community moderation, creating engaging conversations and crisis management. We ensure that every interaction reflects your brand's tone of voice and values, fostering an environment of loyalty and trust."
+      },
+      "benefits": {
+        "items": {
+          "humanizacion": {
+            "title": "Brand Humanization and Trust",
+            "description": "Active and empathetic management demonstrates that there are real people behind your business, which increases credibility and generates an emotional bond with your followers."
+          },
+          "deteccion": {
+            "title": "Rapid Detection of Opportunities and Problems",
+            "description": "By being in constant contact with the audience, we can quickly identify trends, frequently asked questions and potential problems before they become reputation crises."
+          },
+          "conversion": {
+            "title": "Improved Conversion Rate",
+            "description": "A well-managed community that feels heard is more likely to become a customer and defend your brand, acting as a powerful word-of-mouth marketing channel."
+          }
+        }
+      },
+      "process": {
+        "title": "Our Community Management Process",
+        "subtitle": "We ensure that your brand is always active, well represented and protected, turning daily interaction into lasting loyalty.",
+        "steps": {
+          "establecimiento": {
+            "title": "Establishment of Tone and Interaction Guidelines",
+            "description": "We define response protocols and the official Tone of Voice of the brand. We create guides to manage frequently asked questions, positive comments, complaints and sales inquiries, ensuring consistency in every message."
+          },
+          "moderacion": {
+            "title": "Active Moderation and Social Listening",
+            "description": "Our team monitors your channels 24/7. We respond to direct messages and comments in a timely manner, actively participate in key conversations and moderate the community to maintain a positive and safe environment."
+          },
+          "fomento": {
+            "title": "Conversation Encouragement and Engagement Generation",
+            "description": "We go beyond just responding. We create questions, surveys and posts designed to stimulate participation, increase organic engagement and generate valuable conversations around your brand or industry."
+          },
+          "reporte": {
+            "title": "Perception Reporting and Crisis Management",
+            "description": "We deliver periodic reports on audience perception and conversation trends. In addition, we activate the crisis protocol in case of negative or viral comments, protecting your company's digital reputation."
+          }
+        }
+      },
+      "faq": {
+        "title": "Frequently asked questions about Community Management",
+        "items": {
+          "redes": {
+            "question": "What social networks do you manage?",
+            "answer": "We manage the main platforms such as Instagram, Facebook, Twitter (X), LinkedIn and TikTok. We select platforms based on where your target audience is and your business objectives."
+          },
+          "crisis": {
+            "question": "What happens if there are negative comments or a crisis?",
+            "answer": "We implement a crisis management protocol. Our goal is to respond professionally, transparently and promptly, turning a complaint into an opportunity to demonstrate excellent customer service."
+          }
+        }
+      }
+    }
+  }
+}

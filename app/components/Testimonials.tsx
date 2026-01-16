@@ -5,6 +5,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MdFormatQuote } from 'react-icons/md';
 import { FaPlay } from 'react-icons/fa';
+import { useLanguage } from '../contexts/LanguageContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,28 +18,29 @@ interface Testimonial {
   videoUrl?: string; // URL del video de Vimeo
 }
 
-const testimonials: Testimonial[] = [
-  {
-    company: 'Air Accessories & Avionics',
-    text: 'Su equipo es profesional, comprometido y creativo, ¡Gracias a su trabajo nuestra marca está mejor posicionada! Estamos muy complacidos',
-    author: 'Marlon Bustos',
-    videoUrl: 'https://vimeo.com/1078490981',
-  },
-  {
-    company: 'Jet Air Mro',
-    text: 'Estamos muy satisfechos con su trabajo, hemos creado una imagen más profesional de nuestra marca. Sin lugar a dudas nuestros aliados para trabajos futuros',
-    author: 'Jose Herrera',
-    videoUrl: 'https://vimeo.com/1078490532',
-  },
-  {
-    company: 'Laja Aviation',
-    text: 'Entendieron a la perfección lo que queremos transmitir como marca y lo llevaron a cabo, superaron nuestras expectativas',
-    author: 'Rodrigo Vasquez',
-    videoUrl: 'https://vimeo.com/1078490855',
-  },
-];
-
 export default function Testimonials() {
+  const { t } = useLanguage();
+  
+  const testimonials: Testimonial[] = [
+    {
+      company: t('testimonials.items.airAccessories.company'),
+      text: t('testimonials.items.airAccessories.text'),
+      author: t('testimonials.items.airAccessories.author'),
+      videoUrl: 'https://vimeo.com/1078490981',
+    },
+    {
+      company: t('testimonials.items.jetAir.company'),
+      text: t('testimonials.items.jetAir.text'),
+      author: t('testimonials.items.jetAir.author'),
+      videoUrl: 'https://vimeo.com/1078490532',
+    },
+    {
+      company: t('testimonials.items.lajaAviation.company'),
+      text: t('testimonials.items.lajaAviation.text'),
+      author: t('testimonials.items.lajaAviation.author'),
+      videoUrl: 'https://vimeo.com/1078490855',
+    },
+  ];
   const sectionRef = useRef<HTMLElement>(null);
   const cardsRef = useRef<HTMLDivElement[]>([]);
   const [paddingStyles, setPaddingStyles] = useState({
@@ -115,7 +117,7 @@ export default function Testimonials() {
       ctx.revert();
       window.removeEventListener('resize', updatePadding);
     };
-  }, []);
+  }, [t]);
 
   return (
     <section 
@@ -142,11 +144,11 @@ export default function Testimonials() {
               <MdFormatQuote />
             </div>
             <span className="font-sans text-[10px] sm:text-xs md:text-sm font-semibold text-white uppercase tracking-wider whitespace-nowrap">
-              Testimonios
+              {t('testimonials.badge')}
             </span>
           </div>
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-extrabold text-white m-0 tracking-tight leading-[1.2] drop-shadow-sm px-2 sm:px-0" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-            Lo que dicen nuestros clientes
+            {t('testimonials.title')}
           </h2>
         </div>
 

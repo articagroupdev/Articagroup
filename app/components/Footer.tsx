@@ -20,8 +20,10 @@ import {
   FaWhatsapp
 } from 'react-icons/fa';
 import Image from 'next/image';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function Footer() {
+  const { t } = useLanguage();
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const pathname = usePathname();
 
@@ -55,14 +57,14 @@ export default function Footer() {
               </Link>
             </div>
             <p className="text-sm sm:text-base text-gray-300 leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-              En Artica Group, nos apasiona convertir desafíos en logros.
+              {t('footer.description')}
             </p>
           </div>
 
           {/* Navegación */}
           <div>
             <h3 className="text-base sm:text-lg font-bold text-white mb-4 sm:mb-5" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-              Navegación
+              {t('footer.navegacion')}
             </h3>
             <ul className="space-y-2 sm:space-y-3">
               <li>
@@ -73,7 +75,7 @@ export default function Footer() {
                   }`}
                   style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
                 >
-                  Inicio
+                  {t('nav.inicio')}
                 </Link>
               </li>
               <li>
@@ -84,7 +86,7 @@ export default function Footer() {
                   }`}
                   style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
                 >
-                  Sobre Nosotros
+                  {t('nav.sobreNosotros')}
                 </Link>
               </li>
               <li className="relative">
@@ -93,49 +95,49 @@ export default function Footer() {
                   className="text-sm sm:text-base text-gray-300 hover:text-white transition-colors flex items-center gap-1"
                   style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
                 >
-                  Servicios
+                  {t('nav.servicios')}
                   <MdArrowDropDown className={`w-5 h-5 transition-transform ${isServicesOpen ? 'rotate-180' : ''}`} />
                 </button>
                 {isServicesOpen && (
                   <ul className="mt-2 ml-4 space-y-2">
                     <li>
                       <Link href="/services/creacion-contenido" className="text-sm text-gray-400 hover:text-white transition-colors" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                        Creación de Contenido
+                        {t('services.creacionContenido')}
                       </Link>
                     </li>
                     <li>
                       <Link href="/services/campanas-ads" className="text-sm text-gray-400 hover:text-white transition-colors" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                        Campañas de Ads
+                        {t('services.campanasAds')}
                       </Link>
                     </li>
                     <li>
                       <Link href="/services/community-management" className="text-sm text-gray-400 hover:text-white transition-colors" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                        Community Management
+                        {t('services.communityManagement')}
                       </Link>
                     </li>
                     <li>
                       <Link href="/services/desarrollo-web" className="text-sm text-gray-400 hover:text-white transition-colors" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                        Desarrollo Web
+                        {t('services.desarrolloWeb')}
                       </Link>
                     </li>
                     <li>
                       <Link href="/services/diseno-grafico" className="text-sm text-gray-400 hover:text-white transition-colors" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                        Diseño Gráfico
+                        {t('services.disenoGrafico')}
                       </Link>
                     </li>
                     <li>
                       <Link href="/services/posicionamiento-comunicacion" className="text-sm text-gray-400 hover:text-white transition-colors" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                        Posicionamiento y Comunicación
+                        {t('services.posicionamientoComunicacion')}
                       </Link>
                     </li>
                     <li>
                       <Link href="/services/edicion-videos" className="text-sm text-gray-400 hover:text-white transition-colors" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                        Edición de Videos
+                        {t('services.edicionVideos')}
                       </Link>
                     </li>
                     <li>
                       <Link href="/services/publicidad-online" className="text-sm text-gray-400 hover:text-white transition-colors" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                        Publicidad Online
+                        {t('services.publicidadOnline')}
                       </Link>
                     </li>
                   </ul>
@@ -147,7 +149,7 @@ export default function Footer() {
                   className="text-sm sm:text-base text-gray-300 hover:text-white transition-colors"
                   style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
                 >
-                  Portafolio
+                  {t('nav.portafolio')}
                 </Link>
               </li>
               <li>
@@ -156,7 +158,7 @@ export default function Footer() {
                   className="text-sm sm:text-base text-gray-300 hover:text-white transition-colors"
                   style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
                 >
-                  Casos de Éxito
+                  {t('nav.casosDeExito')}
                 </a>
               </li>
               <li>
@@ -167,7 +169,7 @@ export default function Footer() {
                   }`}
                   style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
                 >
-                  Contacto
+                  {t('nav.contacto')}
                 </Link>
               </li>
             </ul>
@@ -176,7 +178,7 @@ export default function Footer() {
           {/* Legal */}
           <div>
             <h3 className="text-base sm:text-lg font-bold text-white mb-4 sm:mb-5" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-              Legal
+              {t('footer.legal')}
             </h3>
             <ul className="space-y-2 sm:space-y-3">
               <li>
@@ -187,7 +189,7 @@ export default function Footer() {
                   }`}
                   style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
                 >
-                  Aviso legal
+                  {t('footer.avisoLegal')}
                 </Link>
               </li>
               <li>
@@ -198,7 +200,7 @@ export default function Footer() {
                   }`}
                   style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
                 >
-                  Condiciones de uso
+                  {t('footer.condicionesUso')}
                 </Link>
               </li>
               <li>
@@ -209,7 +211,7 @@ export default function Footer() {
                   }`}
                   style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
                 >
-                  Política de privacidad
+                  {t('footer.politicaPrivacidad')}
                 </Link>
               </li>
               <li>
@@ -220,7 +222,7 @@ export default function Footer() {
                   }`}
                   style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
                 >
-                  Política de cookies
+                  {t('footer.politicaCookies')}
                 </Link>
               </li>
             </ul>
@@ -229,7 +231,7 @@ export default function Footer() {
           {/* Info */}
           <div>
             <h3 className="text-base sm:text-lg font-bold text-white mb-4 sm:mb-5" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-              Info
+              {t('footer.info')}
             </h3>
             <ul className="space-y-3 sm:space-y-4">
               <li className="flex items-start gap-3">
@@ -314,7 +316,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="border-t border-white/10 pt-6 sm:pt-8">
           <p className="text-xs sm:text-sm text-gray-400 text-center" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-            Artica Group LLC © 2026 Todos los derechos reservados
+            Artica Group LLC © 2026 {t('footer.derechosReservados')}
           </p>
         </div>
       </div>

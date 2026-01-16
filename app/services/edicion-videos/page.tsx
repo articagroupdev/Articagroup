@@ -8,10 +8,12 @@ import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import Navbar from '../../components/Navbar';
 import ContactForm from '../../components/ContactForm';
 import Footer from '../../components/Footer';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function EdicionVideosPage() {
+  const { t } = useLanguage();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const heroRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -73,7 +75,7 @@ export default function EdicionVideosPage() {
     return () => {
       ctx.revert();
     };
-  }, []);
+  }, [t]);
 
   const toggleFaq = (index: number) => {
     if (openFaq === index) {
@@ -150,7 +152,7 @@ export default function EdicionVideosPage() {
               <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 bg-[#13B9D5]/20 rounded-full border border-[#13B9D5]/30">
                 <div className="w-2 h-2 rounded-full bg-[#13B9D5] animate-pulse" />
                 <span className="text-xs sm:text-sm font-semibold text-[#13B9D5] uppercase tracking-wider">
-                  Servicio
+                  {t('servicePages.common.badge')}
                 </span>
               </div>
 
@@ -159,7 +161,7 @@ export default function EdicionVideosPage() {
                 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#272F66] mb-6 leading-tight text-left"
                 style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'normal' }}
               >
-                Edición de Videos
+                {t('servicePages.edicionVideos.hero.title')}
               </h1>
 
               <p
@@ -167,14 +169,14 @@ export default function EdicionVideosPage() {
                 className="text-xl sm:text-2xl text-[#272F66]/80 max-w-3xl leading-relaxed text-left mb-4"
                 style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
               >
-                El video es el rey. Haz que tu contenido brille.
+                {t('servicePages.edicionVideos.hero.subtitle')}
               </p>
 
               <p
                 className="text-lg sm:text-xl text-[#272F66]/70 max-w-3xl leading-relaxed text-left"
                 style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
               >
-                Transformamos tu material grabado en piezas profesionales, cautivadoras y que generan impacto.
+                {t('servicePages.edicionVideos.hero.description')}
               </p>
             </div>
 
@@ -214,10 +216,10 @@ export default function EdicionVideosPage() {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-              ¿En qué consiste?
+              {t('servicePages.common.consistsTitle')}
             </h2>
             <p className="text-lg sm:text-xl text-white leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-              Nuestro equipo convierte tus grabaciones en videos de alta calidad que conectan con la personalidad de tu negocio. Desde el montaje y corrección de color hasta el diseño sonoro y la inclusión de motion graphics, adaptamos cada detalle a la plataforma y objetivo final.
+              {t('servicePages.edicionVideos.consists.description')}
             </p>
           </div>
         </div>
@@ -232,10 +234,10 @@ export default function EdicionVideosPage() {
           {/* Header centrado */}
           <div className="text-center mb-16 max-w-4xl mx-auto">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#272F66] mb-6 leading-tight" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-              Estos son los beneficios para tu empresa
+              {t('servicePages.common.benefitsTitle')}
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-              Descubre cómo nuestro servicio de edición de videos puede transformar tu presencia digital y generar resultados tangibles para tu negocio.
+              {t('servicePages.common.benefitsSubtitle')}
             </p>
           </div>
 
@@ -251,10 +253,10 @@ export default function EdicionVideosPage() {
               
               <div className="mt-12">
                 <h3 className="text-xl font-bold text-white mb-3" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                  Aumento del Engagement y Retención
+                  {t('servicePages.edicionVideos.benefits.items.engagement.title')}
                 </h3>
                 <p className="text-white/90 leading-relaxed text-sm" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                  Los videos con un acabado pulcro y dinámico retienen la atención de la audiencia por más tiempo, aumentando las interacciones y garantizando que tu mensaje sea visto por completo.
+                  {t('servicePages.edicionVideos.benefits.items.engagement.description')}
                 </p>
               </div>
             </div>
@@ -269,10 +271,10 @@ export default function EdicionVideosPage() {
               
               <div className="mt-12">
                 <h3 className="text-xl font-bold text-[#272F66] mb-3" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                  Percepción de Profesionalidad y Marca Sólida
+                  {t('servicePages.edicionVideos.benefits.items.profesionalidad.title')}
                 </h3>
                 <p className="text-gray-600 leading-relaxed text-sm" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                  Una edición impecable y consistente eleva la imagen de tu marca, estableciéndote como un referente serio y de alta calidad en tu sector.
+                  {t('servicePages.edicionVideos.benefits.items.profesionalidad.description')}
                 </p>
               </div>
             </div>
@@ -287,10 +289,10 @@ export default function EdicionVideosPage() {
               
               <div className="mt-12">
                 <h3 className="text-xl font-bold text-[#272F66] mb-3" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                  Optimización para Cada Plataforma
+                  {t('servicePages.edicionVideos.benefits.items.optimizacion.title')}
                 </h3>
                 <p className="text-gray-600 leading-relaxed text-sm" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                  Adaptamos el formato (vertical, horizontal, cuadrado) y la duración para que tu video rinda al máximo en YouTube, Instagram, TikTok o cualquier canal, asegurando el mejor retorno.
+                  {t('servicePages.edicionVideos.benefits.items.optimizacion.description')}
                 </p>
               </div>
             </div>
@@ -310,12 +312,12 @@ export default function EdicionVideosPage() {
             <div className="flex flex-col">
               {/* Título */}
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#272F66] mb-4 uppercase" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                Nuestro Proceso de Edición de Videos
+                {t('servicePages.edicionVideos.process.title')}
               </h2>
               
               {/* Subtítulo */}
               <p className="text-lg text-gray-600 leading-relaxed mb-6" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                Transformamos tus grabaciones en historias cautivadoras, optimizadas para conectar y retener la atención de tu audiencia digital.
+                {t('servicePages.edicionVideos.process.subtitle')}
               </p>
 
               {/* Imagen horizontal (ancha y baja) que se alinea con el final del último paso */}
@@ -350,10 +352,10 @@ export default function EdicionVideosPage() {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-bold text-[#272F66] mb-2" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                    Comprensión del Objetivo y Guionización
+                    {t('servicePages.edicionVideos.process.steps.comprension.title')}
                   </h3>
                   <p className="text-gray-600 leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                    Analizamos el material grabado y definimos el objetivo principal del video (conversión, engagement, branding). Desarrollamos la estructura narrativa y el guion de edición para maximizar la efectividad en la plataforma de destino.
+                    {t('servicePages.edicionVideos.process.steps.comprension.description')}
                   </p>
                 </div>
               </div>
@@ -369,10 +371,10 @@ export default function EdicionVideosPage() {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-bold text-[#272F66] mb-2" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                    Edición, Ritmo y Estructura Narrativa
+                    {t('servicePages.edicionVideos.process.steps.edicion.title')}
                   </h3>
                   <p className="text-gray-600 leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                    Nuestro equipo da vida a la historia. Cortamos, ensamblamos y ajustamos el ritmo, seleccionando las mejores tomas. Integramos narración, música libre de derechos y efectos de sonido para mantener a la audiencia enganchada.
+                    {t('servicePages.edicionVideos.process.steps.edicion.description')}
                   </p>
                 </div>
               </div>
@@ -388,10 +390,10 @@ export default function EdicionVideosPage() {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-bold text-[#272F66] mb-2" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                    Postproducción y Diseño Gráfico en Movimiento
+                    {t('servicePages.edicionVideos.process.steps.postproduccion.title')}
                   </h3>
                   <p className="text-gray-600 leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                    Añadimos valor con corrección de color profesional, gráficos en movimiento, textos animados y subtítulos dinámicos. Esto asegura que el video no solo se vea impecable, sino que también cumpla con los estándares estéticos de tu marca.
+                    {t('servicePages.edicionVideos.process.steps.postproduccion.description')}
                   </p>
                 </div>
               </div>
@@ -407,10 +409,10 @@ export default function EdicionVideosPage() {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-bold text-[#272F66] mb-2" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                    Optimización para Plataformas y Entrega Final
+                    {t('servicePages.edicionVideos.process.steps.optimizacion.title')}
                   </h3>
                   <p className="text-gray-600 leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                    El video se exporta y optimiza en el formato y duración ideales para cada plataforma (Instagram Reels, YouTube, TikTok, Campañas de Pago). Entregamos el material listo para ser publicado, garantizando la máxima calidad en cualquier dispositivo.
+                    {t('servicePages.edicionVideos.process.steps.optimizacion.description')}
                   </p>
                 </div>
               </div>
@@ -427,7 +429,7 @@ export default function EdicionVideosPage() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#272F66] mb-4" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-              Preguntas frecuentes sobre Edición de Videos
+              {t('servicePages.edicionVideos.faq.title')}
             </h2>
           </div>
 
@@ -455,7 +457,7 @@ export default function EdicionVideosPage() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <h3 className="text-lg sm:text-xl font-bold text-[#272F66] mb-0 group-hover:text-[#ff9001] transition-colors duration-200" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                    ¿Qué tipos de videos pueden editar?
+                    {t('servicePages.edicionVideos.faq.items.tipos.question')}
                   </h3>
                 </div>
               </button>
@@ -463,7 +465,7 @@ export default function EdicionVideosPage() {
                 <div className="px-6 sm:px-8 pb-6 sm:pb-8 pl-20">
                   <div className="pt-2 border-t border-gray-100">
                     <p className="text-gray-600 leading-relaxed text-base" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                      Editamos una amplia gama de formatos, incluyendo videos para redes sociales (Reels, Shorts), tutoriales, entrevistas, videos corporativos, y anuncios. Nos adaptamos a las especificaciones de plataformas como Instagram, TikTok y YouTube.
+                      {t('servicePages.edicionVideos.faq.items.tipos.answer')}
                     </p>
                   </div>
                 </div>
@@ -493,7 +495,7 @@ export default function EdicionVideosPage() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <h3 className="text-lg sm:text-xl font-bold text-[#272F66] mb-0 group-hover:text-[#ff9001] transition-colors duration-200" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                    ¿Qué incluye el servicio de edición?
+                    {t('servicePages.edicionVideos.faq.items.incluye.question')}
                   </h3>
                 </div>
               </button>
@@ -501,7 +503,7 @@ export default function EdicionVideosPage() {
                 <div className="px-6 sm:px-8 pb-6 sm:pb-8 pl-20">
                   <div className="pt-2 border-t border-gray-100">
                     <p className="text-gray-600 leading-relaxed text-base" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                      El servicio incluye montaje creativo, corrección de color profesional, limpieza y diseño sonoro, optimización de velocidad (cámara lenta o rápida) y la integración de motion graphics y subtítulos si son necesarios.
+                      {t('servicePages.edicionVideos.faq.items.incluye.answer')}
                     </p>
                   </div>
                 </div>

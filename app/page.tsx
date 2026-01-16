@@ -10,8 +10,11 @@ import Testimonials from './components/Testimonials';
 import Reviews from './components/Reviews';
 import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
+import { useLanguage } from './contexts/LanguageContext';
 
 export default function Home() {
+  const { t } = useLanguage();
+  
   return (
     <main className="relative" style={{ background: 'black' }}>
       <Hero />
@@ -22,7 +25,7 @@ export default function Home() {
         introSubtitle="with GSAP ScrollTrigger & Locomotive Scroll"
         introBgColor="#bcb8ad"
         introTextColor="#032f35"
-        title="Innovación digital diseñada para hacer crecer tu negocio"
+        title={t('horizontalScroll.title')}
         images={[
           '/img/588068320_18012707783802845_1660549442353988258_n.webp',
           '/img/501718820_17992820474802845_1403293369934589556_n.webp',

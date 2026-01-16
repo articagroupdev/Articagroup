@@ -4,11 +4,15 @@ import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MdEmail, MdPhone, MdArrowForward } from 'react-icons/md';
+import { useLanguage } from '../contexts/LanguageContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function ContactForm() {
+  const { t } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
+  const leftSectionRef = useRef<HTMLDivElement>(null);
+  const rightSectionRef = useRef<HTMLDivElement>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -32,14 +36,23 @@ export default function ContactForm() {
   };
 
   useEffect(() => {
-    if (!sectionRef.current) return;
+    if (!sectionRef.current || !leftSectionRef.current || !rightSectionRef.current) return;
 
     const ctx = gsap.context(() => {
-      const leftSection = sectionRef.current?.querySelector('div.bg-white.p-6');
-      const rightSection = sectionRef.current?.querySelector('div.bg-white.p-6:last-child');
+      // Verificar si el elemento ya está en el viewport
+      const checkVisibility = (element: HTMLElement) => {
+        const rect = element.getBoundingClientRect();
+        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+        return rect.top < windowHeight * 0.85;
+      };
 
       // Animación de la sección izquierda
-      if (leftSection) {
+      const leftSection = leftSectionRef.current;
+      const isLeftVisible = checkVisibility(leftSection);
+      if (isLeftVisible) {
+        // Si ya es visible, mostrarlo inmediatamente
+        gsap.set(leftSection, { opacity: 1, x: 0 });
+      } else {
         gsap.set(leftSection, { opacity: 0, x: -50 });
         gsap.to(leftSection, {
           opacity: 1,
@@ -48,15 +61,21 @@ export default function ContactForm() {
           ease: 'power2.out',
           scrollTrigger: {
             trigger: leftSection,
-            start: 'top 100%',
-            end: 'top 60%',
+            start: 'top 85%',
+            end: 'top 50%',
             scrub: 1.5,
+            toggleActions: 'play none none reverse',
           },
         });
       }
 
       // Animación de la sección derecha (formulario)
-      if (rightSection) {
+      const rightSection = rightSectionRef.current;
+      const isRightVisible = checkVisibility(rightSection);
+      if (isRightVisible) {
+        // Si ya es visible, mostrarlo inmediatamente
+        gsap.set(rightSection, { opacity: 1, x: 0 });
+      } else {
         gsap.set(rightSection, { opacity: 0, x: 50 });
         gsap.to(rightSection, {
           opacity: 1,
@@ -65,41 +84,42 @@ export default function ContactForm() {
           ease: 'power2.out',
           scrollTrigger: {
             trigger: rightSection,
-            start: 'top 100%',
-            end: 'top 60%',
+            start: 'top 85%',
+            end: 'top 50%',
             scrub: 1.5,
+            toggleActions: 'play none none reverse',
           },
         });
       }
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [t]);
 
   return (
     <section 
       ref={sectionRef}
-      className="relative overflow-hidden bg-gray-50 min-h-screen md:h-screen md:min-h-screen md:max-h-screen flex items-center justify-center z-0 m-0 p-0 py-12 md:py-0"
+      className="relative overflow-hidden bg-gray-50 min-h-screen flex items-center justify-center z-0 m-0 p-0 py-12 md:py-16 lg:py-20"
     >
       <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-8 md:py-8 lg:py-16 relative z-10">
         <div className="bg-white rounded-2xl sm:rounded-3xl shadow-xl border border-gray-100 overflow-hidden flex flex-col">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
             {/* Left Section - Information */}
-            <div className="bg-white p-6 sm:p-8 md:p-8 lg:p-12 flex flex-col justify-center">
+            <div ref={leftSectionRef} className="bg-white p-6 sm:p-8 md:p-8 lg:p-12 flex flex-col justify-center">
               <p className="font-sans text-xs sm:text-sm text-gray-500 uppercase tracking-wider mb-4">
-                Estamos aquí para ayudarte
+                {t('contact.form.estamosAqui')}
               </p>
               
               <h2 className="text-2xl sm:text-3xl md:text-3xl lg:text-5xl font-extrabold text-[#272F66] mb-3 sm:mb-4 md:mb-5 lg:mb-6 leading-tight" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                Hablemos y hagamos que suceda
+                {t('contact.form.hablemos')}
               </h2>
               
               <p className="text-sm sm:text-base md:text-sm lg:text-base text-gray-600 mb-4 sm:mb-5 md:mb-6 lg:mb-8 leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                Escríbenos y empecemos a crear juntos la estrategia que tu marca necesita.
+                {t('contact.form.escribenos')}
               </p>
               
               <p className="text-sm sm:text-base md:text-sm lg:text-base text-gray-600 font-semibold mb-6 sm:mb-7 md:mb-8 lg:mb-10" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                ¡El primer paso está a un clic!
+                {t('contact.form.primerPaso')}
               </p>
 
               {/* Contact Info */}
@@ -109,7 +129,7 @@ export default function ContactForm() {
                     <MdEmail className="w-5 h-5 sm:w-6 sm:h-6 text-[#ff9001]" />
                   </div>
                   <div>
-                    <p className="font-sans text-xs sm:text-sm text-gray-600 mb-1">E-mail</p>
+                    <p className="font-sans text-xs sm:text-sm text-gray-600 mb-1">{t('contact.form.eMail')}</p>
                     <a 
                       href="mailto:info@articagroup.us" 
                       className="font-sans text-sm sm:text-base text-gray-600 font-medium hover:text-[#ff9001] transition-colors"
@@ -124,7 +144,7 @@ export default function ContactForm() {
                     <MdPhone className="w-5 h-5 sm:w-6 sm:h-6 text-[#ff9001]" />
                   </div>
                   <div>
-                    <p className="font-sans text-xs sm:text-sm text-gray-600 mb-1">Teléfono</p>
+                    <p className="font-sans text-xs sm:text-sm text-gray-600 mb-1">{t('contact.form.telefonoLabel')}</p>
                     <a 
                       href="tel:+13056195878" 
                       className="font-sans text-sm sm:text-base text-gray-600 font-medium hover:text-[#ff9001] transition-colors"
@@ -137,7 +157,7 @@ export default function ContactForm() {
             </div>
 
             {/* Right Section - Form */}
-            <div className="bg-white p-6 sm:p-8 md:p-8 lg:p-12">
+            <div ref={rightSectionRef} className="bg-white p-6 sm:p-8 md:p-8 lg:p-12">
               <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4 md:space-y-4 lg:space-y-5">
                 {/* Nombre y Email en fila */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-4 lg:gap-5">
@@ -147,7 +167,7 @@ export default function ContactForm() {
                       htmlFor="name" 
                       className="block font-sans text-xs sm:text-sm font-medium text-[#272F66] mb-1.5 sm:mb-2"
                     >
-                      Nombre y apellido <span className="text-[#ff9001]">*</span>
+                      {t('contact.form.nombre')} <span className="text-[#ff9001]">*</span>
                     </label>
                     <input
                       type="text"
@@ -156,7 +176,7 @@ export default function ContactForm() {
                       required
                       value={formData.name}
                       onChange={handleChange}
-                      placeholder="Nombre y apellido"
+                      placeholder={t('contact.form.nombre')}
                       className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-gray-300 focus:border-[#272F66] focus:ring-2 focus:ring-[#272F66]/20 outline-none transition-all font-sans text-sm sm:text-base text-[#272F66] placeholder-gray-400"
                     />
                   </div>
@@ -167,7 +187,7 @@ export default function ContactForm() {
                       htmlFor="email" 
                       className="block font-sans text-xs sm:text-sm font-medium text-[#272F66] mb-1.5 sm:mb-2"
                     >
-                      Correo electrónico <span className="text-[#ff9001]">*</span>
+                      {t('contact.form.email')} <span className="text-[#ff9001]">*</span>
                     </label>
                     <input
                       type="email"
@@ -190,7 +210,7 @@ export default function ContactForm() {
                       htmlFor="company" 
                       className="block font-sans text-xs sm:text-sm font-medium text-[#272F66] mb-1.5 sm:mb-2"
                     >
-                      Empresa
+                      {t('contact.form.empresa')}
                     </label>
                     <input
                       type="text"
@@ -198,7 +218,7 @@ export default function ContactForm() {
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
-                      placeholder="Nombre de tu empresa"
+                      placeholder={t('contact.form.empresa')}
                       className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-gray-300 focus:border-[#272F66] focus:ring-2 focus:ring-[#272F66]/20 outline-none transition-all font-sans text-sm sm:text-base text-[#272F66] placeholder-gray-400"
                     />
                   </div>
@@ -209,7 +229,7 @@ export default function ContactForm() {
                       htmlFor="phone" 
                       className="block font-sans text-xs sm:text-sm font-medium text-[#272F66] mb-1.5 sm:mb-2"
                     >
-                      Teléfono
+                      {t('contact.form.telefono')}
                     </label>
                     <input
                       type="tel"
@@ -229,7 +249,7 @@ export default function ContactForm() {
                     htmlFor="source" 
                     className="block font-sans text-xs sm:text-sm font-medium text-[#272F66] mb-1.5 sm:mb-2"
                   >
-                    ¿Cómo nos conociste?
+                    {t('contact.form.comoNosConociste')}
                   </label>
                   <input
                     type="text"
@@ -237,7 +257,7 @@ export default function ContactForm() {
                     name="source"
                     value={formData.source}
                     onChange={handleChange}
-                    placeholder="¿Cómo nos conociste?"
+                    placeholder={t('contact.form.comoNosConociste')}
                     className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-gray-300 focus:border-[#272F66] focus:ring-2 focus:ring-[#272F66]/20 outline-none transition-all font-sans text-sm sm:text-base text-[#272F66] placeholder-gray-400"
                   />
                 </div>
@@ -248,7 +268,7 @@ export default function ContactForm() {
                     htmlFor="message" 
                     className="block font-sans text-xs sm:text-sm font-medium text-[#272F66] mb-1.5 sm:mb-2"
                   >
-                    Mensaje <span className="text-[#ff9001]">*</span>
+                    {t('contact.form.mensaje')} <span className="text-[#ff9001]">*</span>
                   </label>
                   <textarea
                     id="message"
@@ -256,7 +276,7 @@ export default function ContactForm() {
                     required
                     value={formData.message}
                     onChange={handleChange}
-                    placeholder="Escribe tu mensaje aquí..."
+                    placeholder={t('contact.form.mensaje')}
                     rows={4}
                     className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-gray-300 focus:border-[#272F66] focus:ring-2 focus:ring-[#272F66]/20 outline-none transition-all font-sans text-sm sm:text-base text-[#272F66] placeholder-gray-400 resize-y"
                   />
@@ -267,7 +287,7 @@ export default function ContactForm() {
                   type="submit"
                   className="w-full bg-[#272F66] hover:bg-[#1a2144] text-white font-sans font-semibold text-sm sm:text-base px-6 py-4 rounded-full transition-all duration-300 flex items-center justify-center gap-2 group shadow-lg hover:shadow-xl"
                 >
-                  <span>Enviar mensaje</span>
+                  <span>{t('contact.form.enviar')}</span>
                   <div className="w-8 h-8 rounded-full bg-white/20 group-hover:bg-white/30 flex items-center justify-center transition-all">
                     <MdArrowForward className="w-5 h-5 text-white group-hover:translate-x-1 transition-transform" />
                   </div>

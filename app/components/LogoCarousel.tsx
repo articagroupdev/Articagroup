@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styles from './LogoCarousel.module.css';
+import { useLanguage } from '../contexts/LanguageContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,6 +24,7 @@ const logos = [
 ];
 
 export default function LogoCarousel() {
+  const { t } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -81,7 +83,7 @@ export default function LogoCarousel() {
           className={styles.title}
           style={{ opacity: 0, transform: 'translateY(40px)' }}
         >
-          Marcas que ya confían en nosotros
+          {t('logoCarousel.title')}
         </h2>
         <div 
           ref={carouselRef}

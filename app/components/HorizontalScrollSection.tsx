@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useLanguage } from '../contexts/LanguageContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -31,10 +32,14 @@ export default function HorizontalScrollSection({
   introTextColor = '#032f35',
   showIntro = true,
 }: HorizontalScrollSectionProps) {
+  const { language } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
   const pinWrapRef = useRef<HTMLDivElement>(null);
   const introSectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
+  
+  // Texto a resaltar según el idioma
+  const highlightText = language === 'es' ? 'crecer tu negocio' : 'grow your business';
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -337,8 +342,8 @@ export default function HorizontalScrollSection({
                 overflowWrap: 'break-word',
               }}
             >
-              {title.split(/(crecer tu negocio)/i).map((part, index) => {
-                if (part.toLowerCase() === 'crecer tu negocio') {
+              {title.split(new RegExp(`(${highlightText})`, 'i')).map((part, index) => {
+                if (part.toLowerCase() === highlightText.toLowerCase()) {
                   return (
                     <span
                       key={index}
