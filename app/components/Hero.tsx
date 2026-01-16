@@ -18,7 +18,7 @@ interface HeroProps {
 export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as HeroProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
-  const { language, setLanguage, t } = useLanguage();
+  const { language, setLanguage, t, isReady } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [videoError, setVideoError] = useState(false);
   const pathname = usePathname();
@@ -35,12 +35,15 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
   const heroTitleRef = useRef<HTMLHeadingElement>(null);
   const heroSubtitleRef = useRef<HTMLParagraphElement>(null);
   const heroButtonRef = useRef<HTMLAnchorElement>(null);
+  const heroPortfolioButtonRef = useRef<HTMLAnchorElement>(null);
   const servicesMenuRef = useRef<HTMLDivElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
+    if (!isReady) return; // No ejecutar animaciones hasta que las traducciones estén listas
+    
     const ctx = gsap.context(() => {
       // Animación de la navegación
       if (navRef.current) {
@@ -59,23 +62,31 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
         });
       }
 
-
-      // Animación del contenido del Hero
+      // Animación del contenido del Hero cuando las traducciones estén listas
       if (heroContentRef.current) {
-        // Asegurar que los elementos sean visibles inicialmente
-        gsap.set([heroTopTextRef.current, heroTitleRef.current, heroSubtitleRef.current, heroButtonRef.current], {
-          opacity: 1,
-          y: 0,
+        // Configurar estado inicial oculto
+        gsap.set([heroTopTextRef.current, heroTitleRef.current, heroSubtitleRef.current, heroButtonRef.current, heroPortfolioButtonRef.current], {
+          opacity: 0,
+          y: 30,
           visibility: 'visible',
         });
 
+        // Animar entrada con stagger suave
+        gsap.to([heroTopTextRef.current, heroTitleRef.current, heroSubtitleRef.current, heroButtonRef.current, heroPortfolioButtonRef.current], {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          stagger: 0.15,
+          ease: 'power3.out',
+          delay: 0.1,
+        });
       }
     }, heroRef);
 
     return () => {
       ctx.revert();
     };
-  }, []);
+  }, [isReady]);
 
   // Animación del mega menú
   useEffect(() => {
@@ -906,7 +917,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
               backdropFilter: 'blur(10px)',
               border: '1px solid rgba(39, 47, 102, 0.2)',
               boxShadow: '0 2px 8px rgba(39, 47, 102, 0.15), 0 1px 3px rgba(0, 0, 0, 0.1)',
-              opacity: 1,
+              opacity: 0,
               visibility: 'visible',
               pointerEvents: 'auto',
               position: 'relative',
@@ -952,7 +963,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
               letterSpacing: '0.02em',
               lineHeight: '1.15',
               color: '#ffffff',
-              opacity: 1,
+              opacity: 0,
               visibility: 'visible',
               pointerEvents: 'auto',
               position: 'relative',
@@ -979,7 +990,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
               fontWeight: 400,
               lineHeight: '1.5',
               color: '#ffffff',
-              opacity: 1,
+              opacity: 0,
               visibility: 'visible',
               pointerEvents: 'auto',
               position: 'relative',
@@ -1007,7 +1018,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
                 fontWeight: 600,
                 color: '#ffffff',
                 textDecoration: 'none',
-                opacity: 1,
+                opacity: 0,
                 visibility: 'visible',
                 backgroundColor: '#272F66',
                 padding: 'clamp(10px, 1.2vw, 14px) clamp(20px, 2.5vw, 32px)',
@@ -1031,6 +1042,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
 
             {/* Botón Portafolio */}
             <Link
+              ref={heroPortfolioButtonRef}
               href="/portfolio"
               className="inline-flex items-center justify-center transition-all duration-300"
               style={{ 
@@ -1039,7 +1051,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
                 fontWeight: 600,
                 color: '#ffffff',
                 textDecoration: 'none',
-                opacity: 1,
+                opacity: 0,
                 visibility: 'visible',
                 backgroundColor: '#ff9001',
                 border: '2px solid #ff9001',

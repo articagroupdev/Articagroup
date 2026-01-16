@@ -8,6 +8,7 @@ interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
   t: (key: string) => string;
+  isReady: boolean;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -15,15 +16,19 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<Language>('es');
   const [translations, setTranslations] = useState<Record<string, any>>({});
+  const [isReady, setIsReady] = useState(false);
 
   // Cargar traducciones
   useEffect(() => {
+    setIsReady(false);
     import(`../translations/${language}.json`)
       .then((mod) => {
         setTranslations(mod.default);
+        setIsReady(true);
       })
       .catch((err) => {
         console.error('Error loading translations:', err);
+        setIsReady(true); // Marcar como listo incluso si hay error para evitar bloqueo infinito
       });
   }, [language]);
 
@@ -62,7 +67,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider value={{ language, setLanguage, t, isReady }}>
       {children}
     </LanguageContext.Provider>
   );
