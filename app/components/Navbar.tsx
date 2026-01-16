@@ -14,7 +14,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
-  const { language, setLanguage, t } = useLanguage();
+  const { language, setLanguage, t, isReady } = useLanguage();
   const pathname = usePathname();
   const isPortfolioPage = pathname === '/portfolio';
   const navRef = useRef<HTMLElement>(null);
@@ -93,23 +93,25 @@ export default function Navbar() {
 
 
   useEffect(() => {
-    if (!navRef.current) return;
+    if (!navRef.current || !isReady) return; // No ejecutar animaciones hasta que las traducciones estén listas
 
     const ctx = gsap.context(() => {
-      // Animación de la navegación
+      // Animación de la navegación cuando las traducciones estén listas
       if (navRef.current) {
+        // Configurar estado inicial oculto
         gsap.set([logoRef.current, navLinksRef.current, navButtonsRef.current], {
           opacity: 0,
           y: -20,
         });
 
+        // Animar entrada con stagger suave
         gsap.to([logoRef.current, navLinksRef.current, navButtonsRef.current], {
           opacity: 1,
           y: 0,
           duration: 0.8,
           stagger: 0.1,
           ease: 'power3.out',
-          delay: 0.2,
+          delay: 0.1,
         });
       }
 
@@ -131,7 +133,7 @@ export default function Navbar() {
     return () => {
       ctx.revert();
     };
-  }, [isPortfolioPage]);
+  }, [isPortfolioPage, isReady]);
 
   return (
     <nav
@@ -163,7 +165,11 @@ export default function Navbar() {
           <ul
             ref={navLinksRef}
             className="hidden lg:flex items-center space-x-4 xl:space-x-5 relative"
-            style={{ overflow: 'visible' }}
+            style={{ 
+              overflow: 'visible',
+              opacity: 0,
+              visibility: 'visible',
+            }}
           >
           <li>
             <Link
@@ -402,7 +408,14 @@ export default function Navbar() {
         </div>
 
         {/* Botones de navegación - Derecha */}
-        <div ref={navButtonsRef} className="flex items-center gap-2 xl:gap-3 flex-shrink-0">
+        <div 
+          ref={navButtonsRef} 
+          className="flex items-center gap-2 xl:gap-3 flex-shrink-0"
+          style={{
+            opacity: 0,
+            visibility: 'visible',
+          }}
+        >
           {/* Selector de idioma */}
           <button
             onClick={() => {
