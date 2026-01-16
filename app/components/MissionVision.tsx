@@ -4,10 +4,12 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { FaBullseye, FaStar } from 'react-icons/fa';
+import { useLanguage } from '../contexts/LanguageContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function MissionVision() {
+  const { t } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
   const cardsRef = useRef<HTMLDivElement[]>([]);
 
@@ -89,7 +91,7 @@ export default function MissionVision() {
                     fontWeight: 'bold',
                   }}
                 >
-                  Nuestra Misión
+                  {t('about.missionVision.mission.title')}
                 </h3>
                 <p
                   className="text-xs sm:text-sm md:text-base text-[#272F66]/80 leading-relaxed"
@@ -98,7 +100,7 @@ export default function MissionVision() {
                     lineHeight: '1.6',
                   }}
                 >
-                  Nuestra misión es clara: empoderar a las empresas a prosperar en el entorno digital. Logramos esto diseñando e implementando estrategias de marketing innovadoras, basadas en datos y adaptadas a las necesidades específicas de cada cliente. Nos esforzamos por ser el motor de su crecimiento online, convirtiendo desafíos en oportunidades y objetivos en realidades.
+                  {t('about.missionVision.mission.description')}
                 </p>
               </div>
             </div>
@@ -140,7 +142,7 @@ export default function MissionVision() {
                     fontWeight: 'bold',
                   }}
                 >
-                  Nuestra Visión
+                  {t('about.missionVision.vision.title')}
                 </h3>
                 <p
                   className="text-xs sm:text-sm md:text-base text-[#272F66]/80 leading-relaxed"
@@ -149,7 +151,7 @@ export default function MissionVision() {
                     lineHeight: '1.6',
                   }}
                 >
-                  Aspiramos a ser la agencia de marketing digital de referencia, reconocida por nuestra excelencia, la generación constante de resultados sobresalientes y la construcción de relaciones a largo plazo basadas en la confianza y el éxito mutuo. Buscamos liderar la vanguardia de la transformación digital, anticipándonos a las tendencias y ofreciendo soluciones que preparen a nuestros clientes para el futuro.
+                  {t('about.missionVision.vision.description')}
                 </p>
               </div>
             </div>

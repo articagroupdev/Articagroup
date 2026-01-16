@@ -7,13 +7,14 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import ES from 'country-flag-icons/react/3x2/ES';
 import US from 'country-flag-icons/react/3x2/US';
+import { useLanguage } from '../contexts/LanguageContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function AboutHeroNew() {
+  const { language, setLanguage, t } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
-  const [language, setLanguage] = useState<'es' | 'en'>('es');
   const pathname = usePathname();
   // URL de Cloudinary para el video de nosotros
   const videoSrc = 'https://res.cloudinary.com/dobuhpxof/video/upload/v1768399807/video-nosotros1_di7izx.mp4';
@@ -270,7 +271,7 @@ export default function AboutHeroNew() {
                   textShadow: 'none',
                 }}
               >
-                Inicio
+                {t('nav.inicio')}
               </Link>
             </li>
             <li>
@@ -284,7 +285,7 @@ export default function AboutHeroNew() {
                   textShadow: 'none',
                 }}
               >
-                Sobre Nosotros
+                {t('nav.sobreNosotros')}
               </Link>
             </li>
             <li 
@@ -310,7 +311,7 @@ export default function AboutHeroNew() {
                   textShadow: 'none',
                 }}
               >
-                Servicios
+                {t('nav.servicios')}
                 <svg 
                   className={`ml-1 w-3 h-3 transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`} 
                   fill="none" 
@@ -344,10 +345,10 @@ export default function AboutHeroNew() {
                           </svg>
                         </div>
                         <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                          Desarrollo Web
+                          {t('services.desarrolloWeb')}
                         </h3>
                         <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
-                          Sitios web modernos y funcionales
+                          {t('services.desarrolloWebDesc')}
                         </p>
                       </Link>
 
@@ -358,10 +359,10 @@ export default function AboutHeroNew() {
                           </svg>
                         </div>
                         <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                          Diseño Gráfico
+                          {t('services.disenoGrafico')}
                         </h3>
                         <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
-                          Identidad visual y diseño creativo
+                          {t('services.disenoGraficoDesc')}
                         </p>
                       </Link>
 
@@ -372,10 +373,10 @@ export default function AboutHeroNew() {
                           </svg>
                         </div>
                         <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                          Estrategia Posicionamiento y Comunicación
+                          {t('services.posicionamientoComunicacion')}
                         </h3>
                         <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
-                          Estrategias integrales de marca y comunicación
+                          {t('services.posicionamientoComunicacionDesc')}
                         </p>
                       </Link>
                     </div>
@@ -389,10 +390,10 @@ export default function AboutHeroNew() {
                           </svg>
                         </div>
                         <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                          Edición de Videos
+                          {t('services.edicionVideos')}
                         </h3>
                         <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
-                          Producción y edición profesional de video
+                          {t('services.edicionVideosDesc')}
                         </p>
                       </Link>
 
@@ -403,10 +404,10 @@ export default function AboutHeroNew() {
                           </svg>
                         </div>
                         <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                          Publicidad Online
+                          {t('services.publicidadOnline')}
                         </h3>
                         <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
-                          Campañas publicitarias digitales efectivas
+                          {t('services.publicidadOnlineDesc')}
                         </p>
                       </Link>
                     </div>
@@ -420,10 +421,10 @@ export default function AboutHeroNew() {
                           </svg>
                         </div>
                         <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                          Creación de Contenido
+                          {t('services.creacionContenido')}
                         </h3>
                         <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
-                          Contenido visual atractivo para tu marca
+                          {t('services.creacionContenidoDesc')}
                         </p>
                       </Link>
 
@@ -435,10 +436,10 @@ export default function AboutHeroNew() {
                           </svg>
                         </div>
                         <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                          Campañas de Ads
+                          {t('services.campanasAds')}
                         </h3>
                         <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
-                          Publicidad efectiva en redes sociales
+                          {t('services.campanasAdsDesc')}
                         </p>
                       </Link>
 
@@ -449,10 +450,10 @@ export default function AboutHeroNew() {
                           </svg>
                         </div>
                         <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                          Community Management
+                          {t('services.communityManagement')}
                         </h3>
                         <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
-                          Gestión profesional de comunidades online
+                          {t('services.communityManagementDesc')}
                         </p>
                       </Link>
                     </div>
@@ -469,7 +470,7 @@ export default function AboutHeroNew() {
                   textShadow: 'none',
                 }}
               >
-                Portafolio
+                {t('nav.portafolio')}
               </Link>
             </li>
             <li>
@@ -483,7 +484,7 @@ export default function AboutHeroNew() {
                   textShadow: 'none',
                 }}
               >
-                Contacto
+                {t('nav.contacto')}
               </Link>
             </li>
           </ul>
@@ -512,7 +513,7 @@ export default function AboutHeroNew() {
               className="hidden lg:block px-6 xl:px-7 py-2.5 xl:py-3 text-white bg-[#272F66] rounded-full font-medium hover:bg-[#1e2547] transition-all duration-300 text-xs xl:text-sm shadow-sm hover:shadow-md"
               style={{ color: '#ffffff' }}
             >
-              Queremos Impulsarte
+              {t('nav.queremosImpulsarte')}
             </Link>
 
             {/* Botón móvil */}
@@ -616,7 +617,7 @@ export default function AboutHeroNew() {
                       color: pathname === '/' ? '#ffffff' : '#1a1a2e',
                     }}
                   >
-                    Inicio
+                    {t('nav.inicio')}
                   </Link>
                 </li>
                 <li>
@@ -634,7 +635,7 @@ export default function AboutHeroNew() {
                       color: pathname === '/about' ? '#ffffff' : '#1a1a2e',
                     }}
                   >
-                    Sobre Nosotros
+                    {t('nav.sobreNosotros')}
                   </Link>
                 </li>
                 <li>
@@ -649,7 +650,7 @@ export default function AboutHeroNew() {
                       color: '#1a1a2e',
                     }}
                   >
-                    <span>Servicios</span>
+                    <span>{t('nav.servicios')}</span>
                     <svg
                       className={`w-5 h-5 transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`}
                       fill="none"
@@ -663,42 +664,42 @@ export default function AboutHeroNew() {
                     <ul className="mt-2 ml-2 space-y-1 border-l-2 border-[#13B9D5]/30 pl-5">
                       <li>
                         <Link href="/services/desarrollo-web" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
-                          Desarrollo Web
+                          {t('services.desarrolloWeb')}
                         </Link>
                       </li>
                       <li>
                         <Link href="/services/diseno-grafico" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
-                          Diseño Gráfico
+                          {t('services.disenoGrafico')}
                         </Link>
                       </li>
                       <li>
                         <Link href="/services/posicionamiento-comunicacion" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
-                          Estrategia
+                          {t('services.posicionamientoComunicacion')}
                         </Link>
                       </li>
                       <li>
                         <Link href="/services/edicion-videos" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
-                          Edición de Videos
+                          {t('services.edicionVideos')}
                         </Link>
                       </li>
                       <li>
                         <Link href="/services/publicidad-online" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
-                          Publicidad Online
+                          {t('services.publicidadOnline')}
                         </Link>
                       </li>
                       <li>
                         <Link href="/services/creacion-contenido" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
-                          Creación de Contenido
+                          {t('services.creacionContenido')}
                         </Link>
                       </li>
                       <li>
                         <Link href="/services/campanas-ads" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
-                          Campañas de Ads
+                          {t('services.campanasAds')}
                         </Link>
                       </li>
                       <li>
                         <Link href="/services/community-management" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
-                          Community Management
+                          {t('services.communityManagement')}
                         </Link>
                       </li>
                     </ul>
@@ -715,7 +716,7 @@ export default function AboutHeroNew() {
                       color: '#1a1a2e',
                     }}
                   >
-                    Portafolio
+                    {t('nav.portafolio')}
                   </Link>
                 </li>
                 <li>
@@ -733,7 +734,7 @@ export default function AboutHeroNew() {
                       color: pathname === '/contact' ? '#ffffff' : '#1a1a2e',
                     }}
                   >
-                    Contacto
+                    {t('nav.contacto')}
                   </Link>
                 </li>
               </ul>
@@ -766,7 +767,7 @@ export default function AboutHeroNew() {
                   fontSize: '16px',
                 }}
               >
-                Queremos Impulsarte
+                {t('nav.queremosImpulsarte')}
               </Link>
             </div>
           </div>
@@ -779,7 +780,7 @@ export default function AboutHeroNew() {
         style={{ 
           minHeight: '100vh', 
           pointerEvents: 'auto',
-          backgroundImage: 'url(/img/fondo-3.jpg)',
+          backgroundImage: 'url(/img/fondo-3.webp)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
@@ -798,7 +799,7 @@ export default function AboutHeroNew() {
           >
             <div className="w-2 h-2 rounded-full bg-[#ff9001] animate-pulse" />
             <span className="text-xs sm:text-sm font-semibold text-[#ff9001] uppercase tracking-wider">
-              Sobre Nosotros
+              {t('about.badge')}
             </span>
           </div>
 
@@ -820,7 +821,7 @@ export default function AboutHeroNew() {
               transform: 'translateY(30px)'
             }}
           >
-            Modelo Artica
+            {t('about.title')}
           </h1>
           <p
             ref={heroTaglineRef}
@@ -839,7 +840,7 @@ export default function AboutHeroNew() {
               msUserSelect: 'text'
             }}
           >
-            Conócenos y Descubre cómo podemos impulsar el crecimiento de tu marca
+            {t('about.subtitle')}
           </p>
         </div>
         

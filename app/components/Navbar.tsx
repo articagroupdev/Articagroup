@@ -7,13 +7,14 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import ES from 'country-flag-icons/react/3x2/ES';
 import US from 'country-flag-icons/react/3x2/US';
+import { useLanguage } from '../contexts/LanguageContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
-  const [language, setLanguage] = useState<'es' | 'en'>('es');
+  const { language, setLanguage, t } = useLanguage();
   const pathname = usePathname();
   const isPortfolioPage = pathname === '/portfolio';
   const navRef = useRef<HTMLElement>(null);
@@ -176,7 +177,7 @@ export default function Navbar() {
                 fontFamily: 'var(--font-poppins), sans-serif',
               }}
             >
-              Inicio
+              {t('nav.inicio')}
             </Link>
           </li>
           <li>
@@ -191,7 +192,7 @@ export default function Navbar() {
                 fontFamily: 'var(--font-poppins), sans-serif',
               }}
             >
-              Sobre Nosotros
+              {t('nav.sobreNosotros')}
             </Link>
           </li>
           <li 
@@ -219,7 +220,7 @@ export default function Navbar() {
                 fontFamily: 'var(--font-poppins), sans-serif',
               }}
             >
-              Servicios
+              {t('nav.servicios')}
               <svg 
                 className={`ml-1 w-3 h-3 transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`} 
                 fill="none" 
@@ -253,10 +254,10 @@ export default function Navbar() {
                         </svg>
                       </div>
                       <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                        Desarrollo Web
+                        {t('services.desarrolloWeb')}
                       </h3>
                       <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
-                        Sitios web modernos y funcionales
+                        {t('services.desarrolloWebDesc')}
                       </p>
                     </Link>
 
@@ -267,10 +268,10 @@ export default function Navbar() {
                         </svg>
                       </div>
                       <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                        Diseño Gráfico
+                        {t('services.disenoGrafico')}
                       </h3>
                       <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
-                        Identidad visual y diseño creativo
+                        {t('services.disenoGraficoDesc')}
                       </p>
                     </Link>
 
@@ -281,10 +282,10 @@ export default function Navbar() {
                         </svg>
                       </div>
                       <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                        Estrategia Posicionamiento y Comunicación
+                        {t('services.posicionamientoComunicacion')}
                       </h3>
                       <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
-                        Estrategias integrales de marca y comunicación
+                        {t('services.posicionamientoComunicacionDesc')}
                       </p>
                     </Link>
                   </div>
@@ -298,10 +299,10 @@ export default function Navbar() {
                         </svg>
                       </div>
                       <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                        Edición de Videos
+                        {t('services.edicionVideos')}
                       </h3>
                       <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
-                        Producción y edición profesional de video
+                        {t('services.edicionVideosDesc')}
                       </p>
                     </Link>
 
@@ -312,10 +313,10 @@ export default function Navbar() {
                         </svg>
                       </div>
                       <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                        Publicidad Online
+                        {t('services.publicidadOnline')}
                       </h3>
                       <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
-                        Campañas publicitarias digitales efectivas
+                        {t('services.publicidadOnlineDesc')}
                       </p>
                     </Link>
                   </div>
@@ -329,10 +330,10 @@ export default function Navbar() {
                         </svg>
                       </div>
                       <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                        Creación de Contenido
+                        {t('services.creacionContenido')}
                       </h3>
                       <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
-                        Contenido visual atractivo para tu marca
+                        {t('services.creacionContenidoDesc')}
                       </p>
                     </Link>
 
@@ -344,10 +345,10 @@ export default function Navbar() {
                         </svg>
                       </div>
                       <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                        Campañas de Ads
+                        {t('services.campanasAds')}
                       </h3>
                       <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
-                        Publicidad efectiva en redes sociales
+                        {t('services.campanasAdsDesc')}
                       </p>
                     </Link>
 
@@ -358,10 +359,10 @@ export default function Navbar() {
                         </svg>
                       </div>
                       <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                        Community Management
+                        {t('services.communityManagement')}
                       </h3>
                       <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
-                        Gestión profesional de comunidades online
+                        {t('services.communityManagementDesc')}
                       </p>
                     </Link>
                   </div>
@@ -379,7 +380,7 @@ export default function Navbar() {
                 fontFamily: 'var(--font-poppins), sans-serif',
               }}
             >
-              Portafolio
+              {t('nav.portafolio')}
             </Link>
           </li>
           <li>
@@ -394,7 +395,7 @@ export default function Navbar() {
                 fontFamily: 'var(--font-poppins), sans-serif',
               }}
             >
-              Contacto
+              {t('nav.contacto')}
             </Link>
           </li>
         </ul>
@@ -405,7 +406,6 @@ export default function Navbar() {
           {/* Selector de idioma */}
           <button
             onClick={() => {
-              // TODO: Implementar cambio de idioma
               setLanguage(language === 'es' ? 'en' : 'es');
             }}
             className="hidden lg:flex items-center justify-center w-7 h-7 xl:w-8 xl:h-8 transition-all duration-300 hover:scale-110 overflow-hidden rounded"
@@ -430,7 +430,7 @@ export default function Navbar() {
               color: isPortfolioPage ? '#272F66' : '#ffffff',
             }}
           >
-            Queremos Impulsarte
+            {t('nav.queremosImpulsarte')}
           </Link>
 
           {/* Botón móvil */}
@@ -534,7 +534,7 @@ export default function Navbar() {
                     color: pathname === '/' ? '#ffffff' : '#1a1a2e',
                   }}
                 >
-                  Inicio
+                  {t('nav.inicio')}
                 </Link>
               </li>
               <li>
@@ -552,7 +552,7 @@ export default function Navbar() {
                     color: pathname === '/about' ? '#ffffff' : '#1a1a2e',
                   }}
                 >
-                  Sobre Nosotros
+                  {t('nav.sobreNosotros')}
                 </Link>
               </li>
               <li>
@@ -567,7 +567,7 @@ export default function Navbar() {
                     color: '#1a1a2e',
                   }}
                 >
-                  <span>Servicios</span>
+                  <span>{t('nav.servicios')}</span>
                   <svg
                     className={`w-5 h-5 transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`}
                     fill="none"
@@ -581,42 +581,42 @@ export default function Navbar() {
                   <ul className="mt-2 ml-2 space-y-1 border-l-2 border-[#13B9D5]/30 pl-5">
                     <li>
                       <Link href="/services/desarrollo-web" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e', fontFamily: 'var(--font-poppins), sans-serif' }}>
-                        Desarrollo Web
+                        {t('services.desarrolloWeb')}
                       </Link>
                     </li>
                     <li>
                       <Link href="/services/diseno-grafico" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e', fontFamily: 'var(--font-poppins), sans-serif' }}>
-                        Diseño Gráfico
+                        {t('services.disenoGrafico')}
                       </Link>
                     </li>
                     <li>
                       <Link href="/services/posicionamiento-comunicacion" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e', fontFamily: 'var(--font-poppins), sans-serif' }}>
-                        Estrategia
+                        {t('services.posicionamientoComunicacion')}
                       </Link>
                     </li>
                     <li>
                       <Link href="/services/edicion-videos" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e', fontFamily: 'var(--font-poppins), sans-serif' }}>
-                        Edición de Videos
+                        {t('services.edicionVideos')}
                       </Link>
                     </li>
                     <li>
                       <Link href="/services/publicidad-online" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e', fontFamily: 'var(--font-poppins), sans-serif' }}>
-                        Publicidad Online
+                        {t('services.publicidadOnline')}
                       </Link>
                     </li>
                     <li>
                       <Link href="/services/creacion-contenido" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e', fontFamily: 'var(--font-poppins), sans-serif' }}>
-                        Creación de Contenido
+                        {t('services.creacionContenido')}
                       </Link>
                     </li>
                     <li>
                       <Link href="/services/campanas-ads" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e', fontFamily: 'var(--font-poppins), sans-serif' }}>
-                        Campañas de Ads
+                        {t('services.campanasAds')}
                       </Link>
                     </li>
                     <li>
                       <Link href="/services/community-management" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e', fontFamily: 'var(--font-poppins), sans-serif' }}>
-                        Community Management
+                        {t('services.communityManagement')}
                       </Link>
                     </li>
                   </ul>
@@ -633,7 +633,7 @@ export default function Navbar() {
                     color: '#1a1a2e',
                   }}
                 >
-                  Portafolio
+                  {t('nav.portafolio')}
                 </Link>
               </li>
               <li>
@@ -651,7 +651,7 @@ export default function Navbar() {
                     color: pathname === '/contact' ? '#ffffff' : '#1a1a2e',
                   }}
                 >
-                  Contacto
+                  {t('nav.contacto')}
                 </Link>
               </li>
             </ul>
@@ -684,7 +684,7 @@ export default function Navbar() {
                 fontSize: '16px',
               }}
             >
-              Queremos Impulsarte
+              {t('nav.queremosImpulsarte')}
             </Link>
           </div>
         </div>

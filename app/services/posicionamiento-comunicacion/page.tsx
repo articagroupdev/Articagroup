@@ -8,10 +8,12 @@ import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import Navbar from '../../components/Navbar';
 import ContactForm from '../../components/ContactForm';
 import Footer from '../../components/Footer';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function PosicionamientoComunicacionPage() {
+  const { t } = useLanguage();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const heroRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -73,7 +75,7 @@ export default function PosicionamientoComunicacionPage() {
     return () => {
       ctx.revert();
     };
-  }, []);
+  }, [t]);
 
   const toggleFaq = (index: number) => {
     if (openFaq === index) {
@@ -150,7 +152,7 @@ export default function PosicionamientoComunicacionPage() {
               <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 bg-[#13B9D5]/20 rounded-full border border-[#13B9D5]/30">
                 <div className="w-2 h-2 rounded-full bg-[#13B9D5] animate-pulse" />
                 <span className="text-xs sm:text-sm font-semibold text-[#13B9D5] uppercase tracking-wider">
-                  Servicio
+                  {t('servicePages.common.badge')}
                 </span>
               </div>
 
@@ -159,7 +161,7 @@ export default function PosicionamientoComunicacionPage() {
                 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#272F66] mb-6 leading-tight text-left"
                 style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'normal' }}
               >
-                Posicionamiento y Comunicación
+                {t('servicePages.posicionamientoComunicacion.hero.title')}
               </h1>
 
               <p
@@ -167,14 +169,14 @@ export default function PosicionamientoComunicacionPage() {
                 className="text-xl sm:text-2xl text-[#272F66]/80 max-w-3xl leading-relaxed text-left mb-4"
                 style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
               >
-                Atrae, conecta y fideliza
+                {t('servicePages.posicionamientoComunicacion.hero.subtitle')}
               </p>
 
               <p
                 className="text-lg sm:text-xl text-[#272F66]/70 max-w-3xl leading-relaxed text-left"
                 style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
               >
-                Conseguimos que tu marca sea la referencia y que los clientes te contacten de forma orgánica.
+                {t('servicePages.posicionamientoComunicacion.hero.description')}
               </p>
             </div>
 
@@ -214,10 +216,10 @@ export default function PosicionamientoComunicacionPage() {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-              ¿En qué consiste?
+              {t('servicePages.common.consistsTitle')}
             </h2>
             <p className="text-lg sm:text-xl text-white leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-              Con estrategias de Posicionamiento y Comunicación personalizadas, los clientes llegan a ti de manera orgánica, interesados en lo que ofreces. Sin anuncios molestos, solo contenido útil y bien posicionado que establece tu autoridad en el sector.
+              {t('servicePages.posicionamientoComunicacion.consists.description')}
             </p>
           </div>
         </div>
@@ -232,10 +234,10 @@ export default function PosicionamientoComunicacionPage() {
           {/* Header centrado */}
           <div className="text-center mb-16 max-w-4xl mx-auto">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#272F66] mb-6 leading-tight" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-              Estos son los beneficios para tu empresa
+              {t('servicePages.common.benefitsTitle')}
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-              Descubre cómo nuestro servicio de posicionamiento y comunicación puede transformar tu presencia digital y generar resultados tangibles para tu negocio.
+              {t('servicePages.common.benefitsSubtitle')}
             </p>
           </div>
 
@@ -251,10 +253,10 @@ export default function PosicionamientoComunicacionPage() {
               
               <div className="mt-12">
                 <h3 className="text-xl font-bold text-white mb-3" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                  Generación de leads de alta calidad
+                  {t('servicePages.posicionamientoComunicacion.benefits.items.leads.title')}
                 </h3>
                 <p className="text-white/90 leading-relaxed text-sm" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                  A diferencia de otras estrategias más intrusivas, el posicionamiento atrae a personas que ya están interesadas en lo que ofreces y confían en tu expertise.
+                  {t('servicePages.posicionamientoComunicacion.benefits.items.leads.description')}
                 </p>
               </div>
             </div>
@@ -269,10 +271,10 @@ export default function PosicionamientoComunicacionPage() {
               
               <div className="mt-12">
                 <h3 className="text-xl font-bold text-[#272F66] mb-3" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                  Mejora la confianza y la lealtad del cliente
+                  {t('servicePages.posicionamientoComunicacion.benefits.items.confianza.title')}
                 </h3>
                 <p className="text-gray-600 leading-relaxed text-sm" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                  Al ofrecer contenido útil y relevante, creas relaciones sólidas con tus clientes potenciales.
+                  {t('servicePages.posicionamientoComunicacion.benefits.items.confianza.description')}
                 </p>
               </div>
             </div>
@@ -287,10 +289,10 @@ export default function PosicionamientoComunicacionPage() {
               
               <div className="mt-12">
                 <h3 className="text-xl font-bold text-[#272F66] mb-3" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                  Ahorro en costos de adquisición de clientes
+                  {t('servicePages.posicionamientoComunicacion.benefits.items.ahorro.title')}
                 </h3>
                 <p className="text-gray-600 leading-relaxed text-sm" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                  Las estrategias de Posicionamiento y Comunicación pueden ofrecer resultados a largo plazo sin los altos costos de la publicidad pagada, enfocándose en la visibilidad orgánica.
+                  {t('servicePages.posicionamientoComunicacion.benefits.items.ahorro.description')}
                 </p>
               </div>
             </div>
@@ -310,12 +312,12 @@ export default function PosicionamientoComunicacionPage() {
             <div className="flex flex-col">
               {/* Título */}
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#272F66] mb-4 uppercase" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                Nuestro Proceso de Posicionamiento Estratégico
+                {t('servicePages.posicionamientoComunicacion.process.title')}
               </h2>
               
               {/* Subtítulo */}
               <p className="text-lg text-gray-600 leading-relaxed mb-6" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                Definimos la identidad única de tu marca y construimos el mapa de comunicación para dominar tu mercado.
+                {t('servicePages.posicionamientoComunicacion.process.subtitle')}
               </p>
 
               {/* Imagen horizontal (ancha y baja) que se alinea con el final del último paso */}
@@ -350,10 +352,10 @@ export default function PosicionamientoComunicacionPage() {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-bold text-[#272F66] mb-2" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                    Diagnóstico Profundo y Diferenciación
+                    {t('servicePages.posicionamientoComunicacion.process.steps.diagnostico.title')}
                   </h3>
                   <p className="text-gray-600 leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                    Realizamos una auditoría de marca y un análisis competitivo exhaustivo. Definimos o reestructuramos tu Propuesta Única de Venta (PUV) y los valores que te diferenciarán de la competencia en el mercado digital.
+                    {t('servicePages.posicionamientoComunicacion.process.steps.diagnostico.description')}
                   </p>
                 </div>
               </div>
@@ -369,10 +371,10 @@ export default function PosicionamientoComunicacionPage() {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-bold text-[#272F66] mb-2" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                    Definición de la Audiencia y el Tono de Voz
+                    {t('servicePages.posicionamientoComunicacion.process.steps.audiencia.title')}
                   </h3>
                   <p className="text-gray-600 leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                    Creamos tus Buyer Personas detallados, entendiendo sus motivaciones y puntos de dolor. Establecemos el Tono de Voz de tu marca para asegurar que cada interacción sea auténtica y conecte emocionalmente con tu cliente ideal.
+                    {t('servicePages.posicionamientoComunicacion.process.steps.audiencia.description')}
                   </p>
                 </div>
               </div>
@@ -388,10 +390,10 @@ export default function PosicionamientoComunicacionPage() {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-bold text-[#272F66] mb-2" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                    Creación del Plan Maestro de Comunicación
+                    {t('servicePages.posicionamientoComunicacion.process.steps.plan.title')}
                   </h3>
                   <p className="text-gray-600 leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                    Desarrollamos un plan de comunicación estratégico que incluye los pilares de contenido y los mensajes clave. Definimos qué decir en cada etapa del embudo de ventas para guiar a la audiencia de simple seguidor a cliente fiel.
+                    {t('servicePages.posicionamientoComunicacion.process.steps.plan.description')}
                   </p>
                 </div>
               </div>
@@ -407,10 +409,10 @@ export default function PosicionamientoComunicacionPage() {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-bold text-[#272F66] mb-2" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                    Entrega de Guías y Coherencia de Marca
+                    {t('servicePages.posicionamientoComunicacion.process.steps.entrega.title')}
                   </h3>
                   <p className="text-gray-600 leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                    Finalizamos con la entrega de manuales de marca y comunicación. Esto asegura que la identidad y el mensaje se mantengan coherentes en todos los canales digitales, protegiendo y reforzando tu posicionamiento a largo plazo.
+                    {t('servicePages.posicionamientoComunicacion.process.steps.entrega.description')}
                   </p>
                 </div>
               </div>
@@ -427,7 +429,7 @@ export default function PosicionamientoComunicacionPage() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#272F66] mb-4" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-              Preguntas frecuentes sobre Posicionamiento y Comunicación
+              {t('servicePages.posicionamientoComunicacion.faq.title')}
             </h2>
           </div>
 
@@ -455,7 +457,7 @@ export default function PosicionamientoComunicacionPage() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <h3 className="text-lg sm:text-xl font-bold text-[#272F66] mb-0 group-hover:text-[#ff9001] transition-colors duration-200" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                    ¿Qué es el inbound marketing y cómo funciona?
+                    {t('servicePages.posicionamientoComunicacion.faq.items.inbound.question')}
                   </h3>
                 </div>
               </button>
@@ -463,7 +465,7 @@ export default function PosicionamientoComunicacionPage() {
                 <div className="px-6 sm:px-8 pb-6 sm:pb-8 pl-20">
                   <div className="pt-2 border-t border-gray-100">
                     <p className="text-gray-600 leading-relaxed text-base" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                      El inbound marketing es una estrategia que busca atraer clientes de manera orgánica a través de contenido útil y relevante. En lugar de interrumpir con anuncios, te permite estar presente cuando los clientes buscan soluciones, posicionando tu marca como la respuesta.
+                      {t('servicePages.posicionamientoComunicacion.faq.items.inbound.answer')}
                     </p>
                   </div>
                 </div>
@@ -493,7 +495,7 @@ export default function PosicionamientoComunicacionPage() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <h3 className="text-lg sm:text-xl font-bold text-[#272F66] mb-0 group-hover:text-[#ff9001] transition-colors duration-200" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                    ¿Cómo se relaciona esta estrategia con mi público objetivo?
+                    {t('servicePages.posicionamientoComunicacion.faq.items.publico.question')}
                   </h3>
                 </div>
               </button>
@@ -501,7 +503,7 @@ export default function PosicionamientoComunicacionPage() {
                 <div className="px-6 sm:px-8 pb-6 sm:pb-8 pl-20">
                   <div className="pt-2 border-t border-gray-100">
                     <p className="text-gray-600 leading-relaxed text-base" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                      Depende de tu público objetivo. En plataformas visuales como Instagram, la comunicación a través de videos o imágenes atractivas suele funcionar mejor, mientras que en LinkedIn el posicionamiento enfocado en generación de leads y autoridad es muy efectivo.
+                      {t('servicePages.posicionamientoComunicacion.faq.items.publico.answer')}
                     </p>
                   </div>
                 </div>

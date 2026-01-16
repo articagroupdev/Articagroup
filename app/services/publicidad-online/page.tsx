@@ -8,10 +8,12 @@ import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import Navbar from '../../components/Navbar';
 import ContactForm from '../../components/ContactForm';
 import Footer from '../../components/Footer';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function PublicidadOnlinePage() {
+  const { t } = useLanguage();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const heroRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -73,7 +75,7 @@ export default function PublicidadOnlinePage() {
     return () => {
       ctx.revert();
     };
-  }, []);
+  }, [t]);
 
   const toggleFaq = (index: number) => {
     if (openFaq === index) {
@@ -150,7 +152,7 @@ export default function PublicidadOnlinePage() {
               <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 bg-[#13B9D5]/20 rounded-full border border-[#13B9D5]/30">
                 <div className="w-2 h-2 rounded-full bg-[#13B9D5] animate-pulse" />
                 <span className="text-xs sm:text-sm font-semibold text-[#13B9D5] uppercase tracking-wider">
-                  Servicio
+                  {t('servicePages.common.badge')}
                 </span>
               </div>
 
@@ -159,7 +161,7 @@ export default function PublicidadOnlinePage() {
                 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#272F66] mb-6 leading-tight text-left"
                 style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'normal' }}
               >
-                Publicidad Online
+                {t('servicePages.publicidadOnline.hero.title')}
               </h1>
 
               <p
@@ -167,14 +169,14 @@ export default function PublicidadOnlinePage() {
                 className="text-xl sm:text-2xl text-[#272F66]/80 max-w-3xl leading-relaxed text-left mb-4"
                 style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
               >
-                Genera Tráfico Calificado, Impulsa Ventas y Maximiza tu ROI.
+                {t('servicePages.publicidadOnline.hero.subtitle')}
               </p>
 
               <p
                 className="text-lg sm:text-xl text-[#272F66]/70 max-w-3xl leading-relaxed text-left"
                 style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
               >
-                Implementamos campañas estratégicas que aseguran resultados inmediatos y medibles, convirtiendo tu inversión publicitaria en crecimiento exponencial.
+                {t('servicePages.publicidadOnline.hero.description')}
               </p>
             </div>
 
@@ -214,10 +216,10 @@ export default function PublicidadOnlinePage() {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-              ¿En qué consiste?
+              {t('servicePages.common.consistsTitle')}
             </h2>
             <p className="text-lg sm:text-xl text-white leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-              Con estrategias de Posicionamiento y Comunicación personalizadas, los clientes llegan a ti de manera orgánica, interesados en lo que ofreces. Sin anuncios molestos, solo contenido útil y bien posicionado que establece tu autoridad en el sector.
+              {t('servicePages.publicidadOnline.consists.description')}
             </p>
           </div>
         </div>
@@ -232,10 +234,10 @@ export default function PublicidadOnlinePage() {
           {/* Header centrado */}
           <div className="text-center mb-16 max-w-4xl mx-auto">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#272F66] mb-6 leading-tight" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-              Estos son los beneficios para tu empresa
+              {t('servicePages.common.benefitsTitle')}
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-              Descubre cómo nuestro servicio de publicidad online puede transformar tu presencia digital y generar resultados tangibles para tu negocio.
+              {t('servicePages.common.benefitsSubtitle')}
             </p>
           </div>
 
@@ -251,10 +253,10 @@ export default function PublicidadOnlinePage() {
               
               <div className="mt-12">
                 <h3 className="text-xl font-bold text-white mb-3" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                  Alcance masivo y segmentado
+                  {t('servicePages.publicidadOnline.benefits.items.alcance.title')}
                 </h3>
                 <p className="text-white/90 leading-relaxed text-sm" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                  Llega a miles de personas en Facebook, Instagram y TikTok, dirigiendo tus anuncios a clientes potenciales.
+                  {t('servicePages.publicidadOnline.benefits.items.alcance.description')}
                 </p>
               </div>
             </div>
@@ -269,10 +271,10 @@ export default function PublicidadOnlinePage() {
               
               <div className="mt-12">
                 <h3 className="text-xl font-bold text-[#272F66] mb-3" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                  Resultados inmediatos y medibles
+                  {t('servicePages.publicidadOnline.benefits.items.resultados.title')}
                 </h3>
                 <p className="text-gray-600 leading-relaxed text-sm" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                  Obtén métricas claras sobre el rendimiento de tus campañas en tiempo real. Verás cómo crecen tus clics, ventas o interacciones sin tener que esperar meses para evaluar el impacto.
+                  {t('servicePages.publicidadOnline.benefits.items.resultados.description')}
                 </p>
               </div>
             </div>
@@ -287,10 +289,10 @@ export default function PublicidadOnlinePage() {
               
               <div className="mt-12">
                 <h3 className="text-xl font-bold text-[#272F66] mb-3" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                  Flexibilidad en plataformas
+                  {t('servicePages.publicidadOnline.benefits.items.flexibilidad.title')}
                 </h3>
                 <p className="text-gray-600 leading-relaxed text-sm" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                  Adaptamos tu publicidad a las redes donde tus clientes están más activos, ya sea Instagram, LinkedIn o TikTok, creando contenido dinámico y optimizado para cada una.
+                  {t('servicePages.publicidadOnline.benefits.items.flexibilidad.description')}
                 </p>
               </div>
             </div>
@@ -310,12 +312,12 @@ export default function PublicidadOnlinePage() {
             <div className="flex flex-col">
               {/* Título */}
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#272F66] mb-4 uppercase" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                Nuestro Proceso de Publicidad Online
+                {t('servicePages.publicidadOnline.process.title')}
               </h2>
               
               {/* Subtítulo */}
               <p className="text-lg text-gray-600 leading-relaxed mb-6" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                Convertimos tu inversión en crecimiento. Hemos diseñado un proceso estratégico y transparente para garantizar el máximo Retorno de Inversión (ROI).
+                {t('servicePages.publicidadOnline.process.subtitle')}
               </p>
 
               {/* Imagen horizontal (ancha y baja) que se alinea con el final del último paso */}
@@ -350,10 +352,10 @@ export default function PublicidadOnlinePage() {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-bold text-[#272F66] mb-2" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                    Análisis y Definición del Funnel
+                    {t('servicePages.publicidadOnline.process.steps.analisis.title')}
                   </h3>
                   <p className="text-gray-600 leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                    Analizamos tu audiencia ideal y definimos la arquitectura completa de la campaña (embudos de conversión). Establecemos los KPIs (clics, leads, ventas) y la estrategia de pujas más eficiente.
+                    {t('servicePages.publicidadOnline.process.steps.analisis.description')}
                   </p>
                 </div>
               </div>
@@ -369,10 +371,10 @@ export default function PublicidadOnlinePage() {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-bold text-[#272F66] mb-2" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                    Producción Creativa
+                    {t('servicePages.publicidadOnline.process.steps.produccion.title')}
                   </h3>
                   <p className="text-gray-600 leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                    Nuestro estudio crea los creativos de alto rendimiento (imágenes, vídeos) que detienen el scroll. Además, aseguramos que tus páginas de destino estén optimizadas para convertir ese tráfico en clientes.
+                    {t('servicePages.publicidadOnline.process.steps.produccion.description')}
                   </p>
                 </div>
               </div>
@@ -388,10 +390,10 @@ export default function PublicidadOnlinePage() {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-bold text-[#272F66] mb-2" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                    Activación y Segmentación Inteligente
+                    {t('servicePages.publicidadOnline.process.steps.activacion.title')}
                   </h3>
                   <p className="text-gray-600 leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                    Implementamos las campañas en las plataformas clave (Meta, Google, TikTok, etc.). Utilizamos herramientas avanzadas para segmentar con precisión, asegurando que tu mensaje llegue al público con mayor potencial de compra.
+                    {t('servicePages.publicidadOnline.process.steps.activacion.description')}
                   </p>
                 </div>
               </div>
@@ -407,10 +409,10 @@ export default function PublicidadOnlinePage() {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-bold text-[#272F66] mb-2" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                    Optimización Diaria y Gestión del Presupuesto
+                    {t('servicePages.publicidadOnline.process.steps.optimizacion.title')}
                   </h3>
                   <p className="text-gray-600 leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                    Monitoreamos el rendimiento hora tras hora. Realizamos pruebas A/B constantes, ajustamos la segmentación y optimizamos el presupuesto en tiempo real para eliminar lo que no funciona y escalar lo que sí genera resultados.
+                    {t('servicePages.publicidadOnline.process.steps.optimizacion.description')}
                   </p>
                 </div>
               </div>
@@ -427,7 +429,7 @@ export default function PublicidadOnlinePage() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#272F66] mb-4" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-              Preguntas frecuentes sobre Publicidad Online
+              {t('servicePages.publicidadOnline.faq.title')}
             </h2>
           </div>
 
@@ -455,7 +457,7 @@ export default function PublicidadOnlinePage() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <h3 className="text-lg sm:text-xl font-bold text-[#272F66] mb-0 group-hover:text-[#ff9001] transition-colors duration-200" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                    ¿Cuánto cuesta hacer publicidad online?
+                    {t('servicePages.publicidadOnline.faq.items.costo.question')}
                   </h3>
                 </div>
               </button>
@@ -463,7 +465,7 @@ export default function PublicidadOnlinePage() {
                 <div className="px-6 sm:px-8 pb-6 sm:pb-8 pl-20">
                   <div className="pt-2 border-t border-gray-100">
                     <p className="text-gray-600 leading-relaxed text-base" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                      El costo varía según la plataforma y el tipo de anuncio. Algunas, como Facebook o Google, cobran por clic (PPC) o por impresión (CPM), lo que te da flexibilidad para ajustar tu inversión según tu presupuesto.
+                      {t('servicePages.publicidadOnline.faq.items.costo.answer')}
                     </p>
                   </div>
                 </div>
@@ -493,7 +495,7 @@ export default function PublicidadOnlinePage() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <h3 className="text-lg sm:text-xl font-bold text-[#272F66] mb-0 group-hover:text-[#ff9001] transition-colors duration-200" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                    ¿Qué tipo de anuncio es más efectivo?
+                    {t('servicePages.publicidadOnline.faq.items.efectivo.question')}
                   </h3>
                 </div>
               </button>
@@ -501,7 +503,7 @@ export default function PublicidadOnlinePage() {
                 <div className="px-6 sm:px-8 pb-6 sm:pb-8 pl-20">
                   <div className="pt-2 border-t border-gray-100">
                     <p className="text-gray-600 leading-relaxed text-base" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                      Depende de tu público objetivo. En plataformas visuales como Instagram, los anuncios con videos o imágenes atractivas suelen funcionar mejor, mientras que en LinkedIn los anuncios enfocados en generación de leads son muy efectivos.
+                      {t('servicePages.publicidadOnline.faq.items.efectivo.answer')}
                     </p>
                   </div>
                 </div>

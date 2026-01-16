@@ -8,10 +8,12 @@ import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import Navbar from '../../components/Navbar';
 import ContactForm from '../../components/ContactForm';
 import Footer from '../../components/Footer';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function DisenoGraficoPage() {
+  const { t } = useLanguage();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const heroRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -73,7 +75,7 @@ export default function DisenoGraficoPage() {
     return () => {
       ctx.revert();
     };
-  }, []);
+  }, [t]);
 
   const toggleFaq = (index: number) => {
     if (openFaq === index) {
@@ -150,7 +152,7 @@ export default function DisenoGraficoPage() {
               <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 bg-[#13B9D5]/20 rounded-full border border-[#13B9D5]/30">
                 <div className="w-2 h-2 rounded-full bg-[#13B9D5] animate-pulse" />
                 <span className="text-xs sm:text-sm font-semibold text-[#13B9D5] uppercase tracking-wider">
-                  Servicio
+                  {t('servicePages.common.badge')}
                 </span>
               </div>
 
@@ -159,7 +161,7 @@ export default function DisenoGraficoPage() {
                 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#272F66] mb-6 leading-tight text-left"
                 style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'normal' }}
               >
-                Diseño Gráfico
+                {t('servicePages.disenoGrafico.hero.title')}
               </h1>
 
               <p
@@ -167,14 +169,14 @@ export default function DisenoGraficoPage() {
                 className="text-xl sm:text-2xl text-[#272F66]/80 max-w-3xl leading-relaxed text-left mb-4"
                 style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
               >
-                La imagen que habla por tu marca.
+                {t('servicePages.disenoGrafico.hero.subtitle')}
               </p>
 
               <p
                 className="text-lg sm:text-xl text-[#272F66]/70 max-w-3xl leading-relaxed text-left"
                 style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
               >
-                Creamos una identidad visual impactante y profesional que cautiva a tu audiencia y comunica tus valores.
+                {t('servicePages.disenoGrafico.hero.description')}
               </p>
             </div>
 
@@ -214,10 +216,10 @@ export default function DisenoGraficoPage() {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-              ¿En qué consiste?
+              {t('servicePages.common.consistsTitle')}
             </h2>
             <p className="text-lg sm:text-xl text-white leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-              Nuestro equipo de diseño se enfoca en crear piezas visuales que no solo son estéticamente agradables, sino también estratégicas. Desde la renovación de tu identidad corporativa (logotipos, paletas de color) hasta la creación de material digital y para impresión (posts, folletos, presentaciones), garantizamos una coherencia de marca total.
+              {t('servicePages.disenoGrafico.consists.description')}
             </p>
           </div>
         </div>
@@ -232,10 +234,10 @@ export default function DisenoGraficoPage() {
           {/* Header centrado */}
           <div className="text-center mb-16 max-w-4xl mx-auto">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#272F66] mb-6 leading-tight" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-              Estos son los beneficios para tu empresa
+              {t('servicePages.common.benefitsTitle')}
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-              Descubre cómo nuestro servicio de diseño gráfico puede transformar tu presencia digital y generar resultados tangibles para tu negocio.
+              {t('servicePages.common.benefitsSubtitle')}
             </p>
           </div>
 
@@ -251,10 +253,10 @@ export default function DisenoGraficoPage() {
               
               <div className="mt-12">
                 <h3 className="text-xl font-bold text-white mb-3" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                  Identidad de Marca Memorable
+                  {t('servicePages.disenoGrafico.benefits.items.identidad.title')}
                 </h3>
                 <p className="text-white/90 leading-relaxed text-sm" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                  Diseños profesionales y únicos que te hacen destacar de la competencia. Aseguramos que cada pieza gráfica refuerce la personalidad de tu negocio y sea fácilmente reconocible.
+                  {t('servicePages.disenoGrafico.benefits.items.identidad.description')}
                 </p>
               </div>
             </div>
@@ -269,10 +271,10 @@ export default function DisenoGraficoPage() {
               
               <div className="mt-12">
                 <h3 className="text-xl font-bold text-[#272F66] mb-3" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                  Comunicación Clara y Efectiva
+                  {t('servicePages.disenoGrafico.benefits.items.comunicacion.title')}
                 </h3>
                 <p className="text-gray-600 leading-relaxed text-sm" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                  Transformamos ideas complejas en visuales intuitivos. Los gráficos bien diseñados mejoran la comprensión de tu mensaje, producto o servicio en segundos.
+                  {t('servicePages.disenoGrafico.benefits.items.comunicacion.description')}
                 </p>
               </div>
             </div>
@@ -287,10 +289,10 @@ export default function DisenoGraficoPage() {
               
               <div className="mt-12">
                 <h3 className="text-xl font-bold text-[#272F66] mb-3" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                  Credibilidad y Confianza Reforzada
+                  {t('servicePages.disenoGrafico.benefits.items.credibilidad.title')}
                 </h3>
                 <p className="text-gray-600 leading-relaxed text-sm" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                  Una imagen corporativa pulcra y coherente genera confianza en tu público. Demuestra profesionalismo y atención al detalle en cada punto de contacto.
+                  {t('servicePages.disenoGrafico.benefits.items.credibilidad.description')}
                 </p>
               </div>
             </div>
@@ -310,12 +312,12 @@ export default function DisenoGraficoPage() {
             <div className="flex flex-col">
               {/* Título */}
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#272F66] mb-4 uppercase" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                Nuestro Proceso de Diseño y Branding
+                {t('servicePages.disenoGrafico.process.title')}
               </h2>
               
               {/* Subtítulo */}
               <p className="text-lg text-gray-600 leading-relaxed mb-6" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                Creamos una identidad visual memorable que no solo impresiona, sino que se convierte en un activo clave para tu negocio.
+                {t('servicePages.disenoGrafico.process.subtitle')}
               </p>
 
               {/* Imagen horizontal (ancha y baja) que se alinea con el final del último paso */}
@@ -350,10 +352,10 @@ export default function DisenoGraficoPage() {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-bold text-[#272F66] mb-2" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                    Conceptualización y Briefing Creativo
+                    {t('servicePages.disenoGrafico.process.steps.conceptualizacion.title')}
                   </h3>
                   <p className="text-gray-600 leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                    Iniciamos con una inmersión para comprender tus objetivos, audiencia y posicionamiento. Traducimos tu visión en un briefing creativo claro que establecerá la dirección estética, el tono visual y los requisitos de diseño.
+                    {t('servicePages.disenoGrafico.process.steps.conceptualizacion.description')}
                   </p>
                 </div>
               </div>
@@ -369,10 +371,10 @@ export default function DisenoGraficoPage() {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-bold text-[#272F66] mb-2" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                    Desarrollo Visual y Creación de Identidad
+                    {t('servicePages.disenoGrafico.process.steps.desarrollo.title')}
                   </h3>
                   <p className="text-gray-600 leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                    Creamos la identidad visual completa: desde el diseño de tu Logotipo y la definición de la paleta de colores corporativos, hasta la selección de tipografías y estilos gráficos que representen la esencia única de tu marca.
+                    {t('servicePages.disenoGrafico.process.steps.desarrollo.description')}
                   </p>
                 </div>
               </div>
@@ -388,10 +390,10 @@ export default function DisenoGraficoPage() {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-bold text-[#272F66] mb-2" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                    Aplicación en Materiales Clave
+                    {t('servicePages.disenoGrafico.process.steps.aplicacion.title')}
                   </h3>
                   <p className="text-gray-600 leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                    Llevamos la identidad a la práctica, diseñando los materiales esenciales que necesita tu negocio: activos para redes sociales, plantillas web, flyers, presentaciones corporativas o material POP, asegurando coherencia total.
+                    {t('servicePages.disenoGrafico.process.steps.aplicacion.description')}
                   </p>
                 </div>
               </div>
@@ -407,10 +409,10 @@ export default function DisenoGraficoPage() {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-bold text-[#272F66] mb-2" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                    Entrega de Archivos y Manual de Marca
+                    {t('servicePages.disenoGrafico.process.steps.entrega.title')}
                   </h3>
                   <p className="text-gray-600 leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                    Finalizamos con la entrega organizada de todos los archivos fuente y versiones necesarias. Incluimos un Manual de Marca detallado para garantizar la correcta aplicación del diseño y la coherencia visual a largo plazo.
+                    {t('servicePages.disenoGrafico.process.steps.entrega.description')}
                   </p>
                 </div>
               </div>
@@ -427,7 +429,7 @@ export default function DisenoGraficoPage() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#272F66] mb-4" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-              Preguntas frecuentes sobre Diseño Gráfico
+              {t('servicePages.disenoGrafico.faq.title')}
             </h2>
           </div>
 
@@ -455,7 +457,7 @@ export default function DisenoGraficoPage() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <h3 className="text-lg sm:text-xl font-bold text-[#272F66] mb-0 group-hover:text-[#ff9001] transition-colors duration-200" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                    ¿Qué tipo de material gráfico pueden diseñar?
+                    {t('servicePages.disenoGrafico.faq.items.material.question')}
                   </h3>
                 </div>
               </button>
@@ -463,7 +465,7 @@ export default function DisenoGraficoPage() {
                 <div className="px-6 sm:px-8 pb-6 sm:pb-8 pl-20">
                   <div className="pt-2 border-t border-gray-100">
                     <p className="text-gray-600 leading-relaxed text-base" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                      Diseñamos una amplia variedad de materiales, incluyendo identidad corporativa completa, posts para redes sociales, infografías, folletos, presentaciones, banners web, plantillas de email marketing y diseño para publicidad digital.
+                      {t('servicePages.disenoGrafico.faq.items.material.answer')}
                     </p>
                   </div>
                 </div>
@@ -493,7 +495,7 @@ export default function DisenoGraficoPage() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <h3 className="text-lg sm:text-xl font-bold text-[#272F66] mb-0 group-hover:text-[#ff9001] transition-colors duration-200" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                    ¿Trabajan con la identidad visual que ya tengo?
+                    {t('servicePages.disenoGrafico.faq.items.identidad.question')}
                   </h3>
                 </div>
               </button>
@@ -501,7 +503,7 @@ export default function DisenoGraficoPage() {
                 <div className="px-6 sm:px-8 pb-6 sm:pb-8 pl-20">
                   <div className="pt-2 border-t border-gray-100">
                     <p className="text-gray-600 leading-relaxed text-base" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                      Sí. Si ya tienes una marca establecida, trabajamos respetando tu manual de marca y paleta de colores. Si estás empezando, te ayudamos a crear una identidad visual desde cero que resuene con tus valores y objetivos.
+                      {t('servicePages.disenoGrafico.faq.items.identidad.answer')}
                     </p>
                   </div>
                 </div>

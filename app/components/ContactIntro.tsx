@@ -3,10 +3,12 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useLanguage } from '../contexts/LanguageContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function ContactIntro() {
+  const { t } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
   const iconRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -115,7 +117,7 @@ export default function ContactIntro() {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [t]);
 
   return (
     <section
@@ -174,7 +176,7 @@ export default function ContactIntro() {
               transform: 'translateY(40px)',
             }}
           >
-            ¡El primer paso lo das tú!
+            {t('contact.intro.title')}
           </h2>
           
           <p
@@ -186,7 +188,7 @@ export default function ContactIntro() {
               transform: 'translateY(30px)',
             }}
           >
-            Escríbenos y empecemos a crear juntos la estrategia que tu marca necesita.
+            {t('contact.intro.text1')}
           </p>
           
           <p
@@ -198,7 +200,7 @@ export default function ContactIntro() {
               transform: 'translateY(30px)',
             }}
           >
-            ¡El primer paso está a un clic!
+            {t('contact.intro.text2')}
           </p>
         </div>
       </div>

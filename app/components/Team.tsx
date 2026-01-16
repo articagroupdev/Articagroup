@@ -4,31 +4,33 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
+import { useLanguage } from '../contexts/LanguageContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const teamMembers = [
-  {
-    name: 'Rodrigo Timaure',
-    role: 'Founder',
-    description: 'Líder estratégico con una sólida trayectoria en gestión empresarial y desarrollo de negocios en la industria creativa. Posee estudios avanzados en administración y marketing, impulsando el crecimiento de la productora.',
-    image: '/img/PERSON1.jpg',
-  },
-  {
-    name: 'Michelle Guerra',
-    role: 'Co-Founder',
-    description: 'Experiencia en gestión de proyectos y optimización de recursos en entornos dinámicos. Su formación en administración y su visión para la eficiencia son clave para el éxito operativo.',
-    image: '/img/PERSON2.jpg',
-  },
-  {
-    name: 'Cesar Arteaga',
-    role: 'Operaciones Especiales',
-    description: 'Experto en logística de producción con años de experiencia en la planificación y ejecución de rodajes complejos. Su conocimiento técnico y organizativo aseguran la fluidez en cada proyecto.',
-    image: '/img/PERSON3.jpg',
-  },
-];
-
 export default function Team() {
+  const { t } = useLanguage();
+  
+  const teamMembers = [
+    {
+      name: t('about.team.members.rodrigo.name'),
+      role: t('about.team.members.rodrigo.role'),
+      description: t('about.team.members.rodrigo.description'),
+      image: '/img/PERSON1.jpg',
+    },
+    {
+      name: t('about.team.members.michelle.name'),
+      role: t('about.team.members.michelle.role'),
+      description: t('about.team.members.michelle.description'),
+      image: '/img/PERSON2.jpg',
+    },
+    {
+      name: t('about.team.members.cesar.name'),
+      role: t('about.team.members.cesar.role'),
+      description: t('about.team.members.cesar.description'),
+      image: '/img/PERSON3.jpg',
+    },
+  ];
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
@@ -96,7 +98,7 @@ export default function Team() {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [t]);
 
   return (
     <section
@@ -122,7 +124,7 @@ export default function Team() {
               transform: 'translateY(40px)',
             }}
           >
-            Nuestro Equipo
+            {t('about.team.title')}
           </h2>
           <p
             ref={subtitleRef}
@@ -133,7 +135,7 @@ export default function Team() {
               transform: 'translateY(30px)',
             }}
           >
-            Conoce a Nuestro Equipo de Expertos
+            {t('about.team.subtitle')}
           </p>
         </div>
 

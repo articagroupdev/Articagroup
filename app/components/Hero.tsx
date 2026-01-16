@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import ES from 'country-flag-icons/react/3x2/ES';
 import US from 'country-flag-icons/react/3x2/US';
+import { useLanguage } from '../contexts/LanguageContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,7 +18,7 @@ interface HeroProps {
 export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as HeroProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
-  const [language, setLanguage] = useState<'es' | 'en'>('es');
+  const { language, setLanguage, t } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [videoError, setVideoError] = useState(false);
   const pathname = usePathname();
@@ -377,7 +378,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
                   textShadow: 'none',
                 }}
               >
-                Inicio
+                {t('nav.inicio')}
               </Link>
             </li>
             <li>
@@ -391,7 +392,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
                   textShadow: 'none',
                 }}
               >
-                Sobre Nosotros
+                {t('nav.sobreNosotros')}
               </Link>
             </li>
             <li 
@@ -417,7 +418,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
                   textShadow: 'none',
                 }}
               >
-                Servicios
+                {t('nav.servicios')}
                 <svg 
                   className={`ml-1 w-3 h-3 transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`} 
                   fill="none" 
@@ -451,10 +452,10 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
                           </svg>
                         </div>
                         <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                          Desarrollo Web
+                          {t('services.desarrolloWeb')}
                         </h3>
                         <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
-                          Sitios web modernos y funcionales
+                          {t('services.desarrolloWebDesc')}
                         </p>
                       </Link>
 
@@ -465,10 +466,10 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
                           </svg>
                         </div>
                         <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                          Diseño Gráfico
+                          {t('services.disenoGrafico')}
                         </h3>
                         <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
-                          Identidad visual y diseño creativo
+                          {t('services.disenoGraficoDesc')}
                         </p>
                       </Link>
 
@@ -479,10 +480,10 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
                           </svg>
                         </div>
                         <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                          Estrategia Posicionamiento y Comunicación
+                          {t('services.posicionamientoComunicacion')}
                         </h3>
                         <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
-                          Estrategias integrales de marca y comunicación
+                          {t('services.posicionamientoComunicacionDesc')}
                         </p>
                       </Link>
                     </div>
@@ -496,10 +497,10 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
                           </svg>
                         </div>
                         <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                          Edición de Videos
+                          {t('services.edicionVideos')}
                         </h3>
                         <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
-                          Producción y edición profesional de video
+                          {t('services.edicionVideosDesc')}
                         </p>
                       </Link>
 
@@ -510,10 +511,10 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
                           </svg>
                         </div>
                         <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                          Publicidad Online
+                          {t('services.publicidadOnline')}
                         </h3>
                         <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
-                          Campañas publicitarias digitales efectivas
+                          {t('services.publicidadOnlineDesc')}
                         </p>
                       </Link>
                     </div>
@@ -527,10 +528,10 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
                           </svg>
                         </div>
                         <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                          Creación de Contenido
+                          {t('services.creacionContenido')}
                         </h3>
                         <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
-                          Contenido visual atractivo para tu marca
+                          {t('services.creacionContenidoDesc')}
                         </p>
                       </Link>
 
@@ -542,10 +543,10 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
                           </svg>
                         </div>
                         <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                          Campañas de Ads
+                          {t('services.campanasAds')}
                         </h3>
                         <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
-                          Publicidad efectiva en redes sociales
+                          {t('services.campanasAdsDesc')}
                         </p>
                       </Link>
 
@@ -556,10 +557,10 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
                           </svg>
                         </div>
                         <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                          Community Management
+                          {t('services.communityManagement')}
                         </h3>
                         <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
-                          Gestión profesional de comunidades online
+                          {t('services.communityManagementDesc')}
                         </p>
                       </Link>
                     </div>
@@ -576,7 +577,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
                   textShadow: 'none',
                 }}
               >
-                Portafolio
+                {t('nav.portafolio')}
               </Link>
             </li>
             <li>
@@ -590,7 +591,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
                   textShadow: 'none',
                 }}
               >
-                Contacto
+                {t('nav.contacto')}
               </Link>
             </li>
           </ul>
@@ -601,7 +602,6 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
             {/* Selector de idioma */}
             <button
               onClick={() => {
-                // TODO: Implementar cambio de idioma
                 setLanguage(language === 'es' ? 'en' : 'es');
               }}
               className="hidden lg:flex items-center justify-center w-7 h-7 xl:w-8 xl:h-8 transition-all duration-300 hover:scale-110 overflow-hidden rounded"
@@ -626,7 +626,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
                 color: isScrolled ? '#ffffff' : '#272F66',
               }}
             >
-              Queremos Impulsarte
+              {t('nav.queremosImpulsarte')}
             </Link>
 
             {/* Botón móvil */}
@@ -831,7 +831,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
                       color: '#1a1a2e',
                     }}
                   >
-                    Portafolio
+                    {t('nav.portafolio')}
                   </Link>
                 </li>
                 <li>
@@ -937,7 +937,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
                 textTransform: 'uppercase'
               }}
             >
-              Logramos éxitos empresariales a través de medios digitales
+              {t('hero.badge')}
             </p>
           </div>
 
@@ -966,7 +966,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
               width: '100%'
             }}
           >
-            CONVERTIMOS CLICS EN CLIENTES
+            {t('hero.title')}
           </h1>
 
           {/* Subtítulo */}
@@ -991,7 +991,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
               textAlign: 'center'
             }}
           >
-            Impulsa el crecimiento de tu empresa con nosotros
+            {t('hero.subtitle')}
           </p>
 
           {/* Botones CTA */}
@@ -1026,7 +1026,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
                 e.currentTarget.style.transform = 'translateY(0)';
               }}
             >
-              Actúa y Crece
+              {t('nav.actuaYCrece')}
             </a>
 
             {/* Botón Portafolio */}
@@ -1037,11 +1037,11 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
                 fontFamily: 'var(--font-poppins), sans-serif',
                 fontSize: 'clamp(12px, 1vw, 16px)',
                 fontWeight: 600,
-                color: '#ff9001',
+                color: '#ffffff',
                 textDecoration: 'none',
                 opacity: 1,
                 visibility: 'visible',
-                backgroundColor: 'transparent',
+                backgroundColor: '#ff9001',
                 border: '2px solid #ff9001',
                 padding: 'clamp(10px, 1.2vw, 14px) clamp(20px, 2.5vw, 32px)',
                 borderRadius: '9999px',
@@ -1049,14 +1049,14 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
                 minWidth: 'auto',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#ff9001';
+                e.currentTarget.style.backgroundColor = '#e67e00';
                 e.currentTarget.style.color = '#ffffff';
                 e.currentTarget.style.boxShadow = '0 4px 12px rgba(255, 144, 1, 0.4)';
                 e.currentTarget.style.transform = 'translateY(-2px)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = 'transparent';
-                e.currentTarget.style.color = '#ff9001';
+                e.currentTarget.style.backgroundColor = '#ff9001';
+                e.currentTarget.style.color = '#ffffff';
                 e.currentTarget.style.boxShadow = '0 2px 8px rgba(255, 144, 1, 0.2)';
                 e.currentTarget.style.transform = 'translateY(0)';
               }}

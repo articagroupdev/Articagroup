@@ -4,10 +4,12 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
+import { useLanguage } from '../contexts/LanguageContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function AboutSection() {
+  const { t } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const textContainerRef = useRef<HTMLDivElement>(null);
@@ -97,7 +99,7 @@ export default function AboutSection() {
                 transform: 'translateY(40px)',
               }}
             >
-              Conoce a Artica Group
+              {t('about.aboutSection.title')}
             </h2>
 
             {/* Texto descriptivo */}
@@ -115,7 +117,7 @@ export default function AboutSection() {
                   lineHeight: '1.7',
                 }}
               >
-                En Artica Group, somos más que una agencia de marketing digital: somos tus socios estratégicos en el competitivo mundo online. Con una profunda pasión por la innovación y un enfoque centrado en resultados tangibles, impulsamos el crecimiento de marcas como la tuya a través de estrategias digitales personalizadas y efectivas.
+                {t('about.aboutSection.paragraph1')}
               </p>
               <p
                 className="text-sm sm:text-base md:text-lg text-[#272F66]/75 leading-relaxed"
@@ -124,7 +126,7 @@ export default function AboutSection() {
                   lineHeight: '1.7',
                 }}
               >
-                Entendemos que cada negocio es único, y por eso dedicamos nuestra experiencia y creatividad a construir soluciones que superen tus expectativas y alcancen tus objetivos.
+                {t('about.aboutSection.paragraph2')}
               </p>
             </div>
           </div>

@@ -8,10 +8,12 @@ import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import Navbar from '../../components/Navbar';
 import ContactForm from '../../components/ContactForm';
 import Footer from '../../components/Footer';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function CampanasAdsPage() {
+  const { t } = useLanguage();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const heroRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -73,7 +75,7 @@ export default function CampanasAdsPage() {
     return () => {
       ctx.revert();
     };
-  }, []);
+  }, [t]);
 
   const toggleFaq = (index: number) => {
     if (openFaq === index) {
@@ -150,7 +152,7 @@ export default function CampanasAdsPage() {
               <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 bg-[#13B9D5]/20 rounded-full border border-[#13B9D5]/30">
                 <div className="w-2 h-2 rounded-full bg-[#13B9D5] animate-pulse" />
                 <span className="text-xs sm:text-sm font-semibold text-[#13B9D5] uppercase tracking-wider">
-                  Servicio
+                  {t('servicePages.common.badge')}
                 </span>
               </div>
 
@@ -159,7 +161,7 @@ export default function CampanasAdsPage() {
                 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#272F66] mb-6 leading-tight text-left"
                 style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'normal' }}
               >
-                Campañas de Ads
+                {t('servicePages.campanasAds.hero.title')}
               </h1>
 
               <p
@@ -167,14 +169,14 @@ export default function CampanasAdsPage() {
                 className="text-xl sm:text-2xl text-[#272F66]/80 max-w-3xl leading-relaxed text-left mb-4"
                 style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
               >
-                Maximiza tu alcance e impulsa tus resultados.
+                {t('servicePages.campanasAds.hero.subtitle')}
               </p>
 
               <p
                 className="text-lg sm:text-xl text-[#272F66]/70 max-w-3xl leading-relaxed text-left"
                 style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
               >
-                Llegamos a tu cliente ideal en el momento preciso con anuncios estratégicos y optimizados para la conversión.
+                {t('servicePages.campanasAds.hero.description')}
               </p>
             </div>
 
@@ -214,10 +216,10 @@ export default function CampanasAdsPage() {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-              ¿En qué consiste?
+              {t('servicePages.common.consistsTitle')}
             </h2>
             <p className="text-lg sm:text-xl text-white leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-              Diseñamos, lanzamos y optimizamos campañas publicitarias enfocadas 100% en la conversión, asegurando el máximo Retorno de la Inversión (ROI). Llegamos a tu cliente ideal en el momento preciso con anuncios estratégicos y optimizados para cada plataforma, maximizando tu alcance e impulsando tus resultados.
+              {t('servicePages.campanasAds.consists.description')}
             </p>
           </div>
         </div>
@@ -232,10 +234,10 @@ export default function CampanasAdsPage() {
           {/* Header centrado */}
           <div className="text-center mb-16 max-w-4xl mx-auto">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#272F66] mb-6 leading-tight" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-              Estos son los beneficios para tu empresa
+              {t('servicePages.common.benefitsTitle')}
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-              Descubre cómo nuestras campañas de ads pueden transformar tu presencia digital y generar resultados tangibles para tu negocio.
+              {t('servicePages.common.benefitsSubtitle')}
             </p>
           </div>
 
@@ -251,10 +253,10 @@ export default function CampanasAdsPage() {
               
               <div className="mt-12">
                 <h3 className="text-xl font-bold text-white mb-3" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                  Resultados Inmediatos y Medibles
+                  {t('servicePages.campanasAds.benefits.items.resultados.title')}
                 </h3>
                 <p className="text-white/90 leading-relaxed text-sm" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                  Las campañas de anuncios ofrecen una visibilidad instantánea y te permiten medir con exactitud el retorno de la inversión (ROI) de cada peso invertido, optimizando el presupuesto en tiempo real.
+                  {t('servicePages.campanasAds.benefits.items.resultados.description')}
                 </p>
               </div>
             </div>
@@ -269,10 +271,10 @@ export default function CampanasAdsPage() {
               
               <div className="mt-12">
                 <h3 className="text-xl font-bold text-[#272F66] mb-3" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                  Segmentación Hiper-Efectiva
+                  {t('servicePages.campanasAds.benefits.items.segmentacion.title')}
                 </h3>
                 <p className="text-gray-600 leading-relaxed text-sm" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                  Llegamos exclusivamente a las personas con mayor probabilidad de comprar tus productos o servicios, basándonos en sus intereses, demografía y comportamiento, evitando el gasto innecesario.
+                  {t('servicePages.campanasAds.benefits.items.segmentacion.description')}
                 </p>
               </div>
             </div>
@@ -287,10 +289,10 @@ export default function CampanasAdsPage() {
               
               <div className="mt-12">
                 <h3 className="text-xl font-bold text-[#272F66] mb-3" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                  Crecimiento Escalable del Negocio
+                  {t('servicePages.campanasAds.benefits.items.crecimiento.title')}
                 </h3>
                 <p className="text-gray-600 leading-relaxed text-sm" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                  Una vez que encontramos las campañas que funcionan, podemos escalar rápidamente tu inversión para aumentar significativamente el volumen de clientes potenciales o ventas de tu negocio.
+                  {t('servicePages.campanasAds.benefits.items.crecimiento.description')}
                 </p>
               </div>
             </div>
@@ -310,12 +312,12 @@ export default function CampanasAdsPage() {
             <div className="flex flex-col">
               {/* Título */}
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#272F66] mb-4 uppercase" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                Nuestro Proceso de Campañas de Ads
+                {t('servicePages.campanasAds.process.title')}
               </h2>
               
               {/* Subtítulo */}
               <p className="text-lg text-gray-600 leading-relaxed mb-6" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                Diseñamos, lanzamos y optimizamos campañas publicitarias enfocadas 100% en la conversión, asegurando el máximo Retorno de la Inversión (ROI).
+                {t('servicePages.campanasAds.process.subtitle')}
               </p>
 
               {/* Imagen horizontal (ancha y baja) que se alinea con el final del último paso */}
@@ -350,10 +352,10 @@ export default function CampanasAdsPage() {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-bold text-[#272F66] mb-2" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                    Configuración Estratégica y Segmentación
+                    {t('servicePages.campanasAds.process.steps.configuracion.title')}
                   </h3>
                   <p className="text-gray-600 leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                    Definimos los objetivos claros de la campaña (Leads, Ventas, Tráfico) y construimos el funnel publicitario. Configuramos la segmentación precisa de la audiencia y la instalación correcta de píxeles y eventos de conversión.
+                    {t('servicePages.campanasAds.process.steps.configuracion.description')}
                   </p>
                 </div>
               </div>
@@ -369,10 +371,10 @@ export default function CampanasAdsPage() {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-bold text-[#272F66] mb-2" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                    Producción de Creativos de Alto Rendimiento
+                    {t('servicePages.campanasAds.process.steps.produccion.title')}
                   </h3>
                   <p className="text-gray-600 leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                    Nuestro equipo creativo diseña y produce los anuncios (imágenes, videos, copies) optimizados para cada plataforma. Aplicamos técnicas probadas para captar la atención y motivar la acción inmediata en el público objetivo.
+                    {t('servicePages.campanasAds.process.steps.produccion.description')}
                   </p>
                 </div>
               </div>
@@ -388,10 +390,10 @@ export default function CampanasAdsPage() {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-bold text-[#272F66] mb-2" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                    Lanzamiento, Pruebas A/B y Optimización Diaria
+                    {t('servicePages.campanasAds.process.steps.lanzamiento.title')}
                   </h3>
                   <p className="text-gray-600 leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                    Activamos la campaña con presupuestos de prueba, realizando tests A/B constantes sobre audiencias y creativos. Monitoreamos métricas clave (CTR, CPA) para optimizar diariamente el gasto y eliminar rápidamente lo que no funciona.
+                    {t('servicePages.campanasAds.process.steps.lanzamiento.description')}
                   </p>
                 </div>
               </div>
@@ -407,10 +409,10 @@ export default function CampanasAdsPage() {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-bold text-[#272F66] mb-2" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                    Escalabilidad y Reporte de ROI
+                    {t('servicePages.campanasAds.process.steps.escalabilidad.title')}
                   </h3>
                   <p className="text-gray-600 leading-relaxed" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                    Una vez identificados los anuncios ganadores, procedemos a la escalabilidad de las campañas para maximizar resultados. Entregamos informes transparentes que detallan el rendimiento de la inversión (ROI) y las estrategias para el próximo ciclo.
+                    {t('servicePages.campanasAds.process.steps.escalabilidad.description')}
                   </p>
                 </div>
               </div>
@@ -427,7 +429,7 @@ export default function CampanasAdsPage() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#272F66] mb-4" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-              Preguntas frecuentes sobre Campañas de Ads
+              {t('servicePages.campanasAds.faq.title')}
             </h2>
           </div>
 
@@ -455,7 +457,7 @@ export default function CampanasAdsPage() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <h3 className="text-lg sm:text-xl font-bold text-[#272F66] mb-0 group-hover:text-[#ff9001] transition-colors duration-200" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                    ¿En qué plataformas implementan las campañas de ads?
+                    {t('servicePages.campanasAds.faq.items.plataformas.question')}
                   </h3>
                 </div>
               </button>
@@ -463,7 +465,7 @@ export default function CampanasAdsPage() {
                 <div className="px-6 sm:px-8 pb-6 sm:pb-8 pl-20">
                   <div className="pt-2 border-t border-gray-100">
                     <p className="text-gray-600 leading-relaxed text-base" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                      Trabajamos con las principales plataformas de publicidad digital, incluyendo Google Ads (búsqueda, display, YouTube), Meta Ads (Facebook e Instagram), TikTok Ads y LinkedIn Ads, seleccionando las que mejor se ajustan a tu público objetivo.
+                      {t('servicePages.campanasAds.faq.items.plataformas.answer')}
                     </p>
                   </div>
                 </div>
@@ -493,7 +495,7 @@ export default function CampanasAdsPage() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <h3 className="text-lg sm:text-xl font-bold text-[#272F66] mb-0 group-hover:text-[#ff9001] transition-colors duration-200" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-                    ¿Qué necesito para empezar una campaña de ads?
+                    {t('servicePages.campanasAds.faq.items.necesito.question')}
                   </h3>
                 </div>
               </button>
@@ -501,7 +503,7 @@ export default function CampanasAdsPage() {
                 <div className="px-6 sm:px-8 pb-6 sm:pb-8 pl-20">
                   <div className="pt-2 border-t border-gray-100">
                     <p className="text-gray-600 leading-relaxed text-base" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-                      Necesitas un objetivo claro (¿más ventas, leads o tráfico?), un presupuesto definido para la inversión publicitaria y la certeza de que tu sitio web o página de destino (landing page) está optimizada para recibir el tráfico que generaremos.
+                      {t('servicePages.campanasAds.faq.items.necesito.answer')}
                     </p>
                   </div>
                 </div>

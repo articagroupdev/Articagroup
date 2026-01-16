@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MdStar, MdChevronLeft, MdChevronRight } from 'react-icons/md';
+import { useLanguage } from '../contexts/LanguageContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -48,6 +49,7 @@ const reviews: Review[] = [
 ];
 
 export default function Reviews() {
+  const { t } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -164,11 +166,11 @@ export default function Reviews() {
               <MdStar className="fill-[#ff9001]" />
             </div>
             <span className="text-[10px] sm:text-xs font-semibold text-[#ff9001] uppercase tracking-wider whitespace-nowrap" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-              Google Reviews
+              {t('reviews.badge')}
             </span>
           </div>
           <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-extrabold text-[#272F66] m-0 tracking-tight leading-[1.2] px-2 sm:px-0" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
-            Lo que dicen nuestros clientes en Google
+            {t('reviews.title')}
           </h2>
         </div>
 
