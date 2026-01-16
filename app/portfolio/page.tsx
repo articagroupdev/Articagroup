@@ -171,6 +171,9 @@ export default function PortfolioPage() {
   const transitionRef = useRef<SVGPathElement | null>(null);
   const videoInfoRef = useRef<HTMLDivElement | null>(null);
   const transitionWrapperRef = useRef<HTMLDivElement | null>(null);
+  const titleRef = useRef<HTMLHeadingElement | null>(null);
+  const carouselRef = useRef<HTMLDivElement | null>(null);
+  const buttonsRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -330,27 +333,59 @@ export default function PortfolioPage() {
           preventDefault: true,
         });
 
-        // Animar solo el texto de la primera sección después de un pequeño delay
-        // para asegurar que la sección ya está visible
+        // Animaciones de entrada para la primera sección
         setTimeout(() => {
+          const entranceTimeline = gsap.timeline({ defaults: { ease: 'power3.out' } });
+          
+          // Animar el título
           if (splitHeadingsRef.current[0] && splitHeadingsRef.current[0].chars) {
-            gsap.fromTo(
-              splitHeadingsRef.current[0].chars,
-              {
-                autoAlpha: 0,
-                yPercent: 150,
+            gsap.set(splitHeadingsRef.current[0].chars, {
+              autoAlpha: 0,
+              yPercent: 150,
+            });
+            
+            entranceTimeline.to(splitHeadingsRef.current[0].chars, {
+              autoAlpha: 1,
+              yPercent: 0,
+              duration: 1.2,
+              stagger: {
+                each: 0.02,
+                from: 'random',
               },
-              {
-                autoAlpha: 1,
-                yPercent: 0,
-                duration: 1,
-                ease: 'power2',
-                stagger: {
-                  each: 0.02,
-                  from: 'random',
-                },
-              }
-            );
+            }, 0);
+          }
+          
+          // Animar el carousel (si existe)
+          if (galleryRefs.current[0]) {
+            gsap.set(galleryRefs.current[0], {
+              opacity: 0,
+              y: 50,
+              scale: 0.95,
+            });
+            
+            entranceTimeline.to(galleryRefs.current[0], {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              duration: 1,
+              ease: 'power3.out',
+            }, 0.3);
+          }
+          
+          // Animar los botones de navegación del carousel
+          if (prevButtonRefs.current[0] && nextButtonRefs.current[0]) {
+            gsap.set([prevButtonRefs.current[0], nextButtonRefs.current[0]], {
+              opacity: 0,
+              y: 30,
+            });
+            
+            entranceTimeline.to([prevButtonRefs.current[0], nextButtonRefs.current[0]], {
+              opacity: 1,
+              y: 0,
+              duration: 0.8,
+              stagger: 0.1,
+              ease: 'power3.out',
+            }, 0.6);
           }
         }, 100);
       } catch (error) {
@@ -672,20 +707,33 @@ export default function PortfolioPage() {
                 }}
               >
                 <div className={styles.contentWrapper}>
-                  {/* Título temporalmente oculto para pruebas */}
-                  {/* <h2
-                    ref={(el) => {
-                      if (el) headingsRef.current[index] = el;
-                    }}
-                    className={styles.sectionHeading}
-                  >
-                    {section.heading}
-                  </h2> */}
+                  <div className={styles.headingWrapper}>
+                    <div className={styles.headingIcon}>
+                      {index === 0 && <MdPlayArrow />}
+                      {index === 1 && <MdBrush />}
+                      {index === 2 && <MdEmail />}
+                      {index === 3 && <MdCode />}
+                    </div>
+                    <h2
+                      ref={(el) => {
+                        if (el) {
+                          headingsRef.current[index] = el;
+                          if (index === 0) titleRef.current = el;
+                        }
+                      }}
+                      className={styles.sectionHeading}
+                    >
+                      {section.heading}
+                    </h2>
+                  </div>
                   
                   {section.galleryImages && section.galleryImages.length > 0 && (
                     <div
                       ref={(el) => {
-                        if (el) galleryRefs.current[index] = el;
+                        if (el) {
+                          galleryRefs.current[index] = el;
+                          if (index === 0) carouselRef.current = el;
+                        }
                       }}
                       className={styles.gallery}
                     >
@@ -743,7 +791,12 @@ export default function PortfolioPage() {
                       </ul>
                       {section.galleryImages && section.galleryImages.length > 0 && (
                         <>
-                          <div className={styles.actions}>
+                          <div 
+                            ref={(el) => {
+                              if (index === 0) buttonsRef.current = el;
+                            }}
+                            className={styles.actions}
+                          >
                             <button
                               ref={(el) => {
                                 if (el) prevButtonRefs.current[index] = el;
