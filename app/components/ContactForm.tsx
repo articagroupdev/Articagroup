@@ -47,7 +47,7 @@ export default function ContactForm() {
       };
 
       // Animación de la sección izquierda
-      const leftSection = leftSectionRef.current;
+      const leftSection = leftSectionRef.current!;
       const isLeftVisible = checkVisibility(leftSection);
       if (isLeftVisible) {
         // Si ya es visible, mostrarlo inmediatamente
@@ -70,7 +70,7 @@ export default function ContactForm() {
       }
 
       // Animación de la sección derecha (formulario)
-      const rightSection = rightSectionRef.current;
+      const rightSection = rightSectionRef.current!;
       const isRightVisible = checkVisibility(rightSection);
       if (isRightVisible) {
         // Si ya es visible, mostrarlo inmediatamente
