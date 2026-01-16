@@ -79,44 +79,91 @@ export default function InfiniteImageLoop({ images }: InfiniteImageLoopProps) {
       ];
 
       if (allImages.length === 0) {
-        // Si no hay imágenes, inicializar después de un delay
-        setTimeout(initAnimations, 200);
+        // Si no hay imágenes, intentar de nuevo después de un delay
+        setTimeout(checkImagesLoaded, 200);
         return;
       }
 
       let loadedCount = 0;
       const totalImages = allImages.length;
+      let hasStarted = false;
       
       const checkLoaded = () => {
         loadedCount++;
-        if (loadedCount === totalImages) {
-          // Usar requestAnimationFrame para asegurar que el layout esté calculado
+        if (loadedCount === totalImages && !hasStarted) {
+          hasStarted = true;
+          // Usar múltiples requestAnimationFrame para asegurar que el layout esté calculado
           requestAnimationFrame(() => {
             requestAnimationFrame(() => {
+              // Forzar un reflow adicional
+              void topRow.offsetWidth;
+              void bottomRow.offsetWidth;
               initAnimations();
             });
           });
         }
       };
 
+      // Verificar todas las imágenes
       allImages.forEach((img) => {
         const imageElement = img as HTMLImageElement;
+        // Para Next.js Image, verificar tanto complete como naturalHeight
         if (imageElement.complete && imageElement.naturalHeight > 0) {
           checkLoaded();
         } else {
+          // Agregar listeners para cuando se carguen
           imageElement.addEventListener('load', checkLoaded, { once: true });
           imageElement.addEventListener('error', checkLoaded, { once: true });
         }
       });
+
+      // Fallback: si después de 2 segundos no se han cargado todas, inicializar de todos modos
+      setTimeout(() => {
+        if (!hasStarted && loadedCount < totalImages) {
+          hasStarted = true;
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              void topRow.offsetWidth;
+              void bottomRow.offsetWidth;
+              initAnimations();
+            });
+          });
+        }
+      }, 2000);
     };
 
     // Inicializar después de que el componente esté montado
-    // Usar múltiples requestAnimationFrame para asegurar que el DOM esté listo
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        checkImagesLoaded();
-      });
-    });
+    // Esperar a que el DOM esté completamente listo
+    const initialize = () => {
+      if (document.readyState === 'complete') {
+        // Esperar un frame adicional para que Next.js Image termine de renderizar
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            checkImagesLoaded();
+          });
+        });
+      } else {
+        window.addEventListener('load', () => {
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              checkImagesLoaded();
+            });
+          });
+        }, { once: true });
+        // También intentar después de un delay por si acaso
+        setTimeout(() => {
+          if (document.readyState === 'complete') {
+            requestAnimationFrame(() => {
+              requestAnimationFrame(() => {
+                checkImagesLoaded();
+              });
+            });
+          }
+        }, 500);
+      }
+    };
+
+    initialize();
 
     return () => {
       if (topAnimation) topAnimation.kill();
