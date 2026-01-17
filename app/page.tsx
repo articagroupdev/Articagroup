@@ -1,6 +1,7 @@
 'use client';
 
 import Hero from './components/Hero';
+import HeroScrollEffect from './components/HeroScrollEffect';
 import GlassmorphismCarousel from './components/GlassmorphismCarousel';
 import HorizontalScrollSection from './components/HorizontalScrollSection';
 import LogoCarousel from './components/LogoCarousel';
@@ -16,8 +17,10 @@ export default function Home() {
   const { t } = useLanguage();
   
   return (
-    <main className="relative" style={{ background: 'black' }}>
-      <Hero />
+    <main className="relative" style={{ background: '#f8f9fa' }}>
+      {/* Usa HeroScrollEffect para el efecto de scroll animado, o Hero para el hero normal */}
+      <HeroScrollEffect />
+      {/* <Hero /> */}
       <GlassmorphismCarousel />
       <HorizontalScrollSection
         showIntro={false}

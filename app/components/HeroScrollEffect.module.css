@@ -1,0 +1,283 @@
+/* ===== CONTENEDOR PRINCIPAL CON RESET ENCAPSULADO ===== */
+.scroll-effect-wrapper {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  overflow-x: hidden;
+  background-color: #f8f9fa;
+  position: relative;
+  width: 100%;
+  max-width: 100vw;
+}
+
+/* Aplicar box-sizing a todos los elementos hijos */
+.scroll-effect-wrapper *,
+.scroll-effect-wrapper *::before,
+.scroll-effect-wrapper *::after {
+  box-sizing: border-box;
+}
+
+/* Contenedor principal */
+:global(.scroll-effect-container) {
+  position: relative;
+  width: 100%;
+}
+
+/* ===== SECCIÓN HERO ===== */
+:global(.scroll-effect-hero) {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Contenedor del contenido del hero - Este es el elemento que animaremos */
+:global(.scroll-effect-hero-content) {
+  position: fixed; /* Fijo para que se mantenga en pantalla durante el scroll */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100; /* Z-index alto para estar sobre todo durante la animación */
+  transform-origin: center center; /* Punto de origen para el scale */
+  overflow: hidden;
+  border-radius: 0; /* Empezará sin border-radius */
+  margin: 0;
+  padding: 0;
+  will-change: transform; /* Optimización para animaciones */
+}
+
+/* Imagen de fondo del hero */
+:global(.scroll-effect-hero-bg) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Mantiene proporción sin deformar */
+  object-position: center;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+/* Video de fondo del hero */
+:global(.scroll-effect-hero-bg-video) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  margin: 0;
+  padding: 0;
+  border: none;
+  z-index: 0;
+}
+
+/* Overlay oscuro */
+:global(.scroll-effect-hero-overlay) {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* Contenido textual del hero */
+:global(.scroll-effect-hero-text) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  z-index: 2;
+  max-width: 800px;
+  width: 90%;
+  padding: 0 20px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  margin: 0;
+}
+
+/* ===== SECCIÓN GALERÍA ===== */
+:global(.scroll-effect-gallery) {
+  position: relative;
+  min-height: 100vh;
+  padding: 120px 40px 100px 40px;
+  background-color: #f8f9fa;
+  z-index: 1;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+:global(.scroll-effect-gallery-header) {
+  text-align: center;
+  margin: 0 0 40px 0;
+  padding: 0;
+}
+
+:global(.scroll-effect-gallery-header h2) {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 0 0 1rem 0;
+  padding: 0;
+  color: #1a1a1a;
+  font-weight: 700;
+}
+
+:global(.scroll-effect-gallery-header p) {
+  font-size: 1.2rem;
+  margin: 0;
+  padding: 0;
+  color: #666;
+}
+
+/* Grid de la galería */
+:global(.scroll-effect-gallery-grid) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* Elementos individuales de la galería */
+:global(.scroll-effect-gallery-item) {
+  position: relative;
+  background: white;
+  border-radius: 16px;
+  padding: 40px 30px;
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+  margin: 0;
+}
+
+:global(.scroll-effect-gallery-item:hover) {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+:global(.scroll-effect-item-content) {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+:global(.scroll-effect-item-icon) {
+  font-size: 3rem;
+  display: block;
+  margin: 0 0 20px 0;
+  padding: 0;
+}
+
+:global(.scroll-effect-item-content h3) {
+  font-size: 1.5rem;
+  margin: 0 0 10px 0;
+  padding: 0;
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+:global(.scroll-effect-item-content p) {
+  font-size: 1rem;
+  margin: 0;
+  padding: 0;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Target Slot - El elemento donde el hero aterrizará */
+:global(.scroll-effect-target-slot) {
+  border: 3px dashed transparent;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  position: relative;
+}
+
+:global(.scroll-effect-target-slot .scroll-effect-item-content) {
+  opacity: 0;
+}
+
+:global(.scroll-effect-target-slot .scroll-effect-item-icon) {
+  filter: brightness(0) invert(1);
+}
+
+/* ===== SECCIÓN FOOTER ===== */
+:global(.scroll-effect-footer) {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 40px;
+  margin: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  text-align: center;
+}
+
+:global(.scroll-effect-footer h2) {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 0 0 1rem 0;
+  padding: 0;
+  font-weight: 700;
+}
+
+:global(.scroll-effect-footer p) {
+  font-size: 1.2rem;
+  margin: 0;
+  padding: 0;
+  opacity: 0.9;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  :global(.scroll-effect-hero-text) {
+    width: 95%;
+    padding: 0 15px;
+  }
+  
+  :global(.scroll-effect-gallery) {
+    padding: 60px 20px;
+  }
+  
+  :global(.scroll-effect-gallery-grid) {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  :global(.scroll-effect-gallery-item) {
+    min-height: 220px;
+    padding: 30px 20px;
+  }
+}
+
+/* Ajustes adicionales para móviles pequeños */
+@media (max-width: 480px) {
+  :global(.scroll-effect-hero-content) {
+    overflow: hidden;
+  }
+  
+  :global(.scroll-effect-hero-text) {
+    width: 100%;
+    padding: 0 10px;
+    max-width: 100%;
+  }
+}
+
+/* Debug helper (opcional) - Descomentar para ver el slot objetivo */
+/*
+:global(.scroll-effect-target-slot) {
+  border: 3px dashed #ff0000 !important;
+}
+*/
