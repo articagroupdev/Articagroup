@@ -130,10 +130,16 @@ export default function HeroScrollEffect() {
 
     // Pequeño delay para asegurar que el DOM esté listo
     const timer = setTimeout(() => {
+      // Verificar que targetSlot no sea null antes de usarlo
+      if (!targetSlot) return;
+      
+      // Crear una referencia local no-null para TypeScript
+      const slot = targetSlot;
+      
       // Funci?n para calcular la distancia del pin
       function calculatePinDistance() {
         const viewportHeight = window.innerHeight;
-        const targetRect = targetSlot.getBoundingClientRect();
+        const targetRect = slot.getBoundingClientRect();
         const targetTopRelativeToPage = window.scrollY + targetRect.top;
         const targetHeight = targetRect.height;
         
@@ -148,7 +154,7 @@ export default function HeroScrollEffect() {
         const viewportWidth = window.innerWidth;
         const viewportHeight = window.innerHeight;
         
-        const targetRect = targetSlot.getBoundingClientRect();
+        const targetRect = slot.getBoundingClientRect();
         const targetHeight = targetRect.height;
         const targetWidth = targetRect.width;
         
