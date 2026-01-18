@@ -396,26 +396,31 @@ export default function HeroScrollEffect() {
 
   // Cargar video
   useEffect(() => {
-    if (videoRef.current && !videoError) {
+    if (videoRef.current) {
       const video = videoRef.current;
       
       const loadVideo = async () => {
         try {
+          // Resetear el error antes de intentar cargar
+          setVideoError(false);
           video.load();
           
           await new Promise((resolve, reject) => {
             const onLoadedMetadata = () => {
               video.removeEventListener('loadedmetadata', onLoadedMetadata);
               video.removeEventListener('error', onError);
+              setVideoError(false);
               resolve(true);
             };
             const onError = () => {
               video.removeEventListener('loadedmetadata', onLoadedMetadata);
               video.removeEventListener('error', onError);
+              setVideoError(true);
               reject(new Error('Video load error'));
             };
             
             if (video.readyState >= 1) {
+              setVideoError(false);
               resolve(true);
             } else {
               video.addEventListener('loadedmetadata', onLoadedMetadata);
@@ -424,7 +429,10 @@ export default function HeroScrollEffect() {
               setTimeout(() => {
                 video.removeEventListener('loadedmetadata', onLoadedMetadata);
                 video.removeEventListener('error', onError);
-                reject(new Error('Video load timeout'));
+                if (video.readyState < 1) {
+                  setVideoError(true);
+                  reject(new Error('Video load timeout'));
+                }
               }, 5000);
             }
           });
@@ -432,6 +440,7 @@ export default function HeroScrollEffect() {
           const playPromise = video.play();
           if (playPromise !== undefined) {
             await playPromise;
+            setVideoError(false);
           }
         } catch (error) {
           console.error('Error loading/playing video:', error);
@@ -441,7 +450,7 @@ export default function HeroScrollEffect() {
       
       loadVideo();
     }
-  }, [videoError]);
+  }, []);
 
   return (
     <>
@@ -1007,15 +1016,21 @@ export default function HeroScrollEffect() {
               ref={heroContentWrapperRef}
               className="scroll-effect-hero-content"
             >
-              {/* Imagen de fondo como fallback */}
+              {/* Imagen de fondo como fallback - Solo se muestra cuando hay error */}
               {videoError && (
                 <div 
                   className="scroll-effect-hero-bg"
                   style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
                     backgroundImage: 'url(/img/fondo-hero1.webp)',
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
+                    zIndex: 0,
                   }}
                 />
               )}
@@ -1031,9 +1046,23 @@ export default function HeroScrollEffect() {
                 className="scroll-effect-hero-bg-video"
                 style={{
                   display: videoError ? 'none' : 'block',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  zIndex: videoError ? -1 : 0,
                 }}
                 onError={() => {
+                  console.error('Error loading video');
                   setVideoError(true);
+                }}
+                onCanPlay={() => {
+                  // Asegurarse de que el error se resetee si el video puede reproducirse
+                  if (videoError) {
+                    setVideoError(false);
+                  }
                 }}
               >
                 <source src={videoSrc} type="video/mp4" />
@@ -1092,13 +1121,15 @@ export default function HeroScrollEffect() {
                 className="mb-2 sm:mb-3 md:mb-4 lg:mb-6 uppercase text-center"
                 style={{ 
                   fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif',
-                  fontSize: 'clamp(32px, 6vw, 76px)',
+                  fontSize: 'clamp(28px, 5vw, 64px)',
                   fontWeight: 'normal',
-                  letterSpacing: '0.02em',
-                  lineHeight: '1.15',
+                  letterSpacing: '0.01em',
+                  lineHeight: '1.1',
                   color: '#ffffff',
                   opacity: 0,
                   visibility: 'visible',
+                  whiteSpace: 'normal',
+                  wordBreak: 'normal',
                 }}
               >
                 {t('hero.title')}
