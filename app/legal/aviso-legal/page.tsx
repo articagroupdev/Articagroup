@@ -1,114 +1,115 @@
-'use client';
-
-import { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Navbar from '../../components/Navbar';
-import Footer from '../../components/Footer';
+import NavbarLegal from '@/app/components/Navbar';
+import Footer from '@/app/components/Footer';
 import styles from '../legal.module.css';
 
-gsap.registerPlugin(ScrollTrigger);
-
-export default function AvisoLegalPage() {
-  const titleRef = useRef<HTMLHeadingElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      if (titleRef.current) {
-        gsap.set(titleRef.current, { opacity: 0, y: 50 });
-        gsap.to(titleRef.current, {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: 'power3.out',
-        });
-      }
-
-      if (contentRef.current) {
-        const sections = contentRef.current.querySelectorAll('section');
-        gsap.set(sections, { opacity: 0, y: 40 });
-
-        gsap.to(sections, {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          stagger: 0.1,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: contentRef.current,
-            start: 'top 80%',
-            end: 'top 50%',
-            scrub: 1,
-          },
-        });
-      }
-    });
-
-    return () => ctx.revert();
-  }, []);
-
+export default function AvisoLegal() {
   return (
-    <main className={styles.legalPage}>
-      <Navbar />
-      
-      <div className={styles.container}>
-        <h1
-          ref={titleRef}
-          className={styles.title}
-        >
-          Aviso Legal
-        </h1>
+    <>
+      <NavbarLegal />
+      <div className={styles.legalPage}>
+        <div className={styles.container}>
+          <h1 className={styles.title}>Aviso Legal</h1>
+          
+          <div className={styles.content}>
+            <section>
+              <p>
+                <strong>Artica Group LLC</strong> es el titular y proveedor de servicios de la sociedad de la 
+                información de este sitio web.
+              </p>
+            </section>
 
-        <div ref={contentRef} className={styles.content}>
-          <section>
-            <h2>Aviso Legal – Artica Group LLC</h2>
-            <p>
-              Artica Group LLC es el titular y proveedor de servicios de la sociedad de la información de este sitio web.
-            </p>
-          </section>
+            <section>
+              <h2>Datos de la Empresa</h2>
+              <ul>
+                <li><strong>Nombre de la Empresa:</strong> Artica Group LLC</li>
+                <li><strong>Dirección Fiscal:</strong> 3550 NW 85TH CT #100 APT 447 MIAMI, FL 33122, Estados Unidos</li>
+                <li><strong>Dirección Comercial:</strong> 7701 NW 46th St Suite 1-A, Miami, FL 33166, Estados Unidos</li>
+              </ul>
+            </section>
 
-          <section>
-            <h2>Datos de la Empresa:</h2>
-            <ul>
-              <li><strong>Nombre de la Empresa:</strong> Artica Group LLC</li>
-              <li><strong>Dirección:</strong> 3550 NW 85TH CT #100 APT 447 MIAMI, FL 33122, Estados Unidos</li>
-            </ul>
-            
-            <h3>Información de Registro:</h3>
-            <ul>
-              <li><strong>Document Number:</strong> L22000322400</li>
-              <li><strong>FEI/EIN Number:</strong> 88-3388560</li>
-              <li><strong>Date Filed:</strong> 07/20/2022</li>
-              <li><strong>Effective Date:</strong> 07/15/2022</li>
-              <li><strong>State:</strong> FL</li>
-              <li><strong>Status:</strong> ACTIVE</li>
-            </ul>
-          </section>
+            <section>
+              <h2>Información de Registro</h2>
+              <ul>
+                <li><strong>Document Number:</strong> L22000322400</li>
+                <li><strong>FEI/EIN Number:</strong> 88-3388560</li>
+                <li><strong>Date Filed:</strong> 07/20/2022</li>
+                <li><strong>Effective Date:</strong> 07/15/2022</li>
+                <li><strong>State:</strong> Florida (FL)</li>
+                <li><strong>Status:</strong> ACTIVE</li>
+              </ul>
+            </section>
 
-          <section>
-            <p>
-              El acceso al sitio web de Artica Group LLC es gratuito, a menos que se indique lo contrario en las condiciones particulares de servicios específicos, donde se detallarán los precios, impuestos aplicables y gastos de envío, si los hubiere.
-            </p>
-            <p>
-              Este aviso legal se complementa con nuestra Política de Privacidad, nuestras Condiciones Generales de Uso y, en su caso, con las condiciones particulares de cada servicio ofrecido en este sitio web.
-            </p>
-          </section>
+            <section>
+              <h2>Sobre este Sitio Web</h2>
+              <p>
+                El acceso al sitio web de <strong>Artica Group LLC</strong> es gratuito, a menos que se indique 
+                lo contrario en las condiciones particulares de servicios específicos, donde se detallarán los 
+                precios, impuestos aplicables y gastos de envío, si los hubiere.
+              </p>
+              <p>
+                Este aviso legal se complementa con nuestra Política de Privacidad, nuestras Condiciones Generales 
+                de Uso y, en su caso, con las condiciones particulares de cada servicio ofrecido en este sitio web.
+              </p>
+            </section>
 
-          <section>
-            <h2>Contacto:</h2>
-            <p>
-              Para contactar con Artica Group LLC, puede dirigirse a través de la siguiente dirección de correo electrónico:{' '}
-              <a href="mailto:info@articagroup.us">info@articagroup.us</a>
-              {' '}o al siguiente número de teléfono:{' '}
-              <a href="tel:+13058493637">+1 (305) 849-3637</a>
-              , en horario de atención: Lunes a Domingo de 9 AM a 5 PM (EST).
-            </p>
-          </section>
+            <section>
+              <h2>Servicios Ofrecidos</h2>
+              <p>
+                <strong>Artica Group LLC</strong> ofrece los siguientes servicios de marketing digital:
+              </p>
+              <ul>
+                <li>Creación de contenido audiovisual</li>
+                <li>Campañas publicitarias (Ads)</li>
+                <li>Community Management</li>
+                <li>Diseño gráfico</li>
+                <li>Desarrollo web</li>
+                <li>Edición de video</li>
+                <li>Posicionamiento y comunicación estratégica</li>
+                <li>Publicidad online</li>
+              </ul>
+            </section>
+
+            <section>
+              <h2>Propiedad Intelectual</h2>
+              <p>
+                Todos los contenidos de este sitio web, incluyendo textos, fotografías, gráficos, imágenes, 
+                iconos, tecnología, software, así como su diseño gráfico y códigos fuente, constituyen una 
+                obra cuya propiedad pertenece a <strong>Artica Group LLC</strong>, sin que puedan entenderse 
+                cedidos al usuario ninguno de los derechos de explotación sobre los mismos más allá de lo 
+                estrictamente necesario para el correcto uso de la web.
+              </p>
+            </section>
+
+            <section>
+              <h2>Responsabilidad</h2>
+              <p>
+                <strong>Artica Group LLC</strong> no se hace responsable de los daños y perjuicios de cualquier 
+                naturaleza que pudieran derivarse de la disponibilidad y continuidad técnica del funcionamiento 
+                del sitio web. En ningún caso <strong>Artica Group LLC</strong> será responsable de los daños 
+                y perjuicios que puedan producirse por el uso y/o mala utilización del sitio web.
+              </p>
+            </section>
+
+            <section>
+              <h2>Datos de Contacto</h2>
+              <p>
+                Para contactar con <strong>Artica Group LLC</strong>, puede dirigirse a través de la siguiente 
+                dirección de correo electrónico:{' '}
+                <a href="mailto:info@articagroup.us">info@articagroup.us</a>
+                {' '}o al siguiente número de teléfono:{' '}
+                <a href="tel:+13056195878">+1 (305) 619-5878</a>
+              </p>
+              <p>
+                <strong>Horario de atención:</strong> Lunes a Domingo de 9:00 AM a 5:00 PM (EST)
+              </p>
+              <p>
+                <strong>Dirección Comercial:</strong> 7701 NW 46th St Suite 1-A, Miami, FL 33166, Estados Unidos
+              </p>
+            </section>
+          </div>
         </div>
       </div>
-
       <Footer />
-    </main>
+    </>
   );
 }

@@ -41,7 +41,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "ARTICA Creative Studio",
+  title: "Artica Group",
   description: "Logramos éxitos empresariales a través de medios digitales",
   icons: {
     icon: '/img/icon.avif',
@@ -49,16 +49,16 @@ export const metadata: Metadata = {
     apple: '/img/icon.avif',
   },
   openGraph: {
-    title: "ARTICA Creative Studio",
+    title: "Artica Group",
     description: "Logramos éxitos empresariales a través de medios digitales",
     url: "https://articagroup.vercel.app",
-    siteName: "ARTICA Creative Studio",
+    siteName: "Artica Group",
     images: [
       {
         url: "https://articagroup.vercel.app/img/logo-mini-azul.png",
         width: 1200,
         height: 630,
-        alt: "ARTICA Creative Studio",
+        alt: "Artica Group",
       },
     ],
     locale: "es_ES",
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ARTICA Creative Studio",
+    title: "Artica Group",
     description: "Logramos éxitos empresariales a través de medios digitales",
     images: ["https://articagroup.vercel.app/img/logo-mini-blanco.png"],
   },

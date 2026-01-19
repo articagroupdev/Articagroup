@@ -464,13 +464,53 @@ export default function HeroScrollEffect() {
   // Prevenir scroll del body cuando el men? est? abierto
   useEffect(() => {
     if (isMenuOpen) {
+      // Guardar la posición actual del scroll
+      const scrollY = window.scrollY;
+      
+      // Bloquear scroll del body
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
       document.body.style.overflow = 'hidden';
+      
+      // Prevenir scroll en el html también
+      document.documentElement.style.overflow = 'hidden';
+      
+      // Prevenir eventos de touch que puedan causar scroll
+      const preventScroll = (e: TouchEvent) => {
+        // Solo prevenir si el touch no es dentro del menú móvil
+        const target = e.target as HTMLElement;
+        const mobileMenu = mobileMenuRef.current;
+        
+        if (mobileMenu && !mobileMenu.contains(target)) {
+          e.preventDefault();
+        }
+      };
+      
+      // Agregar listener para prevenir scroll en el body
+      document.addEventListener('touchmove', preventScroll, { passive: false });
+      
+      return () => {
+        // Restaurar scroll del body
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
+        
+        // Remover listener
+        document.removeEventListener('touchmove', preventScroll);
+        
+        // Restaurar la posición del scroll
+        window.scrollTo(0, scrollY);
+      };
     } else {
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
       document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
     }
-    return () => {
-      document.body.style.overflow = '';
-    };
   }, [isMenuOpen]);
 
   // Establecer fondo blanco del body y html
@@ -876,8 +916,13 @@ export default function HeroScrollEffect() {
                   isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
                 }`}
                 onClick={() => setIsMenuOpen(false)}
+                onTouchMove={(e) => {
+                  // Prevenir scroll cuando se toca el overlay
+                  e.preventDefault();
+                }}
                 style={{
                   zIndex: 99998,
+                  touchAction: 'none',
                 }}
               />
 
@@ -894,12 +939,35 @@ export default function HeroScrollEffect() {
                   width: 'min(420px, 92vw)',
                   height: '100vh',
                   minHeight: '100vh',
+                  overflowY: 'auto',
+                  overscrollBehavior: 'contain',
+                  WebkitOverflowScrolling: 'touch',
+                }}
+                onTouchMove={(e) => {
+                  // Permitir scroll dentro del menú
+                  e.stopPropagation();
                 }}
               >
                 {/* MEN? M?VIL COMPLETO - COPIADO DEL ORIGINAL */}
-                <div className="flex flex-col bg-white" style={{ backgroundColor: '#ffffff', height: '100%', minHeight: '100vh' }}>
+                <div 
+                  className="flex flex-col bg-white" 
+                  style={{ 
+                    backgroundColor: '#ffffff', 
+                    height: '100%', 
+                    minHeight: '100vh',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    overflow: 'hidden',
+                  }}
+                >
                   {/* Header del men? */}
-                  <div className="flex items-center justify-between px-6 py-5 bg-white border-b border-gray-200" style={{ backgroundColor: '#ffffff' }}>
+                  <div 
+                    className="flex items-center justify-between px-6 py-5 bg-white border-b border-gray-200" 
+                    style={{ 
+                      backgroundColor: '#ffffff',
+                      flexShrink: 0,
+                    }}
+                  >
                     <img 
                       src="/img/logo-artica-2.avif" 
                       alt="ARTICA" 
@@ -925,7 +993,25 @@ export default function HeroScrollEffect() {
                   </div>
 
                   {/* Contenido del men? */}
-                  <div className="flex-1 overflow-y-auto bg-white px-5 py-6" style={{ backgroundColor: '#ffffff' }}>
+                  <div 
+                    className="flex-1 overflow-y-auto bg-white px-5 py-6" 
+                    style={{ 
+                      backgroundColor: '#ffffff',
+                      overflowY: 'auto',
+                      overscrollBehavior: 'contain',
+                      WebkitOverflowScrolling: 'touch',
+                      flex: 1,
+                      minHeight: 0,
+                    }}
+                    onTouchMove={(e) => {
+                      // Permitir scroll dentro del contenedor
+                      e.stopPropagation();
+                    }}
+                    onWheel={(e) => {
+                      // Permitir scroll con rueda del mouse
+                      e.stopPropagation();
+                    }}
+                  >
                     <ul className="space-y-2">
                       <li>
                         <Link
@@ -1098,7 +1184,13 @@ export default function HeroScrollEffect() {
                   </div>
 
                   {/* Footer del men? */}
-                  <div className="p-6 bg-white border-t-2 border-gray-100 space-y-5" style={{ backgroundColor: '#ffffff' }}>
+                  <div 
+                    className="p-6 bg-white border-t-2 border-gray-100 space-y-5" 
+                    style={{ 
+                      backgroundColor: '#ffffff',
+                      flexShrink: 0,
+                    }}
+                  >
                     <div className="flex items-center justify-center gap-3">
                       <button
                         onClick={() => {
