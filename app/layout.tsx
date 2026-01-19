@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter, Roboto, Open_Sans, Poppins } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "./contexts/LanguageContext";
+import { Suspense } from "react";
+import PageTransition from "./components/PageTransition";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -82,6 +84,9 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <LanguageProvider>
+          <Suspense fallback={null}>
+            <PageTransition />
+          </Suspense>
           {children}
         </LanguageProvider>
       </body>
