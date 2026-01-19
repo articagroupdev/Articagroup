@@ -139,22 +139,12 @@ export default function HeroScrollEffect() {
       // Funci?n para calcular la distancia del pin
       function calculatePinDistance() {
         const viewportHeight = window.innerHeight;
-        const viewportWidth = window.innerWidth;
         const targetRect = slot.getBoundingClientRect();
         const targetTopRelativeToPage = window.scrollY + targetRect.top;
         const targetHeight = targetRect.height;
         
         const targetCenterInViewport = (viewportHeight / 2) - (targetHeight / 2);
-        let distanceToTravel = targetTopRelativeToPage - targetCenterInViewport;
-        
-        // En móvil y tablet, reducir la distancia para que la animación sea más rápida
-        if (viewportWidth < 768) {
-          // Móvil: animación 60% más rápida
-          distanceToTravel = distanceToTravel * 0.4;
-        } else if (viewportWidth < 1024) {
-          // Tablet: animación 40% más rápida
-          distanceToTravel = distanceToTravel * 0.6;
-        }
+        const distanceToTravel = targetTopRelativeToPage - targetCenterInViewport;
         
         return distanceToTravel;
       }
