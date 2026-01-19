@@ -751,7 +751,7 @@ export default function ContactHero() {
         style={{ 
           minHeight: 'auto', 
           pointerEvents: 'auto',
-          backgroundImage: 'url(/img/fondo-contacto.webp)',
+          backgroundImage: 'url(/img/fondo-contacto.avif)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
