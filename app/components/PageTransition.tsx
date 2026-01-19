@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 
 export default function PageTransition() {
@@ -8,12 +8,23 @@ export default function PageTransition() {
   const searchParams = useSearchParams();
   const [isLoading, setIsLoading] = useState(false);
   const [isExiting, setIsExiting] = useState(false);
+  const loadStartTime = useRef<number>(0);
+  const minLoadingTime = 1200; // Tiempo mínimo de carga en ms
 
-  // Detectar cambios de ruta
+  // Detectar cambios de ruta - esperar tiempo mínimo antes de ocultar
   useEffect(() => {
-    setIsLoading(false);
-    setIsExiting(false);
-  }, [pathname, searchParams]);
+    if (isLoading) {
+      const elapsed = Date.now() - loadStartTime.current;
+      const remaining = Math.max(0, minLoadingTime - elapsed);
+      
+      // Esperar al menos el tiempo mínimo antes de ocultar
+      const timer = setTimeout(() => {
+        setIsLoading(false);
+      }, remaining);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [pathname, searchParams, isLoading]);
 
   // Interceptar clics en enlaces
   useEffect(() => {
@@ -25,6 +36,7 @@ export default function PageTransition() {
         const href = anchor.getAttribute('href');
         
         if (href && href.startsWith('/') && !href.startsWith('//') && href !== pathname) {
+          loadStartTime.current = Date.now();
           setIsLoading(true);
         }
       }
@@ -36,9 +48,12 @@ export default function PageTransition() {
 
   // Animación de salida
   useEffect(() => {
-    if (!isLoading) {
+    if (!isLoading && loadStartTime.current > 0) {
       setIsExiting(true);
-      const timer = setTimeout(() => setIsExiting(false), 300);
+      const timer = setTimeout(() => {
+        setIsExiting(false);
+        loadStartTime.current = 0;
+      }, 400);
       return () => clearTimeout(timer);
     }
   }, [isLoading]);
@@ -47,7 +62,7 @@ export default function PageTransition() {
 
   return (
     <div 
-      className={`fixed inset-0 z-[99999] flex items-center justify-center transition-opacity duration-300 ${
+      className={`fixed inset-0 z-[99999] flex items-center justify-center transition-all duration-500 ease-out ${
         isLoading ? 'opacity-100' : 'opacity-0'
       }`}
       style={{
