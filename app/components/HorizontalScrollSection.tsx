@@ -295,8 +295,8 @@ export default function HorizontalScrollSection({
               ref={titleRef}
               className="horizontal-scroll-title"
               style={{
-                fontSize: 'clamp(1.5rem, 4.5vw, 4rem)',
-                maxWidth: '500px',
+                fontSize: 'clamp(1.3rem, 3.5vw, 3rem)',
+                maxWidth: '650px',
                 minWidth: 'clamp(250px, 90vw, 60vw)',
                 padding: '0 clamp(16px, 4vw, 5vw)',
                 fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif',

@@ -108,6 +108,8 @@ body {
   -moz-user-select: text;
   -ms-user-select: text;
   overscroll-behavior-y: none;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 html {
@@ -120,6 +122,9 @@ html {
 * {
   scrollbar-width: thin;
   scrollbar-color: #ff9001 rgba(255, 144, 1, 0.1);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 /* Chrome, Edge, Safari */
@@ -501,4 +506,59 @@ video {
     opacity: 1;
     transform: translate(-50%, 0);
   }
+}
+
+/* Estilos para manejar textos largos en traducciones */
+nav a, nav button {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+@media (max-width: 1280px) {
+  nav a, nav button {
+    font-size: 0.75rem !important;
+    white-space: normal;
+    line-height: 1.2;
+  }
+}
+
+/* Mega menú - mejor manejo de textos largos */
+.megamenu-item h3,
+.megamenu-item p,
+div[style*="rounded-2xl"] h3,
+div[style*="rounded-2xl"] p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+.megamenu-item h3,
+div[style*="rounded-2xl"] h3 {
+  -webkit-line-clamp: 2;
+  max-height: 3em;
+}
+
+.megamenu-item p,
+div[style*="rounded-2xl"] p {
+  -webkit-line-clamp: 3;
+  max-height: 4.5em;
+}
+
+/* Botones con textos largos */
+button, a[class*="rounded-full"], .button {
+  word-break: normal;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+  text-align: center;
+}
+
+/* Ajustes para títulos largos */
+h1, h2, h3, h4, h5, h6 {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }

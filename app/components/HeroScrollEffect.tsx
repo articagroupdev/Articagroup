@@ -700,10 +700,10 @@ export default function HeroScrollEffect() {
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                                   </svg>
                                 </div>
-                                <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
+                                <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold', lineHeight: '1.3', wordBreak: 'break-word', overflowWrap: 'break-word', hyphens: 'auto' }}>
                                   {t('services.desarrolloWeb')}
                                 </h3>
-                                <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
+                                <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none', lineHeight: '1.4', wordBreak: 'break-word', overflowWrap: 'break-word', hyphens: 'auto' }}>
                                   {t('services.desarrolloWebDesc')}
                                 </p>
                               </Link>
@@ -714,10 +714,10 @@ export default function HeroScrollEffect() {
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
                                   </svg>
                                 </div>
-                                <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
+                                <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold', lineHeight: '1.3', wordBreak: 'break-word', overflowWrap: 'break-word', hyphens: 'auto' }}>
                                   {t('services.disenoGrafico')}
                                 </h3>
-                                <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
+                                <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none', lineHeight: '1.4', wordBreak: 'break-word', overflowWrap: 'break-word', hyphens: 'auto' }}>
                                   {t('services.disenoGraficoDesc')}
                                 </p>
                               </Link>
@@ -728,10 +728,10 @@ export default function HeroScrollEffect() {
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                                   </svg>
                                 </div>
-                                <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
+                                <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold', lineHeight: '1.3', wordBreak: 'break-word', overflowWrap: 'break-word', hyphens: 'auto' }}>
                                   {t('services.posicionamientoComunicacion')}
                                 </h3>
-                                <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
+                                <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none', lineHeight: '1.4', wordBreak: 'break-word', overflowWrap: 'break-word', hyphens: 'auto' }}>
                                   {t('services.posicionamientoComunicacionDesc')}
                                 </p>
                               </Link>
@@ -745,10 +745,10 @@ export default function HeroScrollEffect() {
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                                   </svg>
                                 </div>
-                                <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
+                                <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold', lineHeight: '1.3', wordBreak: 'break-word', overflowWrap: 'break-word', hyphens: 'auto' }}>
                                   {t('services.edicionVideos')}
                                 </h3>
-                                <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
+                                <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none', lineHeight: '1.4', wordBreak: 'break-word', overflowWrap: 'break-word', hyphens: 'auto' }}>
                                   {t('services.edicionVideosDesc')}
                                 </p>
                               </Link>
@@ -759,10 +759,10 @@ export default function HeroScrollEffect() {
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
                                   </svg>
                                 </div>
-                                <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
+                                <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold', lineHeight: '1.3', wordBreak: 'break-word', overflowWrap: 'break-word', hyphens: 'auto' }}>
                                   {t('services.publicidadOnline')}
                                 </h3>
-                                <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
+                                <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none', lineHeight: '1.4', wordBreak: 'break-word', overflowWrap: 'break-word', hyphens: 'auto' }}>
                                   {t('services.publicidadOnlineDesc')}
                                 </p>
                               </Link>
@@ -776,10 +776,10 @@ export default function HeroScrollEffect() {
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                   </svg>
                                 </div>
-                                <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
+                                <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold', lineHeight: '1.3', wordBreak: 'break-word', overflowWrap: 'break-word', hyphens: 'auto' }}>
                                   {t('services.creacionContenido')}
                                 </h3>
-                                <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
+                                <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none', lineHeight: '1.4', wordBreak: 'break-word', overflowWrap: 'break-word', hyphens: 'auto' }}>
                                   {t('services.creacionContenidoDesc')}
                                 </p>
                               </Link>
@@ -791,10 +791,10 @@ export default function HeroScrollEffect() {
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
                                   </svg>
                                 </div>
-                                <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
+                                <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold', lineHeight: '1.3', wordBreak: 'break-word', overflowWrap: 'break-word', hyphens: 'auto' }}>
                                   {t('services.campanasAds')}
                                 </h3>
-                                <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
+                                <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none', lineHeight: '1.4', wordBreak: 'break-word', overflowWrap: 'break-word', hyphens: 'auto' }}>
                                   {t('services.campanasAdsDesc')}
                                 </p>
                               </Link>
@@ -805,10 +805,10 @@ export default function HeroScrollEffect() {
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                                   </svg>
                                 </div>
-                                <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
+                                <h3 className="font-bold text-sm mb-0.5" style={{ textShadow: 'none', color: '#272F66', fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold', lineHeight: '1.3', wordBreak: 'break-word', overflowWrap: 'break-word', hyphens: 'auto' }}>
                                   {t('services.communityManagement')}
                                 </h3>
-                                <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none' }}>
+                                <p className="text-xs text-gray-500 leading-tight" style={{ textShadow: 'none', lineHeight: '1.4', wordBreak: 'break-word', overflowWrap: 'break-word', hyphens: 'auto' }}>
                                   {t('services.communityManagementDesc')}
                                 </p>
                               </Link>
@@ -866,13 +866,17 @@ export default function HeroScrollEffect() {
 
                   <Link 
                     href="/contact"
-                    className={`hidden lg:block px-6 xl:px-7 py-2.5 xl:py-3 rounded-full font-medium transition-all duration-300 text-xs xl:text-sm shadow-sm hover:shadow-md ${
+                    className={`hidden lg:block px-4 xl:px-6 py-2.5 xl:py-3 rounded-full font-medium transition-all duration-300 text-xs xl:text-sm shadow-sm hover:shadow-md ${
                       isScrolled 
                         ? 'text-white bg-[#272F66] hover:bg-[#1e2547]' 
                         : 'text-[#272F66] bg-white hover:bg-gray-100'
                     }`}
                     style={{
                       color: isScrolled ? '#ffffff' : '#272F66',
+                      whiteSpace: 'nowrap',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                      maxWidth: '200px',
                     }}
                   >
                     {t('nav.queremosImpulsarte')}
@@ -1026,9 +1030,11 @@ export default function HeroScrollEffect() {
                             fontFamily: 'var(--font-poppins), sans-serif',
                             fontSize: '16px',
                             color: pathname === '/' ? '#ffffff' : '#1a1a2e',
+                            wordBreak: 'break-word',
+                            overflowWrap: 'break-word',
                           }}
                         >
-                          Inicio
+                          {t('nav.inicio')}
                         </Link>
                       </li>
                       <li>
@@ -1044,9 +1050,11 @@ export default function HeroScrollEffect() {
                             fontFamily: 'var(--font-poppins), sans-serif',
                             fontSize: '16px',
                             color: pathname === '/about' ? '#ffffff' : '#1a1a2e',
+                            wordBreak: 'break-word',
+                            overflowWrap: 'break-word',
                           }}
                         >
-                          Sobre Nosotros
+                          {t('nav.sobreNosotros')}
                         </Link>
                       </li>
                       <li>
@@ -1059,9 +1067,11 @@ export default function HeroScrollEffect() {
                             fontFamily: 'var(--font-poppins), sans-serif',
                             fontSize: '16px',
                             color: '#1a1a2e',
+                            wordBreak: 'break-word',
+                            overflowWrap: 'break-word',
                           }}
                         >
-                          <span>Servicios</span>
+                          <span>{t('nav.servicios')}</span>
                           <svg
                             className={`w-5 h-5 transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`}
                             fill="none"
@@ -1077,72 +1087,72 @@ export default function HeroScrollEffect() {
                               <button 
                                 onClick={() => handleMobileNavigation('/services/desarrollo-web')} 
                                 className="block w-full text-left py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
-                                style={{ fontSize: '14px', color: '#1a1a2e' }}
+                                style={{ fontSize: '14px', color: '#1a1a2e', lineHeight: '1.4', wordBreak: 'break-word', overflowWrap: 'break-word', whiteSpace: 'normal' }}
                               >
-                                Desarrollo Web
+                                {t('services.desarrolloWeb')}
                               </button>
                             </li>
                             <li>
                               <button 
                                 onClick={() => handleMobileNavigation('/services/diseno-grafico')} 
                                 className="block w-full text-left py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
-                                style={{ fontSize: '14px', color: '#1a1a2e' }}
+                                style={{ fontSize: '14px', color: '#1a1a2e', lineHeight: '1.4', wordBreak: 'break-word', overflowWrap: 'break-word', whiteSpace: 'normal' }}
                               >
-                                Diseño Gráfico
+                                {t('services.disenoGrafico')}
                               </button>
                             </li>
                             <li>
                               <button 
                                 onClick={() => handleMobileNavigation('/services/posicionamiento-comunicacion')} 
                                 className="block w-full text-left py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
-                                style={{ fontSize: '14px', color: '#1a1a2e' }}
+                                style={{ fontSize: '14px', color: '#1a1a2e', lineHeight: '1.4', wordBreak: 'break-word', overflowWrap: 'break-word', whiteSpace: 'normal' }}
                               >
-                                Estrategia
+                                {t('services.posicionamientoComunicacion')}
                               </button>
                             </li>
                             <li>
                               <button 
                                 onClick={() => handleMobileNavigation('/services/edicion-videos')} 
                                 className="block w-full text-left py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
-                                style={{ fontSize: '14px', color: '#1a1a2e' }}
+                                style={{ fontSize: '14px', color: '#1a1a2e', lineHeight: '1.4', wordBreak: 'break-word', overflowWrap: 'break-word', whiteSpace: 'normal' }}
                               >
-                                Edición de Videos
+                                {t('services.edicionVideos')}
                               </button>
                             </li>
                             <li>
                               <button 
                                 onClick={() => handleMobileNavigation('/services/publicidad-online')} 
                                 className="block w-full text-left py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
-                                style={{ fontSize: '14px', color: '#1a1a2e' }}
+                                style={{ fontSize: '14px', color: '#1a1a2e', lineHeight: '1.4', wordBreak: 'break-word', overflowWrap: 'break-word', whiteSpace: 'normal' }}
                               >
-                                Publicidad Online
+                                {t('services.publicidadOnline')}
                               </button>
                             </li>
                             <li>
                               <button 
                                 onClick={() => handleMobileNavigation('/services/creacion-contenido')} 
                                 className="block w-full text-left py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
-                                style={{ fontSize: '14px', color: '#1a1a2e' }}
+                                style={{ fontSize: '14px', color: '#1a1a2e', lineHeight: '1.4', wordBreak: 'break-word', overflowWrap: 'break-word', whiteSpace: 'normal' }}
                               >
-                                Creación de Contenido
+                                {t('services.creacionContenido')}
                               </button>
                             </li>
                             <li>
                               <button 
                                 onClick={() => handleMobileNavigation('/services/campanas-ads')} 
                                 className="block w-full text-left py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
-                                style={{ fontSize: '14px', color: '#1a1a2e' }}
+                                style={{ fontSize: '14px', color: '#1a1a2e', lineHeight: '1.4', wordBreak: 'break-word', overflowWrap: 'break-word', whiteSpace: 'normal' }}
                               >
-                                Campañas de Ads
+                                {t('services.campanasAds')}
                               </button>
                             </li>
                             <li>
                               <button 
                                 onClick={() => handleMobileNavigation('/services/community-management')} 
                                 className="block w-full text-left py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
-                                style={{ fontSize: '14px', color: '#1a1a2e' }}
+                                style={{ fontSize: '14px', color: '#1a1a2e', lineHeight: '1.4', wordBreak: 'break-word', overflowWrap: 'break-word', whiteSpace: 'normal' }}
                               >
-                                Community Management
+                                {t('services.communityManagement')}
                               </button>
                             </li>
                           </ul>
@@ -1157,6 +1167,8 @@ export default function HeroScrollEffect() {
                             fontFamily: 'var(--font-poppins), sans-serif',
                             fontSize: '16px',
                             color: '#1a1a2e',
+                            wordBreak: 'break-word',
+                            overflowWrap: 'break-word',
                           }}
                         >
                           {t('nav.portafolio')}
@@ -1175,9 +1187,11 @@ export default function HeroScrollEffect() {
                             fontFamily: 'var(--font-poppins), sans-serif',
                             fontSize: '16px',
                             color: pathname === '/contact' ? '#ffffff' : '#1a1a2e',
+                            wordBreak: 'break-word',
+                            overflowWrap: 'break-word',
                           }}
                         >
-                          Contacto
+                          {t('nav.contacto')}
                         </Link>
                       </li>
                     </ul>
@@ -1214,9 +1228,11 @@ export default function HeroScrollEffect() {
                       style={{
                         fontFamily: 'var(--font-roboto), sans-serif',
                         fontSize: '16px',
+                        wordBreak: 'break-word',
+                        overflowWrap: 'break-word',
                       }}
                     >
-                      Queremos Impulsarte
+                      {t('nav.queremosImpulsarte')}
                     </Link>
                   </div>
                 </div>
