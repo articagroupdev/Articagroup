@@ -366,6 +366,28 @@ export default function HeroScrollEffect() {
     
     const isMobile = window.innerWidth < 1024;
     
+    // Verificar estado inicial del scroll
+    const checkInitialScroll = () => {
+      const scrollY = window.scrollY;
+      if (scrollY > 50) {
+        setIsScrolled(true);
+        if (navRef.current) {
+          gsap.set(navRef.current, {
+            backgroundColor: 'rgba(255, 255, 255, 1)',
+            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+          });
+        }
+      } else {
+        setIsScrolled(false);
+        if (navRef.current) {
+          gsap.set(navRef.current, {
+            backgroundColor: 'transparent',
+            boxShadow: 'none',
+          });
+        }
+      }
+    };
+    
     if (isMobile) {
       const handleScroll = () => {
         const scrollY = window.scrollY;
@@ -391,44 +413,51 @@ export default function HeroScrollEffect() {
         }
       };
 
-      handleScroll();
+      checkInitialScroll();
       window.addEventListener('scroll', handleScroll);
       return () => {
         window.removeEventListener('scroll', handleScroll);
       };
     } else {
-      if (navRef.current) {
-        const scrollTriggerInstance = ScrollTrigger.create({
-          trigger: document.body,
-          start: 'top -80',
-          end: 'top -40',
-          scrub: true,
-          onEnter: () => {
-            setIsScrolled(true);
-            if (navRef.current) {
-              gsap.to(navRef.current, {
-                backgroundColor: 'rgba(255, 255, 255, 1)',
-                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-                duration: 0.3,
-              });
-            }
-          },
-          onLeaveBack: () => {
-            setIsScrolled(false);
-            if (navRef.current) {
-              gsap.to(navRef.current, {
-                backgroundColor: 'transparent',
-                boxShadow: 'none',
-                duration: 0.3,
-              });
-            }
-          },
-        });
+      // Listener de scroll adicional como respaldo
+      const handleScrollDesktop = () => {
+        const scrollY = window.scrollY;
+        if (scrollY > 80) {
+          setIsScrolled(true);
+          if (navRef.current) {
+            gsap.to(navRef.current, {
+              backgroundColor: 'rgba(255, 255, 255, 1)',
+              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+              duration: 0.3,
+            });
+          }
+        } else {
+          setIsScrolled(false);
+          if (navRef.current) {
+            gsap.to(navRef.current, {
+              backgroundColor: 'transparent',
+              boxShadow: 'none',
+              duration: 0.3,
+            });
+          }
+        }
+      };
 
-        return () => {
-          scrollTriggerInstance.kill();
-        };
-      }
+      // Verificar estado inicial
+      checkInitialScroll();
+      
+      // Agregar listener de scroll
+      window.addEventListener('scroll', handleScrollDesktop, { passive: true });
+
+      // Delay para asegurar que el ScrollTrigger del hero esté listo
+      const timer = setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 200);
+
+      return () => {
+        clearTimeout(timer);
+        window.removeEventListener('scroll', handleScrollDesktop);
+      };
     }
   }, []);
 
