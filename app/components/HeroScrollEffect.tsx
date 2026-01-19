@@ -182,8 +182,14 @@ export default function HeroScrollEffect() {
         return { scale, translateX, translateY, borderRadius };
       }
       
-      const pinDistance = calculatePinDistance();
+      let pinDistance = calculatePinDistance();
       const finalTransform = calculateFinalTransform();
+      
+      // En móvil, reducir la distancia de pin para que la animación sea más rápida
+      const isMobile = window.innerWidth <= 768;
+      if (isMobile) {
+        pinDistance = pinDistance * 0.5; // 50% de la distancia original en móvil
+      }
       
       // Timeline principal
       tl = gsap.timeline({
