@@ -55,12 +55,28 @@ export default function HeroScrollEffect() {
 
   // Limpiar ScrollTrigger al cambiar de página
   useEffect(() => {
+    // Deshabilitar restauración de scroll del navegador
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    
+    // Limpiar todos los ScrollTriggers existentes
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    
     // Scroll al inicio cuando el componente se monta
     window.scrollTo(0, 0);
     
+    // Pequeño delay para asegurar que el DOM esté listo antes del refresh
+    const refreshTimer = setTimeout(() => {
+      ScrollTrigger.refresh(true);
+    }, 50);
+    
     return () => {
+      clearTimeout(refreshTimer);
       // Limpiar todos los ScrollTriggers al desmontar
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      // Limpiar cualquier pin spacer residual
+      ScrollTrigger.clearScrollMemory();
     };
   }, [pathname]);
 
@@ -114,6 +130,17 @@ export default function HeroScrollEffect() {
   useEffect(() => {
     if (!isReady || typeof window === 'undefined') return;
     
+    // Limpiar cualquier ScrollTrigger existente antes de crear nuevos
+    ScrollTrigger.getAll().forEach(st => st.kill());
+    
+    // Resetear scroll al inicio cuando se monta el componente
+    window.scrollTo(0, 0);
+    
+    // Deshabilitar la restauración de scroll del navegador
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    
     const heroContent = heroContentWrapperRef.current;
     const heroText = heroTextContentRef.current;
     const targetSlot = targetSlotRef.current;
@@ -131,13 +158,19 @@ export default function HeroScrollEffect() {
     gsap.set(targetContent, {
       clearProps: 'all'
     });
+    
+    // Refrescar ScrollTrigger después de limpiar
+    ScrollTrigger.refresh(true);
 
     let tl: gsap.core.Timeline | null = null;
     let resizeTimer: NodeJS.Timeout;
     let handleResize: (() => void) | null = null;
+    let isMounted = true;
 
     // Pequeño delay para asegurar que el DOM esté listo
     const timer = setTimeout(() => {
+      // Verificar que el componente siga montado
+      if (!isMounted) return;
       // Verificar que targetSlot no sea null antes de usarlo
       if (!targetSlot) return;
       
@@ -263,6 +296,7 @@ export default function HeroScrollEffect() {
     
     // Cleanup function
     return () => {
+      isMounted = false;
       clearTimeout(timer);
       
       if (handleResize) {
@@ -273,7 +307,11 @@ export default function HeroScrollEffect() {
         tl.kill();
       }
       
+      // Limpiar todos los ScrollTriggers
       ScrollTrigger.getAll().forEach(st => st.kill());
+      
+      // Limpiar memoria de scroll para evitar saltos
+      ScrollTrigger.clearScrollMemory();
       
       // Resetear estilos inline al desmontar
       if (heroContent) {
@@ -288,6 +326,9 @@ export default function HeroScrollEffect() {
       if (navRef.current) {
         gsap.set(navRef.current, { clearProps: 'opacity' });
       }
+      
+      // Resetear scroll position
+      window.scrollTo(0, 0);
     };
   }, [isReady]);
 
