@@ -112,7 +112,7 @@ export default function Home() {
             text-align: center;
             padding: 16px 16px 30px;
             background: #f8f9fa;
-            margin-top: max(-55vh, -400px);
+            margin-top: -30vh;
             z-index: 1;
           }
           
@@ -161,7 +161,7 @@ export default function Home() {
           @media (min-width: 768px) {
             .hero-video-title-section {
               padding: 20px 24px 45px;
-              margin-top: max(-50vh, -380px);
+              margin-top: -35vh;
             }
             
             .hero-video-title {
@@ -184,7 +184,7 @@ export default function Home() {
           @media (min-width: 1024px) {
             .hero-video-title-section {
               padding: 20px 32px 60px;
-              margin-top: max(-55vh, -400px);
+              margin-top: -40vh;
             }
             
             .hero-video-title {

@@ -47,6 +47,7 @@ export default function HorizontalScrollSection({
 
     let scrollTriggerInstance: ScrollTrigger | null = null;
     let handleResize: (() => void) | null = null;
+    let timer: NodeJS.Timeout;
 
     const ctx = gsap.context(() => {
       const initHorizontalScroll = () => {
@@ -55,91 +56,64 @@ export default function HorizontalScrollSection({
         
         if (!pinWrap || !section) return;
 
-        // Esperar múltiples frames para asegurar que el DOM esté completamente renderizado
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            // Forzar un reflow para calcular correctamente el ancho
-            void pinWrap.offsetWidth;
-            
-            // Calcular el ancho total sumando el ancho de cada elemento hijo
-            const children = Array.from(pinWrap.children) as HTMLElement[];
-            let totalWidth = 0;
-            
-            children.forEach((child) => {
-              const rect = child.getBoundingClientRect();
-              const styles = window.getComputedStyle(child);
-              const marginLeft = parseFloat(styles.marginLeft) || 0;
-              const marginRight = parseFloat(styles.marginRight) || 0;
-              totalWidth += rect.width + marginLeft + marginRight;
-            });
-            
-            // También incluir el padding del contenedor
-            const pinWrapStyles = window.getComputedStyle(pinWrap);
-            const paddingLeft = parseFloat(pinWrapStyles.paddingLeft) || 0;
-            const paddingRight = parseFloat(pinWrapStyles.paddingRight) || 0;
-            totalWidth += paddingLeft + paddingRight;
-            
-            // Usar el mayor entre scrollWidth y el cálculo manual
-            const pinWrapWidth = Math.max(pinWrap.scrollWidth, totalWidth);
-            const viewportWidth = window.innerWidth;
-            const horizontalScrollLength = Math.max(0, pinWrapWidth - viewportWidth);
+        // Forzar un reflow para calcular correctamente el ancho
+        void pinWrap.offsetWidth;
+        
+        // Calcular el ancho total sumando el ancho de cada elemento hijo
+        const children = Array.from(pinWrap.children) as HTMLElement[];
+        let totalWidth = 0;
+        
+        children.forEach((child) => {
+          const rect = child.getBoundingClientRect();
+          const styles = window.getComputedStyle(child);
+          const marginLeft = parseFloat(styles.marginLeft) || 0;
+          const marginRight = parseFloat(styles.marginRight) || 0;
+          totalWidth += rect.width + marginLeft + marginRight;
+        });
+        
+        // También incluir el padding del contenedor
+        const pinWrapStyles = window.getComputedStyle(pinWrap);
+        const paddingLeft = parseFloat(pinWrapStyles.paddingLeft) || 0;
+        const paddingRight = parseFloat(pinWrapStyles.paddingRight) || 0;
+        totalWidth += paddingLeft + paddingRight;
+        
+        // Usar el mayor entre scrollWidth y el cálculo manual
+        const pinWrapWidth = Math.max(pinWrap.scrollWidth, totalWidth);
+        const viewportWidth = window.innerWidth;
+        const horizontalScrollLength = Math.max(0, pinWrapWidth - viewportWidth);
 
-            // Solo crear el ScrollTrigger si hay contenido para desplazar
-            if (horizontalScrollLength > 0 && pinWrapWidth > viewportWidth) {
-              // Limpiar cualquier ScrollTrigger existente
-              ScrollTrigger.getAll().forEach((trigger) => {
-                if (trigger.vars.trigger === section) {
-                  trigger.kill();
-                }
-              });
-
-              // Configurar el scroll horizontal
-              const animation = gsap.to(pinWrap, {
-                x: -horizontalScrollLength,
-                ease: 'none',
-                scrollTrigger: {
-                  trigger: section,
-                  pin: true,
-                  scrub: 1,
-                  start: 'top top',
-                  end: () => `+=${pinWrapWidth}`,
-                  anticipatePin: 1,
-                  invalidateOnRefresh: true,
-                  markers: false, // Cambiar a true para debug
-                },
-              });
-
-              scrollTriggerInstance = animation.scrollTrigger || null;
-
-              ScrollTrigger.refresh();
-              
-              console.log('Scroll horizontal configurado:', {
-                pinWrapWidth,
-                viewportWidth,
-                horizontalScrollLength,
-                totalWidth,
-                scrollWidth: pinWrap.scrollWidth,
-              });
-            } else {
-              console.warn('No hay suficiente contenido para scroll horizontal:', {
-                pinWrapWidth,
-                viewportWidth,
-                horizontalScrollLength,
-                totalWidth,
-                scrollWidth: pinWrap.scrollWidth,
-              });
+        // Solo crear el ScrollTrigger si hay contenido para desplazar
+        if (horizontalScrollLength > 0 && pinWrapWidth > viewportWidth) {
+          // Limpiar cualquier ScrollTrigger existente para esta sección
+          ScrollTrigger.getAll().forEach((trigger) => {
+            if (trigger.vars.trigger === section) {
+              trigger.kill();
             }
           });
-        });
+
+          // Configurar el scroll horizontal
+          const animation = gsap.to(pinWrap, {
+            x: -horizontalScrollLength,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: section,
+              pin: true,
+              scrub: 1,
+              start: 'top top',
+              end: () => `+=${pinWrapWidth}`,
+              anticipatePin: 1,
+              invalidateOnRefresh: true,
+              markers: false,
+            },
+          });
+
+          scrollTriggerInstance = animation.scrollTrigger || null;
+        }
       };
 
       // Esperar a que las imágenes se carguen y el DOM esté listo
       const setupScroll = () => {
-        // Verificar que los elementos existan
-        if (!pinWrapRef.current || !sectionRef.current) {
-          setTimeout(setupScroll, 100);
-          return;
-        }
+        if (!pinWrapRef.current || !sectionRef.current) return;
 
         // Esperar a que las imágenes se carguen
         const imageElements = pinWrapRef.current.querySelectorAll('img');
@@ -155,47 +129,29 @@ export default function HorizontalScrollSection({
         });
 
         Promise.all(imagePromises).then(() => {
-          // Usar requestAnimationFrame para asegurar que el layout esté calculado
+          // Usar un solo requestAnimationFrame
           requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-              // Forzar un reflow
-              if (pinWrapRef.current) {
-                void pinWrapRef.current.offsetWidth;
-              }
-              initHorizontalScroll();
-              // Refrescar ScrollTrigger después de inicializar
-              ScrollTrigger.refresh();
-            });
+            initHorizontalScroll();
+            ScrollTrigger.refresh();
           });
         });
       };
 
-      // Inicializar después de que todo esté cargado
-      const initializeScroll = () => {
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            setupScroll();
-          });
-        });
-      };
-
-      if (document.readyState === 'complete') {
-        initializeScroll();
-      } else {
-        window.addEventListener('load', initializeScroll, { once: true });
-        // También intentar después de un delay por si acaso
-        setTimeout(initializeScroll, 300);
-      }
+      // Delay para asegurar que el componente anterior termine su animación
+      timer = setTimeout(() => {
+        setupScroll();
+      }, 300);
 
       // Refrescar ScrollTrigger cuando cambie el tamaño de la ventana
+      let resizeTimeout: NodeJS.Timeout;
       handleResize = () => {
-        if (pinWrapRef.current && sectionRef.current) {
-          ScrollTrigger.refresh();
-          // Recalcular el scroll horizontal
-          setTimeout(() => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+          if (pinWrapRef.current && sectionRef.current) {
             initHorizontalScroll();
-          }, 100);
-        }
+            ScrollTrigger.refresh();
+          }
+        }, 250);
       };
       window.addEventListener('resize', handleResize);
 
@@ -224,6 +180,7 @@ export default function HorizontalScrollSection({
     }, sectionRef);
 
     return () => {
+      clearTimeout(timer);
       if (handleResize) {
         window.removeEventListener('resize', handleResize);
       }

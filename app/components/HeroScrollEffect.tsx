@@ -60,8 +60,12 @@ export default function HeroScrollEffect() {
       history.scrollRestoration = 'manual';
     }
     
-    // Limpiar todos los ScrollTriggers existentes
-    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    // Solo limpiar ScrollTriggers del hero, no todos
+    ScrollTrigger.getAll().forEach(trigger => {
+      if (trigger.vars.trigger === heroSectionRef.current) {
+        trigger.kill();
+      }
+    });
     
     // Scroll al inicio cuando el componente se monta
     window.scrollTo(0, 0);
@@ -73,10 +77,12 @@ export default function HeroScrollEffect() {
     
     return () => {
       clearTimeout(refreshTimer);
-      // Limpiar todos los ScrollTriggers al desmontar
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-      // Limpiar cualquier pin spacer residual
-      ScrollTrigger.clearScrollMemory();
+      // Solo limpiar ScrollTriggers del hero al desmontar
+      ScrollTrigger.getAll().forEach(trigger => {
+        if (trigger.vars.trigger === heroSectionRef.current) {
+          trigger.kill();
+        }
+      });
     };
   }, [pathname]);
 
@@ -326,9 +332,6 @@ export default function HeroScrollEffect() {
       if (navRef.current) {
         gsap.set(navRef.current, { clearProps: 'opacity' });
       }
-      
-      // Resetear scroll position
-      window.scrollTo(0, 0);
     };
   }, [isReady]);
 

@@ -107,10 +107,11 @@ body {
   -webkit-user-select: text;
   -moz-user-select: text;
   -ms-user-select: text;
+  overscroll-behavior-y: none;
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   background: #000000;
 }
 
@@ -284,9 +285,9 @@ a:hover {
   will-change: transform, opacity;
 }
 
-/* Smooth scrolling */
+/* Auto scrolling - necesario para GSAP ScrollTrigger */
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
 /* Mejora de rendimiento para elementos animados */
