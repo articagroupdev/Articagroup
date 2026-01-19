@@ -951,5 +951,203 @@
         }
       }
     }
+  },
+  "legal": {
+    "avisoLegal": {
+      "title": "Legal Notice",
+      "intro": "Artica Group LLC is the owner and service provider of the information society of this website.",
+      "companyData": {
+        "title": "Company Information",
+        "name": "Company Name:",
+        "nameValue": "Artica Group LLC",
+        "fiscalAddress": "Fiscal Address:",
+        "fiscalAddressValue": "3550 NW 85TH CT #100 APT 447 MIAMI, FL 33122, United States",
+        "commercialAddress": "Commercial Address:",
+        "commercialAddressValue": "7701 NW 46th St Suite 1-A, Miami, FL 33166, United States"
+      },
+      "registrationInfo": {
+        "title": "Registration Information",
+        "documentNumber": "Document Number:",
+        "documentNumberValue": "L22000322400",
+        "feiEin": "FEI/EIN Number:",
+        "feiEinValue": "88-3388560",
+        "dateFiled": "Date Filed:",
+        "dateFiledValue": "07/20/2022",
+        "effectiveDate": "Effective Date:",
+        "effectiveDateValue": "07/15/2022",
+        "state": "State:",
+        "stateValue": "Florida (FL)",
+        "status": "Status:",
+        "statusValue": "ACTIVE"
+      },
+      "aboutWebsite": {
+        "title": "About this Website",
+        "text1": "Access to the Artica Group LLC website is free, unless otherwise stated in the specific terms and conditions of specific services, where prices, applicable taxes and shipping costs, if any, will be detailed.",
+        "text2": "This legal notice is complemented by our Privacy Policy, our General Terms of Use and, where applicable, the specific conditions of each service offered on this website."
+      },
+      "services": {
+        "title": "Services Offered",
+        "intro": "Artica Group LLC offers the following digital marketing services:",
+        "list": [
+          "Audiovisual content creation",
+          "Advertising campaigns (Ads)",
+          "Community Management",
+          "Graphic design",
+          "Web development",
+          "Video editing",
+          "Strategic positioning and communication",
+          "Online advertising"
+        ]
+      },
+      "intellectualProperty": {
+        "title": "Intellectual Property",
+        "text": "All content on this website, including texts, photographs, graphics, images, icons, technology, software, as well as its graphic design and source codes, constitute a work whose ownership belongs to Artica Group LLC, without any exploitation rights being understood as transferred to the user beyond what is strictly necessary for proper use of the website."
+      },
+      "responsibility": {
+        "title": "Responsibility",
+        "text": "Artica Group LLC is not responsible for damages and losses of any nature that may arise from the availability and technical continuity of the operation of the website. In no case will Artica Group LLC be responsible for damages and losses that may be produced by the use and/or misuse of the website."
+      },
+      "contact": {
+        "title": "Contact Information",
+        "text1": "To contact Artica Group LLC, you can reach us at the following email address:",
+        "email": "info@articagroup.us",
+        "text2": "or at the following phone number:",
+        "phone": "+1 (305) 619-5878",
+        "schedule": "Business Hours:",
+        "scheduleValue": "Monday to Sunday from 9:00 AM to 5:00 PM (EST)",
+        "address": "Commercial Address:",
+        "addressValue": "7701 NW 46th St Suite 1-A, Miami, FL 33166, United States"
+      }
+    },
+    "politicaPrivacidad": {
+      "title": "Privacy Policy",
+      "intro": "At Artica Group LLC, we value your privacy. This policy explains how we collect, use and protect your personal information.",
+      "section1": {
+        "title": "1. Information We Collect",
+        "text": "We collect information that you provide to us directly through our contact forms or newsletter subscription, such as:",
+        "list": [
+          "Name and surname",
+          "Email address",
+          "Company name",
+          "Phone number"
+        ]
+      },
+      "section2": {
+        "title": "2. Use of Information",
+        "text": "We use your information to:",
+        "list": [
+          "Respond to your inquiries about our services",
+          "Send newsletters and marketing updates",
+          "Improve user experience on our website",
+          "Comply with legal obligations"
+        ]
+      },
+      "section3": {
+        "title": "3. Data Protection",
+        "text": "We implement technical and organizational security measures to protect your personal data against unauthorized access, alteration or disclosure."
+      },
+      "section4": {
+        "title": "4. Sharing with Third Parties",
+        "text": "We do not sell or rent your personal information to third parties. We may share data with trusted service providers that help us operate our site (such as hosting services or email marketing platforms), always under confidentiality agreements."
+      },
+      "section5": {
+        "title": "5. Your Rights",
+        "text": "You have the right to access, correct or request the deletion of your personal data. To exercise these rights, you can contact us at"
+      },
+      "contact": {
+        "title": "Contact Information",
+        "company": "Company:",
+        "companyValue": "Artica Group LLC",
+        "address": "Address:",
+        "addressValue": "7701 NW 46th St Suite 1-A, Miami, FL 33166, United States",
+        "email": "Email:",
+        "emailValue": "info@articagroup.us",
+        "phone": "Phone:",
+        "phoneValue": "+1 (305) 619-5878"
+      }
+    },
+    "politicaCookies": {
+      "title": "Cookie Policy",
+      "intro": "This website uses cookies to improve your browsing experience and analyze our traffic.",
+      "section1": {
+        "title": "1. What are cookies?",
+        "text": "Cookies are small text files that are stored on your device when you visit a website. They help the site function properly and provide information to the site owners."
+      },
+      "section2": {
+        "title": "2. Types of Cookies we use",
+        "necessary": {
+          "title": "Necessary Cookies",
+          "text": "Essential for the site to function and for you to navigate it."
+        },
+        "analytics": {
+          "title": "Analytics Cookies",
+          "text": "Allow us to count visits and traffic sources to measure and improve our site's performance (for example, Google Analytics)."
+        },
+        "marketing": {
+          "title": "Marketing Cookies",
+          "text": "Used to track visitors across websites in order to display relevant ads, such as Facebook pixel (fbpx)."
+        }
+      },
+      "section3": {
+        "title": "3. Cookie Control",
+        "text": "You can choose to accept or reject cookies. Most web browsers accept cookies automatically, but you can usually modify your browser settings to reject them if you prefer. Please note that this may prevent you from taking full advantage of the website."
+      },
+      "section4": {
+        "title": "4. Policy Changes",
+        "text": "We may update this Cookie Policy periodically. We recommend that you review this page regularly."
+      },
+      "contact": {
+        "title": "Contact Information",
+        "company": "Company:",
+        "companyValue": "Artica Group LLC",
+        "address": "Address:",
+        "addressValue": "7701 NW 46th St Suite 1-A, Miami, FL 33166, United States",
+        "email": "Email:",
+        "emailValue": "info@articagroup.us",
+        "phone": "Phone:",
+        "phoneValue": "+1 (305) 619-5878"
+      }
+    },
+    "condicionesUso": {
+      "title": "Terms of Use",
+      "intro": "Welcome to Artica Group LLC. By accessing and using our website",
+      "introLink": "https://articagroup.us/",
+      "introEnd": ", you agree to comply and be bound by the following terms and conditions of use.",
+      "section1": {
+        "title": "1. Acceptance of Terms",
+        "text": "Access to this website implies full acceptance of these terms. If you do not agree with any part of these terms, you should not use our services or access this site."
+      },
+      "section2": {
+        "title": "2. Services",
+        "text": "Artica Group offers digital marketing services, content creation, Ads campaigns, Community Management, graphic design, web development and video editing. We reserve the right to modify or discontinue any service at any time without prior notice."
+      },
+      "section3": {
+        "title": "3. Intellectual Property",
+        "text": "All content on this site, including text, graphics, logos, icons, images and software, is the property of Artica Group LLC or its content providers and is protected by international and United States intellectual property laws."
+      },
+      "section4": {
+        "title": "4. Permitted Use",
+        "text": "You agree to use the website solely for lawful purposes. Reproduction, duplication, copying or exploitation of any part of the site for commercial purposes without our express written consent is prohibited."
+      },
+      "section5": {
+        "title": "5. Limitation of Liability",
+        "text": "Artica Group LLC shall not be liable for any direct, indirect or incidental damages resulting from the use or inability to use this site or services contracted through it."
+      },
+      "section6": {
+        "title": "6. Applicable Law",
+        "text": "These terms are governed by the laws of the State of Florida, United States, without regard to its conflicts of legal principles."
+      },
+      "contact": {
+        "title": "Contact Information",
+        "company": "Company:",
+        "companyValue": "Artica Group LLC",
+        "address": "Address:",
+        "addressValue": "7701 NW 46th St Suite 1-A, Miami, FL 33166, United States",
+        "email": "Email:",
+        "emailValue": "info@articagroup.us",
+        "phone": "Phone:",
+        "phoneValue": "+1 (305) 619-5878"
+      }
+    }
   }
 }
