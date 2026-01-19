@@ -731,7 +731,7 @@ export default function HeroScrollEffect() {
                     }}
                     className="hidden lg:flex items-center justify-center w-7 h-7 xl:w-8 xl:h-8 transition-all duration-300 hover:scale-110 overflow-hidden rounded"
                     aria-label="Cambiar idioma"
-                    title={language === 'es' ? 'Change to English' : 'Cambiar a Espa?ol'}
+                    title={language === 'es' ? 'Change to English' : 'Cambiar a Español'}
                   >
                     {language === 'es' ? (
                       <ES className="w-full h-full object-cover" />
@@ -902,44 +902,84 @@ export default function HeroScrollEffect() {
                           </svg>
                         </button>
                         {isServicesOpen && (
-                          <ul className="mt-2 ml-2 space-y-1 border-l-2 border-[#13B9D5]/30 pl-5">
+                          <ul className="mt-2 ml-2 space-y-1 border-l-2 border-[#13B9D5]/30 pl-4" style={{ position: 'relative', zIndex: 10 }}>
                             <li>
-                              <Link href="/services/desarrollo-web" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
+                              <Link 
+                                href="/services/desarrollo-web" 
+                                onClick={() => setIsMenuOpen(false)} 
+                                className="block py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
+                                style={{ fontSize: '14px', color: '#1a1a2e', textDecoration: 'none' }}
+                              >
                                 Desarrollo Web
                               </Link>
                             </li>
                             <li>
-                              <Link href="/services/diseno-grafico" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
-                                Dise?o Gr?fico
+                              <Link 
+                                href="/services/diseno-grafico" 
+                                onClick={() => setIsMenuOpen(false)} 
+                                className="block py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
+                                style={{ fontSize: '14px', color: '#1a1a2e', textDecoration: 'none' }}
+                              >
+                                Diseño Gráfico
                               </Link>
                             </li>
                             <li>
-                              <Link href="/services/posicionamiento-comunicacion" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
+                              <Link 
+                                href="/services/posicionamiento-comunicacion" 
+                                onClick={() => setIsMenuOpen(false)} 
+                                className="block py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
+                                style={{ fontSize: '14px', color: '#1a1a2e', textDecoration: 'none' }}
+                              >
                                 Estrategia
                               </Link>
                             </li>
                             <li>
-                              <Link href="/services/edicion-videos" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
-                                Edici?n de Videos
+                              <Link 
+                                href="/services/edicion-videos" 
+                                onClick={() => setIsMenuOpen(false)} 
+                                className="block py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
+                                style={{ fontSize: '14px', color: '#1a1a2e', textDecoration: 'none' }}
+                              >
+                                Edición de Videos
                               </Link>
                             </li>
                             <li>
-                              <Link href="/services/publicidad-online" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
+                              <Link 
+                                href="/services/publicidad-online" 
+                                onClick={() => setIsMenuOpen(false)} 
+                                className="block py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
+                                style={{ fontSize: '14px', color: '#1a1a2e', textDecoration: 'none' }}
+                              >
                                 Publicidad Online
                               </Link>
                             </li>
                             <li>
-                              <Link href="/services/creacion-contenido" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
-                                Creaci?n de Contenido
+                              <Link 
+                                href="/services/creacion-contenido" 
+                                onClick={() => setIsMenuOpen(false)} 
+                                className="block py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
+                                style={{ fontSize: '14px', color: '#1a1a2e', textDecoration: 'none' }}
+                              >
+                                Creación de Contenido
                               </Link>
                             </li>
                             <li>
-                              <Link href="/services/campanas-ads" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
-                                Campa?as de Ads
+                              <Link 
+                                href="/services/campanas-ads" 
+                                onClick={() => setIsMenuOpen(false)} 
+                                className="block py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
+                                style={{ fontSize: '14px', color: '#1a1a2e', textDecoration: 'none' }}
+                              >
+                                Campañas de Ads
                               </Link>
                             </li>
                             <li>
-                              <Link href="/services/community-management" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
+                              <Link 
+                                href="/services/community-management" 
+                                onClick={() => setIsMenuOpen(false)} 
+                                className="block py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
+                                style={{ fontSize: '14px', color: '#1a1a2e', textDecoration: 'none' }}
+                              >
                                 Community Management
                               </Link>
                             </li>
@@ -990,7 +1030,7 @@ export default function HeroScrollEffect() {
                         }}
                         className="flex items-center justify-center w-12 h-12 transition-all duration-300 hover:scale-110 overflow-hidden rounded-lg border-2 border-[#272F66]/20 hover:border-[#13B9D5] shadow-sm"
                         aria-label="Cambiar idioma"
-                        title={language === 'es' ? 'Change to English' : 'Cambiar a Espa?ol'}
+                        title={language === 'es' ? 'Change to English' : 'Cambiar a Español'}
                       >
                         {language === 'es' ? (
                           <ES className="w-full h-full object-cover" />
