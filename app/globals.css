@@ -298,6 +298,20 @@ nav,
   perspective: 1000px;
 }
 
+/* Optimización de hardware para videos */
+video {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Optimización para secciones con scroll */
+.horizontal-scroll-section {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
 /* Estilos para Locomotive Scroll - exactamente como en el código original */
 .locomotive-container,
 .container {
@@ -378,6 +392,10 @@ nav,
   justify-content: flex-start;
   align-items: center;
   padding: 50px 10vw;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
 }
 
 .pin-wrap > * {
@@ -389,6 +407,10 @@ nav,
   height: 80vh;
   width: auto;
   object-fit: cover;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform;
 }
 
 .pin-wrap h2 {

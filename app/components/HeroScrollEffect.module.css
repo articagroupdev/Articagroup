@@ -52,6 +52,9 @@
   padding: 0;
   will-change: transform; /* Optimización para animaciones */
   background-color: transparent; /* No mostrar fondo de color, solo video o imagen de fallback */
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 /* Imagen de fondo del hero - Solo visible cuando hay error en el video */
@@ -83,6 +86,10 @@
   padding: 0;
   border: none;
   z-index: 0;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform;
 }
 
 /* Overlay oscuro */

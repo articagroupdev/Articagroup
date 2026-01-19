@@ -91,14 +91,20 @@ export default function HorizontalScrollSection({
             }
           });
 
-          // Configurar el scroll horizontal
+          // Configurar el scroll horizontal con optimización de hardware
+          gsap.set(pinWrap, {
+            force3D: true,
+            z: 0.01,
+          });
+
           const animation = gsap.to(pinWrap, {
             x: -horizontalScrollLength,
             ease: 'none',
+            force3D: true,
             scrollTrigger: {
               trigger: section,
               pin: true,
-              scrub: 1,
+              scrub: 0.5,
               start: 'top top',
               end: () => `+=${pinWrapWidth}`,
               anticipatePin: 1,
@@ -161,6 +167,7 @@ export default function HorizontalScrollSection({
           opacity: 0,
           y: 50,
           x: -30,
+          force3D: true,
         });
 
         gsap.to(titleRef.current, {
@@ -169,11 +176,12 @@ export default function HorizontalScrollSection({
           x: 0,
           duration: 1.5,
           ease: 'power2.out',
+          force3D: true,
           scrollTrigger: {
             trigger: titleRef.current,
             start: 'top 100%',
             end: 'top 70%',
-            scrub: 1.5,
+            scrub: 0.5,
           },
         });
       }
@@ -277,6 +285,9 @@ export default function HorizontalScrollSection({
               padding: 'clamp(30px, 50px, 50px) clamp(20px, 10vw, 10vw)',
               width: 'max-content',
               flexShrink: 0,
+              willChange: 'transform',
+              transform: 'translate3d(0, 0, 0)',
+              backfaceVisibility: 'hidden',
             }}
           >
           {title && (
@@ -297,6 +308,9 @@ export default function HorizontalScrollSection({
                 textShadow: '0 2px 10px rgba(0, 0, 0, 0.2)',
                 wordWrap: 'break-word',
                 overflowWrap: 'break-word',
+                transform: 'translate3d(0, 0, 0)',
+                willChange: 'transform, opacity',
+                backfaceVisibility: 'hidden',
               }}
             >
               {title.split(new RegExp(`(${highlightText})`, 'i')).map((part, index) => {
@@ -335,6 +349,9 @@ export default function HorizontalScrollSection({
                 padding: '0 clamp(20px, 5vw, 5vw)',
                 flexShrink: 0,
                 borderRadius: 'clamp(20px, 30px, 30px)',
+                transform: 'translate3d(0, 0, 0)',
+                willChange: 'transform',
+                backfaceVisibility: 'hidden',
               }}
             />
           ))}

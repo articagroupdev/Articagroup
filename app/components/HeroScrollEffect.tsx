@@ -244,7 +244,7 @@ export default function HeroScrollEffect() {
           trigger: heroSectionRef.current,
           start: 'top top',
           end: `+=${pinDistance}`,
-          scrub: 1,
+          scrub: 0.5,
           pin: true,
           anticipatePin: 1,
           markers: false,
@@ -269,7 +269,8 @@ export default function HeroScrollEffect() {
         opacity: 0,
         scale: 0.8,
         duration: 0.3,
-        ease: 'power2.in'
+        ease: 'power2.in',
+        force3D: true,
       }, 0);
       
       // 2. Transformaci?n del hero hacia el slot objetivo
@@ -279,14 +280,16 @@ export default function HeroScrollEffect() {
         y: finalTransform.translateY,
         borderRadius: finalTransform.borderRadius,
         duration: 1,
-        ease: 'power2.inOut'
+        ease: 'power2.inOut',
+        force3D: true,
       }, 0.15);
       
       // 3. Fade in del contenido del target slot
       tl.to(targetContent, {
         opacity: 1,
         duration: 0.4,
-        ease: 'power2.out'
+        ease: 'power2.out',
+        force3D: true,
       }, 0.8);
       
       // Recalcular en resize
@@ -1149,6 +1152,9 @@ export default function HeroScrollEffect() {
                   height: '100%',
                   objectFit: 'cover',
                   zIndex: videoError ? -1 : 0,
+                  transform: 'translate3d(0, 0, 0)',
+                  willChange: 'transform',
+                  backfaceVisibility: 'hidden',
                 }}
                 onError={() => {
                   console.error('Error loading video');
