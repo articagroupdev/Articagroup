@@ -28,6 +28,8 @@ export default function InfiniteImageLoop({ images }: InfiniteImageLoopProps) {
 
     let topAnimation: gsap.core.Tween | null = null;
     let bottomAnimation: gsap.core.Tween | null = null;
+    let retryCount = 0;
+    const maxRetries = 5;
 
     // Esperar a que las imágenes se carguen para obtener el ancho correcto
     const initAnimations = () => {
@@ -40,14 +42,19 @@ export default function InfiniteImageLoop({ images }: InfiniteImageLoopProps) {
       void bottomRow.offsetWidth;
 
       // Obtener el ancho de una copia completa (mitad del scrollWidth total)
-      const topRowWidth = topRow.scrollWidth / 2;
-      const bottomRowWidth = bottomRow.scrollWidth / 2;
+      let topRowWidth = topRow.scrollWidth / 2;
+      let bottomRowWidth = bottomRow.scrollWidth / 2;
 
       // Verificar que los anchos sean válidos
       if (topRowWidth <= 0 || bottomRowWidth <= 0) {
-        console.warn('InfiniteImageLoop: Anchos inválidos, reintentando...');
-        setTimeout(initAnimations, 200);
-        return;
+        retryCount++;
+        if (retryCount < maxRetries) {
+          setTimeout(initAnimations, 300);
+          return;
+        }
+        // Si alcanzamos el máximo de reintentos, usar valores por defecto
+        topRowWidth = topRowWidth || 1500;
+        bottomRowWidth = bottomRowWidth || 1500;
       }
 
       // Animación para la fila superior (hacia la derecha - x negativo)
@@ -59,9 +66,6 @@ export default function InfiniteImageLoop({ images }: InfiniteImageLoopProps) {
       });
 
       // Animación para la fila inferior (hacia la izquierda)
-      // Para que visualmente se mueva hacia la izquierda, empezamos desde una posición negativa
-      // y animamos hasta 0. Cuando se reinicia, vuelve a la posición negativa
-      // pero la segunda copia de imágenes está en la posición correcta para el bucle infinito
       gsap.set(bottomRow, { x: -bottomRowWidth });
       bottomAnimation = gsap.to(bottomRow, {
         x: 0,
