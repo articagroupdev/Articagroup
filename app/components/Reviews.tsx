@@ -106,35 +106,39 @@ export default function Reviews() {
       // Animación del header
       if (headerRef) {
         gsap.set(headerRef, { opacity: 0, y: 40 });
-        gsap.to(headerRef, {
-          opacity: 1,
-          y: 0,
-          duration: 1.5,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: headerRef,
-            start: 'top 100%',
-            end: 'top 70%',
-            scrub: 1.5,
+        
+        ScrollTrigger.create({
+          trigger: headerRef,
+          start: 'top 85%',
+          onEnter: () => {
+            gsap.to(headerRef, {
+              opacity: 1,
+              y: 0,
+              duration: 0.8,
+              ease: 'power2.out',
+            });
           },
+          once: true,
         });
       }
 
       // Animación del carousel
       if (carouselRef) {
         gsap.set(carouselRef, { opacity: 0, y: 50, scale: 0.95 });
-        gsap.to(carouselRef, {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 1.8,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: carouselRef,
-            start: 'top 100%',
-            end: 'top 60%',
-            scrub: 1.5,
+        
+        ScrollTrigger.create({
+          trigger: carouselRef,
+          start: 'top 85%',
+          onEnter: () => {
+            gsap.to(carouselRef, {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              duration: 1,
+              ease: 'power2.out',
+            });
           },
+          once: true,
         });
       }
     }, sectionRef);
