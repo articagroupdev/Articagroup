@@ -56,6 +56,7 @@ export default function Reviews() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [canGoPrev, setCanGoPrev] = useState(false);
   const [canGoNext, setCanGoNext] = useState(true);
+  const [isClient, setIsClient] = useState(false);
 
   const updateNavigation = (index: number) => {
     setCanGoPrev(index > 0);
@@ -93,58 +94,101 @@ export default function Reviews() {
   };
 
   useEffect(() => {
+    setIsClient(true);
     updateNavigation(currentIndex);
   }, []);
 
   useEffect(() => {
-    if (!sectionRef.current) return;
+    if (!sectionRef.current || !isClient) return;
 
-    const ctx = gsap.context(() => {
-      const headerRef = sectionRef.current?.querySelector('div.text-center');
-      const carouselRef = sectionRef.current?.querySelector('div.relative.w-full');
+    // Delay para asegurar que el DOM esté completamente listo
+    const timer = setTimeout(() => {
+      const ctx = gsap.context(() => {
+        const headerRef = sectionRef.current?.querySelector('div.text-center');
+        const carouselRef = sectionRef.current?.querySelector('div.relative.w-full');
 
-      // Animación del header
-      if (headerRef) {
-        gsap.set(headerRef, { opacity: 0, y: 40 });
-        
-        ScrollTrigger.create({
-          trigger: headerRef,
-          start: 'top 85%',
-          onEnter: () => {
-            gsap.to(headerRef, {
-              opacity: 1,
-              y: 0,
-              duration: 0.8,
-              ease: 'power2.out',
+        // Verificar si el elemento ya está en el viewport antes de ocultar
+        const isInViewport = (element: Element) => {
+          const rect = element.getBoundingClientRect();
+          return rect.top < window.innerHeight && rect.bottom > 0;
+        };
+
+        // Animación del header
+        if (headerRef) {
+          // Solo ocultar si NO está en viewport
+          if (!isInViewport(headerRef)) {
+            gsap.set(headerRef, { opacity: 0, y: 40 });
+            
+            ScrollTrigger.create({
+              trigger: headerRef,
+              start: 'top 85%',
+              onEnter: () => {
+                gsap.to(headerRef, {
+                  opacity: 1,
+                  y: 0,
+                  duration: 0.8,
+                  ease: 'power2.out',
+                });
+              },
+              once: true,
             });
-          },
-          once: true,
-        });
-      }
+          } else {
+            // Ya está en viewport, mostrar inmediatamente
+            gsap.set(headerRef, { opacity: 1, y: 0 });
+          }
 
-      // Animación del carousel
-      if (carouselRef) {
-        gsap.set(carouselRef, { opacity: 0, y: 50, scale: 0.95 });
-        
-        ScrollTrigger.create({
-          trigger: carouselRef,
-          start: 'top 85%',
-          onEnter: () => {
-            gsap.to(carouselRef, {
-              opacity: 1,
-              y: 0,
-              scale: 1,
-              duration: 1,
-              ease: 'power2.out',
+          // Fallback: mostrar después de 2 segundos si no se ha activado
+          setTimeout(() => {
+            if (headerRef && window.getComputedStyle(headerRef).opacity === '0') {
+              gsap.set(headerRef, { opacity: 1, y: 0 });
+            }
+          }, 2000);
+        }
+
+        // Animación del carousel
+        if (carouselRef) {
+          // Solo ocultar si NO está en viewport
+          if (!isInViewport(carouselRef)) {
+            gsap.set(carouselRef, { opacity: 0, y: 50, scale: 0.95 });
+            
+            ScrollTrigger.create({
+              trigger: carouselRef,
+              start: 'top 85%',
+              onEnter: () => {
+                gsap.to(carouselRef, {
+                  opacity: 1,
+                  y: 0,
+                  scale: 1,
+                  duration: 1,
+                  ease: 'power2.out',
+                });
+              },
+              once: true,
             });
-          },
-          once: true,
-        });
-      }
-    }, sectionRef);
+          } else {
+            // Ya está en viewport, mostrar inmediatamente
+            gsap.set(carouselRef, { opacity: 1, y: 0, scale: 1 });
+          }
 
-    return () => ctx.revert();
-  }, []);
+          // Fallback: mostrar después de 2 segundos si no se ha activado
+          setTimeout(() => {
+            if (carouselRef && window.getComputedStyle(carouselRef).opacity === '0') {
+              gsap.set(carouselRef, { opacity: 1, y: 0, scale: 1 });
+            }
+          }, 2000);
+        }
+
+        // Refrescar ScrollTrigger después de configurar
+        ScrollTrigger.refresh();
+      }, sectionRef);
+
+      return () => ctx.revert();
+    }, 100);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [isClient]);
 
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, i) => (
