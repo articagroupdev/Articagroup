@@ -1100,7 +1100,7 @@ export default function PortfolioPage() {
                               }}
                               className={styles.prev}
                             >
-                              Prev
+                              {t('portfolio.buttons.prev')}
                             </button>
                             <button
                               ref={(el) => {
@@ -1108,7 +1108,7 @@ export default function PortfolioPage() {
                               }}
                               className={styles.next}
                             >
-                              Next
+                              {t('portfolio.buttons.next')}
                             </button>
                           </div>
                           <div 

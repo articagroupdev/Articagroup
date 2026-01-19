@@ -1149,5 +1149,26 @@
         "phoneValue": "+1 (305) 619-5878"
       }
     }
+  },
+  "portfolio": {
+    "sections": {
+      "ediciones": "VIDEO EDITING",
+      "diseno": "GRAPHIC DESIGN",
+      "email": "EMAIL MARKETING",
+      "web": "WEB DEVELOPMENT"
+    },
+    "buttons": {
+      "prev": "PREV",
+      "next": "NEXT"
+    },
+    "modal": {
+      "cerrar": "Close",
+      "disenoGrafico": "Graphic Design",
+      "herramientasUtilizadas": "Tools Used",
+      "imagenNoDisponible": "Image not available",
+      "verEnPantallaCompleta": "View fullscreen",
+      "cerrarPantallaCompleta": "Exit fullscreen",
+      "visitarSitioWeb": "Visit Website"
+    }
   }
 }
