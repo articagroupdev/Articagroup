@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import ES from 'country-flag-icons/react/3x2/ES';
 import US from 'country-flag-icons/react/3x2/US';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -16,6 +16,7 @@ export default function Navbar() {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const { language, setLanguage, t, isReady } = useLanguage();
   const pathname = usePathname();
+  const router = useRouter();
   const isPortfolioPage = pathname === '/portfolio';
   const navRef = useRef<HTMLElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
@@ -25,10 +26,23 @@ export default function Navbar() {
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
 
-  // Cerrar el menú de servicios al hacer clic fuera
+  // Función para navegar desde el menú móvil
+  const handleMobileNavigation = (href: string) => {
+    setIsMenuOpen(false);
+    setIsServicesOpen(false);
+    router.push(href);
+  };
+
+  // Cerrar el menú de servicios al hacer clic fuera (solo para desktop)
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as HTMLElement;
+      
+      // Si el clic es dentro del menú móvil, no hacer nada
+      if (mobileMenuRef.current?.contains(target)) {
+        return;
+      }
+      
       if (
         servicesMenuRef.current &&
         !servicesMenuRef.current.contains(target) &&
@@ -39,14 +53,14 @@ export default function Navbar() {
       }
     };
 
-    if (isServicesOpen) {
+    if (isServicesOpen && !isMenuOpen) {
       document.addEventListener('mousedown', handleClickOutside);
     }
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [isServicesOpen]);
+  }, [isServicesOpen, isMenuOpen]);
 
   // Animación del mega menú
   useEffect(() => {
@@ -591,46 +605,78 @@ export default function Navbar() {
                   </svg>
                 </button>
                 {isServicesOpen && (
-                  <ul className="mt-2 ml-2 space-y-1 border-l-2 border-[#13B9D5]/30 pl-5">
+                  <ul className="mt-2 ml-2 space-y-1 border-l-2 border-[#13B9D5]/30 pl-4" style={{ position: 'relative', zIndex: 10 }}>
                     <li>
-                      <Link href="/services/desarrollo-web" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e', fontFamily: 'var(--font-poppins), sans-serif' }}>
+                      <button 
+                        onClick={() => handleMobileNavigation('/services/desarrollo-web')} 
+                        className="block w-full text-left py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
+                        style={{ fontSize: '14px', color: '#1a1a2e', fontFamily: 'var(--font-poppins), sans-serif' }}
+                      >
                         {t('services.desarrolloWeb')}
-                      </Link>
+                      </button>
                     </li>
                     <li>
-                      <Link href="/services/diseno-grafico" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e', fontFamily: 'var(--font-poppins), sans-serif' }}>
+                      <button 
+                        onClick={() => handleMobileNavigation('/services/diseno-grafico')} 
+                        className="block w-full text-left py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
+                        style={{ fontSize: '14px', color: '#1a1a2e', fontFamily: 'var(--font-poppins), sans-serif' }}
+                      >
                         {t('services.disenoGrafico')}
-                      </Link>
+                      </button>
                     </li>
                     <li>
-                      <Link href="/services/posicionamiento-comunicacion" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e', fontFamily: 'var(--font-poppins), sans-serif' }}>
+                      <button 
+                        onClick={() => handleMobileNavigation('/services/posicionamiento-comunicacion')} 
+                        className="block w-full text-left py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
+                        style={{ fontSize: '14px', color: '#1a1a2e', fontFamily: 'var(--font-poppins), sans-serif' }}
+                      >
                         {t('services.posicionamientoComunicacion')}
-                      </Link>
+                      </button>
                     </li>
                     <li>
-                      <Link href="/services/edicion-videos" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e', fontFamily: 'var(--font-poppins), sans-serif' }}>
+                      <button 
+                        onClick={() => handleMobileNavigation('/services/edicion-videos')} 
+                        className="block w-full text-left py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
+                        style={{ fontSize: '14px', color: '#1a1a2e', fontFamily: 'var(--font-poppins), sans-serif' }}
+                      >
                         {t('services.edicionVideos')}
-                      </Link>
+                      </button>
                     </li>
                     <li>
-                      <Link href="/services/publicidad-online" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e', fontFamily: 'var(--font-poppins), sans-serif' }}>
+                      <button 
+                        onClick={() => handleMobileNavigation('/services/publicidad-online')} 
+                        className="block w-full text-left py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
+                        style={{ fontSize: '14px', color: '#1a1a2e', fontFamily: 'var(--font-poppins), sans-serif' }}
+                      >
                         {t('services.publicidadOnline')}
-                      </Link>
+                      </button>
                     </li>
                     <li>
-                      <Link href="/services/creacion-contenido" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e', fontFamily: 'var(--font-poppins), sans-serif' }}>
+                      <button 
+                        onClick={() => handleMobileNavigation('/services/creacion-contenido')} 
+                        className="block w-full text-left py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
+                        style={{ fontSize: '14px', color: '#1a1a2e', fontFamily: 'var(--font-poppins), sans-serif' }}
+                      >
                         {t('services.creacionContenido')}
-                      </Link>
+                      </button>
                     </li>
                     <li>
-                      <Link href="/services/campanas-ads" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e', fontFamily: 'var(--font-poppins), sans-serif' }}>
+                      <button 
+                        onClick={() => handleMobileNavigation('/services/campanas-ads')} 
+                        className="block w-full text-left py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
+                        style={{ fontSize: '14px', color: '#1a1a2e', fontFamily: 'var(--font-poppins), sans-serif' }}
+                      >
                         {t('services.campanasAds')}
-                      </Link>
+                      </button>
                     </li>
                     <li>
-                      <Link href="/services/community-management" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e', fontFamily: 'var(--font-poppins), sans-serif' }}>
+                      <button 
+                        onClick={() => handleMobileNavigation('/services/community-management')} 
+                        className="block w-full text-left py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
+                        style={{ fontSize: '14px', color: '#1a1a2e', fontFamily: 'var(--font-poppins), sans-serif' }}
+                      >
                         {t('services.communityManagement')}
-                      </Link>
+                      </button>
                     </li>
                   </ul>
                 )}

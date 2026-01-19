@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import ES from 'country-flag-icons/react/3x2/ES';
 import US from 'country-flag-icons/react/3x2/US';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -19,6 +19,14 @@ export default function HeroScrollEffect() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [videoError, setVideoError] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
+  
+  // Función para navegar desde el menú móvil
+  const handleMobileNavigation = (href: string) => {
+    setIsMenuOpen(false);
+    setIsServicesOpen(false);
+    router.push(href);
+  };
   
   // URL de Cloudinary para el video de fondo
   const videoSrc = 'https://res.cloudinary.com/dobuhpxof/video/upload/v1768399825/fondo-video_wnjx85.mp4';
@@ -766,19 +774,19 @@ export default function HeroScrollEffect() {
                   >
                     <div className="relative w-6 h-5 flex flex-col justify-center items-center">
                       <span 
-                        className={`absolute w-6 h-0.5 bg-[#272F66] rounded-full transition-all duration-300 ${
-                          isMenuOpen ? 'rotate-45 top-2.5' : 'top-0'
-                        }`}
+                        className={`absolute w-6 h-0.5 rounded-full transition-all duration-300 ${
+                          isScrolled ? 'bg-[#272F66]' : 'bg-white'
+                        } ${isMenuOpen ? 'rotate-45 top-2.5' : 'top-0'}`}
                       />
                       <span 
-                        className={`absolute w-6 h-0.5 bg-[#272F66] rounded-full transition-all duration-300 ${
-                          isMenuOpen ? 'opacity-0' : 'opacity-100 top-2'
-                        }`}
+                        className={`absolute w-6 h-0.5 rounded-full transition-all duration-300 ${
+                          isScrolled ? 'bg-[#272F66]' : 'bg-white'
+                        } ${isMenuOpen ? 'opacity-0' : 'opacity-100 top-2'}`}
                       />
                       <span 
-                        className={`absolute w-6 h-0.5 bg-[#272F66] rounded-full transition-all duration-300 ${
-                          isMenuOpen ? '-rotate-45 top-2.5' : 'top-4'
-                        }`}
+                        className={`absolute w-6 h-0.5 rounded-full transition-all duration-300 ${
+                          isScrolled ? 'bg-[#272F66]' : 'bg-white'
+                        } ${isMenuOpen ? '-rotate-45 top-2.5' : 'top-4'}`}
                       />
                     </div>
                   </button>
@@ -904,84 +912,76 @@ export default function HeroScrollEffect() {
                         {isServicesOpen && (
                           <ul className="mt-2 ml-2 space-y-1 border-l-2 border-[#13B9D5]/30 pl-4" style={{ position: 'relative', zIndex: 10 }}>
                             <li>
-                              <Link 
-                                href="/services/desarrollo-web" 
-                                onClick={() => setIsMenuOpen(false)} 
-                                className="block py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
-                                style={{ fontSize: '14px', color: '#1a1a2e', textDecoration: 'none' }}
+                              <button 
+                                onClick={() => handleMobileNavigation('/services/desarrollo-web')} 
+                                className="block w-full text-left py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
+                                style={{ fontSize: '14px', color: '#1a1a2e' }}
                               >
                                 Desarrollo Web
-                              </Link>
+                              </button>
                             </li>
                             <li>
-                              <Link 
-                                href="/services/diseno-grafico" 
-                                onClick={() => setIsMenuOpen(false)} 
-                                className="block py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
-                                style={{ fontSize: '14px', color: '#1a1a2e', textDecoration: 'none' }}
+                              <button 
+                                onClick={() => handleMobileNavigation('/services/diseno-grafico')} 
+                                className="block w-full text-left py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
+                                style={{ fontSize: '14px', color: '#1a1a2e' }}
                               >
                                 Diseño Gráfico
-                              </Link>
+                              </button>
                             </li>
                             <li>
-                              <Link 
-                                href="/services/posicionamiento-comunicacion" 
-                                onClick={() => setIsMenuOpen(false)} 
-                                className="block py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
-                                style={{ fontSize: '14px', color: '#1a1a2e', textDecoration: 'none' }}
+                              <button 
+                                onClick={() => handleMobileNavigation('/services/posicionamiento-comunicacion')} 
+                                className="block w-full text-left py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
+                                style={{ fontSize: '14px', color: '#1a1a2e' }}
                               >
                                 Estrategia
-                              </Link>
+                              </button>
                             </li>
                             <li>
-                              <Link 
-                                href="/services/edicion-videos" 
-                                onClick={() => setIsMenuOpen(false)} 
-                                className="block py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
-                                style={{ fontSize: '14px', color: '#1a1a2e', textDecoration: 'none' }}
+                              <button 
+                                onClick={() => handleMobileNavigation('/services/edicion-videos')} 
+                                className="block w-full text-left py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
+                                style={{ fontSize: '14px', color: '#1a1a2e' }}
                               >
                                 Edición de Videos
-                              </Link>
+                              </button>
                             </li>
                             <li>
-                              <Link 
-                                href="/services/publicidad-online" 
-                                onClick={() => setIsMenuOpen(false)} 
-                                className="block py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
-                                style={{ fontSize: '14px', color: '#1a1a2e', textDecoration: 'none' }}
+                              <button 
+                                onClick={() => handleMobileNavigation('/services/publicidad-online')} 
+                                className="block w-full text-left py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
+                                style={{ fontSize: '14px', color: '#1a1a2e' }}
                               >
                                 Publicidad Online
-                              </Link>
+                              </button>
                             </li>
                             <li>
-                              <Link 
-                                href="/services/creacion-contenido" 
-                                onClick={() => setIsMenuOpen(false)} 
-                                className="block py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
-                                style={{ fontSize: '14px', color: '#1a1a2e', textDecoration: 'none' }}
+                              <button 
+                                onClick={() => handleMobileNavigation('/services/creacion-contenido')} 
+                                className="block w-full text-left py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
+                                style={{ fontSize: '14px', color: '#1a1a2e' }}
                               >
                                 Creación de Contenido
-                              </Link>
+                              </button>
                             </li>
                             <li>
-                              <Link 
-                                href="/services/campanas-ads" 
-                                onClick={() => setIsMenuOpen(false)} 
-                                className="block py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
-                                style={{ fontSize: '14px', color: '#1a1a2e', textDecoration: 'none' }}
+                              <button 
+                                onClick={() => handleMobileNavigation('/services/campanas-ads')} 
+                                className="block w-full text-left py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
+                                style={{ fontSize: '14px', color: '#1a1a2e' }}
                               >
                                 Campañas de Ads
-                              </Link>
+                              </button>
                             </li>
                             <li>
-                              <Link 
-                                href="/services/community-management" 
-                                onClick={() => setIsMenuOpen(false)} 
-                                className="block py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
-                                style={{ fontSize: '14px', color: '#1a1a2e', textDecoration: 'none' }}
+                              <button 
+                                onClick={() => handleMobileNavigation('/services/community-management')} 
+                                className="block w-full text-left py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
+                                style={{ fontSize: '14px', color: '#1a1a2e' }}
                               >
                                 Community Management
-                              </Link>
+                              </button>
                             </li>
                           </ul>
                         )}

@@ -893,9 +893,12 @@
         "description": "We build solid relationships with your followers, humanizing your brand and turning customers into true fans."
       },
       "consists": {
+        "title": "What does it consist of?",
         "description": "We handle the comprehensive management of your social channels. This includes daily interaction with your audience (responding to comments and messages), community moderation, creating engaging conversations and crisis management. We ensure that every interaction reflects your brand's tone of voice and values, fostering an environment of loyalty and trust."
       },
       "benefits": {
+        "title": "These are the benefits for your company",
+        "description": "Discover how our service can transform your digital presence and generate tangible results for your business.",
         "items": {
           "humanizacion": {
             "title": "Brand Humanization and Trust",
@@ -914,8 +917,9 @@
       "process": {
         "title": "Our Community Management Process",
         "subtitle": "We ensure that your brand is always active, well represented and protected, turning daily interaction into lasting loyalty.",
+        "imageAlt": "Professional Community Management",
         "steps": {
-          "establecimiento": {
+          "tono": {
             "title": "Establishment of Tone and Interaction Guidelines",
             "description": "We define response protocols and the official Tone of Voice of the brand. We create guides to manage frequently asked questions, positive comments, complaints and sales inquiries, ensuring consistency in every message."
           },
@@ -923,7 +927,7 @@
             "title": "Active Moderation and Social Listening",
             "description": "Our team monitors your channels 24/7. We respond to direct messages and comments in a timely manner, actively participate in key conversations and moderate the community to maintain a positive and safe environment."
           },
-          "fomento": {
+          "engagement": {
             "title": "Conversation Encouragement and Engagement Generation",
             "description": "We go beyond just responding. We create questions, surveys and posts designed to stimulate participation, increase organic engagement and generate valuable conversations around your brand or industry."
           },

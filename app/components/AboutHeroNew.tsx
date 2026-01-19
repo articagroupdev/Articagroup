@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import ES from 'country-flag-icons/react/3x2/ES';
 import US from 'country-flag-icons/react/3x2/US';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -16,6 +16,15 @@ export default function AboutHeroNew() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
+  
+  // Función para navegar desde el menú móvil
+  const handleMobileNavigation = (href: string) => {
+    setIsMenuOpen(false);
+    setIsServicesOpen(false);
+    router.push(href);
+  };
+  
   // URL de Cloudinary para el video de nosotros
   const videoSrc = 'https://res.cloudinary.com/dobuhpxof/video/upload/v1768399807/video-nosotros1_di7izx.mp4';
   const navRef = useRef<HTMLElement>(null);
@@ -661,46 +670,78 @@ export default function AboutHeroNew() {
                     </svg>
                   </button>
                   {isServicesOpen && (
-                    <ul className="mt-2 ml-2 space-y-1 border-l-2 border-[#13B9D5]/30 pl-5">
+                    <ul className="mt-2 ml-2 space-y-1 border-l-2 border-[#13B9D5]/30 pl-4" style={{ position: 'relative', zIndex: 10 }}>
                       <li>
-                        <Link href="/services/desarrollo-web" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
+                        <button 
+                          onClick={() => handleMobileNavigation('/services/desarrollo-web')} 
+                          className="block w-full text-left py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
+                          style={{ fontSize: '14px', color: '#1a1a2e' }}
+                        >
                           {t('services.desarrolloWeb')}
-                        </Link>
+                        </button>
                       </li>
                       <li>
-                        <Link href="/services/diseno-grafico" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
+                        <button 
+                          onClick={() => handleMobileNavigation('/services/diseno-grafico')} 
+                          className="block w-full text-left py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
+                          style={{ fontSize: '14px', color: '#1a1a2e' }}
+                        >
                           {t('services.disenoGrafico')}
-                        </Link>
+                        </button>
                       </li>
                       <li>
-                        <Link href="/services/posicionamiento-comunicacion" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
+                        <button 
+                          onClick={() => handleMobileNavigation('/services/posicionamiento-comunicacion')} 
+                          className="block w-full text-left py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
+                          style={{ fontSize: '14px', color: '#1a1a2e' }}
+                        >
                           {t('services.posicionamientoComunicacion')}
-                        </Link>
+                        </button>
                       </li>
                       <li>
-                        <Link href="/services/edicion-videos" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
+                        <button 
+                          onClick={() => handleMobileNavigation('/services/edicion-videos')} 
+                          className="block w-full text-left py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
+                          style={{ fontSize: '14px', color: '#1a1a2e' }}
+                        >
                           {t('services.edicionVideos')}
-                        </Link>
+                        </button>
                       </li>
                       <li>
-                        <Link href="/services/publicidad-online" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
+                        <button 
+                          onClick={() => handleMobileNavigation('/services/publicidad-online')} 
+                          className="block w-full text-left py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
+                          style={{ fontSize: '14px', color: '#1a1a2e' }}
+                        >
                           {t('services.publicidadOnline')}
-                        </Link>
+                        </button>
                       </li>
                       <li>
-                        <Link href="/services/creacion-contenido" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
+                        <button 
+                          onClick={() => handleMobileNavigation('/services/creacion-contenido')} 
+                          className="block w-full text-left py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
+                          style={{ fontSize: '14px', color: '#1a1a2e' }}
+                        >
                           {t('services.creacionContenido')}
-                        </Link>
+                        </button>
                       </li>
                       <li>
-                        <Link href="/services/campanas-ads" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
+                        <button 
+                          onClick={() => handleMobileNavigation('/services/campanas-ads')} 
+                          className="block w-full text-left py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
+                          style={{ fontSize: '14px', color: '#1a1a2e' }}
+                        >
                           {t('services.campanasAds')}
-                        </Link>
+                        </button>
                       </li>
                       <li>
-                        <Link href="/services/community-management" onClick={() => setIsMenuOpen(false)} className="block py-2.5 hover:text-[#13B9D5] transition-colors font-medium" style={{ fontSize: '14px', color: '#1a1a2e' }}>
+                        <button 
+                          onClick={() => handleMobileNavigation('/services/community-management')} 
+                          className="block w-full text-left py-3 px-2 hover:text-[#13B9D5] hover:bg-[#13B9D5]/5 rounded-lg transition-colors font-medium cursor-pointer" 
+                          style={{ fontSize: '14px', color: '#1a1a2e' }}
+                        >
                           {t('services.communityManagement')}
-                        </Link>
+                        </button>
                       </li>
                     </ul>
                   )}

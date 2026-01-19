@@ -52,7 +52,7 @@ export default function Footer() {
                   alt="ARTICA"
                   width={200}
                   height={124}
-                  className="h-5 sm:h-6 w-auto max-w-[400px]"  
+                  className="h-10 sm:h-12 w-auto max-w-[400px]"  
                 />
               </Link>
             </div>

@@ -893,9 +893,12 @@
         "description": "Construimos relaciones sólidas con tus seguidores, humanizando tu marca y convirtiendo clientes en verdaderos fans."
       },
       "consists": {
+        "title": "¿En qué consiste?",
         "description": "Nos encargamos de la gestión integral de tus canales sociales. Esto incluye la interacción diaria con tu audiencia (responder comentarios y mensajes), la moderación de la comunidad, la creación de conversaciones atractivas y la gestión de crisis. Nos aseguramos de que cada interacción refleje el tono de voz y los valores de tu marca, fomentando un entorno de lealtad y confianza."
       },
       "benefits": {
+        "title": "Estos son los beneficios para tu empresa",
+        "description": "Descubre cómo nuestro servicio puede transformar tu presencia digital y generar resultados tangibles para tu negocio.",
         "items": {
           "humanizacion": {
             "title": "Humanización y Confianza de la Marca",
@@ -914,8 +917,9 @@
       "process": {
         "title": "Nuestro Proceso de Community Management",
         "subtitle": "Aseguramos que tu marca esté siempre activa, bien representada y protegida, convirtiendo la interacción diaria en lealtad duradera.",
+        "imageAlt": "Community Management profesional",
         "steps": {
-          "establecimiento": {
+          "tono": {
             "title": "Establecimiento del Tono y Guías de Interacción",
             "description": "Definimos los protocolos de respuesta y el Tono de Voz oficial de la marca. Creamos guías para gestionar preguntas frecuentes, comentarios positivos, quejas y consultas de ventas, asegurando coherencia en cada mensaje."
           },
@@ -923,7 +927,7 @@
             "title": "Moderación Activa y Escucha Social",
             "description": "Nuestro equipo monitorea tus canales 24/7. Respondemos mensajes directos y comentarios de forma oportuna, participamos activamente en conversaciones clave y moderamos la comunidad para mantener un entorno positivo y seguro."
           },
-          "fomento": {
+          "engagement": {
             "title": "Fomento de Conversación y Generación de Engagement",
             "description": "Vamos más allá de solo responder. Creamos preguntas, encuestas y publicaciones diseñadas para estimular la participación, aumentar el engagement orgánico y generar conversaciones valiosas alrededor de tu marca o industria."
           },
