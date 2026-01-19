@@ -129,10 +129,13 @@ export default function ContactForm() {
                     <MdEmail className="w-5 h-5 sm:w-6 sm:h-6 text-[#ff9001]" />
                   </div>
                   <div>
-                    <p className="font-sans text-xs sm:text-sm text-gray-600 mb-1">{t('contact.form.eMail')}</p>
+                    <p className="font-sans text-xs sm:text-sm text-gray-600 mb-1" style={{ color: '#4B5563' }}>{t('contact.form.eMail')}</p>
                     <a 
                       href="mailto:info@articagroup.us" 
-                      className="font-sans text-sm sm:text-base text-gray-600 font-medium hover:text-[#ff9001] transition-colors"
+                      className="font-sans text-sm sm:text-base font-medium transition-colors"
+                      style={{ color: '#4B5563', textDecoration: 'none' }}
+                      onMouseEnter={(e) => e.currentTarget.style.color = '#ff9001'}
+                      onMouseLeave={(e) => e.currentTarget.style.color = '#4B5563'}
                     >
                       info@articagroup.us
                     </a>
@@ -144,10 +147,13 @@ export default function ContactForm() {
                     <MdPhone className="w-5 h-5 sm:w-6 sm:h-6 text-[#ff9001]" />
                   </div>
                   <div>
-                    <p className="font-sans text-xs sm:text-sm text-gray-600 mb-1">{t('contact.form.telefonoLabel')}</p>
+                    <p className="font-sans text-xs sm:text-sm text-gray-600 mb-1" style={{ color: '#4B5563' }}>{t('contact.form.telefonoLabel')}</p>
                     <a 
                       href="tel:+13056195878" 
-                      className="font-sans text-sm sm:text-base text-gray-600 font-medium hover:text-[#ff9001] transition-colors"
+                      className="font-sans text-sm sm:text-base font-medium transition-colors"
+                      style={{ color: '#4B5563', textDecoration: 'none' }}
+                      onMouseEnter={(e) => e.currentTarget.style.color = '#ff9001'}
+                      onMouseLeave={(e) => e.currentTarget.style.color = '#4B5563'}
                     >
                       +1 (305) 619-5878
                     </a>
