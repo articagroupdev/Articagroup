@@ -1231,12 +1231,13 @@ export default function HeroScrollEffect() {
           </div>
         </section>
 
-        {/* Slot invisible para la animación - Mínimo espacio y responsive */}
+        {/* Slot invisible para la animación */}
         <div style={{ 
           position: 'relative',
           height: '1px',
           overflow: 'visible'
         }}>
+          {/* Slot objetivo para la animación */}
           <div
             ref={targetSlotRef}
             style={{
@@ -1244,8 +1245,8 @@ export default function HeroScrollEffect() {
               top: '50vh',
               left: '50%',
               transform: 'translate(-50%, -50%)',
-              width: 'min(400px, 90vw)',
-              height: 'min(280px, 60vh)',
+              width: 'min(750px, 85vw)',
+              height: 'min(420px, 45vh)',
               opacity: 0,
               pointerEvents: 'none'
             }}
