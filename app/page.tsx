@@ -70,46 +70,17 @@ export default function Home() {
       <section 
         ref={titleSectionRef}
         className="hero-video-title-section"
-        style={{
-          position: 'relative',
-          width: '100%',
-          textAlign: 'center',
-          padding: 'clamp(16px, 3vw, 20px) 16px clamp(30px, 6vw, 60px)',
-          background: '#f8f9fa',
-          marginTop: 'max(-55vh, -400px)',
-          zIndex: 1,
-        }}
       >
         <h2
           ref={titleRef}
-          style={{
-            fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif',
-            fontSize: 'clamp(18px, 5vw, 48px)',
-            fontWeight: 'normal',
-            color: '#272F66',
-            lineHeight: '1.25',
-            margin: '0 auto',
-            width: 'min(750px, 85vw)',
-            maxWidth: '100%',
-            padding: '0',
-          }}
+          className="hero-video-title"
         >
           {t('hero.videoTitle')}
         </h2>
         
         {/* Icono decorativo debajo del título - Bombilla/Idea */}
-        <div 
-          style={{
-            marginTop: 'clamp(24px, 5vw, 40px)',
-            marginBottom: 'clamp(40px, 8vw, 80px)',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
+        <div className="icon-container">
           <svg 
-            width="48" 
-            height="48" 
             viewBox="0 0 24 24" 
             fill="none" 
             xmlns="http://www.w3.org/2000/svg"
@@ -134,7 +105,40 @@ export default function Home() {
         </div>
         
         <style jsx>{`
+          /* Estilos base - Mobile first */
+          .hero-video-title-section {
+            position: relative;
+            width: 100%;
+            text-align: center;
+            padding: 16px 16px 30px;
+            background: #f8f9fa;
+            margin-top: max(-55vh, -400px);
+            z-index: 1;
+          }
+          
+          .hero-video-title {
+            font-family: var(--font-kento), "Arial Black", Arial, sans-serif;
+            font-size: 20px;
+            font-weight: normal;
+            color: #272F66;
+            line-height: 1.25;
+            margin: 0 auto;
+            width: 90%;
+            max-width: 750px;
+            padding: 0;
+          }
+          
+          .icon-container {
+            margin-top: 24px;
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          
           .idea-icon {
+            width: 40px;
+            height: 40px;
             animation: floatBulb 3s ease-in-out infinite;
           }
           
@@ -152,6 +156,68 @@ export default function Home() {
           .idea-icon :global(.ray-3) { animation-delay: 0.4s; }
           .idea-icon :global(.ray-4) { animation-delay: 0.6s; }
           .idea-icon :global(.ray-5) { animation-delay: 0.8s; }
+          
+          /* Tablet portrait (768px+) */
+          @media (min-width: 768px) {
+            .hero-video-title-section {
+              padding: 20px 24px 45px;
+              margin-top: max(-50vh, -380px);
+            }
+            
+            .hero-video-title {
+              font-size: 32px;
+              width: 85%;
+            }
+            
+            .icon-container {
+              margin-top: 32px;
+              margin-bottom: 55px;
+            }
+            
+            .idea-icon {
+              width: 44px;
+              height: 44px;
+            }
+          }
+          
+          /* Tablet landscape / Small desktop (1024px+) */
+          @media (min-width: 1024px) {
+            .hero-video-title-section {
+              padding: 20px 32px 60px;
+              margin-top: max(-55vh, -400px);
+            }
+            
+            .hero-video-title {
+              font-size: 42px;
+              width: min(750px, 80%);
+            }
+            
+            .icon-container {
+              margin-top: 40px;
+              margin-bottom: 70px;
+            }
+            
+            .idea-icon {
+              width: 48px;
+              height: 48px;
+            }
+          }
+          
+          /* Desktop large (1280px+) */
+          @media (min-width: 1280px) {
+            .hero-video-title {
+              font-size: 48px;
+            }
+            
+            .icon-container {
+              margin-bottom: 80px;
+            }
+            
+            .idea-icon {
+              width: 52px;
+              height: 52px;
+            }
+          }
           
           @keyframes floatBulb {
             0%, 100% {

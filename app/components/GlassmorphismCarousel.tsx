@@ -181,6 +181,9 @@ export default function GlassmorphismCarousel() {
           return;
         }
         
+        let isDragging = false;
+        let clickTimeout: NodeJS.Timeout | null = null;
+        
         draggableInstance.current = Draggable.create(track, {
       type: 'x',
       // Sin bounds para permitir scroll infinito
@@ -193,6 +196,7 @@ export default function GlassmorphismCarousel() {
       edgeResistance: 0, // Sin resistencia en los bordes
       throwProps: true, // Habilitar propiedades de inercia mejoradas
       liveSnap: false, // Deshabilitar snap en vivo para movimiento más fluido
+      minimumMovement: 3, // Mínimo movimiento para considerar como arrastre
       snap: {
         x: function(endValue: number) {
           // Permitir movimiento libre sin snaps
@@ -200,9 +204,29 @@ export default function GlassmorphismCarousel() {
         }
       },
       onPress: function() {
-        // Pausar animación
+        isDragging = false;
+        // Limpiar timeout anterior
+        if (clickTimeout) {
+          clearTimeout(clickTimeout);
+        }
+        // Pausar animación temporalmente
         if (animationInstance.current) {
           animationInstance.current.pause();
+        }
+        // Si es solo un clic (sin arrastre), reanudar después de un breve delay
+        clickTimeout = setTimeout(() => {
+          if (!isDragging && animationInstance.current) {
+            currentX = gsap.getProperty(track, 'x') as number;
+            createAnimation(currentX);
+          }
+        }, 200);
+      },
+      onDragStart: function() {
+        isDragging = true;
+        // Cancelar el timeout de reanudación porque hay arrastre real
+        if (clickTimeout) {
+          clearTimeout(clickTimeout);
+          clickTimeout = null;
         }
       },
       onDrag: function() {
@@ -262,6 +286,16 @@ export default function GlassmorphismCarousel() {
           }
           
           // Reanudar animación desde la posición normalizada
+          createAnimation(currentX);
+        }
+      },
+      onRelease: function() {
+        // Si no hubo arrastre real, reanudar inmediatamente
+        if (!isDragging) {
+          if (clickTimeout) {
+            clearTimeout(clickTimeout);
+          }
+          currentX = gsap.getProperty(track, 'x') as number;
           createAnimation(currentX);
         }
       },
