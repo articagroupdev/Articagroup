@@ -72,7 +72,7 @@ export default function MissionVision() {
             {/* Efecto de brillo en hover */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/0 via-white/0 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
             
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 items-start">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 items-center sm:items-start">
               {/* Icono - Izquierda */}
               <div className="relative flex-shrink-0">
                 <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-[#ff9001] to-[#ff7700] rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-500">
@@ -83,7 +83,7 @@ export default function MissionVision() {
               </div>
 
               {/* Contenido - Derecha */}
-              <div className="flex-1">
+              <div className="flex-1 text-center sm:text-left">
                 <h3
                   className="text-lg sm:text-xl md:text-2xl font-extrabold text-[#272F66] mb-2 sm:mb-3 leading-tight"
                   style={{
@@ -123,7 +123,7 @@ export default function MissionVision() {
             {/* Efecto de brillo en hover */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/0 via-white/0 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
             
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 items-start">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 items-center sm:items-start">
               {/* Icono - Izquierda */}
               <div className="relative flex-shrink-0">
                 <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-[#ff9001] to-[#ff7700] rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-500">
@@ -134,7 +134,7 @@ export default function MissionVision() {
               </div>
 
               {/* Contenido - Derecha */}
-              <div className="flex-1">
+              <div className="flex-1 text-center sm:text-left">
                 <h3
                   className="text-lg sm:text-xl md:text-2xl font-extrabold text-[#272F66] mb-2 sm:mb-3 leading-tight"
                   style={{

@@ -129,7 +129,7 @@ export default function EdicionVideosPage() {
       {/* Hero Section */}
       <section
         ref={heroRef}
-        className="relative h-screen flex items-center px-4 sm:px-6 lg:px-8 overflow-hidden"
+        className="relative min-h-screen flex items-start md:items-center pt-20 md:pt-0 px-4 sm:px-6 lg:px-8 overflow-hidden"
       >
         {/* Background Image */}
         <div 
@@ -145,20 +145,20 @@ export default function EdicionVideosPage() {
         {/* Semi-transparent overlay */}
         <div className="absolute inset-0 bg-white/60" style={{ zIndex: 1 }}></div>
 
-        <div className="max-w-7xl mx-auto w-full relative z-10">
+        <div className="max-w-7xl mx-auto w-full relative z-10 pt-8 md:pt-0">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Left Column - Text Content */}
-            <div className="text-left">
-              <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 bg-[#13B9D5]/20 rounded-full border border-[#13B9D5]/30">
-                <div className="w-2 h-2 rounded-full bg-[#13B9D5] animate-pulse" />
-                <span className="text-xs sm:text-sm font-semibold text-[#13B9D5] uppercase tracking-wider">
+            <div className="text-center md:text-left">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 mb-4 sm:mb-6 bg-[#13B9D5]/20 rounded-full border border-[#13B9D5]/30">
+                <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#13B9D5] animate-pulse" />
+                <span className="text-[10px] sm:text-xs md:text-sm font-semibold text-[#13B9D5] uppercase tracking-wider">
                   {t('servicePages.common.badge')}
                 </span>
               </div>
 
               <h1
                 ref={titleRef}
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#272F66] mb-6 leading-tight text-left"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#272F66] mb-6 leading-tight text-center md:text-left"
                 style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'normal' }}
               >
                 {t('servicePages.edicionVideos.hero.title')}
@@ -166,14 +166,14 @@ export default function EdicionVideosPage() {
 
               <p
                 ref={subtitleRef}
-                className="text-xl sm:text-2xl text-[#272F66]/80 max-w-3xl leading-relaxed text-left mb-4"
+                className="text-base sm:text-xl md:text-2xl text-[#272F66]/80 max-w-3xl mx-auto md:mx-0 leading-relaxed text-center md:text-left mb-4"
                 style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
               >
                 {t('servicePages.edicionVideos.hero.subtitle')}
               </p>
 
               <p
-                className="text-lg sm:text-xl text-[#272F66]/70 max-w-3xl leading-relaxed text-left"
+                className="text-sm sm:text-base md:text-lg text-[#272F66]/70 max-w-3xl mx-auto md:mx-0 leading-relaxed text-center md:text-left"
                 style={{ fontFamily: 'var(--font-poppins), sans-serif' }}
               >
                 {t('servicePages.edicionVideos.hero.description')}
@@ -182,7 +182,7 @@ export default function EdicionVideosPage() {
 
             {/* Right Column - Animation */}
             <div className="flex items-center justify-center lg:justify-end">
-              <div className="w-full max-w-lg lg:max-w-xl xl:max-w-2xl">
+              <div className="w-full max-w-lg lg:max-w-xl xl:max-w-2xl pb-16 md:pb-0">
                 <DotLottieReact
                   src="https://lottie.host/0b0f35de-ad72-41de-a314-7700a33cc16a/biPDeqenCL.lottie"
                   loop
@@ -197,7 +197,7 @@ export default function EdicionVideosPage() {
       {/* ¿En qué consiste? Section */}
       <section
         ref={consistSectionRef}
-        className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden"
+        className="relative pt-20 pb-20 md:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden"
       >
         {/* Background Image */}
         <div 

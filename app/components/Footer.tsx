@@ -34,7 +34,8 @@ export default function Footer() {
         href="https://wa.me/13056195878"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform duration-300 z-[9998]"
+        className="fixed bottom-6 right-6 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform duration-300 z-[99997]"
+        style={{ zIndex: 99997 }}
         aria-label="Contactar por WhatsApp"
       >
         <FaWhatsapp className="w-7 h-7 text-white" />

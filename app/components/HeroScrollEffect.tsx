@@ -885,7 +885,7 @@ export default function HeroScrollEffect() {
                   {/* Bot?n m?vil */}
                   <button
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    className="lg:hidden p-2.5 hover:bg-gray-100 rounded-lg transition-all duration-200 font-bold"
+                    className="lg:hidden p-2.5 hover:bg-gray-100 rounded-lg transition-all duration-200 font-bold group"
                     style={{
                       color: '#272F66',
                       textShadow: 'none',
@@ -895,17 +895,17 @@ export default function HeroScrollEffect() {
                     <div className="relative w-6 h-5 flex flex-col justify-center items-center">
                       <span 
                         className={`absolute w-6 h-0.5 rounded-full transition-all duration-300 ${
-                          isScrolled ? 'bg-[#272F66]' : 'bg-white'
+                          isScrolled ? 'bg-[#272F66]' : 'bg-white group-hover:bg-[#272F66]'
                         } ${isMenuOpen ? 'rotate-45 top-2.5' : 'top-0'}`}
                       />
                       <span 
                         className={`absolute w-6 h-0.5 rounded-full transition-all duration-300 ${
-                          isScrolled ? 'bg-[#272F66]' : 'bg-white'
+                          isScrolled ? 'bg-[#272F66]' : 'bg-white group-hover:bg-[#272F66]'
                         } ${isMenuOpen ? 'opacity-0' : 'opacity-100 top-2'}`}
                       />
                       <span 
                         className={`absolute w-6 h-0.5 rounded-full transition-all duration-300 ${
-                          isScrolled ? 'bg-[#272F66]' : 'bg-white'
+                          isScrolled ? 'bg-[#272F66]' : 'bg-white group-hover:bg-[#272F66]'
                         } ${isMenuOpen ? '-rotate-45 top-2.5' : 'top-4'}`}
                       />
                     </div>

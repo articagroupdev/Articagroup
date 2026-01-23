@@ -295,7 +295,7 @@ export default function HorizontalScrollSection({
               ref={titleRef}
               className="horizontal-scroll-title"
               style={{
-                fontSize: 'clamp(1.3rem, 3.5vw, 3rem)',
+                fontSize: 'clamp(2.5rem, 3.5vw, 3rem)',
                 maxWidth: '650px',
                 minWidth: 'clamp(250px, 90vw, 60vw)',
                 padding: '0 clamp(16px, 4vw, 5vw)',

@@ -87,7 +87,7 @@ export default function AboutSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-14 lg:gap-20 items-center">
           {/* Contenido de texto - Izquierda */}
-          <div className="order-2 lg:order-1">
+          <div className="order-2 lg:order-1 text-center md:text-left">
             {/* Título */}
             <h2
               ref={titleRef}
