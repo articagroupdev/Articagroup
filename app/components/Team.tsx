@@ -164,8 +164,8 @@ export default function Team() {
                 />
                 
                 {/* Badge de rol */}
-                <div className="absolute top-3 left-1/2 md:left-3 transform -translate-x-1/2 md:transform-none bg-gradient-to-br from-[#ff9001] to-[#e67e00] px-3 py-1.5 rounded-lg shadow-lg">
-                  <span className="text-xs font-semibold text-white uppercase tracking-wide">
+                <div className="absolute top-3 left-3 bg-gradient-to-br from-[#ff9001] to-[#e67e00] px-4 py-1.5 rounded-lg shadow-lg z-10 whitespace-nowrap">
+                  <span className="text-xs sm:text-sm font-semibold text-white uppercase tracking-wide">
                     {member.role}
                   </span>
                 </div>

@@ -29,6 +29,13 @@
 }
 
 /* KENTO Font - Manual de Marca */
+/* NOTA: Los archivos de fuente KENTO deben estar en public/fonts/
+   Descomentar cuando los archivos estén disponibles:
+   - /fonts/KENTO.woff2
+   - /fonts/KENTO.woff
+   - /fonts/KENTO.otf
+*/
+/*
 @font-face {
   font-family: "KENTO";
   src: url("/fonts/KENTO.woff2") format("woff2"),
@@ -38,11 +45,13 @@
   font-style: normal;
   font-display: swap;
 }
+*/
 
 :root {
   --background: #000000;
   --foreground: #171717;
-  --font-kento: "KENTO", "Arial Black", "Arial", sans-serif;
+  /* KENTO temporalmente deshabilitado hasta que los archivos de fuente estén disponibles */
+  --font-kento: "Arial Black", "Arial", sans-serif;
   --font-poppins: var(--font-poppins), sans-serif;
 }
 
