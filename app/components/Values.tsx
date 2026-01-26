@@ -120,7 +120,7 @@ export default function Values() {
         <div className="text-center mb-10 sm:mb-12 md:mb-16">
           <h2
             ref={titleRef}
-            className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#272F66] mb-4 sm:mb-6 leading-tight"
+            className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#272F66] mb-4 sm:mb-6 leading-tight"
             style={{
               fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif',
               fontWeight: 'bold',

@@ -820,7 +820,7 @@ export default function ContactHero() {
 
           <h1
             ref={titleRef}
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#272F66] mb-3 sm:mb-4 md:mb-4 leading-tight tracking-tight text-center"
+            className="text-xl sm:text-xl md:text-2xl lg:text-3xl font-bold text-[#272F66] mb-3 sm:mb-4 md:mb-4 leading-tight tracking-tight text-center"
             style={{ 
               fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif',
               fontWeight: 'bold',

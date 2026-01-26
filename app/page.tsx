@@ -118,7 +118,7 @@ export default function Home() {
           
           .hero-video-title {
             font-family: var(--font-kento), "Arial Black", Arial, sans-serif;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: normal;
             color: #272F66;
             line-height: 1.25;
@@ -165,7 +165,7 @@ export default function Home() {
             }
             
             .hero-video-title {
-              font-size: 32px;
+              font-size: 28px;
               width: 85%;
             }
             
@@ -206,7 +206,7 @@ export default function Home() {
           /* Desktop large (1280px+) */
           @media (min-width: 1280px) {
             .hero-video-title {
-              font-size: 48px;
+              font-size: 40px;
             }
             
             .icon-container {

@@ -116,7 +116,7 @@ export default function Team() {
         <div className="mb-8 sm:mb-10 md:mb-12 text-center md:text-left">
           <h2
             ref={titleRef}
-            className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#272F66] mb-3 sm:mb-4 leading-tight"
+            className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#272F66] mb-3 sm:mb-4 leading-tight"
             style={{
               fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif',
               fontWeight: 'bold',

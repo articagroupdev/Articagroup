@@ -29,13 +29,6 @@
 }
 
 /* KENTO Font - Manual de Marca */
-/* NOTA: Los archivos de fuente KENTO deben estar en public/fonts/
-   Descomentar cuando los archivos estén disponibles:
-   - /fonts/KENTO.woff2
-   - /fonts/KENTO.woff
-   - /fonts/KENTO.otf
-*/
-/*
 @font-face {
   font-family: "KENTO";
   src: url("/fonts/KENTO.woff2") format("woff2"),
@@ -45,14 +38,13 @@
   font-style: normal;
   font-display: swap;
 }
-*/
 
 :root {
   --background: #000000;
   --foreground: #171717;
-  /* KENTO temporalmente deshabilitado hasta que los archivos de fuente estén disponibles */
-  --font-kento: "Arial Black", "Arial", sans-serif;
-  --font-poppins: var(--font-poppins), sans-serif;
+  /* KENTO activado - Fuente del Manual de Marca */
+  --font-kento: "KENTO", "Arial Black", "Arial", sans-serif;
+  /* Poppins se carga desde Next.js Font, la variable se define en layout.tsx */
 }
 
 @theme inline {
@@ -87,7 +79,7 @@
 }
 
 .font-poppins {
-  font-family: var(--font-poppins), sans-serif;
+  font-family: var(--font-poppins), "Poppins", sans-serif;
 }
 
 /* Tipografías globales según manual de marca */
@@ -98,8 +90,28 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.02em;
 }
 
-/* Subtítulos y párrafos: Poppins */
-p, .subtitle, [class*="subtitle"], [class*="description"] {
+/* Subtítulos: Poppins */
+.subtitle,
+[class*="subtitle"],
+h1 + p,
+h2 + p,
+h3 + p,
+h4 + p,
+h5 + p,
+h6 + p {
+  font-family: var(--font-poppins), sans-serif;
+}
+
+/* Párrafos: Poppins */
+p,
+span,
+div:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6):not([class*="kento"]) {
+  font-family: var(--font-poppins), sans-serif;
+}
+
+/* Descripciones: Poppins */
+[class*="description"],
+.description {
   font-family: var(--font-poppins), sans-serif;
 }
 
@@ -170,7 +182,7 @@ html {
 a {
   color: #fff;
   text-decoration: none;
-  font-family: "Nunito Sans", sans-serif;
+  font-family: var(--font-poppins), "Poppins", sans-serif;
   transition: color 0.3s, text-shadow 0.3s;
 }
 

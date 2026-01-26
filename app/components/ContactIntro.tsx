@@ -168,7 +168,7 @@ export default function ContactIntro() {
 
           <h2
             ref={titleRef}
-            className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#272F66] mb-6 sm:mb-8 leading-tight tracking-tight"
+            className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#272F66] mb-6 sm:mb-8 leading-tight tracking-tight"
             style={{
               fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif',
               fontWeight: 'bold',

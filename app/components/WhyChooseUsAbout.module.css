@@ -71,7 +71,7 @@
 
 .subtitle {
   font-family: var(--font-kento), "Arial Black", Arial, sans-serif;
-  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  font-size: clamp(1.1rem, 2.5vw, 1.75rem);
   font-weight: bold;
   color: #272F66;
   margin: 0 0 clamp(12px, 1.5vh, 20px) 0;
@@ -169,7 +169,7 @@
 
 .serviceTitle {
   font-family: var(--font-kento), "Arial Black", Arial, sans-serif;
-  font-size: clamp(20px, 2.5vw, 22px);
+  font-size: clamp(16px, 2vw, 18px);
   font-weight: bold;
   color: #272F66;
   margin: 0 0 clamp(12px, 1.5vh, 16px) 0;

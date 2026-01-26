@@ -260,9 +260,31 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
             await playPromise;
             console.log('Video playing successfully');
           }
-        } catch (error) {
-          console.error('Error loading/playing video:', error);
-          setVideoError(true);
+        } catch (error: any) {
+          // Manejar errores de reproducción automática (política del navegador)
+          if (error?.name === 'AbortError' || error?.name === 'NotAllowedError') {
+            // No es un error crítico, solo el navegador bloqueó el autoplay
+            // El video se puede reproducir cuando el usuario interactúe
+            setVideoError(false);
+            // Intentar reproducir cuando el usuario interactúe con la página
+            const handleUserInteraction = () => {
+              if (videoRef.current && videoRef.current.paused) {
+                videoRef.current.play().catch(() => {
+                  // Silenciar errores de reproducción
+                });
+              }
+              document.removeEventListener('click', handleUserInteraction);
+              document.removeEventListener('touchstart', handleUserInteraction);
+              document.removeEventListener('scroll', handleUserInteraction);
+            };
+            document.addEventListener('click', handleUserInteraction, { once: true });
+            document.addEventListener('touchstart', handleUserInteraction, { once: true });
+            document.addEventListener('scroll', handleUserInteraction, { once: true });
+          } else {
+            // Error real de carga del video
+            console.error('Error loading/playing video:', error);
+            setVideoError(true);
+          }
         }
       };
       

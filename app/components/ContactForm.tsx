@@ -110,7 +110,7 @@ export default function ContactForm() {
                 {t('contact.form.estamosAqui')}
               </p>
               
-              <h2 className="text-2xl sm:text-3xl md:text-3xl lg:text-5xl font-extrabold text-[#272F66] mb-3 sm:mb-4 md:mb-5 lg:mb-6 leading-tight" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
+              <h2 className="text-xl sm:text-xl md:text-2xl lg:text-3xl font-extrabold text-[#272F66] mb-3 sm:mb-4 md:mb-5 lg:mb-6 leading-tight" style={{ fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif', fontWeight: 'bold' }}>
                 {t('contact.form.hablemos')}
               </h2>
               

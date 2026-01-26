@@ -155,9 +155,30 @@ export default function AboutHeroNew() {
             await playPromise;
             console.log('Video playing successfully');
           }
-        } catch (error) {
-          console.error('Error loading/playing video:', error);
-          // No establecer error aquí, dejar que el onError del video lo maneje
+        } catch (error: any) {
+          // Manejar errores de reproducción automática (política del navegador)
+          if (error?.name === 'AbortError' || error?.name === 'NotAllowedError') {
+            // No es un error crítico, solo el navegador bloqueó el autoplay
+            // El video se puede reproducir cuando el usuario interactúe
+            // Intentar reproducir cuando el usuario interactúe con la página
+            const handleUserInteraction = () => {
+              if (videoRef.current && videoRef.current.paused) {
+                videoRef.current.play().catch(() => {
+                  // Silenciar errores de reproducción
+                });
+              }
+              document.removeEventListener('click', handleUserInteraction);
+              document.removeEventListener('touchstart', handleUserInteraction);
+              document.removeEventListener('scroll', handleUserInteraction);
+            };
+            document.addEventListener('click', handleUserInteraction, { once: true });
+            document.addEventListener('touchstart', handleUserInteraction, { once: true });
+            document.addEventListener('scroll', handleUserInteraction, { once: true });
+          } else {
+            // Error real de carga del video
+            console.error('Error loading/playing video:', error);
+            // Dejar que el onError del video lo maneje
+          }
         }
       };
       
@@ -846,7 +867,7 @@ export default function AboutHeroNew() {
 
           <h1
             ref={heroTextTitleRef}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#272F66] mb-6 sm:mb-8 leading-tight tracking-tight text-center"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#272F66] mb-6 sm:mb-8 leading-tight tracking-tight text-center"
             style={{ 
               fontFamily: 'var(--font-kento), "Arial Black", Arial, sans-serif',
               fontWeight: 'bold',
