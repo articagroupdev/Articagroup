@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useMemo } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Team() {
   const { t } = useLanguage();
   
-  const teamMembers = [
+  const teamMembers = useMemo(() => [
     {
       name: t('about.team.members.rodrigo.name'),
       role: t('about.team.members.rodrigo.role'),
@@ -30,7 +30,7 @@ export default function Team() {
       description: t('about.team.members.cesar.description'),
       image: '/img/PERSON3.jpg',
     },
-  ];
+  ], [t]);
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
@@ -164,8 +164,8 @@ export default function Team() {
                 />
                 
                 {/* Badge de rol */}
-                <div className="absolute top-3 left-3 bg-gradient-to-br from-[#ff9001] to-[#e67e00] px-4 py-1.5 rounded-lg shadow-lg z-10 whitespace-nowrap">
-                  <span className="text-xs sm:text-sm font-semibold text-white uppercase tracking-wide">
+                <div className="absolute top-3 left-3 bg-gradient-to-br from-[#ff9001] to-[#e67e00] px-3 py-1.5 sm:px-4 rounded-lg shadow-lg z-10 max-w-[85%]">
+                  <span className="text-[10px] sm:text-xs font-semibold text-white uppercase tracking-wide leading-tight block">
                     {member.role}
                   </span>
                 </div>
