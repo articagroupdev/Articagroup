@@ -456,9 +456,6 @@ export default function Navbar() {
             style={{
               color: isPortfolioPage ? '#272F66' : '#ffffff',
               whiteSpace: 'nowrap',
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-              maxWidth: '200px',
             }}
           >
             {t('nav.queremosImpulsarte')}

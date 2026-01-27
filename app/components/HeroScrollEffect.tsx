@@ -896,9 +896,6 @@ export default function HeroScrollEffect() {
                     style={{
                       color: isScrolled ? '#ffffff' : '#272F66',
                       whiteSpace: 'nowrap',
-                      overflow: 'hidden',
-                      textOverflow: 'ellipsis',
-                      maxWidth: '200px',
                     }}
                   >
                     {t('nav.queremosImpulsarte')}
@@ -1284,7 +1281,7 @@ export default function HeroScrollEffect() {
                     left: 0,
                     width: '100%',
                     height: '100%',
-                    backgroundImage: 'url(/img/fondo-hero1.webp)',
+                    backgroundImage: 'url(/img/IMG_7916.avif)',
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',

@@ -313,7 +313,7 @@ export default function Hero({ heroRef: externalHeroRef }: HeroProps = {} as Her
         <div 
           className="absolute inset-0 w-full h-full z-0"
           style={{
-            backgroundImage: 'url(/img/fondo-hero1.webp)',
+            backgroundImage: 'url(/img/IMG_7916.avif)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',

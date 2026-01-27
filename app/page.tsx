@@ -259,9 +259,8 @@ export default function Home() {
         introTextColor="#032f35"
         title={t('horizontalScroll.title')}
         images={[
-          '/img/588068320_18012707783802845_1660549442353988258_n.webp',
-          '/img/501718820_17992820474802845_1403293369934589556_n.webp',
-          '/img/527968796_18000270005802845_7302255861170608236_n.webp',
+          '/img/IMG_7914.avif',
+          '/img/DSC06793.avif',
         ]}
       />
       <WhyChooseUs />
