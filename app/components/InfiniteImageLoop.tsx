@@ -1,8 +1,7 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useMemo } from 'react';
 import gsap from 'gsap';
-import Image from 'next/image';
 
 interface InfiniteImageLoopProps {
   images: string[];
@@ -12,13 +11,18 @@ export default function InfiniteImageLoop({ images }: InfiniteImageLoopProps) {
   const topRowRef = useRef<HTMLDivElement>(null);
   const bottomRowRef = useRef<HTMLDivElement>(null);
 
-  // Dividir las imágenes en dos filas
-  const topImages = images.slice(0, Math.ceil(images.length / 2));
-  const bottomImages = images.slice(Math.ceil(images.length / 2));
-
-  // Duplicar las imágenes para el bucle infinito
-  const topImagesDuplicated = [...topImages, ...topImages];
-  const bottomImagesDuplicated = [...bottomImages, ...bottomImages];
+  // Memoizar la división de imágenes para evitar recálculos
+  const { topImages, bottomImages, topImagesDuplicated, bottomImagesDuplicated } = useMemo(() => {
+    const top = images.slice(0, Math.ceil(images.length / 2));
+    const bottom = images.slice(Math.ceil(images.length / 2));
+    // Solo duplicar una vez para el bucle infinito
+    return {
+      topImages: top,
+      bottomImages: bottom,
+      topImagesDuplicated: [...top, ...top],
+      bottomImagesDuplicated: [...bottom, ...bottom],
+    };
+  }, [images]);
 
   useEffect(() => {
     if (!topRowRef.current || !bottomRowRef.current) return;
@@ -36,6 +40,13 @@ export default function InfiniteImageLoop({ images }: InfiniteImageLoopProps) {
       // Limpiar animaciones anteriores si existen
       if (topAnimation) topAnimation.kill();
       if (bottomAnimation) bottomAnimation.kill();
+
+      // Optimizar con aceleración de hardware
+      gsap.set([topRow, bottomRow], {
+        force3D: true,
+        backfaceVisibility: 'hidden',
+        willChange: 'transform',
+      });
 
       // Forzar un reflow para calcular correctamente el ancho
       void topRow.offsetWidth;
@@ -57,21 +68,28 @@ export default function InfiniteImageLoop({ images }: InfiniteImageLoopProps) {
         bottomRowWidth = bottomRowWidth || 1500;
       }
 
-      // Animación para la fila superior (hacia la derecha - x negativo)
+      // Animación optimizada para la fila superior (hacia la derecha - x negativo)
       topAnimation = gsap.to(topRow, {
         x: -topRowWidth,
         duration: 30,
         ease: 'none',
         repeat: -1,
+        force3D: true,
+        immediateRender: false,
       });
 
-      // Animación para la fila inferior (hacia la izquierda)
-      gsap.set(bottomRow, { x: -bottomRowWidth });
+      // Animación optimizada para la fila inferior (hacia la izquierda)
+      gsap.set(bottomRow, { 
+        x: -bottomRowWidth,
+        force3D: true,
+      });
       bottomAnimation = gsap.to(bottomRow, {
         x: 0,
         duration: 30,
         ease: 'none',
         repeat: -1,
+        force3D: true,
+        immediateRender: false,
       });
     };
 
@@ -94,16 +112,13 @@ export default function InfiniteImageLoop({ images }: InfiniteImageLoopProps) {
       
       const checkLoaded = () => {
         loadedCount++;
-        if (loadedCount === totalImages && !hasStarted) {
+        // Iniciar animación cuando al menos el 50% de las imágenes estén cargadas
+        // Esto mejora el tiempo de inicio percibido
+        if ((loadedCount >= Math.ceil(totalImages * 0.5) || loadedCount === totalImages) && !hasStarted) {
           hasStarted = true;
-          // Usar múltiples requestAnimationFrame para asegurar que el layout esté calculado
+          // Usar un solo requestAnimationFrame para mejor rendimiento
           requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-              // Forzar un reflow adicional
-              void topRow.offsetWidth;
-              void bottomRow.offsetWidth;
-              initAnimations();
-            });
+            initAnimations();
           });
         }
       };
@@ -111,7 +126,7 @@ export default function InfiniteImageLoop({ images }: InfiniteImageLoopProps) {
       // Verificar todas las imágenes
       allImages.forEach((img) => {
         const imageElement = img as HTMLImageElement;
-        // Para Next.js Image, verificar tanto complete como naturalHeight
+        // Verificar si la imagen ya está cargada
         if (imageElement.complete && imageElement.naturalHeight > 0) {
           checkLoaded();
         } else {
@@ -121,49 +136,39 @@ export default function InfiniteImageLoop({ images }: InfiniteImageLoopProps) {
         }
       });
 
-      // Fallback: si después de 2 segundos no se han cargado todas, inicializar de todos modos
+      // Fallback: si después de 1 segundo no se han cargado suficientes, inicializar de todos modos
       setTimeout(() => {
-        if (!hasStarted && loadedCount < totalImages) {
+        if (!hasStarted) {
           hasStarted = true;
           requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-              void topRow.offsetWidth;
-              void bottomRow.offsetWidth;
-              initAnimations();
-            });
+            initAnimations();
           });
         }
-      }, 2000);
+      }, 1000);
     };
 
     // Inicializar después de que el componente esté montado
-    // Esperar a que el DOM esté completamente listo
+    // Optimizado para iniciar más rápido
     const initialize = () => {
       if (document.readyState === 'complete') {
-        // Esperar un frame adicional para que Next.js Image termine de renderizar
+        // Usar un solo requestAnimationFrame para mejor rendimiento
         requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            checkImagesLoaded();
-          });
+          checkImagesLoaded();
         });
       } else {
         window.addEventListener('load', () => {
           requestAnimationFrame(() => {
+            checkImagesLoaded();
+          });
+        }, { once: true });
+        // También intentar después de un delay más corto
+        setTimeout(() => {
+          if (document.readyState === 'complete') {
             requestAnimationFrame(() => {
               checkImagesLoaded();
             });
-          });
-        }, { once: true });
-        // También intentar después de un delay por si acaso
-        setTimeout(() => {
-          if (document.readyState === 'complete') {
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        checkImagesLoaded();
-      });
-    });
           }
-        }, 500);
+        }, 300);
       }
     };
 
@@ -184,19 +189,33 @@ export default function InfiniteImageLoop({ images }: InfiniteImageLoopProps) {
         <div 
           ref={topRowRef}
           className="flex gap-4 md:gap-6"
-          style={{ width: 'fit-content' }}
+          style={{ 
+            width: 'fit-content',
+            willChange: 'transform',
+            transform: 'translate3d(0, 0, 0)',
+            backfaceVisibility: 'hidden',
+          }}
         >
           {topImagesDuplicated.map((image, index) => (
             <div
               key={`top-${index}`}
               className="relative flex-shrink-0 w-64 md:w-80 lg:w-96 h-48 md:h-64 lg:h-80 rounded-lg overflow-hidden shadow-lg"
+              style={{
+                willChange: 'transform',
+                transform: 'translate3d(0, 0, 0)',
+                backfaceVisibility: 'hidden',
+              }}
             >
-              <Image
+              <img
                 src={image}
                 alt={`Gallery image ${(index % topImages.length) + 1}`}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 256px, (max-width: 1024px) 320px, 384px"
+                className="w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
+                style={{
+                  transform: 'translate3d(0, 0, 0)',
+                  backfaceVisibility: 'hidden',
+                }}
               />
             </div>
           ))}
@@ -209,19 +228,33 @@ export default function InfiniteImageLoop({ images }: InfiniteImageLoopProps) {
         <div 
           ref={bottomRowRef}
           className="flex gap-4 md:gap-6"
-          style={{ width: 'fit-content' }}
+          style={{ 
+            width: 'fit-content',
+            willChange: 'transform',
+            transform: 'translate3d(0, 0, 0)',
+            backfaceVisibility: 'hidden',
+          }}
         >
           {bottomImagesDuplicated.map((image, index) => (
             <div
               key={`bottom-${index}`}
               className="relative flex-shrink-0 w-64 md:w-80 lg:w-96 h-48 md:h-64 lg:h-80 rounded-lg overflow-hidden shadow-lg"
+              style={{
+                willChange: 'transform',
+                transform: 'translate3d(0, 0, 0)',
+                backfaceVisibility: 'hidden',
+              }}
             >
-              <Image
+              <img
                 src={image}
                 alt={`Gallery image ${topImages.length + (index % bottomImages.length) + 1}`}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 256px, (max-width: 1024px) 320px, 384px"
+                className="w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
+                style={{
+                  transform: 'translate3d(0, 0, 0)',
+                  backfaceVisibility: 'hidden',
+                }}
               />
             </div>
           ))}

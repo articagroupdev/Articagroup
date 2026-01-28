@@ -46,7 +46,7 @@ const getPortfolioSections = (t: (key: string) => string): PortfolioSection[] =>
   {
     id: 'first',
     heading: t('portfolio.sections.ediciones'),
-    backgroundImage: '/img/Portafolio/fondo-edicion.avif',
+    backgroundImage: '/img/Portafolio/fondo-edicion.webp',
     galleryImages: [
       '/img/Portafolio/videos/554937645_827209430252257_209248943060033629_n.avif',
       '/img/Portafolio/videos/590417600_1190962469666812_302998795666163362_n.avif',
@@ -229,7 +229,7 @@ const getPortfolioSections = (t: (key: string) => string): PortfolioSection[] =>
   {
     id: 'third',
     heading: t('portfolio.sections.email'),
-    backgroundImage: '/img/Portafolio/fondo-email.avif',
+    backgroundImage: '/img/Portafolio/fondo-email.webp',
     galleryImages: [
       '/img/Portafolio/email marketing/EMAIL-CORTE-Y-CANTEO-DG-CONCEPT-1.avif',
       '/img/Portafolio/email marketing/EMAIL-PICK-UP-HN.avif',
@@ -274,7 +274,7 @@ const getPortfolioSections = (t: (key: string) => string): PortfolioSection[] =>
   {
     id: 'fourth',
     heading: t('portfolio.sections.web'),
-    backgroundImage: '/img/Portafolio/fondo-web.avif',
+    backgroundImage: '/img/Portafolio/fondo-web.webp',
     galleryImages: [
       '/img/Portafolio/diseño web/1.png',
       '/img/Portafolio/diseño web/2.png',
