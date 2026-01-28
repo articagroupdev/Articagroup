@@ -337,23 +337,33 @@ export default function HorizontalScrollSection({
             </h2>
           )}
           {images.map((img, index) => (
-            <img
+            <div
               key={index}
-              src={img}
-              alt={`Image ${index + 1}`}
               style={{
-                height: 'clamp(400px, 80vh, 80vh)',
-                width: 'auto',
-                objectFit: 'cover',
-                minWidth: 'clamp(280px, 60vw, 60vw)',
-                padding: '0 clamp(20px, 5vw, 5vw)',
                 flexShrink: 0,
-                borderRadius: 'clamp(20px, 30px, 30px)',
-                transform: 'translate3d(0, 0, 0)',
-                willChange: 'transform',
-                backfaceVisibility: 'hidden',
+                padding: '0 clamp(20px, 5vw, 5vw)',
+                display: 'flex',
+                alignItems: 'center',
               }}
-            />
+            >
+              <img
+                src={img}
+                alt={`Image ${index + 1}`}
+                style={{
+                  height: 'clamp(400px, 80vh, 80vh)',
+                  width: 'auto',
+                  objectFit: 'cover',
+                  minWidth: 'clamp(280px, 60vw, 60vw)',
+                  borderRadius: 'clamp(20px, 30px, 30px)',
+                  border: '1.5px solid rgba(255, 255, 255, 0.2)',
+                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.1)',
+                  transform: 'translate3d(0, 0, 0)',
+                  willChange: 'transform',
+                  backfaceVisibility: 'hidden',
+                  display: 'block',
+                }}
+              />
+            </div>
           ))}
         </div>
       </section>
